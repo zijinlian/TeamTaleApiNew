@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.TTraiCourseMapper" >
+  <resultMap id="BaseResultMap" type="com.work.entity.TTraiCourse" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="COURSENAME" property="coursename" jdbcType="VARCHAR" />
+    <result column="COURCECATEGORY" property="courcecategory" jdbcType="VARCHAR" />
+    <result column="COURCEINTROD" property="courceintrod" jdbcType="VARCHAR" />
+    <result column="COURSEPIC" property="coursepic" jdbcType="VARCHAR" />
+    <result column="TEACHERINTROD" property="teacherintrod" jdbcType="VARCHAR" />
+    <result column="PUBLISHER" property="publisher" jdbcType="VARCHAR" />
+    <result column="UNITCOCE" property="unitcoce" jdbcType="VARCHAR" />
+    <result column="CREATETIME" property="createtime" jdbcType="VARCHAR" />
+    <result column="PASSTIME" property="passtime" jdbcType="VARCHAR" />
+    <result column="COURSESTATUS" property="coursestatus" jdbcType="VARCHAR" />
+    <result column="APPROVESTATUS" property="approvestatus" jdbcType="VARCHAR" />
+    <result column="TEACHERNAME" property="teachername" jdbcType="VARCHAR" />
+    <result column="COMMENTS" property="comments" jdbcType="VARCHAR" />
+    <result column="APPROVEID" property="approveid" jdbcType="VARCHAR" />
+    <result column="APPROVENAME" property="approvename" jdbcType="VARCHAR" />
+    <result column="TEACHERID" property="teacherid" jdbcType="VARCHAR" />
+    <result column="COURSETYPE" property="coursetype" jdbcType="VARCHAR" />
+    <result column="DEPTCODE" property="deptcode" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, COURSENAME, COURCECATEGORY, COURCEINTROD, COURSEPIC, TEACHERINTROD, PUBLISHER, 
+    UNITCOCE, CREATETIME, PASSTIME, COURSESTATUS, APPROVESTATUS, TEACHERNAME, COMMENTS, 
+    APPROVEID, APPROVENAME, TEACHERID, COURSETYPE, DEPTCODE
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.work.entity.TTraiCourseExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_TRAI_COURSE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from TB_TRAI_COURSE
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TB_TRAI_COURSE
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.work.entity.TTraiCourse" >
+    insert into TB_TRAI_COURSE (ID, COURSENAME, COURCECATEGORY, 
+      COURCEINTROD, COURSEPIC, TEACHERINTROD, 
+      PUBLISHER, UNITCOCE, CREATETIME, 
+      PASSTIME, COURSESTATUS, APPROVESTATUS, 
+      TEACHERNAME, COMMENTS, APPROVEID, 
+      APPROVENAME, TEACHERID, COURSETYPE, 
+      DEPTCODE)
+    values (#{id,jdbcType=VARCHAR}, #{coursename,jdbcType=VARCHAR}, #{courcecategory,jdbcType=VARCHAR}, 
+      #{courceintrod,jdbcType=VARCHAR}, #{coursepic,jdbcType=VARCHAR}, #{teacherintrod,jdbcType=VARCHAR}, 
+      #{publisher,jdbcType=VARCHAR}, #{unitcoce,jdbcType=VARCHAR}, #{createtime,jdbcType=VARCHAR}, 
+      #{passtime,jdbcType=VARCHAR}, #{coursestatus,jdbcType=VARCHAR}, #{approvestatus,jdbcType=VARCHAR}, 
+      #{teachername,jdbcType=VARCHAR}, #{comments,jdbcType=VARCHAR}, #{approveid,jdbcType=VARCHAR}, 
+      #{approvename,jdbcType=VARCHAR}, #{teacherid,jdbcType=VARCHAR}, #{coursetype,jdbcType=VARCHAR}, 
+      #{deptcode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TTraiCourse" >
+    insert into TB_TRAI_COURSE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="coursename != null" >
+        COURSENAME,
+      </if>
+      <if test="courcecategory != null" >
+        COURCECATEGORY,
+      </if>
+      <if test="courceintrod != null" >
+        COURCEINTROD,
+      </if>
+      <if test="coursepic != null" >
+        COURSEPIC,
+      </if>
+      <if test="teacherintrod != null" >
+        TEACHERINTROD,
+      </if>
+      <if test="publisher != null" >
+        PUBLISHER,
+      </if>
+      <if test="unitcoce != null" >
+        UNITCOCE,
+      </if>
+      <if test="createtime != null" >
+        CREATETIME,
+      </if>
+      <if test="passtime != null" >
+        PASSTIME,
+      </if>
+      <if test="coursestatus != null" >
+        COURSESTATUS,
+      </if>
+      <if test="approvestatus != null" >
+        APPROVESTATUS,
+      </if>
+      <if test="teachername != null" >
+        TEACHERNAME,
+      </if>
+      <if test="comments != null" >
+        COMMENTS,
+      </if>
+      <if test="approveid != null" >
+        APPROVEID,
+      </if>
+      <if test="approvename != null" >
+        APPROVENAME,
+      </if>
+      <if test="teacherid != null" >
+        TEACHERID,
+      </if>
+      <if test="coursetype != null" >
+        COURSETYPE,
+      </if>
+      <if test="deptcode != null" >
+        DEPTCODE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="coursename != null" >
+        #{coursename,jdbcType=VARCHAR},
+      </if>
+      <if test="courcecategory != null" >
+        #{courcecategory,jdbcType=VARCHAR},
+      </if>
+      <if test="courceintrod != null" >
+        #{courceintrod,jdbcType=VARCHAR},
+      </if>
+      <if test="coursepic != null" >
+        #{coursepic,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherintrod != null" >
+        #{teacherintrod,jdbcType=VARCHAR},
+      </if>
+      <if test="publisher != null" >
+        #{publisher,jdbcType=VARCHAR},
+      </if>
+      <if test="unitcoce != null" >
+        #{unitcoce,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="passtime != null" >
+        #{passtime,jdbcType=VARCHAR},
+      </if>
+      <if test="coursestatus != null" >
+        #{coursestatus,jdbcType=VARCHAR},
+      </if>
+      <if test="approvestatus != null" >
+        #{approvestatus,jdbcType=VARCHAR},
+      </if>
+      <if test="teachername != null" >
+        #{teachername,jdbcType=VARCHAR},
+      </if>
+      <if test="comments != null" >
+        #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="approveid != null" >
+        #{approveid,jdbcType=VARCHAR},
+      </if>
+      <if test="approvename != null" >
+        #{approvename,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherid != null" >
+        #{teacherid,jdbcType=VARCHAR},
+      </if>
+      <if test="coursetype != null" >
+        #{coursetype,jdbcType=VARCHAR},
+      </if>
+      <if test="deptcode != null" >
+        #{deptcode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.work.entity.TTraiCourse" >
+    update TB_TRAI_COURSE
+    <set >
+      <if test="coursename != null" >
+        COURSENAME = #{coursename,jdbcType=VARCHAR},
+      </if>
+      <if test="courcecategory != null" >
+        COURCECATEGORY = #{courcecategory,jdbcType=VARCHAR},
+      </if>
+      <if test="courceintrod != null" >
+        COURCEINTROD = #{courceintrod,jdbcType=VARCHAR},
+      </if>
+      <if test="coursepic != null" >
+        COURSEPIC = #{coursepic,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherintrod != null" >
+        TEACHERINTROD = #{teacherintrod,jdbcType=VARCHAR},
+      </if>
+      <if test="publisher != null" >
+        PUBLISHER = #{publisher,jdbcType=VARCHAR},
+      </if>
+      <if test="unitcoce != null" >
+        UNITCOCE = #{unitcoce,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        CREATETIME = #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="passtime != null" >
+        PASSTIME = #{passtime,jdbcType=VARCHAR},
+      </if>
+      <if test="coursestatus != null" >
+        COURSESTATUS = #{coursestatus,jdbcType=VARCHAR},
+      </if>
+      <if test="approvestatus != null" >
+        APPROVESTATUS = #{approvestatus,jdbcType=VARCHAR},
+      </if>
+      <if test="teachername != null" >
+        TEACHERNAME = #{teachername,jdbcType=VARCHAR},
+      </if>
+      <if test="comments != null" >
+        COMMENTS = #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="approveid != null" >
+        APPROVEID = #{approveid,jdbcType=VARCHAR},
+      </if>
+      <if test="approvename != null" >
+        APPROVENAME = #{approvename,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherid != null" >
+        TEACHERID = #{teacherid,jdbcType=VARCHAR},
+      </if>
+      <if test="coursetype != null" >
+        COURSETYPE = #{coursetype,jdbcType=VARCHAR},
+      </if>
+      <if test="deptcode != null" >
+        DEPTCODE = #{deptcode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.work.entity.TTraiCourse" >
+    update TB_TRAI_COURSE
+    set COURSENAME = #{coursename,jdbcType=VARCHAR},
+      COURCECATEGORY = #{courcecategory,jdbcType=VARCHAR},
+      COURCEINTROD = #{courceintrod,jdbcType=VARCHAR},
+      COURSEPIC = #{coursepic,jdbcType=VARCHAR},
+      TEACHERINTROD = #{teacherintrod,jdbcType=VARCHAR},
+      PUBLISHER = #{publisher,jdbcType=VARCHAR},
+      UNITCOCE = #{unitcoce,jdbcType=VARCHAR},
+      CREATETIME = #{createtime,jdbcType=VARCHAR},
+      PASSTIME = #{passtime,jdbcType=VARCHAR},
+      COURSESTATUS = #{coursestatus,jdbcType=VARCHAR},
+      APPROVESTATUS = #{approvestatus,jdbcType=VARCHAR},
+      TEACHERNAME = #{teachername,jdbcType=VARCHAR},
+      COMMENTS = #{comments,jdbcType=VARCHAR},
+      APPROVEID = #{approveid,jdbcType=VARCHAR},
+      APPROVENAME = #{approvename,jdbcType=VARCHAR},
+      TEACHERID = #{teacherid,jdbcType=VARCHAR},
+      COURSETYPE = #{coursetype,jdbcType=VARCHAR},
+      DEPTCODE = #{deptcode,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  
+  <select id="selectTraiCourseList" parameterType="java.util.Map" resultType="java.util.Map">
+  		SELECT
+			T .*, M .registercount,
+			n.registerstatus,
+			n.EVALUATESTATUS,
+			n.registerid,
+			A .categroyname,
+			B.startime,
+			B.endtime
+		FROM
+			TB_TRAI_COURSE T
+		LEFT JOIN tb_trai_category A ON T .courcecategory = A .categroyid
+		LEFT JOIN (
+			SELECT
+				b. ID,
+				COUNT (1) registercount
+			FROM
+				tb_trai_register b
+			WHERE
+				b.registerstatus = '2'
+			GROUP BY
+				b. ID
+		) M ON T . ID = M . ID
+		LEFT JOIN (
+			SELECT
+				*
+			FROM
+				tb_trai_register c
+			WHERE
+				c.employeeid = #{empId}
+		) n ON T . ID = n. ID
+		LEFT JOIN (
+			SELECT
+				P . ID,
+				MIN (P .startime) AS startime,
+				MAX (P .endtime) AS endtime
+			FROM
+				TB_TRAI_plan P
+			LEFT JOIN TB_TRAI_COURSE T ON P . ID = T . ID
+			GROUP BY
+				P . ID
+		) B ON T . ID = B. ID
+		WHERE
+			T .approvestatus = '2' 
+		AND T .deptcode IN (
+			(
+				SELECT
+					E .fd_dept_org
+				FROM
+					tb_pepmgm_empinfo E
+				WHERE
+					E .fd_empid = #{empId}
+			)
+			UNION
+				(
+					SELECT
+						r.dept_id
+					FROM
+						TB_OA_EXAM_DEPT r
+				)
+		)
+		<if test="status != null and status != ''" >
+			AND T.COURSESTATUS = #{status}
+		</if>
+		ORDER BY COURSESTATUS ASC , CREATETIME DESC
+  </select>
+</mapper>

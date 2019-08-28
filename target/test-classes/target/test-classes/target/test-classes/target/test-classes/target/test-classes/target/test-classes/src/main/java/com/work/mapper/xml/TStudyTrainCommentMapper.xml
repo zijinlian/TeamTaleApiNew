@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.TStudyTrainCommentMapper" >
+  <resultMap id="BaseResultMap" type="com.work.entity.TStudyTrainComment" >
+    <id column="COMMENT_ID" property="commentId" jdbcType="OTHER" />
+    <result column="EMP_ID" property="empId" jdbcType="OTHER" />
+    <result column="COMMENT_CONTENT" property="commentContent" jdbcType="OTHER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="OTHER" />
+    <result column="STUDY_ID" property="studyId" jdbcType="OTHER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    COMMENT_ID, EMP_ID, COMMENT_CONTENT, CREATE_TIME, STUDY_ID
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.work.entity.TStudyTrainCommentExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_STUDY_TRAIN_COMMNET
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Object" >
+    select 
+    <include refid="Base_Column_List" />
+    from TB_STUDY_TRAIN_COMMNET
+    where COMMENT_ID = #{commentId,jdbcType=OTHER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Object" >
+    delete from TB_STUDY_TRAIN_COMMNET
+    where COMMENT_ID = #{commentId,jdbcType=OTHER}
+  </delete>
+  <insert id="insert" parameterType="com.work.entity.TStudyTrainComment" >
+    insert into TB_STUDY_TRAIN_COMMNET (COMMENT_ID, EMP_ID, COMMENT_CONTENT, 
+      CREATE_TIME, STUDY_ID)
+    values (#{commentId,jdbcType=OTHER}, #{empId,jdbcType=OTHER}, #{commentContent,jdbcType=OTHER}, 
+      #{createTime,jdbcType=OTHER}, #{studyId,jdbcType=OTHER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TStudyTrainComment" >
+    insert into TB_STUDY_TRAIN_COMMNET
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="commentId != null" >
+        COMMENT_ID,
+      </if>
+      <if test="empId != null" >
+        EMP_ID,
+      </if>
+      <if test="commentContent != null" >
+        COMMENT_CONTENT,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="studyId != null" >
+        STUDY_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="commentId != null" >
+        #{commentId,jdbcType=OTHER},
+      </if>
+      <if test="empId != null" >
+        #{empId,jdbcType=OTHER},
+      </if>
+      <if test="commentContent != null" >
+        #{commentContent,jdbcType=OTHER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=OTHER},
+      </if>
+      <if test="studyId != null" >
+        #{studyId,jdbcType=OTHER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.work.entity.TStudyTrainComment" >
+    update TB_STUDY_TRAIN_COMMNET
+    <set >
+      <if test="empId != null" >
+        EMP_ID = #{empId,jdbcType=OTHER},
+      </if>
+      <if test="commentContent != null" >
+        COMMENT_CONTENT = #{commentContent,jdbcType=OTHER},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=OTHER},
+      </if>
+      <if test="studyId != null" >
+        STUDY_ID = #{studyId,jdbcType=OTHER},
+      </if>
+    </set>
+    where COMMENT_ID = #{commentId,jdbcType=OTHER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.work.entity.TStudyTrainComment" >
+    update TB_STUDY_TRAIN_COMMNET
+    set EMP_ID = #{empId,jdbcType=OTHER},
+      COMMENT_CONTENT = #{commentContent,jdbcType=OTHER},
+      CREATE_TIME = #{createTime,jdbcType=OTHER},
+      STUDY_ID = #{studyId,jdbcType=OTHER}
+    where COMMENT_ID = #{commentId,jdbcType=OTHER}
+  </update>
+</mapper>

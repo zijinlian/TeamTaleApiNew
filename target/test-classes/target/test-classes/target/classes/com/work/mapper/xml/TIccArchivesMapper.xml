@@ -1,0 +1,764 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.TIccArchivesMapper" >
+  <resultMap id="BaseResultMap" type="com.work.entity.TIccArchives" >
+    <id column="FD_ARCHIVES_ID" property="fdArchivesId" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_A" property="fdArchivesA" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_B" property="fdArchivesB" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_C" property="fdArchivesC" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_D" property="fdArchivesD" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_E" property="fdArchivesE" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_F" property="fdArchivesF" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_G" property="fdArchivesG" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_H" property="fdArchivesH" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_I" property="fdArchivesI" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_J" property="fdArchivesJ" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_K" property="fdArchivesK" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_L" property="fdArchivesL" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_M" property="fdArchivesM" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_N" property="fdArchivesN" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_O" property="fdArchivesO" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_P" property="fdArchivesP" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_Q" property="fdArchivesQ" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_R" property="fdArchivesR" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_S" property="fdArchivesS" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_T" property="fdArchivesT" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_U" property="fdArchivesU" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_V" property="fdArchivesV" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_W" property="fdArchivesW" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_X" property="fdArchivesX" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_Y" property="fdArchivesY" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_Z" property="fdArchivesZ" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_AA" property="fdArchivesAa" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_AB" property="fdArchivesAb" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_AC" property="fdArchivesAc" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_AD" property="fdArchivesAd" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_AE" property="fdArchivesAe" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_AF" property="fdArchivesAf" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_AG" property="fdArchivesAg" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_AH" property="fdArchivesAh" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_AI" property="fdArchivesAi" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_AJ" property="fdArchivesAj" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_AK" property="fdArchivesAk" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_AL" property="fdArchivesAl" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_AM" property="fdArchivesAm" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_AN" property="fdArchivesAn" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_AO" property="fdArchivesAo" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_AP" property="fdArchivesAp" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_AQ" property="fdArchivesAq" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_DATE" property="fdArchivesDate" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_AR" property="fdArchivesAr" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_AS" property="fdArchivesAs" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_AT" property="fdArchivesAt" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_AU" property="fdArchivesAu" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_AV" property="fdArchivesAv" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_AW" property="fdArchivesAw" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_AX" property="fdArchivesAx" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_AY" property="fdArchivesAy" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_AZ" property="fdArchivesAz" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_BA" property="fdArchivesBa" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_BB" property="fdArchivesBb" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_BC" property="fdArchivesBc" jdbcType="VARCHAR" />
+    <result column="FD_ARCHIVES_BD" property="fdArchivesBd" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    FD_ARCHIVES_ID, FD_ARCHIVES_A, FD_ARCHIVES_B, FD_ARCHIVES_C, FD_ARCHIVES_D, FD_ARCHIVES_E, 
+    FD_ARCHIVES_F, FD_ARCHIVES_G, FD_ARCHIVES_H, FD_ARCHIVES_I, FD_ARCHIVES_J, FD_ARCHIVES_K, 
+    FD_ARCHIVES_L, FD_ARCHIVES_M, FD_ARCHIVES_N, FD_ARCHIVES_O, FD_ARCHIVES_P, FD_ARCHIVES_Q, 
+    FD_ARCHIVES_R, FD_ARCHIVES_S, FD_ARCHIVES_T, FD_ARCHIVES_U, FD_ARCHIVES_V, FD_ARCHIVES_W, 
+    FD_ARCHIVES_X, FD_ARCHIVES_Y, FD_ARCHIVES_Z, FD_ARCHIVES_AA, FD_ARCHIVES_AB, FD_ARCHIVES_AC, 
+    FD_ARCHIVES_AD, FD_ARCHIVES_AE, FD_ARCHIVES_AF, FD_ARCHIVES_AG, FD_ARCHIVES_AH, FD_ARCHIVES_AI, 
+    FD_ARCHIVES_AJ, FD_ARCHIVES_AK, FD_ARCHIVES_AL, FD_ARCHIVES_AM, FD_ARCHIVES_AN, FD_ARCHIVES_AO, 
+    FD_ARCHIVES_AP, FD_ARCHIVES_AQ, FD_ARCHIVES_DATE, FD_ARCHIVES_AR, FD_ARCHIVES_AS, 
+    FD_ARCHIVES_AT, FD_ARCHIVES_AU, FD_ARCHIVES_AV, FD_ARCHIVES_AW, FD_ARCHIVES_AX, FD_ARCHIVES_AY, 
+    FD_ARCHIVES_AZ, FD_ARCHIVES_BA, FD_ARCHIVES_BB, FD_ARCHIVES_BC, FD_ARCHIVES_BD
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.work.entity.TIccArchivesExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_ICC_ARCHIVES
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from TB_ICC_ARCHIVES
+    where FD_ARCHIVES_ID = #{fdArchivesId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TB_ICC_ARCHIVES
+    where FD_ARCHIVES_ID = #{fdArchivesId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.work.entity.TIccArchives" >
+    insert into TB_ICC_ARCHIVES (FD_ARCHIVES_ID, FD_ARCHIVES_A, FD_ARCHIVES_B, 
+      FD_ARCHIVES_C, FD_ARCHIVES_D, FD_ARCHIVES_E, 
+      FD_ARCHIVES_F, FD_ARCHIVES_G, FD_ARCHIVES_H, 
+      FD_ARCHIVES_I, FD_ARCHIVES_J, FD_ARCHIVES_K, 
+      FD_ARCHIVES_L, FD_ARCHIVES_M, FD_ARCHIVES_N, 
+      FD_ARCHIVES_O, FD_ARCHIVES_P, FD_ARCHIVES_Q, 
+      FD_ARCHIVES_R, FD_ARCHIVES_S, FD_ARCHIVES_T, 
+      FD_ARCHIVES_U, FD_ARCHIVES_V, FD_ARCHIVES_W, 
+      FD_ARCHIVES_X, FD_ARCHIVES_Y, FD_ARCHIVES_Z, 
+      FD_ARCHIVES_AA, FD_ARCHIVES_AB, FD_ARCHIVES_AC, 
+      FD_ARCHIVES_AD, FD_ARCHIVES_AE, FD_ARCHIVES_AF, 
+      FD_ARCHIVES_AG, FD_ARCHIVES_AH, FD_ARCHIVES_AI, 
+      FD_ARCHIVES_AJ, FD_ARCHIVES_AK, FD_ARCHIVES_AL, 
+      FD_ARCHIVES_AM, FD_ARCHIVES_AN, FD_ARCHIVES_AO, 
+      FD_ARCHIVES_AP, FD_ARCHIVES_AQ, FD_ARCHIVES_DATE, 
+      FD_ARCHIVES_AR, FD_ARCHIVES_AS, FD_ARCHIVES_AT, 
+      FD_ARCHIVES_AU, FD_ARCHIVES_AV, FD_ARCHIVES_AW, 
+      FD_ARCHIVES_AX, FD_ARCHIVES_AY, FD_ARCHIVES_AZ, 
+      FD_ARCHIVES_BA, FD_ARCHIVES_BB, FD_ARCHIVES_BC, 
+      FD_ARCHIVES_BD)
+    values (#{fdArchivesId,jdbcType=VARCHAR}, #{fdArchivesA,jdbcType=VARCHAR}, #{fdArchivesB,jdbcType=VARCHAR}, 
+      #{fdArchivesC,jdbcType=VARCHAR}, #{fdArchivesD,jdbcType=VARCHAR}, #{fdArchivesE,jdbcType=VARCHAR}, 
+      #{fdArchivesF,jdbcType=VARCHAR}, #{fdArchivesG,jdbcType=VARCHAR}, #{fdArchivesH,jdbcType=VARCHAR}, 
+      #{fdArchivesI,jdbcType=VARCHAR}, #{fdArchivesJ,jdbcType=VARCHAR}, #{fdArchivesK,jdbcType=VARCHAR}, 
+      #{fdArchivesL,jdbcType=VARCHAR}, #{fdArchivesM,jdbcType=VARCHAR}, #{fdArchivesN,jdbcType=VARCHAR}, 
+      #{fdArchivesO,jdbcType=VARCHAR}, #{fdArchivesP,jdbcType=VARCHAR}, #{fdArchivesQ,jdbcType=VARCHAR}, 
+      #{fdArchivesR,jdbcType=VARCHAR}, #{fdArchivesS,jdbcType=VARCHAR}, #{fdArchivesT,jdbcType=VARCHAR}, 
+      #{fdArchivesU,jdbcType=VARCHAR}, #{fdArchivesV,jdbcType=VARCHAR}, #{fdArchivesW,jdbcType=VARCHAR}, 
+      #{fdArchivesX,jdbcType=VARCHAR}, #{fdArchivesY,jdbcType=VARCHAR}, #{fdArchivesZ,jdbcType=VARCHAR}, 
+      #{fdArchivesAa,jdbcType=VARCHAR}, #{fdArchivesAb,jdbcType=VARCHAR}, #{fdArchivesAc,jdbcType=VARCHAR}, 
+      #{fdArchivesAd,jdbcType=VARCHAR}, #{fdArchivesAe,jdbcType=VARCHAR}, #{fdArchivesAf,jdbcType=VARCHAR}, 
+      #{fdArchivesAg,jdbcType=VARCHAR}, #{fdArchivesAh,jdbcType=VARCHAR}, #{fdArchivesAi,jdbcType=VARCHAR}, 
+      #{fdArchivesAj,jdbcType=VARCHAR}, #{fdArchivesAk,jdbcType=VARCHAR}, #{fdArchivesAl,jdbcType=VARCHAR}, 
+      #{fdArchivesAm,jdbcType=VARCHAR}, #{fdArchivesAn,jdbcType=VARCHAR}, #{fdArchivesAo,jdbcType=VARCHAR}, 
+      #{fdArchivesAp,jdbcType=VARCHAR}, #{fdArchivesAq,jdbcType=VARCHAR}, #{fdArchivesDate,jdbcType=VARCHAR}, 
+      #{fdArchivesAr,jdbcType=VARCHAR}, #{fdArchivesAs,jdbcType=VARCHAR}, #{fdArchivesAt,jdbcType=VARCHAR}, 
+      #{fdArchivesAu,jdbcType=VARCHAR}, #{fdArchivesAv,jdbcType=VARCHAR}, #{fdArchivesAw,jdbcType=VARCHAR}, 
+      #{fdArchivesAx,jdbcType=VARCHAR}, #{fdArchivesAy,jdbcType=VARCHAR}, #{fdArchivesAz,jdbcType=VARCHAR}, 
+      #{fdArchivesBa,jdbcType=VARCHAR}, #{fdArchivesBb,jdbcType=VARCHAR}, #{fdArchivesBc,jdbcType=VARCHAR}, 
+      #{fdArchivesBd,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TIccArchives" >
+    insert into TB_ICC_ARCHIVES
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fdArchivesId != null" >
+        FD_ARCHIVES_ID,
+      </if>
+      <if test="fdArchivesA != null" >
+        FD_ARCHIVES_A,
+      </if>
+      <if test="fdArchivesB != null" >
+        FD_ARCHIVES_B,
+      </if>
+      <if test="fdArchivesC != null" >
+        FD_ARCHIVES_C,
+      </if>
+      <if test="fdArchivesD != null" >
+        FD_ARCHIVES_D,
+      </if>
+      <if test="fdArchivesE != null" >
+        FD_ARCHIVES_E,
+      </if>
+      <if test="fdArchivesF != null" >
+        FD_ARCHIVES_F,
+      </if>
+      <if test="fdArchivesG != null" >
+        FD_ARCHIVES_G,
+      </if>
+      <if test="fdArchivesH != null" >
+        FD_ARCHIVES_H,
+      </if>
+      <if test="fdArchivesI != null" >
+        FD_ARCHIVES_I,
+      </if>
+      <if test="fdArchivesJ != null" >
+        FD_ARCHIVES_J,
+      </if>
+      <if test="fdArchivesK != null" >
+        FD_ARCHIVES_K,
+      </if>
+      <if test="fdArchivesL != null" >
+        FD_ARCHIVES_L,
+      </if>
+      <if test="fdArchivesM != null" >
+        FD_ARCHIVES_M,
+      </if>
+      <if test="fdArchivesN != null" >
+        FD_ARCHIVES_N,
+      </if>
+      <if test="fdArchivesO != null" >
+        FD_ARCHIVES_O,
+      </if>
+      <if test="fdArchivesP != null" >
+        FD_ARCHIVES_P,
+      </if>
+      <if test="fdArchivesQ != null" >
+        FD_ARCHIVES_Q,
+      </if>
+      <if test="fdArchivesR != null" >
+        FD_ARCHIVES_R,
+      </if>
+      <if test="fdArchivesS != null" >
+        FD_ARCHIVES_S,
+      </if>
+      <if test="fdArchivesT != null" >
+        FD_ARCHIVES_T,
+      </if>
+      <if test="fdArchivesU != null" >
+        FD_ARCHIVES_U,
+      </if>
+      <if test="fdArchivesV != null" >
+        FD_ARCHIVES_V,
+      </if>
+      <if test="fdArchivesW != null" >
+        FD_ARCHIVES_W,
+      </if>
+      <if test="fdArchivesX != null" >
+        FD_ARCHIVES_X,
+      </if>
+      <if test="fdArchivesY != null" >
+        FD_ARCHIVES_Y,
+      </if>
+      <if test="fdArchivesZ != null" >
+        FD_ARCHIVES_Z,
+      </if>
+      <if test="fdArchivesAa != null" >
+        FD_ARCHIVES_AA,
+      </if>
+      <if test="fdArchivesAb != null" >
+        FD_ARCHIVES_AB,
+      </if>
+      <if test="fdArchivesAc != null" >
+        FD_ARCHIVES_AC,
+      </if>
+      <if test="fdArchivesAd != null" >
+        FD_ARCHIVES_AD,
+      </if>
+      <if test="fdArchivesAe != null" >
+        FD_ARCHIVES_AE,
+      </if>
+      <if test="fdArchivesAf != null" >
+        FD_ARCHIVES_AF,
+      </if>
+      <if test="fdArchivesAg != null" >
+        FD_ARCHIVES_AG,
+      </if>
+      <if test="fdArchivesAh != null" >
+        FD_ARCHIVES_AH,
+      </if>
+      <if test="fdArchivesAi != null" >
+        FD_ARCHIVES_AI,
+      </if>
+      <if test="fdArchivesAj != null" >
+        FD_ARCHIVES_AJ,
+      </if>
+      <if test="fdArchivesAk != null" >
+        FD_ARCHIVES_AK,
+      </if>
+      <if test="fdArchivesAl != null" >
+        FD_ARCHIVES_AL,
+      </if>
+      <if test="fdArchivesAm != null" >
+        FD_ARCHIVES_AM,
+      </if>
+      <if test="fdArchivesAn != null" >
+        FD_ARCHIVES_AN,
+      </if>
+      <if test="fdArchivesAo != null" >
+        FD_ARCHIVES_AO,
+      </if>
+      <if test="fdArchivesAp != null" >
+        FD_ARCHIVES_AP,
+      </if>
+      <if test="fdArchivesAq != null" >
+        FD_ARCHIVES_AQ,
+      </if>
+      <if test="fdArchivesDate != null" >
+        FD_ARCHIVES_DATE,
+      </if>
+      <if test="fdArchivesAr != null" >
+        FD_ARCHIVES_AR,
+      </if>
+      <if test="fdArchivesAs != null" >
+        FD_ARCHIVES_AS,
+      </if>
+      <if test="fdArchivesAt != null" >
+        FD_ARCHIVES_AT,
+      </if>
+      <if test="fdArchivesAu != null" >
+        FD_ARCHIVES_AU,
+      </if>
+      <if test="fdArchivesAv != null" >
+        FD_ARCHIVES_AV,
+      </if>
+      <if test="fdArchivesAw != null" >
+        FD_ARCHIVES_AW,
+      </if>
+      <if test="fdArchivesAx != null" >
+        FD_ARCHIVES_AX,
+      </if>
+      <if test="fdArchivesAy != null" >
+        FD_ARCHIVES_AY,
+      </if>
+      <if test="fdArchivesAz != null" >
+        FD_ARCHIVES_AZ,
+      </if>
+      <if test="fdArchivesBa != null" >
+        FD_ARCHIVES_BA,
+      </if>
+      <if test="fdArchivesBb != null" >
+        FD_ARCHIVES_BB,
+      </if>
+      <if test="fdArchivesBc != null" >
+        FD_ARCHIVES_BC,
+      </if>
+      <if test="fdArchivesBd != null" >
+        FD_ARCHIVES_BD,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fdArchivesId != null" >
+        #{fdArchivesId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesA != null" >
+        #{fdArchivesA,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesB != null" >
+        #{fdArchivesB,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesC != null" >
+        #{fdArchivesC,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesD != null" >
+        #{fdArchivesD,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesE != null" >
+        #{fdArchivesE,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesF != null" >
+        #{fdArchivesF,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesG != null" >
+        #{fdArchivesG,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesH != null" >
+        #{fdArchivesH,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesI != null" >
+        #{fdArchivesI,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesJ != null" >
+        #{fdArchivesJ,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesK != null" >
+        #{fdArchivesK,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesL != null" >
+        #{fdArchivesL,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesM != null" >
+        #{fdArchivesM,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesN != null" >
+        #{fdArchivesN,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesO != null" >
+        #{fdArchivesO,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesP != null" >
+        #{fdArchivesP,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesQ != null" >
+        #{fdArchivesQ,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesR != null" >
+        #{fdArchivesR,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesS != null" >
+        #{fdArchivesS,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesT != null" >
+        #{fdArchivesT,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesU != null" >
+        #{fdArchivesU,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesV != null" >
+        #{fdArchivesV,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesW != null" >
+        #{fdArchivesW,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesX != null" >
+        #{fdArchivesX,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesY != null" >
+        #{fdArchivesY,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesZ != null" >
+        #{fdArchivesZ,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAa != null" >
+        #{fdArchivesAa,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAb != null" >
+        #{fdArchivesAb,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAc != null" >
+        #{fdArchivesAc,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAd != null" >
+        #{fdArchivesAd,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAe != null" >
+        #{fdArchivesAe,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAf != null" >
+        #{fdArchivesAf,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAg != null" >
+        #{fdArchivesAg,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAh != null" >
+        #{fdArchivesAh,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAi != null" >
+        #{fdArchivesAi,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAj != null" >
+        #{fdArchivesAj,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAk != null" >
+        #{fdArchivesAk,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAl != null" >
+        #{fdArchivesAl,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAm != null" >
+        #{fdArchivesAm,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAn != null" >
+        #{fdArchivesAn,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAo != null" >
+        #{fdArchivesAo,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAp != null" >
+        #{fdArchivesAp,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAq != null" >
+        #{fdArchivesAq,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesDate != null" >
+        #{fdArchivesDate,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAr != null" >
+        #{fdArchivesAr,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAs != null" >
+        #{fdArchivesAs,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAt != null" >
+        #{fdArchivesAt,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAu != null" >
+        #{fdArchivesAu,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAv != null" >
+        #{fdArchivesAv,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAw != null" >
+        #{fdArchivesAw,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAx != null" >
+        #{fdArchivesAx,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAy != null" >
+        #{fdArchivesAy,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAz != null" >
+        #{fdArchivesAz,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesBa != null" >
+        #{fdArchivesBa,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesBb != null" >
+        #{fdArchivesBb,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesBc != null" >
+        #{fdArchivesBc,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesBd != null" >
+        #{fdArchivesBd,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.work.entity.TIccArchives" >
+    update TB_ICC_ARCHIVES
+    <set >
+      <if test="fdArchivesA != null" >
+        FD_ARCHIVES_A = #{fdArchivesA,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesB != null" >
+        FD_ARCHIVES_B = #{fdArchivesB,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesC != null" >
+        FD_ARCHIVES_C = #{fdArchivesC,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesD != null" >
+        FD_ARCHIVES_D = #{fdArchivesD,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesE != null" >
+        FD_ARCHIVES_E = #{fdArchivesE,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesF != null" >
+        FD_ARCHIVES_F = #{fdArchivesF,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesG != null" >
+        FD_ARCHIVES_G = #{fdArchivesG,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesH != null" >
+        FD_ARCHIVES_H = #{fdArchivesH,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesI != null" >
+        FD_ARCHIVES_I = #{fdArchivesI,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesJ != null" >
+        FD_ARCHIVES_J = #{fdArchivesJ,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesK != null" >
+        FD_ARCHIVES_K = #{fdArchivesK,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesL != null" >
+        FD_ARCHIVES_L = #{fdArchivesL,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesM != null" >
+        FD_ARCHIVES_M = #{fdArchivesM,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesN != null" >
+        FD_ARCHIVES_N = #{fdArchivesN,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesO != null" >
+        FD_ARCHIVES_O = #{fdArchivesO,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesP != null" >
+        FD_ARCHIVES_P = #{fdArchivesP,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesQ != null" >
+        FD_ARCHIVES_Q = #{fdArchivesQ,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesR != null" >
+        FD_ARCHIVES_R = #{fdArchivesR,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesS != null" >
+        FD_ARCHIVES_S = #{fdArchivesS,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesT != null" >
+        FD_ARCHIVES_T = #{fdArchivesT,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesU != null" >
+        FD_ARCHIVES_U = #{fdArchivesU,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesV != null" >
+        FD_ARCHIVES_V = #{fdArchivesV,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesW != null" >
+        FD_ARCHIVES_W = #{fdArchivesW,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesX != null" >
+        FD_ARCHIVES_X = #{fdArchivesX,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesY != null" >
+        FD_ARCHIVES_Y = #{fdArchivesY,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesZ != null" >
+        FD_ARCHIVES_Z = #{fdArchivesZ,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAa != null" >
+        FD_ARCHIVES_AA = #{fdArchivesAa,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAb != null" >
+        FD_ARCHIVES_AB = #{fdArchivesAb,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAc != null" >
+        FD_ARCHIVES_AC = #{fdArchivesAc,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAd != null" >
+        FD_ARCHIVES_AD = #{fdArchivesAd,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAe != null" >
+        FD_ARCHIVES_AE = #{fdArchivesAe,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAf != null" >
+        FD_ARCHIVES_AF = #{fdArchivesAf,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAg != null" >
+        FD_ARCHIVES_AG = #{fdArchivesAg,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAh != null" >
+        FD_ARCHIVES_AH = #{fdArchivesAh,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAi != null" >
+        FD_ARCHIVES_AI = #{fdArchivesAi,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAj != null" >
+        FD_ARCHIVES_AJ = #{fdArchivesAj,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAk != null" >
+        FD_ARCHIVES_AK = #{fdArchivesAk,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAl != null" >
+        FD_ARCHIVES_AL = #{fdArchivesAl,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAm != null" >
+        FD_ARCHIVES_AM = #{fdArchivesAm,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAn != null" >
+        FD_ARCHIVES_AN = #{fdArchivesAn,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAo != null" >
+        FD_ARCHIVES_AO = #{fdArchivesAo,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAp != null" >
+        FD_ARCHIVES_AP = #{fdArchivesAp,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAq != null" >
+        FD_ARCHIVES_AQ = #{fdArchivesAq,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesDate != null" >
+        FD_ARCHIVES_DATE = #{fdArchivesDate,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAr != null" >
+        FD_ARCHIVES_AR = #{fdArchivesAr,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAs != null" >
+        FD_ARCHIVES_AS = #{fdArchivesAs,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAt != null" >
+        FD_ARCHIVES_AT = #{fdArchivesAt,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAu != null" >
+        FD_ARCHIVES_AU = #{fdArchivesAu,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAv != null" >
+        FD_ARCHIVES_AV = #{fdArchivesAv,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAw != null" >
+        FD_ARCHIVES_AW = #{fdArchivesAw,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAx != null" >
+        FD_ARCHIVES_AX = #{fdArchivesAx,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAy != null" >
+        FD_ARCHIVES_AY = #{fdArchivesAy,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesAz != null" >
+        FD_ARCHIVES_AZ = #{fdArchivesAz,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesBa != null" >
+        FD_ARCHIVES_BA = #{fdArchivesBa,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesBb != null" >
+        FD_ARCHIVES_BB = #{fdArchivesBb,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesBc != null" >
+        FD_ARCHIVES_BC = #{fdArchivesBc,jdbcType=VARCHAR},
+      </if>
+      <if test="fdArchivesBd != null" >
+        FD_ARCHIVES_BD = #{fdArchivesBd,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where FD_ARCHIVES_ID = #{fdArchivesId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.work.entity.TIccArchives" >
+    update TB_ICC_ARCHIVES
+    set FD_ARCHIVES_A = #{fdArchivesA,jdbcType=VARCHAR},
+      FD_ARCHIVES_B = #{fdArchivesB,jdbcType=VARCHAR},
+      FD_ARCHIVES_C = #{fdArchivesC,jdbcType=VARCHAR},
+      FD_ARCHIVES_D = #{fdArchivesD,jdbcType=VARCHAR},
+      FD_ARCHIVES_E = #{fdArchivesE,jdbcType=VARCHAR},
+      FD_ARCHIVES_F = #{fdArchivesF,jdbcType=VARCHAR},
+      FD_ARCHIVES_G = #{fdArchivesG,jdbcType=VARCHAR},
+      FD_ARCHIVES_H = #{fdArchivesH,jdbcType=VARCHAR},
+      FD_ARCHIVES_I = #{fdArchivesI,jdbcType=VARCHAR},
+      FD_ARCHIVES_J = #{fdArchivesJ,jdbcType=VARCHAR},
+      FD_ARCHIVES_K = #{fdArchivesK,jdbcType=VARCHAR},
+      FD_ARCHIVES_L = #{fdArchivesL,jdbcType=VARCHAR},
+      FD_ARCHIVES_M = #{fdArchivesM,jdbcType=VARCHAR},
+      FD_ARCHIVES_N = #{fdArchivesN,jdbcType=VARCHAR},
+      FD_ARCHIVES_O = #{fdArchivesO,jdbcType=VARCHAR},
+      FD_ARCHIVES_P = #{fdArchivesP,jdbcType=VARCHAR},
+      FD_ARCHIVES_Q = #{fdArchivesQ,jdbcType=VARCHAR},
+      FD_ARCHIVES_R = #{fdArchivesR,jdbcType=VARCHAR},
+      FD_ARCHIVES_S = #{fdArchivesS,jdbcType=VARCHAR},
+      FD_ARCHIVES_T = #{fdArchivesT,jdbcType=VARCHAR},
+      FD_ARCHIVES_U = #{fdArchivesU,jdbcType=VARCHAR},
+      FD_ARCHIVES_V = #{fdArchivesV,jdbcType=VARCHAR},
+      FD_ARCHIVES_W = #{fdArchivesW,jdbcType=VARCHAR},
+      FD_ARCHIVES_X = #{fdArchivesX,jdbcType=VARCHAR},
+      FD_ARCHIVES_Y = #{fdArchivesY,jdbcType=VARCHAR},
+      FD_ARCHIVES_Z = #{fdArchivesZ,jdbcType=VARCHAR},
+      FD_ARCHIVES_AA = #{fdArchivesAa,jdbcType=VARCHAR},
+      FD_ARCHIVES_AB = #{fdArchivesAb,jdbcType=VARCHAR},
+      FD_ARCHIVES_AC = #{fdArchivesAc,jdbcType=VARCHAR},
+      FD_ARCHIVES_AD = #{fdArchivesAd,jdbcType=VARCHAR},
+      FD_ARCHIVES_AE = #{fdArchivesAe,jdbcType=VARCHAR},
+      FD_ARCHIVES_AF = #{fdArchivesAf,jdbcType=VARCHAR},
+      FD_ARCHIVES_AG = #{fdArchivesAg,jdbcType=VARCHAR},
+      FD_ARCHIVES_AH = #{fdArchivesAh,jdbcType=VARCHAR},
+      FD_ARCHIVES_AI = #{fdArchivesAi,jdbcType=VARCHAR},
+      FD_ARCHIVES_AJ = #{fdArchivesAj,jdbcType=VARCHAR},
+      FD_ARCHIVES_AK = #{fdArchivesAk,jdbcType=VARCHAR},
+      FD_ARCHIVES_AL = #{fdArchivesAl,jdbcType=VARCHAR},
+      FD_ARCHIVES_AM = #{fdArchivesAm,jdbcType=VARCHAR},
+      FD_ARCHIVES_AN = #{fdArchivesAn,jdbcType=VARCHAR},
+      FD_ARCHIVES_AO = #{fdArchivesAo,jdbcType=VARCHAR},
+      FD_ARCHIVES_AP = #{fdArchivesAp,jdbcType=VARCHAR},
+      FD_ARCHIVES_AQ = #{fdArchivesAq,jdbcType=VARCHAR},
+      FD_ARCHIVES_DATE = #{fdArchivesDate,jdbcType=VARCHAR},
+      FD_ARCHIVES_AR = #{fdArchivesAr,jdbcType=VARCHAR},
+      FD_ARCHIVES_AS = #{fdArchivesAs,jdbcType=VARCHAR},
+      FD_ARCHIVES_AT = #{fdArchivesAt,jdbcType=VARCHAR},
+      FD_ARCHIVES_AU = #{fdArchivesAu,jdbcType=VARCHAR},
+      FD_ARCHIVES_AV = #{fdArchivesAv,jdbcType=VARCHAR},
+      FD_ARCHIVES_AW = #{fdArchivesAw,jdbcType=VARCHAR},
+      FD_ARCHIVES_AX = #{fdArchivesAx,jdbcType=VARCHAR},
+      FD_ARCHIVES_AY = #{fdArchivesAy,jdbcType=VARCHAR},
+      FD_ARCHIVES_AZ = #{fdArchivesAz,jdbcType=VARCHAR},
+      FD_ARCHIVES_BA = #{fdArchivesBa,jdbcType=VARCHAR},
+      FD_ARCHIVES_BB = #{fdArchivesBb,jdbcType=VARCHAR},
+      FD_ARCHIVES_BC = #{fdArchivesBc,jdbcType=VARCHAR},
+      FD_ARCHIVES_BD = #{fdArchivesBd,jdbcType=VARCHAR}
+    where FD_ARCHIVES_ID = #{fdArchivesId,jdbcType=VARCHAR}
+  </update>
+</mapper>

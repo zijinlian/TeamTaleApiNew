@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.TDishExchangeMapper" >
+  <resultMap id="BaseResultMap" type="com.work.entity.TDishExchange" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="BATCHID" property="batchid" jdbcType="VARCHAR" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="UNITPRICE" property="unitprice" jdbcType="DECIMAL" />
+    <result column="PRODUCTNUMBER" property="productnumber" jdbcType="DECIMAL" />
+    <result column="RECEIVETIME" property="receivetime" jdbcType="VARCHAR" />
+    <result column="RECEIVEPLACE" property="receiveplace" jdbcType="VARCHAR" />
+    <result column="UNIT" property="unit" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.work.entity.TDishExchange" extends="BaseResultMap" >
+    <result column="DESCPRTION" property="descprtion" jdbcType="CLOB" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, BATCHID, NAME, UNITPRICE, PRODUCTNUMBER, RECEIVETIME, RECEIVEPLACE, UNIT
+  </sql>
+  <sql id="Blob_Column_List" >
+    DESCPRTION
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.work.entity.TDishExchangeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from TB_DISH_EXCHANGE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="ResultMapWithBLOBs" parameterType="com.work.entity.TDishExchangeExample" >
+   select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from TB_DISH_EXCHANGE
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from TB_DISH_EXCHANGE
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TB_DISH_EXCHANGE
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.work.entity.TDishExchange" >
+    insert into TB_DISH_EXCHANGE (ID, BATCHID, NAME, 
+      UNITPRICE, PRODUCTNUMBER, RECEIVETIME, 
+      RECEIVEPLACE, UNIT, DESCPRTION
+      )
+    values (#{id,jdbcType=VARCHAR}, #{batchid,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{unitprice,jdbcType=DECIMAL}, #{productnumber,jdbcType=DECIMAL}, #{receivetime,jdbcType=VARCHAR}, 
+      #{receiveplace,jdbcType=VARCHAR}, #{unit,jdbcType=VARCHAR}, #{descprtion,jdbcType=CLOB}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TDishExchange" >
+    insert into TB_DISH_EXCHANGE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="batchid != null" >
+        BATCHID,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="unitprice != null" >
+        UNITPRICE,
+      </if>
+      <if test="productnumber != null" >
+        PRODUCTNUMBER,
+      </if>
+      <if test="receivetime != null" >
+        RECEIVETIME,
+      </if>
+      <if test="receiveplace != null" >
+        RECEIVEPLACE,
+      </if>
+      <if test="unit != null" >
+        UNIT,
+      </if>
+      <if test="descprtion != null" >
+        DESCPRTION,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="batchid != null" >
+        #{batchid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="unitprice != null" >
+        #{unitprice,jdbcType=DECIMAL},
+      </if>
+      <if test="productnumber != null" >
+        #{productnumber,jdbcType=DECIMAL},
+      </if>
+      <if test="receivetime != null" >
+        #{receivetime,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveplace != null" >
+        #{receiveplace,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null" >
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="descprtion != null" >
+        #{descprtion,jdbcType=CLOB},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.work.entity.TDishExchange" >
+    update TB_DISH_EXCHANGE
+    <set >
+      <if test="batchid != null" >
+        BATCHID = #{batchid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="unitprice != null" >
+        UNITPRICE = #{unitprice,jdbcType=DECIMAL},
+      </if>
+      <if test="productnumber != null" >
+        PRODUCTNUMBER = #{productnumber,jdbcType=DECIMAL},
+      </if>
+      <if test="receivetime != null" >
+        RECEIVETIME = #{receivetime,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveplace != null" >
+        RECEIVEPLACE = #{receiveplace,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null" >
+        UNIT = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="descprtion != null" >
+        DESCPRTION = #{descprtion,jdbcType=CLOB},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.work.entity.TDishExchange" >
+    update TB_DISH_EXCHANGE
+    set BATCHID = #{batchid,jdbcType=VARCHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      UNITPRICE = #{unitprice,jdbcType=DECIMAL},
+      PRODUCTNUMBER = #{productnumber,jdbcType=DECIMAL},
+      RECEIVETIME = #{receivetime,jdbcType=VARCHAR},
+      RECEIVEPLACE = #{receiveplace,jdbcType=VARCHAR},
+      UNIT = #{unit,jdbcType=VARCHAR},
+      DESCPRTION = #{descprtion,jdbcType=CLOB}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.work.entity.TDishExchange" >
+    update TB_DISH_EXCHANGE
+    set BATCHID = #{batchid,jdbcType=VARCHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      UNITPRICE = #{unitprice,jdbcType=DECIMAL},
+      PRODUCTNUMBER = #{productnumber,jdbcType=DECIMAL},
+      RECEIVETIME = #{receivetime,jdbcType=VARCHAR},
+      RECEIVEPLACE = #{receiveplace,jdbcType=VARCHAR},
+      UNIT = #{unit,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

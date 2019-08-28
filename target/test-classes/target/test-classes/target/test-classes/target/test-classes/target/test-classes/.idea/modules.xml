@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../TeamTale/TeamTale.iml" filepath="$PROJECT_DIR$/../TeamTale/TeamTale.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TeamTaleApi.iml" filepath="$PROJECT_DIR$/TeamTaleApi.iml" />
+    </modules>
+  </component>
+</project>

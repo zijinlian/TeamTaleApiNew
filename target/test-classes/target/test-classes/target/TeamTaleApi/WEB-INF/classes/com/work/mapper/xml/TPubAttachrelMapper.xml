@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.work.mapper.TPubAttachrelMapper">
+  <resultMap id="BaseResultMap" type="com.work.entity.TPubAttachrel">
+    <id column="FD_ATTACHRELID" jdbcType="VARCHAR" property="fdAttachrelid" />
+    <id column="FD_ATTACHID" jdbcType="VARCHAR" property="fdAttachid" />
+    <id column="FD_ATTACHTYP" jdbcType="VARCHAR" property="fdAttachtyp" />
+    <result column="FD_ATTACHDES" jdbcType="VARCHAR" property="fdAttachdes" />
+    <result column="FD_RECTMODIFIER" jdbcType="VARCHAR" property="fdRectmodifier" />
+    <result column="FD_RECTMODIFTIME" jdbcType="VARCHAR" property="fdRectmodiftime" />
+    <result column="FD_VALIDFLAG" jdbcType="DECIMAL" property="fdValidflag" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    FD_ATTACHRELID, FD_ATTACHID, FD_ATTACHTYP, FD_ATTACHDES, FD_RECTMODIFIER, FD_RECTMODIFTIME, 
+    FD_VALIDFLAG
+  </sql>
+  <select id="selectByExample" parameterType="com.work.entity.TPubAttachrelExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_PUB_ATTACHREL
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="com.work.entity.TPubAttachrelKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from TB_PUB_ATTACHREL
+    where FD_ATTACHRELID = #{fdAttachrelid,jdbcType=VARCHAR}
+      and FD_ATTACHID = #{fdAttachid,jdbcType=VARCHAR}
+      and FD_ATTACHTYP = #{fdAttachtyp,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.work.entity.TPubAttachrelKey">
+    delete from TB_PUB_ATTACHREL
+    where FD_ATTACHRELID = #{fdAttachrelid,jdbcType=VARCHAR}
+      and FD_ATTACHID = #{fdAttachid,jdbcType=VARCHAR}
+      and FD_ATTACHTYP = #{fdAttachtyp,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.work.entity.TPubAttachrel">
+    insert into TB_PUB_ATTACHREL (FD_ATTACHRELID, FD_ATTACHID, FD_ATTACHTYP, 
+      FD_ATTACHDES, FD_RECTMODIFIER, FD_RECTMODIFTIME, 
+      FD_VALIDFLAG)
+    values (#{fdAttachrelid,jdbcType=VARCHAR}, #{fdAttachid,jdbcType=VARCHAR}, #{fdAttachtyp,jdbcType=VARCHAR}, 
+      #{fdAttachdes,jdbcType=VARCHAR}, #{fdRectmodifier,jdbcType=VARCHAR}, #{fdRectmodiftime,jdbcType=VARCHAR}, 
+      #{fdValidflag,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TPubAttachrel">
+    insert into TB_PUB_ATTACHREL
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="fdAttachrelid != null">
+        FD_ATTACHRELID,
+      </if>
+      <if test="fdAttachid != null">
+        FD_ATTACHID,
+      </if>
+      <if test="fdAttachtyp != null">
+        FD_ATTACHTYP,
+      </if>
+      <if test="fdAttachdes != null">
+        FD_ATTACHDES,
+      </if>
+      <if test="fdRectmodifier != null">
+        FD_RECTMODIFIER,
+      </if>
+      <if test="fdRectmodiftime != null">
+        FD_RECTMODIFTIME,
+      </if>
+      <if test="fdValidflag != null">
+        FD_VALIDFLAG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="fdAttachrelid != null">
+        #{fdAttachrelid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdAttachid != null">
+        #{fdAttachid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdAttachtyp != null">
+        #{fdAttachtyp,jdbcType=VARCHAR},
+      </if>
+      <if test="fdAttachdes != null">
+        #{fdAttachdes,jdbcType=VARCHAR},
+      </if>
+      <if test="fdRectmodifier != null">
+        #{fdRectmodifier,jdbcType=VARCHAR},
+      </if>
+      <if test="fdRectmodiftime != null">
+        #{fdRectmodiftime,jdbcType=VARCHAR},
+      </if>
+      <if test="fdValidflag != null">
+        #{fdValidflag,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.work.entity.TPubAttachrel">
+    update TB_PUB_ATTACHREL
+    <set>
+      <if test="fdAttachdes != null">
+        FD_ATTACHDES = #{fdAttachdes,jdbcType=VARCHAR},
+      </if>
+      <if test="fdRectmodifier != null">
+        FD_RECTMODIFIER = #{fdRectmodifier,jdbcType=VARCHAR},
+      </if>
+      <if test="fdRectmodiftime != null">
+        FD_RECTMODIFTIME = #{fdRectmodiftime,jdbcType=VARCHAR},
+      </if>
+      <if test="fdValidflag != null">
+        FD_VALIDFLAG = #{fdValidflag,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where FD_ATTACHRELID = #{fdAttachrelid,jdbcType=VARCHAR}
+      and FD_ATTACHID = #{fdAttachid,jdbcType=VARCHAR}
+      and FD_ATTACHTYP = #{fdAttachtyp,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.work.entity.TPubAttachrel">
+    update TB_PUB_ATTACHREL
+    set FD_ATTACHDES = #{fdAttachdes,jdbcType=VARCHAR},
+      FD_RECTMODIFIER = #{fdRectmodifier,jdbcType=VARCHAR},
+      FD_RECTMODIFTIME = #{fdRectmodiftime,jdbcType=VARCHAR},
+      FD_VALIDFLAG = #{fdValidflag,jdbcType=DECIMAL}
+    where FD_ATTACHRELID = #{fdAttachrelid,jdbcType=VARCHAR}
+      and FD_ATTACHID = #{fdAttachid,jdbcType=VARCHAR}
+      and FD_ATTACHTYP = #{fdAttachtyp,jdbcType=VARCHAR}
+  </update>
+</mapper>

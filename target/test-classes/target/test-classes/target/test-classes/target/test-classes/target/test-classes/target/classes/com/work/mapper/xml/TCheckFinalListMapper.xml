@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.TCheckFinalListMapper" >
+  <resultMap id="BaseResultMap" type="com.work.entity.TCheckFinalList" >
+    <id column="TB_CHECK_FINAL_LIST_ID" property="tbCheckFinalListId" jdbcType="VARCHAR" />
+    <result column="FD_FINAL_LIST_SUBJECT" property="fdFinalListSubject" jdbcType="VARCHAR" />
+    <result column="FD_FINAL_LIST_DATE" property="fdFinalListDate" jdbcType="VARCHAR" />
+    <result column="FD_FINAL_LIST_BODIES" property="fdFinalListBodies" jdbcType="VARCHAR" />
+    <result column="FD_FINAL_LIST_RISK" property="fdFinalListRisk" jdbcType="VARCHAR" />
+    <result column="FD_FINAL_LIST_STATUS" property="fdFinalListStatus" jdbcType="VARCHAR" />
+    <result column="FD_CHECK_FINAL_BEWRITE" property="fdCheckFinalBewrite" jdbcType="VARCHAR" />
+    <result column="FD_CHECK_FINAL_BODIES_ID" property="fdCheckFinalBodiesId" jdbcType="VARCHAR" />
+    <result column="FD_ATTACH_REL_ID" property="fdAttachRelId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    TB_CHECK_FINAL_LIST_ID, FD_FINAL_LIST_SUBJECT, FD_FINAL_LIST_DATE, FD_FINAL_LIST_BODIES, 
+    FD_FINAL_LIST_RISK, FD_FINAL_LIST_STATUS, FD_CHECK_FINAL_BEWRITE, FD_CHECK_FINAL_BODIES_ID, 
+    FD_ATTACH_REL_ID
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.work.entity.TCheckFinalListExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_CHECK_FINAL_LIST
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from TB_CHECK_FINAL_LIST
+    where TB_CHECK_FINAL_LIST_ID = #{tbCheckFinalListId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TB_CHECK_FINAL_LIST
+    where TB_CHECK_FINAL_LIST_ID = #{tbCheckFinalListId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.work.entity.TCheckFinalList" >
+    insert into TB_CHECK_FINAL_LIST (TB_CHECK_FINAL_LIST_ID, FD_FINAL_LIST_SUBJECT, 
+      FD_FINAL_LIST_DATE, FD_FINAL_LIST_BODIES, FD_FINAL_LIST_RISK, 
+      FD_FINAL_LIST_STATUS, FD_CHECK_FINAL_BEWRITE, 
+      FD_CHECK_FINAL_BODIES_ID, FD_ATTACH_REL_ID)
+    values (#{tbCheckFinalListId,jdbcType=VARCHAR}, #{fdFinalListSubject,jdbcType=VARCHAR}, 
+      #{fdFinalListDate,jdbcType=VARCHAR}, #{fdFinalListBodies,jdbcType=VARCHAR}, #{fdFinalListRisk,jdbcType=VARCHAR}, 
+      #{fdFinalListStatus,jdbcType=VARCHAR}, #{fdCheckFinalBewrite,jdbcType=VARCHAR}, 
+      #{fdCheckFinalBodiesId,jdbcType=VARCHAR}, #{fdAttachRelId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TCheckFinalList" >
+    insert into TB_CHECK_FINAL_LIST
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tbCheckFinalListId != null" >
+        TB_CHECK_FINAL_LIST_ID,
+      </if>
+      <if test="fdFinalListSubject != null" >
+        FD_FINAL_LIST_SUBJECT,
+      </if>
+      <if test="fdFinalListDate != null" >
+        FD_FINAL_LIST_DATE,
+      </if>
+      <if test="fdFinalListBodies != null" >
+        FD_FINAL_LIST_BODIES,
+      </if>
+      <if test="fdFinalListRisk != null" >
+        FD_FINAL_LIST_RISK,
+      </if>
+      <if test="fdFinalListStatus != null" >
+        FD_FINAL_LIST_STATUS,
+      </if>
+      <if test="fdCheckFinalBewrite != null" >
+        FD_CHECK_FINAL_BEWRITE,
+      </if>
+      <if test="fdCheckFinalBodiesId != null" >
+        FD_CHECK_FINAL_BODIES_ID,
+      </if>
+      <if test="fdAttachRelId != null" >
+        FD_ATTACH_REL_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tbCheckFinalListId != null" >
+        #{tbCheckFinalListId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdFinalListSubject != null" >
+        #{fdFinalListSubject,jdbcType=VARCHAR},
+      </if>
+      <if test="fdFinalListDate != null" >
+        #{fdFinalListDate,jdbcType=VARCHAR},
+      </if>
+      <if test="fdFinalListBodies != null" >
+        #{fdFinalListBodies,jdbcType=VARCHAR},
+      </if>
+      <if test="fdFinalListRisk != null" >
+        #{fdFinalListRisk,jdbcType=VARCHAR},
+      </if>
+      <if test="fdFinalListStatus != null" >
+        #{fdFinalListStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="fdCheckFinalBewrite != null" >
+        #{fdCheckFinalBewrite,jdbcType=VARCHAR},
+      </if>
+      <if test="fdCheckFinalBodiesId != null" >
+        #{fdCheckFinalBodiesId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdAttachRelId != null" >
+        #{fdAttachRelId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.work.entity.TCheckFinalList" >
+    update TB_CHECK_FINAL_LIST
+    <set >
+      <if test="fdFinalListSubject != null" >
+        FD_FINAL_LIST_SUBJECT = #{fdFinalListSubject,jdbcType=VARCHAR},
+      </if>
+      <if test="fdFinalListDate != null" >
+        FD_FINAL_LIST_DATE = #{fdFinalListDate,jdbcType=VARCHAR},
+      </if>
+      <if test="fdFinalListBodies != null" >
+        FD_FINAL_LIST_BODIES = #{fdFinalListBodies,jdbcType=VARCHAR},
+      </if>
+      <if test="fdFinalListRisk != null" >
+        FD_FINAL_LIST_RISK = #{fdFinalListRisk,jdbcType=VARCHAR},
+      </if>
+      <if test="fdFinalListStatus != null" >
+        FD_FINAL_LIST_STATUS = #{fdFinalListStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="fdCheckFinalBewrite != null" >
+        FD_CHECK_FINAL_BEWRITE = #{fdCheckFinalBewrite,jdbcType=VARCHAR},
+      </if>
+      <if test="fdCheckFinalBodiesId != null" >
+        FD_CHECK_FINAL_BODIES_ID = #{fdCheckFinalBodiesId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdAttachRelId != null" >
+        FD_ATTACH_REL_ID = #{fdAttachRelId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where TB_CHECK_FINAL_LIST_ID = #{tbCheckFinalListId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.work.entity.TCheckFinalList" >
+    update TB_CHECK_FINAL_LIST
+    set FD_FINAL_LIST_SUBJECT = #{fdFinalListSubject,jdbcType=VARCHAR},
+      FD_FINAL_LIST_DATE = #{fdFinalListDate,jdbcType=VARCHAR},
+      FD_FINAL_LIST_BODIES = #{fdFinalListBodies,jdbcType=VARCHAR},
+      FD_FINAL_LIST_RISK = #{fdFinalListRisk,jdbcType=VARCHAR},
+      FD_FINAL_LIST_STATUS = #{fdFinalListStatus,jdbcType=VARCHAR},
+      FD_CHECK_FINAL_BEWRITE = #{fdCheckFinalBewrite,jdbcType=VARCHAR},
+      FD_CHECK_FINAL_BODIES_ID = #{fdCheckFinalBodiesId,jdbcType=VARCHAR},
+      FD_ATTACH_REL_ID = #{fdAttachRelId,jdbcType=VARCHAR}
+    where TB_CHECK_FINAL_LIST_ID = #{tbCheckFinalListId,jdbcType=VARCHAR}
+  </update>
+</mapper>

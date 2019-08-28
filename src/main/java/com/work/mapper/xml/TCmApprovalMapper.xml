@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.TCmApprovalMapper" >
+  <resultMap id="BaseResultMap" type="com.work.entity.TCmApproval" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="APPLYID" property="applyid" jdbcType="VARCHAR" />
+    <result column="APPROVALCOMMNET" property="approvalcommnet" jdbcType="VARCHAR" />
+    <result column="FD_HANDLERID" property="fdHandlerid" jdbcType="VARCHAR" />
+    <result column="FD_HANDLERNME" property="fdHandlernme" jdbcType="VARCHAR" />
+    <result column="FD_HANDLETIME" property="fdHandletime" jdbcType="VARCHAR" />
+    <result column="FD_STATUS" property="fdStatus" jdbcType="VARCHAR" />
+    <!--<result column="ROOMTYPEID" property="roomtypeid" jdbcType="VARCHAR" />-->
+    <!--<result column="ROOMIMAGEID" property="roomimageid" jdbcType="VARCHAR" />-->
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, APPLYID, APPROVALCOMMNET, FD_HANDLERID, FD_HANDLERNME, FD_HANDLETIME, FD_STATUS
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.work.entity.TCmApprovalExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_CM_APPROVAL
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from TB_CM_APPROVAL
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TB_CM_APPROVAL
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.work.entity.TCmApproval" >
+    insert into TB_CM_APPROVAL (ID, APPLYID, APPROVALCOMMNET, 
+      FD_HANDLERID, FD_HANDLERNME, FD_HANDLETIME, 
+      FD_STATUS)
+    values (#{id,jdbcType=VARCHAR}, #{applyid,jdbcType=VARCHAR}, #{approvalcommnet,jdbcType=VARCHAR}, 
+      #{fdHandlerid,jdbcType=VARCHAR}, #{fdHandlernme,jdbcType=VARCHAR}, #{fdHandletime,jdbcType=VARCHAR}, 
+      #{fdStatus,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TCmApproval" >
+    insert into TB_CM_APPROVAL
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="applyid != null" >
+        APPLYID,
+      </if>
+      <if test="approvalcommnet != null" >
+        APPROVALCOMMNET,
+      </if>
+      <if test="fdHandlerid != null" >
+        FD_HANDLERID,
+      </if>
+      <if test="fdHandlernme != null" >
+        FD_HANDLERNME,
+      </if>
+      <if test="fdHandletime != null" >
+        FD_HANDLETIME,
+      </if>
+      <if test="fdStatus != null" >
+        FD_STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="applyid != null" >
+        #{applyid,jdbcType=VARCHAR},
+      </if>
+      <if test="approvalcommnet != null" >
+        #{approvalcommnet,jdbcType=VARCHAR},
+      </if>
+      <if test="fdHandlerid != null" >
+        #{fdHandlerid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdHandlernme != null" >
+        #{fdHandlernme,jdbcType=VARCHAR},
+      </if>
+      <if test="fdHandletime != null" >
+        #{fdHandletime,jdbcType=VARCHAR},
+      </if>
+      <if test="fdStatus != null" >
+        #{fdStatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.work.entity.TCmApproval" >
+    update TB_CM_APPROVAL
+    <set >
+      <if test="applyid != null" >
+        APPLYID = #{applyid,jdbcType=VARCHAR},
+      </if>
+      <if test="approvalcommnet != null" >
+        APPROVALCOMMNET = #{approvalcommnet,jdbcType=VARCHAR},
+      </if>
+      <if test="fdHandlerid != null" >
+        FD_HANDLERID = #{fdHandlerid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdHandlernme != null" >
+        FD_HANDLERNME = #{fdHandlernme,jdbcType=VARCHAR},
+      </if>
+      <if test="fdHandletime != null" >
+        FD_HANDLETIME = #{fdHandletime,jdbcType=VARCHAR},
+      </if>
+      <if test="fdStatus != null" >
+        FD_STATUS = #{fdStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.work.entity.TCmApproval" >
+    update TB_CM_APPROVAL
+    set APPLYID = #{applyid,jdbcType=VARCHAR},
+      APPROVALCOMMNET = #{approvalcommnet,jdbcType=VARCHAR},
+      FD_HANDLERID = #{fdHandlerid,jdbcType=VARCHAR},
+      FD_HANDLERNME = #{fdHandlernme,jdbcType=VARCHAR},
+      FD_HANDLETIME = #{fdHandletime,jdbcType=VARCHAR},
+      FD_STATUS = #{fdStatus,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

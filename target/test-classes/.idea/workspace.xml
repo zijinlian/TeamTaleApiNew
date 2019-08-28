@@ -1,0 +1,1693 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="TeamTaleApi:war exploded" />
+    </artifacts-to-build>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="89c02029-9ab9-4cbc-86d1-10a291777a34" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/target/" />
+    <ignored path="$PROJECT_DIR$/../TeamTale/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/TeamTaleApi$RequesterSystemRecommendListApi.coverage" NAME="RequesterSystemRecommendListApi Coverage Results" MODIFIED="1496913838055" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.work.api.v3.miai.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/TeamTaleApi$SecretUtils.coverage" NAME="SecretUtils Coverage Results" MODIFIED="1524129295061" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.work.common.md5.*</FILTER>
+    </SUITE>
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@218.25.172.94" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@218.25.172.94" type="feb32156:DbDataSourceImpl" />
+        <item name="TEST: schema" type="3abd1b6a:OraImplModel$Schema" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="TeamTaleApi" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>logger</find>
+      <find>dispatcher</find>
+      <find>selectCrowdBycj</find>
+      <find>log</find>
+      <find>众筹</find>
+      <find>selectProhibitBean</find>
+      <find>selectCrowdfundingByTop</find>
+      <find>BaseResultMap</find>
+      <find>listCrow</find>
+      <find>TB_APP_CJ</find>
+      <find>UserService</find>
+      <find>AnController</find>
+      <find>ActivityService</find>
+      <find>AddressService</find>
+      <find>applicationContext</find>
+      <find>refresh</find>
+      <find>contextConfigLocation</find>
+      <find>spring-mvc.xml</find>
+      <find>bean</find>
+      <find>Base_Column_List</find>
+      <find>Example_Where_Clause</find>
+      <find>orderByClause</find>
+      <find>maths</find>
+      <find>maths&quot;</find>
+      <find>TB_ICC_MATHS_PROBLEM</find>
+      <find>Advice</find>
+      <find>NUMBER</find>
+      <find>paperId</find>
+      <find>fdStaffAnswer</find>
+      <find>PAPER_ID</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>appLoginUser.</replace>
+      <replace>toString</replace>
+      <replace />
+    </replaceStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/src/main/resources</dir>
+      <dir>$PROJECT_DIR$/src/main/java/com/work/mappercommon</dir>
+      <dir>$PROJECT_DIR$/src/main/java/com/work/mapper</dir>
+      <dir>$PROJECT_DIR$/src/main/java/com/work/api/v3/mylog</dir>
+      <dir>$PROJECT_DIR$/src/main/java/com/work</dir>
+      <dir>$PROJECT_DIR$/src/main/webapp</dir>
+      <dir>$PROJECT_DIR$/src/main/java/com/work/api/v3/suginfo</dir>
+      <dir>F:\app开发\TeamTaleApp\src\main\java\com\work</dir>
+    </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/java/com/work/common/md5/RsaJava.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/autually/base/JXRequest.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/db.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/com/work/common/md5/SecretUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/autually/base/JXServiceController.java" />
+        <option value="$PROJECT_DIR$/src/test/resources/db.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/com/work/service/TBankCircleService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/autually/base/JXPreloadListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/work/mapper/TSugInfoMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/work/mapper/xml/TSugInfoMapper.xml" />
+        <option value="$PROJECT_DIR$/src/test/resources/generatorConfig.xml" />
+        <option value="$PROJECT_DIR$/deploy.sh" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/work/service/v3/UserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/work/api/v3/user/RequesterUserLoginApi.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/work/api/v3/suginfo/RequesterAddSugInfoApi.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/work/api/v3/suginfo/RequesterSugDeptListApi.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/work/api/v3/suginfo/vo/SugInfoMyApplyVo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/work/api/v2/SuggestController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/work/bean/SuggestBean.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/work/service/TSuggestService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/work/api/v3/suginfo/RequesterSugInfoMyApplyApi.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/work/mapper/xml/TSuggetstMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/work/service/TCrowdfundingService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/work/mapper/TCrowdfundingMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/work/common/PasswordUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/work/common/interceptor/CheckUserTokenInterceptor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/work/entity/TCrowdfunding.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/work/bean/CrowdBean.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/work/mapper/xml/TCrowdfundingMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/work/api/v2/CrowController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/work/api/v3/activity/RequesterActivityAddUserApi.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/work/common/ApplicationUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/work/entity/TIccMathExample.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/work/entity/dating/TBankCircleImg.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/work/mapper/dating/TbIccProblemDeptMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/work/entity/TbIccProblemDept.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/work/mapper/xml/TbIccProblemDeptMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/work/mapper/xml/dating/TbIccProblemDeptMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/work/mapper/xml/TIccMathMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/work/mapper/TIccMathMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/work/common/interceptor/MyResponseBodyAdvice.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/work/mapper/xml/TIccStaffPaperMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/work/api/v2/ArchivesController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/work/bean/TbIccStaffPaperNewBean.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/work/entity/TbIccStaffPaperNew.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/work/mapper/xml/TIccStaffPaperNewMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/work/mapper/xml/TIccStaffPaperNewMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/work/service/TIccArchiveService.java" />
+      </list>
+    </option>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="G:\repository" />
+        <option name="mavenHome" value="E:/1804/17MAVEN/01/tools/apache-maven-3.6.0" />
+        <option name="userSettingsFile" value="E:\1804\17MAVEN\01\tools\apache-maven-3.6.0\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="TeamTaleApi" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="TeamTaleApi" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="610" />
+    <option name="y" value="477" />
+    <option name="width" value="1225" />
+    <option name="height" value="1103" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>AOP</id>
+          </State>
+          <State>
+            <id>Abstraction issuesJava</id>
+          </State>
+          <State>
+            <id>ActionScript specificJavaScript</id>
+          </State>
+          <State>
+            <id>Android</id>
+          </State>
+          <State>
+            <id>Android &gt; Lint &gt; Accessibility</id>
+          </State>
+          <State>
+            <id>Android &gt; Lint &gt; Correctness</id>
+          </State>
+          <State>
+            <id>Android &gt; Lint &gt; Correctness &gt; Messages</id>
+          </State>
+          <State>
+            <id>Android &gt; Lint &gt; Internationalization</id>
+          </State>
+          <State>
+            <id>Android &gt; Lint &gt; Internationalization &gt; Bidirectional Text</id>
+          </State>
+          <State>
+            <id>Android &gt; Lint &gt; Performance</id>
+          </State>
+          <State>
+            <id>Android &gt; Lint &gt; Security</id>
+          </State>
+          <State>
+            <id>Android &gt; Lint &gt; Usability</id>
+          </State>
+          <State>
+            <id>Android &gt; Lint &gt; Usability &gt; Icons</id>
+          </State>
+          <State>
+            <id>Android Lint for Kotlin</id>
+          </State>
+          <State>
+            <id>Annotations verifyingGroovy</id>
+          </State>
+          <State>
+            <id>Ant inspections</id>
+          </State>
+          <State>
+            <id>Application Server Specific Inspections</id>
+          </State>
+          <State>
+            <id>Bean Validation issues</id>
+          </State>
+          <State>
+            <id>CDI(Contexts and Dependency Injection) issues</id>
+          </State>
+          <State>
+            <id>CFML</id>
+          </State>
+          <State>
+            <id>CSS</id>
+          </State>
+          <State>
+            <id>Class metricsJava</id>
+          </State>
+          <State>
+            <id>Class structureJava</id>
+          </State>
+          <State>
+            <id>Code maturity issuesJava</id>
+          </State>
+          <State>
+            <id>Code quality toolsCSS</id>
+          </State>
+          <State>
+            <id>Code quality toolsJavaScript</id>
+          </State>
+          <State>
+            <id>Code style issuesCSS</id>
+          </State>
+          <State>
+            <id>Code style issuesJava</id>
+          </State>
+          <State>
+            <id>Code style issuesJavaScript</id>
+          </State>
+          <State>
+            <id>CodeSpring CoreSpring</id>
+          </State>
+          <State>
+            <id>Control FlowGroovy</id>
+          </State>
+          <State>
+            <id>Control flow issuesJava</id>
+          </State>
+          <State>
+            <id>Control flow issuesJavaScript</id>
+          </State>
+          <State>
+            <id>Cucumber</id>
+          </State>
+          <State>
+            <id>Declaration redundancyJava</id>
+          </State>
+          <State>
+            <id>Dependency issuesJava</id>
+          </State>
+          <State>
+            <id>Encapsulation issuesJava</id>
+          </State>
+          <State>
+            <id>Error handlingJava</id>
+          </State>
+          <State>
+            <id>Faces Model</id>
+          </State>
+          <State>
+            <id>FlexUnit inspections</id>
+          </State>
+          <State>
+            <id>Flow type checkerJavaScript</id>
+          </State>
+          <State>
+            <id>FreeMarker inspections</id>
+          </State>
+          <State>
+            <id>GPath inspectionsGroovy</id>
+          </State>
+          <State>
+            <id>GSPGrailsGroovy</id>
+          </State>
+          <State>
+            <id>General</id>
+          </State>
+          <State>
+            <id>GeneralJavaScript</id>
+          </State>
+          <State>
+            <id>GrailsGroovy</id>
+          </State>
+          <State>
+            <id>Groovy</id>
+          </State>
+          <State>
+            <id>Guice Inspections</id>
+          </State>
+          <State>
+            <id>HTML</id>
+          </State>
+          <State>
+            <id>Hibernate Issues</id>
+          </State>
+          <State>
+            <id>ImportsJava</id>
+          </State>
+          <State>
+            <id>Inheritance issuesJava</id>
+          </State>
+          <State>
+            <id>Initialization issuesJava</id>
+          </State>
+          <State>
+            <id>Internationalization issues</id>
+          </State>
+          <State>
+            <id>Internationalization issuesJava</id>
+          </State>
+          <State>
+            <id>Invalid elementsCSS</id>
+          </State>
+          <State>
+            <id>J2ME issuesJava</id>
+          </State>
+          <State>
+            <id>JBoss Seam issues</id>
+          </State>
+          <State>
+            <id>JPA issues</id>
+          </State>
+          <State>
+            <id>JSF annotated elements errors</id>
+          </State>
+          <State>
+            <id>JSON</id>
+          </State>
+          <State>
+            <id>JSP Inspections</id>
+          </State>
+          <State>
+            <id>JUnit issuesJava</id>
+          </State>
+          <State>
+            <id>Java</id>
+          </State>
+          <State>
+            <id>Java 5Java language level migration aidsJava</id>
+          </State>
+          <State>
+            <id>Java 8Java language level migration aidsJava</id>
+          </State>
+          <State>
+            <id>Java EE issues</id>
+          </State>
+          <State>
+            <id>Java language level migration aidsJava</id>
+          </State>
+          <State>
+            <id>JavaBeans issuesJava</id>
+          </State>
+          <State>
+            <id>JavaScript</id>
+          </State>
+          <State>
+            <id>JavaScript function metricsJavaScript</id>
+          </State>
+          <State>
+            <id>JavaScript validity issuesJavaScript</id>
+          </State>
+          <State>
+            <id>Kotlin</id>
+          </State>
+          <State>
+            <id>Logging issuesJava</id>
+          </State>
+          <State>
+            <id>Manifest</id>
+          </State>
+          <State>
+            <id>Maven</id>
+          </State>
+          <State>
+            <id>Method MetricsGroovy</id>
+          </State>
+          <State>
+            <id>Method metricsJava</id>
+          </State>
+          <State>
+            <id>Modularization issuesJava</id>
+          </State>
+          <State>
+            <id>Naming ConventionsGroovy</id>
+          </State>
+          <State>
+            <id>Naming conventionsJava</id>
+          </State>
+          <State>
+            <id>Naming conventionsJavaScript</id>
+          </State>
+          <State>
+            <id>Numeric issuesJava</id>
+          </State>
+          <State>
+            <id>OtherGroovy</id>
+          </State>
+          <State>
+            <id>Packaging issuesJava</id>
+          </State>
+          <State>
+            <id>Performance issuesJava</id>
+          </State>
+          <State>
+            <id>Plugin DevKit</id>
+          </State>
+          <State>
+            <id>Portability issuesJava</id>
+          </State>
+          <State>
+            <id>Potentially confusing code constructsGroovy</id>
+          </State>
+          <State>
+            <id>Potentially confusing code constructsJavaScript</id>
+          </State>
+          <State>
+            <id>Probable bugsCSS</id>
+          </State>
+          <State>
+            <id>Probable bugsGroovy</id>
+          </State>
+          <State>
+            <id>Probable bugsJava</id>
+          </State>
+          <State>
+            <id>Probable bugsJavaScript</id>
+          </State>
+          <State>
+            <id>Properties Files</id>
+          </State>
+          <State>
+            <id>RESTful Web Service</id>
+          </State>
+          <State>
+            <id>RegExp</id>
+          </State>
+          <State>
+            <id>Resource management issuesJava</id>
+          </State>
+          <State>
+            <id>SQL</id>
+          </State>
+          <State>
+            <id>Serialization issuesJava</id>
+          </State>
+          <State>
+            <id>SetupSpring CoreSpring</id>
+          </State>
+          <State>
+            <id>Spelling</id>
+          </State>
+          <State>
+            <id>Spring</id>
+          </State>
+          <State>
+            <id>Spring AOPSpring</id>
+          </State>
+          <State>
+            <id>Spring BatchSpring</id>
+          </State>
+          <State>
+            <id>Spring BootSpring</id>
+          </State>
+          <State>
+            <id>Spring CoreSpring</id>
+          </State>
+          <State>
+            <id>Spring DataSpring</id>
+          </State>
+          <State>
+            <id>Spring IntegrationSpring</id>
+          </State>
+          <State>
+            <id>Spring MVCSpring</id>
+          </State>
+          <State>
+            <id>Spring OSGiSpring</id>
+          </State>
+          <State>
+            <id>Spring SecuritySpring</id>
+          </State>
+          <State>
+            <id>Spring Web FlowSpring</id>
+          </State>
+          <State>
+            <id>Spring Web ServicesSpring</id>
+          </State>
+          <State>
+            <id>Spring WebSocketSpring</id>
+          </State>
+          <State>
+            <id>Tapestry</id>
+          </State>
+          <State>
+            <id>TestNGJava</id>
+          </State>
+          <State>
+            <id>Threading issuesGroovy</id>
+          </State>
+          <State>
+            <id>Threading issuesJava</id>
+          </State>
+          <State>
+            <id>Velocity inspections</id>
+          </State>
+          <State>
+            <id>XML</id>
+          </State>
+          <State>
+            <id>XMLSpring CoreSpring</id>
+          </State>
+          <State>
+            <id>XPath</id>
+          </State>
+          <State>
+            <id>XSLT</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>SpringKotlinAutowiring</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <flattenPackages ProjectPane="false" />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="TeamTaleApi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TeamTaleApi" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
+    <property name="SearchEverywhereHistoryKey" value="TbBlSupport&#9;FILE&#9;file:///Users/changzhou/Documents/project_2017/chinabank_web_v2/TeamTaleApp/src/main/java/com/work/mapper/xml/TbBlSupportMapper.xml&#10;TbBlReply&#9;FILE&#9;file:///Users/changzhou/Documents/project_2017/chinabank_web_v2/TeamTaleApp/src/main/java/com/work/mapper/xml/TbBlReplyMapper.xml&#10;TbBlBlogFollow&#9;FILE&#9;file:///Users/changzhou/Documents/project_2017/chinabank_web_v2/TeamTaleApp/src/main/java/com/work/mapper/xml/TbBlBlogFollowMapper.xml&#10;TSysUserinfo&#9;FILE&#9;file:///Users/changzhou/Documents/project_2017/chinabank_web_v2/TeamTaleApp/src/main/java/com/work/mapper/xml/TSysUserinfoMapper.xml&#10;ActivityUserCommentListApi&#9;PSI&#9;JAVA://com.work.api.v3.activity.RequesterActivityUserCommentListApi&#10;bankCircleMapper.xml&#9;FILE&#9;file:///Users/changzhou/Documents/project_2017/chinabank_web_v2/TeamTaleApp/src/main/java/com/work/mapper/xml/TBankCircleMapper.xml&#10;dateu&#9;FILE&#9;file:///Users/changzhou/Documents/project_2017/chinabank_web_v2/TeamTaleApp/src/main/java/com/work/common/DateUtil.java&#10;TBUserDatingInfo&#9;FILE&#9;file:///Users/changzhou/Documents/project_2017/chinabank_web_v2/TeamTaleApp/src/main/java/com/work/entity/dating/TBUserDatingInfo.java&#10;TbUserDatingPublic&#9;PSI&#9;JAVA://com.work.entity.dating.TbUserDatingPublic&#10;DateU&#9;PSI&#9;JAVA://com.work.common.DateUtil&#10;sugg&#9;FILE&#9;file:///Users/changzhou/Documents/project_2017/chinabank_web_v2/TeamTaleApp/src/main/java/com/work/mapper/xml/TSuggetstMapper.xml&#10;sug&#9;FILE&#9;file:///Users/changzhou/Documents/project_2017/chinabank_web_v2/TeamTaleApp/src/main/java/com/work/mapper/xml/TSugInfoMapper.xml&#10;TSugInfoMapper&#9;FILE&#9;file:///Users/changzhou/Documents/project_2017/chinabank_web_v2/TeamTaleApp/src/main/java/com/work/mapper/xml/TSugInfoMapper.xml&#10;JXServiceDocMDController&#9;PSI&#9;JAVA://cn.autually.base.JXServiceDocMDController&#10;sug.xml&#9;FILE&#9;file:///Users/changzhou/Documents/project_2017/chinabank_web_v2/TeamTaleApp/src/main/java/com/work/mapper/xml/TSugInfoMapper.xml&#10;listMySuggest&#9;PSI&#9;JAVA://com.work.api.v2.SuggestController#listMySuggest&#10;sugInfoMapper&#9;FILE&#9;file:///Users/changzhou/Documents/project_2017/chinabank_web_v2/TeamTaleApp/src/main/java/com/work/mapper/xml/TSugInfoMapper.xml&#10;pariseMapp&#9;FILE&#9;file:///Users/changzhou/Documents/project_2017/chinabank_web_v2/TeamTaleApp/src/main/java/com/work/mapper/xml/TBankCirclePariseMapper.xml&#10;bankCircleMapper&#9;FILE&#9;file:///Users/changzhou/Documents/project_2017/chinabank_web_v2/TeamTaleApp/src/main/java/com/work/mapper/xml/TBankCircleMapper.xml&#10;TExamMapper.xml&#9;FILE&#9;file:///Users/changzhou/Documents/project_2017/chinabank_web_v2/TeamTaleApp/src/main/java/com/work/mapper/xml/TExamMapper.xml&#10;BankC&#9;FILE&#9;file:///Users/changzhou/Documents/project_2017/chinabank_web_v2/TeamTaleApp/src/main/java/com/work/mapper/xml/TBankCircleMapper.xml&#10;exammapper&#9;FILE&#9;file:///Users/changzhou/Documents/project_2017/chinabank_web_v2/TeamTaleApp/src/main/java/com/work/mapper/xml/TExamMapper.xml&#10;examMa&#9;PSI&#9;JAVA://com.work.mapper.TExamMapper&#10;TbSugApproveMapper&#9;FILE&#9;file:///Users/changzhou/Documents/project_2017/chinabank_web_v2/TeamTaleApp/src/main/java/com/work/mapper/xml/TbSugApproveMapper.xml&#10;TExamMapper&#9;FILE&#9;file:///Users/changzhou/Documents/project_2017/chinabank_web_v2/TeamTaleApp/src/main/java/com/work/mapper/xml/TExamMapper.xml" />
+    <property name="ToolWindowMessages.ShowToolbar" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545983769774" />
+    <property name="com.intellij.database.dataSource.DataSourceTemplate" value="Oracle" />
+    <property name="database.console.LAST_STATE" value="false" />
+    <property name="js.eslint.eslintPackage" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/work/mapper/xml" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.work.api.v3" />
+      <recent name="com.work.api" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.work.mapper.xml" />
+      <recent name="com.work.mapper.dating" />
+      <recent name="com.work.entity" />
+      <recent name="com.work.mapper" />
+      <recent name="com.work.api.v3.miai.vo" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\idea_zijinlo\TeamTaleApi\src\main\java\com\work\mapper\xml" />
+      <recent name="F:\idea_zijinlo\TeamTaleApi\src\main\java\com\work\mapper\xml\dating" />
+      <recent name="F:\idea_zijinlo\TeamTaleApi\src\main\resources" />
+      <recent name="F:\app开发\TeamTaleApp\src\main\java\com\work\common" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/work/mapper/xml" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Tomcat Server.TeamTaleApi">
+    <configuration default="true" type="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RequesterAddSugInfoApi" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.work.api.v3.suginfo.RequesterAddSugInfoApi" />
+      <module name="TeamTaleApi" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.work.api.v3.suginfo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RequesterSugInfoMyApplyApi" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.work.api.v3.suginfo.RequesterSugInfoMyApplyApi" />
+      <module name="TeamTaleApi" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.work.api.v3.suginfo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SuggestController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.work.api.v2.SuggestController" />
+      <module name="TeamTaleApi" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.work.api.v2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TSuggestService" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.work.service.TSuggestService" />
+      <module name="TeamTaleApi" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.work.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="deploy.sh" type="BashConfigurationType" factoryName="Bash" temporary="true">
+      <module name="TeamTaleApi" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="INTERPRETER_PATH" value="/usr/bin/expect" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/deploy.sh" />
+      <option name="PARAMETERS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="passParentEnv" value="true" />
+      <setting name="launchBrowser" value="true" />
+      <setting name="launchBrowserUrl" value="" />
+      <setting name="depsClasspath" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TeamTaleApi" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7.0.79" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
+      <option name="UPDATING_POLICY" value="update-resources" />
+      <deployment>
+        <artifact name="TeamTaleApi:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/TeamTaleApi" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_TeamTaleApi" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="54747" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="TeamTaleApi:war exploded" />
+        </option>
+      </method>
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.RequesterSugInfoMyApplyApi" />
+      <item itemvalue="Application.TSuggestService" />
+      <item itemvalue="Application.RequesterAddSugInfoApi" />
+      <item itemvalue="Application.SuggestController" />
+      <item itemvalue="Tomcat Server.TeamTaleApi" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.RequesterSugInfoMyApplyApi" />
+        <item itemvalue="Application.SuggestController" />
+        <item itemvalue="Application.TSuggestService" />
+        <item itemvalue="Application.RequesterAddSugInfoApi" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration>$USER_HOME$/.subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="89c02029-9ab9-4cbc-86d1-10a291777a34" name="Default" comment="" />
+      <created>1490703124098</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1490703124098</updated>
+      <workItem from="1490703126667" duration="1021000" />
+      <workItem from="1490704198570" duration="9102000" />
+      <workItem from="1490748370782" duration="8805000" />
+      <workItem from="1490761721789" duration="769000" />
+      <workItem from="1490762807433" duration="2176000" />
+      <workItem from="1490768642218" duration="2513000" />
+      <workItem from="1490771694911" duration="7245000" />
+      <workItem from="1490837409194" duration="585000" />
+      <workItem from="1490838784353" duration="1061000" />
+      <workItem from="1490843341177" duration="1096000" />
+      <workItem from="1490845360449" duration="240000" />
+      <workItem from="1490845693095" duration="10715000" />
+      <workItem from="1490876518205" duration="3704000" />
+      <workItem from="1490925754542" duration="2627000" />
+      <workItem from="1490928474302" duration="6324000" />
+      <workItem from="1490942041706" duration="605000" />
+      <workItem from="1490943304368" duration="5700000" />
+      <workItem from="1490952530126" duration="190000" />
+      <workItem from="1490966921323" duration="2090000" />
+      <workItem from="1491012299096" duration="761000" />
+      <workItem from="1491376053691" duration="325000" />
+      <workItem from="1491376432876" duration="3770000" />
+      <workItem from="1491383583126" duration="2790000" />
+      <workItem from="1491532739418" duration="5977000" />
+      <workItem from="1491547697377" duration="8252000" />
+      <workItem from="1491788500968" duration="4660000" />
+      <workItem from="1491802490211" duration="3350000" />
+      <workItem from="1491814384520" duration="13508000" />
+      <workItem from="1492066333687" duration="11399000" />
+      <workItem from="1492081101946" duration="2152000" />
+      <workItem from="1492222965822" duration="3030000" />
+      <workItem from="1492232622277" duration="8106000" />
+      <workItem from="1492401035226" duration="8151000" />
+      <workItem from="1492488565702" duration="7407000" />
+      <workItem from="1492564523133" duration="22906000" />
+      <workItem from="1492763635829" duration="1933000" />
+      <workItem from="1492779006214" duration="5248000" />
+      <workItem from="1493084462659" duration="8752000" />
+      <workItem from="1493103608061" duration="11062000" />
+      <workItem from="1493301128532" duration="5257000" />
+      <workItem from="1493307804030" duration="40000" />
+      <workItem from="1493345535087" duration="3146000" />
+      <workItem from="1493693719681" duration="15655000" />
+      <workItem from="1493774873125" duration="21285000" />
+      <workItem from="1493904043757" duration="9542000" />
+      <workItem from="1494309789700" duration="4202000" />
+      <workItem from="1494380657121" duration="1401000" />
+      <workItem from="1494465201061" duration="458000" />
+      <workItem from="1494514351320" duration="565000" />
+      <workItem from="1494568314906" duration="832000" />
+      <workItem from="1495086410798" duration="3808000" />
+      <workItem from="1495418978422" duration="1026000" />
+      <workItem from="1495443319964" duration="1314000" />
+      <workItem from="1495524570341" duration="3473000" />
+      <workItem from="1495617230478" duration="5679000" />
+      <workItem from="1495683448956" duration="1557000" />
+      <workItem from="1495778291158" duration="1239000" />
+      <workItem from="1495793696467" duration="1829000" />
+      <workItem from="1496212530281" duration="607000" />
+      <workItem from="1496720034727" duration="1651000" />
+      <workItem from="1496815926132" duration="650000" />
+      <workItem from="1496913088028" duration="2063000" />
+      <workItem from="1497258315266" duration="1546000" />
+      <workItem from="1497316224812" duration="953000" />
+      <workItem from="1497863291874" duration="602000" />
+      <workItem from="1498124844800" duration="654000" />
+      <workItem from="1498463043026" duration="787000" />
+      <workItem from="1498535208670" duration="3797000" />
+      <workItem from="1498792652798" duration="1331000" />
+      <workItem from="1500296207262" duration="1901000" />
+      <workItem from="1500350984916" duration="41000" />
+      <workItem from="1500866820908" duration="722000" />
+      <workItem from="1500946631530" duration="657000" />
+      <workItem from="1500949549592" duration="1356000" />
+      <workItem from="1515053191250" duration="26377000" />
+      <workItem from="1515652464931" duration="4231000" />
+      <workItem from="1515728582999" duration="18000" />
+      <workItem from="1515728640428" duration="8570000" />
+      <workItem from="1515981614971" duration="915000" />
+      <workItem from="1522725918366" duration="5761000" />
+      <workItem from="1523853585843" duration="24908000" />
+      <workItem from="1524708109708" duration="13516000" />
+      <workItem from="1524879023246" duration="531000" />
+      <workItem from="1526459719088" duration="5144000" />
+      <workItem from="1527134368395" duration="3992000" />
+      <workItem from="1527218052073" duration="7000" />
+      <workItem from="1531287656526" duration="1585000" />
+      <workItem from="1531462729653" duration="139000" />
+      <workItem from="1532065216281" duration="835000" />
+      <workItem from="1533270055294" duration="942000" />
+      <workItem from="1535004755952" duration="5005000" />
+      <workItem from="1535426588867" duration="9101000" />
+      <workItem from="1535533738177" duration="602000" />
+      <workItem from="1535966813026" duration="36874000" />
+      <workItem from="1536815278340" duration="494000" />
+      <workItem from="1537864451794" duration="924000" />
+      <workItem from="1537934464591" duration="3739000" />
+      <workItem from="1545729323573" duration="1444000" />
+      <workItem from="1545785345928" duration="17036000" />
+      <workItem from="1545871792277" duration="6818000" />
+      <workItem from="1545926434002" duration="159000" />
+      <workItem from="1545957603735" duration="9709000" />
+      <workItem from="1566786756015" duration="4906000" />
+      <workItem from="1566794049262" duration="25607000" />
+      <workItem from="1566868297441" duration="31158000" />
+    </task>
+    <task id="LOCAL-00001" summary="new 1">
+      <created>1566889289190</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1566889289190</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="552780000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <layout>
+      <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
+      <window_info id="Nl-Palette" order="1" />
+      <window_info id="Designer" order="2" />
+      <window_info id="JRebel" order="3" side_tool="true" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Image Layers" order="5" />
+      <window_info id="Web" order="6" side_tool="true" />
+      <window_info id="Favorites" order="7" sideWeight="0.50985223" side_tool="true" weight="0.2193646" />
+      <window_info id="Capture Tool" order="8" />
+      <window_info content_ui="combo" id="Project" order="9" sideWeight="0.49014777" visible="true" weight="0.29825738" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.48134863" weight="0.30028328" />
+      <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="5" weight="0.32840723" />
+      <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.52077746" side_tool="true" weight="0.5679887" />
+      <window_info anchor="bottom" id="Java Enterprise" order="7" weight="0.3286119" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.54815865" />
+      <window_info anchor="bottom" id="Spring" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32577905" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.60339946" />
+      <window_info anchor="bottom" id="Application Servers" order="12" weight="0.32822478" />
+      <window_info anchor="bottom" id="Database Changes" order="13" />
+      <window_info anchor="bottom" id="JRebel Console" order="14" side_tool="true" />
+      <window_info anchor="bottom" id="JRebel Executor" order="15" />
+      <window_info anchor="bottom" id="Database Console" order="16" weight="0.50141644" />
+      <window_info anchor="bottom" id="Debug" order="17" sideWeight="0.4792225" weight="0.36402267" />
+      <window_info anchor="bottom" id="SonarLint" order="18" weight="0.3286119" />
+      <window_info anchor="bottom" id="Docker" order="19" show_stripe_button="false" />
+      <window_info anchor="right" id="Bean Validation" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Maven" order="1" weight="0.116621986" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.24932976" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Maven Projects" order="5" sideWeight="0.492" weight="0.1633888" />
+      <window_info anchor="right" id="Properties" order="6" />
+      <window_info anchor="right" id="Database" order="7" weight="0.19839142" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="right" id="Capture Analysis" order="9" />
+      <window_info anchor="right" id="Theme Preview" order="10" />
+      <window_info anchor="right" id="Mybatis Window" order="11" side_tool="true" weight="0.25968435" />
+      <window_info anchor="right" id="Coverage" order="12" sideWeight="0.508" side_tool="true" weight="0.12697273" />
+      <window_info anchor="right" id="BPMNPalette" order="13" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="new 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="new 1" />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>SecretUtils.enParameterByDES(result.toString())</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>SecretUtils.enParameterByDES(result)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>JsonUtil.fromString(result)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>(JSONResult) result</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>(ServletServerHttpRequest) request</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>archiveService.selectListMath(bean)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>JsonUtil.toBean(deptIds, Map.class)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>SecretUtils.enParameterByDES(JsonUtil.fromString(json))</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>req.getParameter(&quot;encrypt&quot;)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="jar://E:/1804/03 java/jdk/jdk1.8.0_151/src.zip!/java/util/Map.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="239" column="6" selection-start-line="239" selection-start-column="6" selection-end-line="239" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/work/common/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="22" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.2.5.RELEASE/spring-web-4.2.5.RELEASE.jar!/org/springframework/web/bind/annotation/ControllerAdvice.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="24" column="20" selection-start-line="24" selection-start-column="15" selection-end-line="24" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/work/common/md5/SecretUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="44" column="25" selection-start-line="44" selection-start-column="25" selection-end-line="44" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.2.5.RELEASE/spring-web-4.2.5.RELEASE.jar!/org/springframework/http/server/ServletServerHttpRequest.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
+          <folding>
+            <element signature="e#1636#1637#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.0.33/tomcat-embed-core-8.0.33.jar!/org/apache/catalina/connector/RequestFacade.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="107" column="18" selection-start-line="107" selection-start-column="18" selection-end-line="107" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.2.5.RELEASE/spring-web-4.2.5.RELEASE.jar!/org/springframework/web/filter/CharacterEncodingFilter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
+          <caret line="49" selection-start-line="49" selection-end-line="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.2.5.RELEASE/spring-webmvc-4.2.5.RELEASE.jar!/org/springframework/web/servlet/mvc/method/annotation/RequestResponseBodyMethodProcessor.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="83" selection-start-line="83" selection-end-line="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.2.5.RELEASE/spring-webmvc-4.2.5.RELEASE.jar!/org/springframework/web/servlet/mvc/method/annotation/RequestMappingHandlerAdapter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="456" selection-start-line="456" selection-end-line="456" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.2.5.RELEASE/spring-webmvc-4.2.5.RELEASE.jar!/org/springframework/web/servlet/mvc/method/annotation/RequestResponseBodyAdviceChain.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="83">
+          <caret line="105" selection-start-line="105" selection-end-line="105" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.2.5.RELEASE/spring-webmvc-4.2.5.RELEASE.jar!/org/springframework/web/servlet/mvc/method/annotation/AbstractMessageConverterMethodProcessor.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="59">
+          <caret line="152" selection-start-line="152" selection-end-line="152" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.0.33/tomcat-embed-core-8.0.33.jar!/org/apache/catalina/core/ApplicationFilterChain.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="48" column="16" selection-start-line="48" selection-start-column="16" selection-end-line="48" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.2.5.RELEASE/spring-webmvc-4.2.5.RELEASE-sources.jar!/org/springframework/web/servlet/mvc/method/annotation/RequestResponseBodyAdviceChain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="147" selection-start-line="147" selection-end-line="147" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.2.5.RELEASE/spring-webmvc-4.2.5.RELEASE-sources.jar!/org/springframework/web/servlet/mvc/method/annotation/AbstractMessageConverterMethodProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="216" selection-start-line="216" selection-end-line="216" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.2.5.RELEASE/spring-webmvc-4.2.5.RELEASE-sources.jar!/org/springframework/web/servlet/mvc/method/annotation/RequestResponseBodyMethodProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="65">
+          <caret line="157" column="16" selection-start-line="157" selection-start-column="16" selection-end-line="157" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.2.5.RELEASE/spring-web-4.2.5.RELEASE.jar!/org/springframework/web/method/support/HandlerMethodReturnValueHandlerComposite.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="50" selection-start-line="50" selection-end-line="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.2.5.RELEASE/spring-webmvc-4.2.5.RELEASE-sources.jar!/org/springframework/web/servlet/mvc/method/annotation/RequestMappingHandlerAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="713" column="27" selection-start-line="713" selection-start-column="27" selection-end-line="713" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/work/common/ContextPathFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="23" column="27" lean-forward="true" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/work/mapper/xml/TIccMathMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="445">
+          <caret line="166" column="11" selection-start-line="166" selection-start-column="11" selection-end-line="166" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/work/mapper/TIccMathMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="26" column="59" selection-start-line="26" selection-start-column="59" selection-end-line="26" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/work/mapper/xml/dating/TbIccProblemDeptMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="10" column="78" selection-start-line="10" selection-start-column="78" selection-end-line="10" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-core/4.2.5.RELEASE/spring-core-4.2.5.RELEASE.jar!/org/springframework/cglib/proxy/MethodProxy.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="104" selection-start-line="104" selection-end-line="104" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/4.2.5.RELEASE/spring-aop-4.2.5.RELEASE.jar!/org/springframework/aop/framework/CglibAopProxy.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="460" selection-start-line="460" selection-end-line="460" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/work/common/JSONResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding>
+            <element signature="e#469#485#0" expanded="true" />
+            <element signature="e#651#652#0" expanded="true" />
+            <element signature="e#669#670#0" expanded="true" />
+            <element signature="e#2398#2399#0" expanded="true" />
+            <element signature="e#2440#2441#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/autually/base/AnRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/work/api/v3/common/RequesterCodeTableApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-136">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/work/mapper/xml/TbIccProblemDeptMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/work/common/interceptor/MyResponseBodyAdvice.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="47" column="32" selection-start-line="47" selection-start-column="32" selection-end-line="47" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/net/sf/json-lib/json-lib/2.4/json-lib-2.4-jdk15.jar!/net/sf/json/JSONObject.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="140" column="41" lean-forward="true" selection-start-line="140" selection-start-column="41" selection-end-line="140" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/work/common/JsonUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="22" column="32" lean-forward="true" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/work/mapper/TIccStaffStatusMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/work/entity/TbIccProblemDept.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="34" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="34" />
+          <folding>
+            <element signature="e#195#196#0" expanded="true" />
+            <element signature="e#233#234#0" expanded="true" />
+            <element signature="e#295#296#0" expanded="true" />
+            <element signature="e#344#345#0" expanded="true" />
+            <element signature="e#388#389#0" expanded="true" />
+            <element signature="e#428#429#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/work/entity/TIccStaffPaper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="46" lean-forward="true" selection-start-line="2" selection-start-column="46" selection-end-line="2" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/work/entity/TIccStaffPaperKey.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/work/bean/IccStaffPaperBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/mybatis/mybatis/3.4.1/mybatis-3.4.1.jar!/org/apache/ibatis/builder/xml/XMLMapperBuilder.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1">
+          <caret line="76" selection-start-line="76" selection-end-line="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/mybatis/mybatis/3.4.0/mybatis-3.4.0.jar!/org/apache/ibatis/builder/xml/mybatis-3-mapper.dtd">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="113" column="5" selection-start-line="113" selection-start-column="5" selection-end-line="113" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/work/api/v2/AddressController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="551">
+          <caret line="42" column="4" lean-forward="true" selection-start-line="42" selection-end-line="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/1804/03 java/jdk/jdk1.8.0_151/src.zip!/java/lang/String.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="110" column="19" selection-start-line="110" selection-start-column="19" selection-end-line="110" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/work/mapper/TbPepmgmEmpinfoMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../TeamTale/src/main/java/com/pansky/factor/performance/services/impl/FinanceFinancialindexServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/work/bean/PageBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="6" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/work/entity/TbIccStaffPaperNew.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="9" column="27" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="27" />
+          <folding>
+            <element signature="e#366#367#0" expanded="true" />
+            <element signature="e#398#399#0" expanded="true" />
+            <element signature="e#471#472#0" expanded="true" />
+            <element signature="e#501#502#0" expanded="true" />
+            <element signature="e#547#548#0" expanded="true" />
+            <element signature="e#585#586#0" expanded="true" />
+            <element signature="e#448#449#0" expanded="true" />
+            <element signature="e#490#491#0" expanded="true" />
+            <element signature="e#674#675#0" expanded="true" />
+            <element signature="e#706#707#0" expanded="true" />
+            <element signature="e#756#757#0" expanded="true" />
+            <element signature="e#798#799#0" expanded="true" />
+            <element signature="e#836#837#0" expanded="true" />
+            <element signature="e#870#871#0" expanded="true" />
+            <element signature="e#924#925#0" expanded="true" />
+            <element signature="e#970#971#0" expanded="true" />
+            <element signature="e#1013#1014#0" expanded="true" />
+            <element signature="e#1052#1053#0" expanded="true" />
+            <element signature="e#1116#1117#0" expanded="true" />
+            <element signature="e#1172#1173#0" expanded="true" />
+            <element signature="e#1212#1213#0" expanded="true" />
+            <element signature="e#1248#1249#0" expanded="true" />
+            <element signature="e#1306#1307#0" expanded="true" />
+            <element signature="e#1356#1357#0" expanded="true" />
+            <element signature="e#1401#1402#0" expanded="true" />
+            <element signature="e#1442#1443#0" expanded="true" />
+            <element signature="e#1510#1511#0" expanded="true" />
+            <element signature="e#1570#1571#0" expanded="true" />
+            <element signature="e#1610#1611#0" expanded="true" />
+            <element signature="e#1646#1647#0" expanded="true" />
+            <element signature="e#1704#1705#0" expanded="true" />
+            <element signature="e#1754#1755#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/work/bean/TbIccStaffPaperNewBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1064">
+          <caret line="88" column="32" selection-start-line="88" selection-start-column="32" selection-end-line="88" selection-end-column="32" />
+          <folding>
+            <element signature="e#1956#1957#0" expanded="true" />
+            <element signature="e#2002#2003#0" expanded="true" />
+            <element signature="e#2040#2041#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/work/mapper/xml/TIccStaffPaperMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-223">
+          <caret line="76" column="67" selection-start-line="76" selection-start-column="67" selection-end-line="76" selection-end-column="67" />
+          <folding>
+            <element signature="n#trim#0;n#insert#1;n#mapper#0;n#!!top" />
+            <element signature="n#trim#1;n#insert#1;n#mapper#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/work/mapper/xml/TIccStaffStatusMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="59" column="35" selection-start-line="59" selection-start-column="26" selection-end-line="59" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/work/mapper/TIccStaffPaperMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/work/api/v2/ArchivesController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="167" column="41" lean-forward="true" selection-start-line="167" selection-start-column="41" selection-end-line="167" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/work/service/TIccArchiveService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="215" column="46" lean-forward="true" selection-start-line="215" selection-start-column="46" selection-end-line="215" selection-end-column="46" />
+          <folding>
+            <element signature="method#selectCheckItemList#0;class#TIccArchiveService#0" />
+            <element signature="method#updateCheckItem#0;class#TIccArchiveService#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/work/mapper/xml/TIccStaffPaperNewMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/work/mapper/xml/TIccStaffPaperNewMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="20" column="12" lean-forward="true" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>TeamTaleApi:war exploded</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Web</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>TeamTaleApi</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>google-util-1.0</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

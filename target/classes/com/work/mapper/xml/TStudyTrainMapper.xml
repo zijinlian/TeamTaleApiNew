@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.TStudyTrainMapper" >
+  <resultMap id="BaseResultMap" type="com.work.entity.TStudyTrain" >
+    <id column="STUDY_ID" property="studyId" jdbcType="VARCHAR" />
+    <result column="STUDY_TITLE" property="studyTitle" jdbcType="VARCHAR" />
+    <result column="STUDY_CONTENT" property="studyContent" jdbcType="VARCHAR" />
+    <result column="EMP_ID" property="empId" jdbcType="VARCHAR" />
+    <result column="EMP_NAME" property="empName" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+    <result column="TYPE_CODE" property="typeCode" jdbcType="VARCHAR" />
+    <result column="TYPE_NAME" property="typeName" jdbcType="VARCHAR" />
+    <result column="VADIO_URL" property="vadioUrl" jdbcType="VARCHAR" />
+    <result column="APPROVAL_DEPT_STATUS" property="approvalDeptStatus" jdbcType="VARCHAR" />
+    <result column="APPROVAL_PRO_STATUS" property="approvalProStatus" jdbcType="VARCHAR" />
+    <result column="APPROVAL_INFO" property="approvalInfo" jdbcType="VARCHAR" />
+    <result column="PLAY_COUNT" property="playCount" jdbcType="VARCHAR" />
+    <result column="COMMENT_COUNT" property="commentCount" jdbcType="VARCHAR" />
+    <result column="APPR_DEPT_EMPID" property="apprDeptEmpid" jdbcType="VARCHAR" />
+    <result column="APPR_PRO_EMPID" property="apprProEmpid" jdbcType="VARCHAR" />
+    <result column="FD_DEPT_ORG" property="fdDeptOrg" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    STUDY_ID, STUDY_TITLE, STUDY_CONTENT, EMP_ID, EMP_NAME, CREATE_TIME, TYPE_CODE, TYPE_NAME, 
+    VADIO_URL, APPROVAL_DEPT_STATUS, APPROVAL_PRO_STATUS, APPROVAL_INFO, PLAY_COUNT, 
+    COMMENT_COUNT, APPR_DEPT_EMPID, APPR_PRO_EMPID, FD_DEPT_ORG
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.work.entity.TStudyTrainExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_STUDY_TRAIN
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from TB_STUDY_TRAIN
+    where STUDY_ID = #{studyId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TB_STUDY_TRAIN
+    where STUDY_ID = #{studyId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.work.entity.TStudyTrain" >
+    insert into TB_STUDY_TRAIN (STUDY_ID, STUDY_TITLE, STUDY_CONTENT, 
+      EMP_ID, EMP_NAME, CREATE_TIME, 
+      TYPE_CODE, TYPE_NAME, VADIO_URL, 
+      APPROVAL_DEPT_STATUS, APPROVAL_PRO_STATUS, 
+      APPROVAL_INFO, PLAY_COUNT, COMMENT_COUNT, 
+      APPR_DEPT_EMPID, APPR_PRO_EMPID, FD_DEPT_ORG
+      )
+    values (#{studyId,jdbcType=VARCHAR}, #{studyTitle,jdbcType=VARCHAR}, #{studyContent,jdbcType=VARCHAR}, 
+      #{empId,jdbcType=VARCHAR}, #{empName,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, 
+      #{typeCode,jdbcType=VARCHAR}, #{typeName,jdbcType=VARCHAR}, #{vadioUrl,jdbcType=VARCHAR}, 
+      #{approvalDeptStatus,jdbcType=VARCHAR}, #{approvalProStatus,jdbcType=VARCHAR}, 
+      #{approvalInfo,jdbcType=VARCHAR}, #{playCount,jdbcType=VARCHAR}, #{commentCount,jdbcType=VARCHAR}, 
+      #{apprDeptEmpid,jdbcType=VARCHAR}, #{apprProEmpid,jdbcType=VARCHAR}, #{fdDeptOrg,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TStudyTrain" >
+    insert into TB_STUDY_TRAIN
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="studyId != null" >
+        STUDY_ID,
+      </if>
+      <if test="studyTitle != null" >
+        STUDY_TITLE,
+      </if>
+      <if test="studyContent != null" >
+        STUDY_CONTENT,
+      </if>
+      <if test="empId != null" >
+        EMP_ID,
+      </if>
+      <if test="empName != null" >
+        EMP_NAME,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="typeCode != null" >
+        TYPE_CODE,
+      </if>
+      <if test="typeName != null" >
+        TYPE_NAME,
+      </if>
+      <if test="vadioUrl != null" >
+        VADIO_URL,
+      </if>
+      <if test="approvalDeptStatus != null" >
+        APPROVAL_DEPT_STATUS,
+      </if>
+      <if test="approvalProStatus != null" >
+        APPROVAL_PRO_STATUS,
+      </if>
+      <if test="approvalInfo != null" >
+        APPROVAL_INFO,
+      </if>
+      <if test="playCount != null" >
+        PLAY_COUNT,
+      </if>
+      <if test="commentCount != null" >
+        COMMENT_COUNT,
+      </if>
+      <if test="apprDeptEmpid != null" >
+        APPR_DEPT_EMPID,
+      </if>
+      <if test="apprProEmpid != null" >
+        APPR_PRO_EMPID,
+      </if>
+      <if test="fdDeptOrg != null" >
+        FD_DEPT_ORG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="studyId != null" >
+        #{studyId,jdbcType=VARCHAR},
+      </if>
+      <if test="studyTitle != null" >
+        #{studyTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="studyContent != null" >
+        #{studyContent,jdbcType=VARCHAR},
+      </if>
+      <if test="empId != null" >
+        #{empId,jdbcType=VARCHAR},
+      </if>
+      <if test="empName != null" >
+        #{empName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="typeCode != null" >
+        #{typeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="typeName != null" >
+        #{typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="vadioUrl != null" >
+        #{vadioUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="approvalDeptStatus != null" >
+        #{approvalDeptStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="approvalProStatus != null" >
+        #{approvalProStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="approvalInfo != null" >
+        #{approvalInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="playCount != null" >
+        #{playCount,jdbcType=VARCHAR},
+      </if>
+      <if test="commentCount != null" >
+        #{commentCount,jdbcType=VARCHAR},
+      </if>
+      <if test="apprDeptEmpid != null" >
+        #{apprDeptEmpid,jdbcType=VARCHAR},
+      </if>
+      <if test="apprProEmpid != null" >
+        #{apprProEmpid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdDeptOrg != null" >
+        #{fdDeptOrg,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.work.entity.TStudyTrain" >
+    update TB_STUDY_TRAIN
+    <set >
+      <if test="studyTitle != null" >
+        STUDY_TITLE = #{studyTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="studyContent != null" >
+        STUDY_CONTENT = #{studyContent,jdbcType=VARCHAR},
+      </if>
+      <if test="empId != null" >
+        EMP_ID = #{empId,jdbcType=VARCHAR},
+      </if>
+      <if test="empName != null" >
+        EMP_NAME = #{empName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="typeCode != null" >
+        TYPE_CODE = #{typeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="typeName != null" >
+        TYPE_NAME = #{typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="vadioUrl != null" >
+        VADIO_URL = #{vadioUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="approvalDeptStatus != null" >
+        APPROVAL_DEPT_STATUS = #{approvalDeptStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="approvalProStatus != null" >
+        APPROVAL_PRO_STATUS = #{approvalProStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="approvalInfo != null" >
+        APPROVAL_INFO = #{approvalInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="playCount != null" >
+        PLAY_COUNT = #{playCount,jdbcType=VARCHAR},
+      </if>
+      <if test="commentCount != null" >
+        COMMENT_COUNT = #{commentCount,jdbcType=VARCHAR},
+      </if>
+      <if test="apprDeptEmpid != null" >
+        APPR_DEPT_EMPID = #{apprDeptEmpid,jdbcType=VARCHAR},
+      </if>
+      <if test="apprProEmpid != null" >
+        APPR_PRO_EMPID = #{apprProEmpid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdDeptOrg != null" >
+        FD_DEPT_ORG = #{fdDeptOrg,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where STUDY_ID = #{studyId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.work.entity.TStudyTrain" >
+    update TB_STUDY_TRAIN
+    set STUDY_TITLE = #{studyTitle,jdbcType=VARCHAR},
+      STUDY_CONTENT = #{studyContent,jdbcType=VARCHAR},
+      EMP_ID = #{empId,jdbcType=VARCHAR},
+      EMP_NAME = #{empName,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      TYPE_CODE = #{typeCode,jdbcType=VARCHAR},
+      TYPE_NAME = #{typeName,jdbcType=VARCHAR},
+      VADIO_URL = #{vadioUrl,jdbcType=VARCHAR},
+      APPROVAL_DEPT_STATUS = #{approvalDeptStatus,jdbcType=VARCHAR},
+      APPROVAL_PRO_STATUS = #{approvalProStatus,jdbcType=VARCHAR},
+      APPROVAL_INFO = #{approvalInfo,jdbcType=VARCHAR},
+      PLAY_COUNT = #{playCount,jdbcType=VARCHAR},
+      COMMENT_COUNT = #{commentCount,jdbcType=VARCHAR},
+      APPR_DEPT_EMPID = #{apprDeptEmpid,jdbcType=VARCHAR},
+      APPR_PRO_EMPID = #{apprProEmpid,jdbcType=VARCHAR},
+      FD_DEPT_ORG = #{fdDeptOrg,jdbcType=VARCHAR}
+    where STUDY_ID = #{studyId,jdbcType=VARCHAR}
+  </update>
+</mapper>

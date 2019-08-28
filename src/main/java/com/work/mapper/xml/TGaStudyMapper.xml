@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.TGaStudyMapper" >
+  <resultMap id="BaseResultMap" type="com.work.entity.TGaStudy" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="EMPID" property="empid" jdbcType="VARCHAR" />
+    <result column="ORG" property="org" jdbcType="VARCHAR" />
+    <result column="STUDYADDRESS" property="studyaddress" jdbcType="VARCHAR" />
+    <result column="ORGLEVEL" property="orglevel" jdbcType="VARCHAR" />
+    <result column="STUDYTIME" property="studytime" jdbcType="VARCHAR" />
+    <result column="INPUTDATE" property="inputdate" jdbcType="VARCHAR" />
+    <result column="STARTDATE" property="startdate" jdbcType="VARCHAR" />
+    <result column="REFNUMBER" property="refnumber" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, EMPID, ORG, STUDYADDRESS, ORGLEVEL, STUDYTIME, INPUTDATE, STARTDATE, REFNUMBER
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.work.entity.TGaStudyExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_GA_STUDY
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from TB_GA_STUDY
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TB_GA_STUDY
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.work.entity.TGaStudy" >
+    insert into TB_GA_STUDY (ID, EMPID, ORG, 
+      STUDYADDRESS, ORGLEVEL, STUDYTIME, 
+      INPUTDATE, STARTDATE, REFNUMBER
+      )
+    values (#{id,jdbcType=VARCHAR}, #{empid,jdbcType=VARCHAR}, #{org,jdbcType=VARCHAR}, 
+      #{studyaddress,jdbcType=VARCHAR}, #{orglevel,jdbcType=VARCHAR}, #{studytime,jdbcType=VARCHAR}, 
+      #{inputdate,jdbcType=VARCHAR}, #{startdate,jdbcType=VARCHAR}, #{refnumber,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TGaStudy" >
+    insert into TB_GA_STUDY
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="empid != null" >
+        EMPID,
+      </if>
+      <if test="org != null" >
+        ORG,
+      </if>
+      <if test="studyaddress != null" >
+        STUDYADDRESS,
+      </if>
+      <if test="orglevel != null" >
+        ORGLEVEL,
+      </if>
+      <if test="studytime != null" >
+        STUDYTIME,
+      </if>
+      <if test="inputdate != null" >
+        INPUTDATE,
+      </if>
+      <if test="startdate != null" >
+        STARTDATE,
+      </if>
+      <if test="refnumber != null" >
+        REFNUMBER,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="empid != null" >
+        #{empid,jdbcType=VARCHAR},
+      </if>
+      <if test="org != null" >
+        #{org,jdbcType=VARCHAR},
+      </if>
+      <if test="studyaddress != null" >
+        #{studyaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="orglevel != null" >
+        #{orglevel,jdbcType=VARCHAR},
+      </if>
+      <if test="studytime != null" >
+        #{studytime,jdbcType=VARCHAR},
+      </if>
+      <if test="inputdate != null" >
+        #{inputdate,jdbcType=VARCHAR},
+      </if>
+      <if test="startdate != null" >
+        #{startdate,jdbcType=VARCHAR},
+      </if>
+      <if test="refnumber != null" >
+        #{refnumber,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.work.entity.TGaStudy" >
+    update TB_GA_STUDY
+    <set >
+      <if test="empid != null" >
+        EMPID = #{empid,jdbcType=VARCHAR},
+      </if>
+      <if test="org != null" >
+        ORG = #{org,jdbcType=VARCHAR},
+      </if>
+      <if test="studyaddress != null" >
+        STUDYADDRESS = #{studyaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="orglevel != null" >
+        ORGLEVEL = #{orglevel,jdbcType=VARCHAR},
+      </if>
+      <if test="studytime != null" >
+        STUDYTIME = #{studytime,jdbcType=VARCHAR},
+      </if>
+      <if test="inputdate != null" >
+        INPUTDATE = #{inputdate,jdbcType=VARCHAR},
+      </if>
+      <if test="startdate != null" >
+        STARTDATE = #{startdate,jdbcType=VARCHAR},
+      </if>
+      <if test="refnumber != null" >
+        REFNUMBER = #{refnumber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.work.entity.TGaStudy" >
+    update TB_GA_STUDY
+    set EMPID = #{empid,jdbcType=VARCHAR},
+      ORG = #{org,jdbcType=VARCHAR},
+      STUDYADDRESS = #{studyaddress,jdbcType=VARCHAR},
+      ORGLEVEL = #{orglevel,jdbcType=VARCHAR},
+      STUDYTIME = #{studytime,jdbcType=VARCHAR},
+      INPUTDATE = #{inputdate,jdbcType=VARCHAR},
+      STARTDATE = #{startdate,jdbcType=VARCHAR},
+      REFNUMBER = #{refnumber,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectStudyBank" parameterType="com.work.bean.GaResumeBean" resultType="java.util.Map">
+    ----总行和外部
+    select t.empid   as empid,
+       t1.fd_empnme   as empname,
+       t1.fd_orgnme   as orgname,
+       t1.fd_orglevel as lever,
+       t1.fd_jobnme   as jobname,
+       t.studyname,
+       decode(t.orglevel, '01', '外部', '02', '总行', '03', '省行', '04', '分行'）
+       as orglevel, t.startdate, t.studytime
+       from TB_GA_STUDY t inner join TB_PEPMGM_EMPINFO t1
+       on (t1.fd_empid = t.empid) where t.orglevel in('01','02')
+       and empid=#{empid}
+       order by t.orglevel desc, t.startdate desc
+  </select>
+
+  <select id="selectStudyBySubBank" parameterType="com.work.bean.GaResumeBean" resultType="java.util.Map">
+  ---省行 和 分行
+
+    select   empid ,empname,orgname,lever,jobname,studyname,  decode (orglevel,'1','省行','2','分行' )
+    as orglevel ,
+    startdate,
+    studytime
+  from (select   empid ,empname,orgname,lever,jobname,studyname,decode（ orglevel,'省行','2','分行','1' ）
+  as orglevel ,startdate,studytime  from
+  (select t.empid as  empid , t1.fd_empnme as empname, t1.fd_orgnme as orgname, t1.fd_orglevel as  lever  ,t1.fd_jobnme as jobname ,t.studyname ,
+decode (t.orglevel ,'01','外部','02','总行','03','省行','04','分行'）  as orglevel ,t.startdate ,t.studytime
+from TB_GA_STUDY t   inner join  TB_PEPMGM_EMPINFO t1 on (t1.fd_empid=t.empid)
+where t.orglevel in ('03','04')
+union
+SELECT empid ,empname,orgname,lever,jobnme,studyname ,orglevel,
+startdate
+ ,to_char(sum(coursetime)) as studytime  from
+(select m.employeeid  AS empid,
+       m.employeename as empname,
+       e.fd_orgnme as orgname ,
+       e.fd_orglevel as lever,
+       e.fd_standard_jobnme as jobnme,
+       f.coursename  as  studyname,
+      decode( f.coursetype,'1','分行','2','省行') AS  orglevel,
+       g.coursetitle as  coursetitle,
+       g.coursetime  as  coursetime,
+      substr(g.startime,1,9) as startdate
+  from (select t.employeeid, t.employeename, t.courseid, t.signcourseid
+          from tb_trai_sign t
+          left join tb_trai_register c
+            on t.signcourseid = c.id
+         where c.evaluatestatus = '1'
+        union
+        select a.employeeid, a.employeename, b.courseid, b.id
+          from tb_trai_plan b
+          left join tb_trai_register a
+            on a.id = b.id
+         where b.status = '0'
+           and a.registerstatus = '2'
+           and a.evaluatestatus = '1') m
+  left join tb_pepmgm_empinfo e
+    on m.employeeid = e.fd_empid
+  left join tb_trai_course f
+    on m.signcourseid = f.id
+  left join tb_trai_plan g
+    on m.courseid = g.courseid
+ where 1 = 1
+ order by g.startime desc
+ )group by   empid ,empname,studyname ,orgname,lever,jobnme,orglevel,startdate)
+ )  where  1=1 and   empid=#{empid}
+  order by orglevel desc , startdate desc
+
+
+  </select>
+</mapper>

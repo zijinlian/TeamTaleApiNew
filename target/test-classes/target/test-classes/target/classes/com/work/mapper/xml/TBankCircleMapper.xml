@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.TBankCircleMapper" >
+  <resultMap id="BaseResultMap" type="com.work.entity.TBankCircle" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="EMP_ID" property="empId" jdbcType="VARCHAR" />
+    <result column="CONTENT" property="content" jdbcType="VARCHAR" />
+    <result column="COMM_COUNT" property="commCount" jdbcType="VARCHAR" />
+    <result column="PARISE_COUNT" property="pariseCount" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+    <result column="ORG_OR_DEPT_CODE" property="orgOrDeptCode" jdbcType="VARCHAR" />
+    <result column="IS_HOT" property="isHot" jdbcType="VARCHAR" />
+    <result column="IS_PUBLIC" property="isPublic" jdbcType="VARCHAR" />
+    <result column="PARISE_TIME" property="pariseTime" jdbcType="VARCHAR" />
+    <result column="FD_HEADICON" property="headIcon" jdbcType="VARCHAR" />
+    <result column="FD_NAME" property="empName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, EMP_ID, CONTENT, COMM_COUNT, PARISE_COUNT, CREATE_TIME, ORG_OR_DEPT_CODE, IS_HOT, 
+    IS_PUBLIC, PARISE_TIME
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.work.entity.TBankCircleExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_BANK_CIRCLE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from TB_BANK_CIRCLE
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TB_BANK_CIRCLE
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.work.entity.TBankCircle" >
+    insert into TB_BANK_CIRCLE (ID, EMP_ID, CONTENT, 
+      COMM_COUNT, PARISE_COUNT, CREATE_TIME, 
+      ORG_OR_DEPT_CODE, IS_HOT, IS_PUBLIC, 
+      PARISE_TIME)
+    values (#{id,jdbcType=VARCHAR}, #{empId,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
+      #{commCount,jdbcType=VARCHAR}, #{pariseCount,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, 
+      #{orgOrDeptCode,jdbcType=VARCHAR}, #{isHot,jdbcType=VARCHAR}, #{isPublic,jdbcType=VARCHAR}, 
+      #{pariseTime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TBankCircle" >
+    insert into TB_BANK_CIRCLE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="empId != null" >
+        EMP_ID,
+      </if>
+      <if test="content != null" >
+        CONTENT,
+      </if>
+      <if test="commCount != null" >
+        COMM_COUNT,
+      </if>
+      <if test="pariseCount != null" >
+        PARISE_COUNT,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="orgOrDeptCode != null" >
+        ORG_OR_DEPT_CODE,
+      </if>
+      <if test="isHot != null" >
+        IS_HOT,
+      </if>
+      <if test="isPublic != null" >
+        IS_PUBLIC,
+      </if>
+      <if test="pariseTime != null" >
+        PARISE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="empId != null" >
+        #{empId,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="commCount != null" >
+        #{commCount,jdbcType=VARCHAR},
+      </if>
+      <if test="pariseCount != null" >
+        #{pariseCount,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="orgOrDeptCode != null" >
+        #{orgOrDeptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="isHot != null" >
+        #{isHot,jdbcType=VARCHAR},
+      </if>
+      <if test="isPublic != null" >
+        #{isPublic,jdbcType=VARCHAR},
+      </if>
+      <if test="pariseTime != null" >
+        #{pariseTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.work.entity.TBankCircle" >
+    update TB_BANK_CIRCLE
+    <set >
+      <if test="empId != null" >
+        EMP_ID = #{empId,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        CONTENT = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="commCount != null" >
+        COMM_COUNT = #{commCount,jdbcType=VARCHAR},
+      </if>
+      <if test="pariseCount != null" >
+        PARISE_COUNT = #{pariseCount,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="orgOrDeptCode != null" >
+        ORG_OR_DEPT_CODE = #{orgOrDeptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="isHot != null" >
+        IS_HOT = #{isHot,jdbcType=VARCHAR},
+      </if>
+      <if test="isPublic != null" >
+        IS_PUBLIC = #{isPublic,jdbcType=VARCHAR},
+      </if>
+      <if test="pariseTime != null" >
+        PARISE_TIME = #{pariseTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.work.entity.TBankCircle" >
+    update TB_BANK_CIRCLE
+    set EMP_ID = #{empId,jdbcType=VARCHAR},
+      CONTENT = #{content,jdbcType=VARCHAR},
+      COMM_COUNT = #{commCount,jdbcType=VARCHAR},
+      PARISE_COUNT = #{pariseCount,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      ORG_OR_DEPT_CODE = #{orgOrDeptCode,jdbcType=VARCHAR},
+      IS_HOT = #{isHot,jdbcType=VARCHAR},
+      IS_PUBLIC = #{isPublic,jdbcType=VARCHAR},
+      PARISE_TIME = #{pariseTime,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  <!-- add -->
+  <select id="queryUnitCodeByEmpId" resultType="java.lang.String" parameterType="java.lang.String">
+  	SELECT
+		FD_UNITCDE
+	FROM
+		TB_PEPMGM_EMPINFO T
+	WHERE
+		T .FD_EMPID = #{empid}
+	AND ROWNUM = 1
+  </select>
+  
+  <insert id="saveBankCircleImg" parameterType="com.work.bean.BankCircleImgBean">
+  	insert into TB_BANK_CIRCLE_IMG (ID, CIRCLE_ID, IMG_URL) VALUES (#{id},#{circleId},#{imgUrl})
+  </insert>
+  
+  <select id="selectBankCircleImgListByCId" resultType="com.work.entity.TBankCircleImg" parameterType="java.lang.String">
+  	select
+  		ID as id,
+  		CIRCLE_ID as circleId,
+  		IMG_URL as imgUrl
+  	from TB_BANK_CIRCLE_IMG where CIRCLE_ID = #{circleId}
+  </select>
+  
+  <select id="selectListDeptBankCircle" resultMap="BaseResultMap" parameterType="java.util.Map">
+  	 select TU.FD_HEADICON,CONCAT(TU.FD_NAME||',',replace(replace(r.fd_orgnme, '中国银行辽宁省分行', ''),'中国银行')) as FD_NAME,
+    <include refid="Base_Column_List" />
+    from TB_BANK_CIRCLE TC
+    LEFT JOIN TB_SYS_USERINFO TU ON TC.EMP_ID = TU.FD_USERNAME
+    LEFT JOIN tb_pepmgm_empinfo e on TC.EMP_ID =e.fd_empid
+    LEFT JOIN tb_sys_orginfo_ehr r on r.fd_orgcde=e.fd_dept_org
+    <where>
+    	<if test="code != null and code !=  ''">
+    		TC.ORG_OR_DEPT_CODE = #{code,jdbcType=VARCHAR} 
+    	</if>
+    </where>
+    order by TC.CREATE_TIME DESC
+  </select>
+  
+  <select id="selectListPublicBankCircle" resultMap="BaseResultMap">
+  	 select TU.FD_HEADICON,CONCAT(TU.FD_NAME||',',replace(replace(r.fd_orgnme, '中国银行辽宁省分行', ''),'中国银行')) as FD_NAME,
+    <include refid="Base_Column_List" />
+    from TB_BANK_CIRCLE TC
+    LEFT JOIN TB_SYS_USERINFO TU ON TC.EMP_ID = TU.FD_USERNAME
+    LEFT JOIN tb_pepmgm_empinfo e on TC.EMP_ID =e.fd_empid
+    LEFT JOIN tb_sys_orginfo_ehr r on r.fd_orgcde=e.fd_dept_org
+    where TC.IS_PUBLIC = '1' order by TC.CREATE_TIME DESC
+  </select>
+  
+  <select id="selectListHotBankCircle" resultMap="BaseResultMap">
+  	 select TU.FD_HEADICON,CONCAT(TU.FD_NAME||',',replace(replace(r.fd_orgnme, '中国银行辽宁省分行', ''),'中国银行')) as FD_NAME,
+    <include refid="Base_Column_List" />
+    from TB_BANK_CIRCLE TC
+    LEFT JOIN TB_SYS_USERINFO TU ON TC.EMP_ID = TU.FD_USERNAME
+    LEFT JOIN tb_pepmgm_empinfo e on TC.EMP_ID =e.fd_empid
+    LEFT JOIN tb_sys_orginfo_ehr r on r.fd_orgcde=e.fd_dept_org
+    where TC.IS_HOT = '1'  order by TC.CREATE_TIME DESC nulls last
+  </select>
+  
+  <select id="selectMyListBankCircle" resultMap="BaseResultMap" parameterType="com.work.bean.BankCircleBean">
+  	 select TU.FD_HEADICON,CONCAT(TU.FD_NAME||',',replace(replace(r.fd_orgnme, '中国银行辽宁省分行', ''),'中国银行')) as FD_NAME,
+    <include refid="Base_Column_List" />
+    from TB_BANK_CIRCLE TC
+    LEFT JOIN TB_SYS_USERINFO TU ON TC.EMP_ID = TU.FD_USERNAME
+    LEFT JOIN tb_pepmgm_empinfo e on TC.EMP_ID =e.fd_empid
+    LEFT JOIN tb_sys_orginfo_ehr r on r.fd_orgcde=e.fd_dept_org
+    <where>
+    	<if test="empId != null and empId !=  ''">
+    		TC.EMP_ID = #{empId}
+    	</if>
+    </where>
+    order by TC.CREATE_TIME DESC nulls last
+  </select>
+  
+  <select id="selectUserisDeptOrOrgManager" resultType="java.lang.Integer" parameterType="java.lang.String">
+  	SELECT
+		count(1)
+	FROM
+		TB_OA_ATTEND_ROLE T
+	INNER JOIN tb_oa_attend_user_role ur ON T . ID = ur.roleid
+	WHERE
+		T .rolename IN('分管行长','部门领导') and ur.EMPID = #{empId}
+  </select>
+  <select id="selectUserIsOrgManager" resultType="java.lang.Integer" parameterType="java.lang.String">
+  	SELECT
+		COUNT (1)
+	FROM
+		TB_OA_ATTEND_ROLE T
+	INNER JOIN tb_oa_attend_user_role ur ON T . ID = ur.roleid
+	WHERE
+		T .rolename in('省行副行长','省行行长') 
+	AND ur.EMPID = #{empId}
+  </select>
+</mapper>

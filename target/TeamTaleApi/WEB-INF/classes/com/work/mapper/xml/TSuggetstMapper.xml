@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.TSuggestMapper">
+	<resultMap type = "java.util.Map"  id="BaseResultMap" >
+		<result column="FD_TITLE"  property="fd_title" javaType="string" jdbcType="VARCHAR" />
+		<result column="FD_CONTENT"  property="fd_content" javaType="string" jdbcType="CLOB" />
+		<result column="FD_EMPID"  property="fd_empid"   javaType="string" jdbcType="VARCHAR" />
+		<result column="FD_PUB_TIME"  property="fd_pub_time"  javaType="string" jdbcType="VARCHAR" />
+		<result column="FD_SUG_TYPID"  property="fd_sug_typid"  javaType="string" jdbcType="VARCHAR" />
+		<result column="FD_APPRO_ORG"  property="fd_appro_org"  javaType="string" jdbcType="VARCHAR" />
+		<result column="FD_LEADER_EMP"   property="fd_leader_emp" javaType="string" jdbcType="VARCHAR" />
+		<result column="FD_LEADER_TMIE"  property="fd_leader_tmie" javaType="string" jdbcType="VARCHAR" />
+		<result column="FD_LEADER_STATUS"  property="fd_leader_status" javaType="java.math.BigDecimal" jdbcType="NUMERIC" />
+		<result column="FD_LEADER_MARK"  property="fd_leader_mark" javaType="string" jdbcType="CLOB" />
+		<result column="FD_EMP_NME"  property="fd_emp_nme" javaType="string" jdbcType="VARCHAR" />
+		<result column="FD_EMP_UNINME"  property="fd_emp_uninme"  javaType="string" jdbcType="VARCHAR" />
+		<result column="FD_TYPENME"  property="fd_typenme" javaType="string"  jdbcType="VARCHAR" />
+		<result column="FD_APPRO_ORGNME"  property="fd_appro_orgnme"   javaType="string" jdbcType="VARCHAR" />
+		<result column="FD_LEADER_EMPNME" property="fd_leader_empnme" javaType="string" jdbcType="VARCHAR" />
+		<result column="FD_REPLY_STATUS" property="fd_reply_status" javaType="string" jdbcType="VARCHAR" />
+		<result column="FD_COMMENT_STATUS" property="fd_comment_status" javaType="string" jdbcType="VARCHAR" />
+		<result column="FD_APP_MARK"  property="fd_app_mark"  javaType="string" jdbcType="CLOB" />
+		<result column="FD_LIKE"  property="fd_like"  javaType="string" jdbcType="VARCHAR" />
+		<result column="FD_DISS"  property="fd_diss"  javaType="string" jdbcType="VARCHAR" />
+		<result column="FD_SUG_STATUS" property="fdSugStatus" jdbcType="VARCHAR" />
+		<result column="FD_SUG_SCOPE" property="fdSugScope" jdbcType="VARCHAR" />
+		<result column="FD_SUG_FLAG" property="fdSugFlag" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<select id="selectSuggestById" parameterType="com.work.bean.SuggestBean" resultMap="BaseResultMap">
+		SELECT
+			*
+		FROM
+			TB_SUG_INFO T
+		WHERE
+			T .FD_EMPID = #{empid}
+		<!--AND T .fd_leader_status = '1'-->
+		<if test="fdSugTypid != null and fdSugTypid != ''">
+			AND FD_SUG_TYPID = #{fdSugTypid}
+		</if>
+		<if test="fdEmpUninme != null and fdEmpUninme != ''">
+			AND FD_EMP_UNINME like CONCAT(CONCAT('%',#{fdEmpUninme}),'%')
+		</if>
+		<if test="fdApproOrgnme != null and fdApproOrgnme != ''">
+			AND FD_APPRO_ORGNME like CONCAT(CONCAT('%',#{fdApproOrgnme}),'%')
+		</if>
+		ORDER BY
+			T .FD_LEADER_STATUS ASC,
+			T .FD_REPLY_STATUS ASC,
+			T .FD_COMMENT_STATUS ASC,
+			T .fd_pub_time DESC
+	</select>
+
+	<select id="selectOtherSuggestById" parameterType="com.work.bean.SuggestBean" resultMap="BaseResultMap">
+		SELECT
+		*
+		FROM
+		TB_SUG_INFO T
+		WHERE
+		T .FD_EMPID != #{empid}
+		AND (T .fd_leader_status = '1' or  T.FD_LEADER_STATUS_FIRST = '1')
+		AND  ((T.FD_ORGCDE = #{orgId,jdbcType=VARCHAR} AND fd_sug_scope = '1') or fd_sug_scope = '2')
+
+		<if test="fdSugTypid != null and fdSugTypid != ''">
+			AND FD_SUG_TYPID = #{fdSugTypid}
+		</if>
+		<if test="fdEmpUninme != null and fdEmpUninme != ''">
+			AND FD_EMP_UNINME like CONCAT(CONCAT('%',#{fdEmpUninme}),'%')
+		</if>
+		<if test="fdApproOrgnme != null and fdApproOrgnme != ''">
+			AND FD_APPRO_ORGNME like CONCAT(CONCAT('%',#{fdApproOrgnme}),'%')
+		</if>
+		<if test="fdApproOrg != null and fdApproOrg != ''">
+			AND FD_APPRO_ORG = #{fdApproOrg}
+		</if>acd
+		<if test="fdTitle != null and fdTitle != ''">
+			AND FD_TITLE like CONCAT(CONCAT('%',#{fdTitle}),'%')
+		</if>
+		ORDER BY
+			T .FD_LEADER_STATUS ASC,
+			T .FD_REPLY_STATUS ASC,
+			T .FD_COMMENT_STATUS ASC,
+			T .FD_LEADER_TMIE DESC
+	</select>
+
+	<resultMap id="suggestStart" type="java.util.Map">
+		<result column="FD_APPRO_STU"  property="fd_appro_stu" javaType="java.math.BigDecimal" jdbcType="NUMERIC" />
+		<result column="FD_APPRO_EMPNME" property="fd_appro_empnme" javaType="string" jdbcType="VARCHAR" />
+		<result column="FD_APPRO_DEPNME" property="fd_appro_depnme" javaType="string" jdbcType="VARCHAR" />
+		<result column="FD_EMPID" property="fd_empid" javaType="string" jdbcType="VARCHAR" />
+		<result column="FD_SUG_EMP_MARK" property="fd_sug_emp_mark" javaType="string" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<select id="selectSuggestStart" parameterType="com.work.bean.SuggestBean" resultMap="suggestStart">
+		SELECT
+			A .total AS FD_APPRO_STU,
+			b.fd_empnme AS FD_APPRO_EMPNME,
+			b.fd_unitnme AS FD_APPRO_DEPNME,
+			A .FD_EMPID,
+			c.fd_headicon AS FD_SUG_EMP_MARK
+		FROM
+			(
+				SELECT
+					COUNT (1) AS total,
+					FD_EMPID
+				FROM
+					tb_sug_approve app
+				WHERE
+					app.fd_appro_stu = 0
+				GROUP BY
+					FD_EMPID
+			) A,
+			TB_PEPMGM_EMPINFO b,
+			tb_sys_userinfo c
+		WHERE
+			A .FD_EMPID = b.fd_empid
+		AND b.fd_empid = c.fd_username
+		ORDER BY
+			A .total DESC,
+			A .fd_empid DESC
+
+	</select>
+
+	<resultMap id="hotSuggestMap" type="com.work.entity.THotSuggest">
+		<result column="FD_APPRO_EMP" property="fd_appro_emp"  jdbcType="VARCHAR" />
+		<result column="FD_APPRO_ORG" property="fd_appro_org"  jdbcType="VARCHAR" />
+		<result column="FD_APPRO_STU" property="fd_appro_stu"  jdbcType="VARCHAR" />
+		<result column="FD_APPRO_MARK" property="fd_appro_mark"  jdbcType="CLOB" />
+		<result column="FD_EMPID" property="fd_empid" jdbcType="VARCHAR" />
+		<result column="REPYCOUNT" property="repycount" jdbcType="VARCHAR" />
+		<result column="DISSCOUNT" property="disscount" jdbcType="VARCHAR" />
+		<result column="FD_APPRO_TIME" property="fd_appro_time" jdbcType="VARCHAR" />
+		<result column="FD_UUID" property="fd_uuid" jdbcType="VARCHAR" />
+
+	</resultMap>
+	
+<!-- 查询所有的热门建议并排序 -->
+	<select id="selectHotSuggest" parameterType="com.work.bean.SuggestBean" resultMap="hotSuggestMap" >
+	   SELECT
+			G .*, info.fd_title AS FD_APPRO_EMP,
+			info.fd_emp_uninme AS FD_APPRO_ORG,
+			info.fd_content AS FD_APPRO_MARK,
+			info.fd_typenme AS FD_APPRO_STU,
+			info.fd_emp_nme AS FD_EMPID
+		FROM
+			(
+				SELECT
+					NVL (c.total, 0) AS REPYCOUNT,
+					f.*
+				FROM
+					(
+						SELECT
+							NVL (diss.coun, 0) AS DISSCOUNT,
+							app.fd_uuid,
+							app.fd_appro_time
+						FROM
+							tb_sug_approve app
+						LEFT JOIN (
+							SELECT
+								COUNT (1) AS coun,
+								re.fd_uuid
+							FROM
+								tb_sug_repl re
+							WHERE
+								re.fd_opertype = 1
+							GROUP BY
+								re.fd_uuid
+						) diss ON app.fd_uuid = diss.fd_uuid
+					) f
+				LEFT JOIN (
+					SELECT
+						COUNT (1) AS total,
+						re.fd_uuid
+					FROM
+						tb_sug_repl re
+					WHERE
+						re.fd_opertype = 0
+					GROUP BY
+						re.fd_uuid
+				) c ON f.fd_uuid = c.fd_uuid
+			) G
+		LEFT JOIN tb_sug_info info ON G .fd_uuid = info.fd_uuid
+		ORDER BY
+			TO_NUMBER (REPYCOUNT) + TO_NUMBER (DISSCOUNT) DESC,
+			info.fd_empid DESC
+	</select>
+
+</mapper>

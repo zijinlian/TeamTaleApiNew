@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.TTaskSuperviseMapper" >
+  <resultMap id="BaseResultMap" type="com.work.entity.TTaskSupervise" >
+    <result column="TASK_ID" property="taskId" jdbcType="VARCHAR" />
+    <result column="PARENT_ID" property="parentId" jdbcType="VARCHAR" />
+    <result column="FD_TASK_NAME" property="fdTaskName" jdbcType="VARCHAR" />
+    <result column="FD_LEADER_ID" property="fdLeaderId" jdbcType="VARCHAR" />
+    <result column="FD_LEADER_NAME" property="fdLeaderName" jdbcType="VARCHAR" />
+    <result column="FD_ASSIST_ORGNAME" property="fdAssistOrgname" jdbcType="VARCHAR" />
+    <result column="FD_START_DATE" property="fdStartDate" jdbcType="VARCHAR" />
+    <result column="FD_END_DATE" property="fdEndDate" jdbcType="VARCHAR" />
+    <result column="FD_TASK_LEVEL" property="fdTaskLevel" jdbcType="VARCHAR" />
+    <result column="FD_TASK_REMARK" property="fdTaskRemark" jdbcType="VARCHAR" />
+    <result column="FD_EMPID_INPUT" property="fdEmpidInput" jdbcType="VARCHAR" />
+    <result column="FD_EMPNME_INPPUT" property="fdEmpnmeInpput" jdbcType="VARCHAR" />
+    <result column="FD_TASK_STATUS" property="fdTaskStatus" jdbcType="VARCHAR" />
+    <result column="FD_TASK_TYPE" property="fdTaskType" jdbcType="VARCHAR" />
+    <result column="FD_ROUTE_REMARK" property="fdRouteRemark" jdbcType="VARCHAR" />
+    <result column="FD_HINGE_REMARK" property="fdHingeRemark" jdbcType="VARCHAR" />
+    <result column="FD_TOOL_REMARK" property="fdToolRemark" jdbcType="VARCHAR" />
+    <result column="FD_EMP_DEPT" property="fdEmpDept" jdbcType="VARCHAR" />
+    <result column="FD_RESPONSIBLE" property="fdResponsible" jdbcType="VARCHAR" />
+    <result column="FD_RESPONSIBLENAME" property="fdResponsiblename" jdbcType="VARCHAR" />
+    <result column="FD_PUBLISH_TIME" property="fdPublishTime" jdbcType="VARCHAR" />
+    <result column="fd_object_id" property="fdObjectId" jdbcType="VARCHAR" />
+    <result column="fd_task_dept" property="fdTaskDept" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    TASK_ID, PARENT_ID, FD_TASK_NAME, FD_LEADER_ID, FD_LEADER_NAME, FD_ASSIST_ORGNAME, 
+    FD_START_DATE, FD_END_DATE, FD_TASK_LEVEL, FD_TASK_REMARK, FD_EMPID_INPUT, FD_EMPNME_INPPUT, 
+    FD_TASK_STATUS, FD_TASK_TYPE, FD_ROUTE_REMARK, FD_HINGE_REMARK, FD_TOOL_REMARK, FD_EMP_DEPT, 
+    FD_RESPONSIBLE, FD_RESPONSIBLENAME,FD_PUBLISH_TIME
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.work.entity.TTaskSuperviseExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_TASK_SUPERVISE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <insert id="insert" parameterType="com.work.entity.TTaskSupervise" >
+    insert into TB_TASK_SUPERVISE (TASK_ID, PARENT_ID, FD_TASK_NAME, 
+      FD_LEADER_ID, FD_LEADER_NAME, FD_ASSIST_ORGNAME, 
+      FD_START_DATE, FD_END_DATE, FD_TASK_LEVEL, 
+      FD_TASK_REMARK, FD_EMPID_INPUT, FD_EMPNME_INPPUT, 
+      FD_TASK_STATUS, FD_TASK_TYPE, FD_ROUTE_REMARK, 
+      FD_HINGE_REMARK, FD_TOOL_REMARK, FD_EMP_DEPT, 
+      FD_RESPONSIBLE, FD_RESPONSIBLENAME)
+    values (#{taskId,jdbcType=VARCHAR}, #{parentId,jdbcType=VARCHAR}, #{fdTaskName,jdbcType=VARCHAR}, 
+      #{fdLeaderId,jdbcType=VARCHAR}, #{fdLeaderName,jdbcType=VARCHAR}, #{fdAssistOrgname,jdbcType=VARCHAR}, 
+      #{fdStartDate,jdbcType=VARCHAR}, #{fdEndDate,jdbcType=VARCHAR}, #{fdTaskLevel,jdbcType=VARCHAR}, 
+      #{fdTaskRemark,jdbcType=VARCHAR}, #{fdEmpidInput,jdbcType=VARCHAR}, #{fdEmpnmeInpput,jdbcType=VARCHAR}, 
+      #{fdTaskStatus,jdbcType=VARCHAR}, #{fdTaskType,jdbcType=VARCHAR}, #{fdRouteRemark,jdbcType=VARCHAR}, 
+      #{fdHingeRemark,jdbcType=VARCHAR}, #{fdToolRemark,jdbcType=VARCHAR}, #{fdEmpDept,jdbcType=VARCHAR}, 
+      #{fdResponsible,jdbcType=VARCHAR}, #{fdResponsiblename,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TTaskSupervise" >
+    insert into TB_TASK_SUPERVISE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="taskId != null" >
+        TASK_ID,
+      </if>
+      <if test="parentId != null" >
+        PARENT_ID,
+      </if>
+      <if test="fdTaskName != null" >
+        FD_TASK_NAME,
+      </if>
+      <if test="fdLeaderId != null" >
+        FD_LEADER_ID,
+      </if>
+      <if test="fdLeaderName != null" >
+        FD_LEADER_NAME,
+      </if>
+      <if test="fdAssistOrgname != null" >
+        FD_ASSIST_ORGNAME,
+      </if>
+      <if test="fdStartDate != null" >
+        FD_START_DATE,
+      </if>
+      <if test="fdEndDate != null" >
+        FD_END_DATE,
+      </if>
+      <if test="fdTaskLevel != null" >
+        FD_TASK_LEVEL,
+      </if>
+      <if test="fdTaskRemark != null" >
+        FD_TASK_REMARK,
+      </if>
+      <if test="fdEmpidInput != null" >
+        FD_EMPID_INPUT,
+      </if>
+      <if test="fdEmpnmeInpput != null" >
+        FD_EMPNME_INPPUT,
+      </if>
+      <if test="fdTaskStatus != null" >
+        FD_TASK_STATUS,
+      </if>
+      <if test="fdTaskType != null" >
+        FD_TASK_TYPE,
+      </if>
+      <if test="fdRouteRemark != null" >
+        FD_ROUTE_REMARK,
+      </if>
+      <if test="fdHingeRemark != null" >
+        FD_HINGE_REMARK,
+      </if>
+      <if test="fdToolRemark != null" >
+        FD_TOOL_REMARK,
+      </if>
+      <if test="fdEmpDept != null" >
+        FD_EMP_DEPT,
+      </if>
+      <if test="fdResponsible != null" >
+        FD_RESPONSIBLE,
+      </if>
+      <if test="fdResponsiblename != null" >
+        FD_RESPONSIBLENAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="taskId != null" >
+        #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdTaskName != null" >
+        #{fdTaskName,jdbcType=VARCHAR},
+      </if>
+      <if test="fdLeaderId != null" >
+        #{fdLeaderId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdLeaderName != null" >
+        #{fdLeaderName,jdbcType=VARCHAR},
+      </if>
+      <if test="fdAssistOrgname != null" >
+        #{fdAssistOrgname,jdbcType=VARCHAR},
+      </if>
+      <if test="fdStartDate != null" >
+        #{fdStartDate,jdbcType=VARCHAR},
+      </if>
+      <if test="fdEndDate != null" >
+        #{fdEndDate,jdbcType=VARCHAR},
+      </if>
+      <if test="fdTaskLevel != null" >
+        #{fdTaskLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="fdTaskRemark != null" >
+        #{fdTaskRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="fdEmpidInput != null" >
+        #{fdEmpidInput,jdbcType=VARCHAR},
+      </if>
+      <if test="fdEmpnmeInpput != null" >
+        #{fdEmpnmeInpput,jdbcType=VARCHAR},
+      </if>
+      <if test="fdTaskStatus != null" >
+        #{fdTaskStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="fdTaskType != null" >
+        #{fdTaskType,jdbcType=VARCHAR},
+      </if>
+      <if test="fdRouteRemark != null" >
+        #{fdRouteRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="fdHingeRemark != null" >
+        #{fdHingeRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="fdToolRemark != null" >
+        #{fdToolRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="fdEmpDept != null" >
+        #{fdEmpDept,jdbcType=VARCHAR},
+      </if>
+      <if test="fdResponsible != null" >
+        #{fdResponsible,jdbcType=VARCHAR},
+      </if>
+      <if test="fdResponsiblename != null" >
+        #{fdResponsiblename,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <!--add-->
+  <!--add-->
+  <select id="selectTaskSuperviseByOrgCode" resultMap="BaseResultMap" parameterType="java.util.Map">
+  select * from(
+    SELECT
+		TS.*
+	FROM
+	TB_TASK_SUPERVISE TS
+ 	WHERE Fd_Empid_Input = #{empId}
+ 	and TS.fd_start_date is null and TS.fd_task_type='00' and (TS.fd_responsible is null or TS.fd_responsible !=#{empId})
+ 	<if test="fdTaskStatus != null and fdTaskStatus == '1'.toString()">
+ 		AND FD_TASK_STATUS IN ('01','02')
+ 	</if>
+ 	<if test="fdTaskStatus != null and fdTaskStatus == '2'.toString()">
+ 		AND FD_TASK_STATUS = '03'
+ 	</if>
+union all
+          SELECT
+		TS.*
+	FROM
+	TB_TASK_SUPERVISE TS
+ 	WHERE Fd_Empid_Input = #{empId}
+ 	and TS.fd_start_date is null and TS.fd_task_type='01'
+ 	<if test="fdTaskStatus != null and fdTaskStatus == '1'.toString()">
+ 		AND FD_TASK_STATUS IN ('01','02')
+ 	</if>
+ 	<if test="fdTaskStatus != null and fdTaskStatus == '2'.toString()">
+ 		AND FD_TASK_STATUS = '03'
+ 	</if>
+  	)ORDER BY fd_task_type asc,FD_START_DATE DESC
+  </select>
+  
+  <select id="queryExecTask"  resultMap="BaseResultMap" parameterType="java.util.Map">
+	  	select
+	    <include refid="Base_Column_List" />
+	    from TB_TASK_SUPERVISE
+	    where parent_id=#{taskId}
+  </select>
+    
+  <select id="selectTaskSuperviseByTaskId" resultMap="BaseResultMap" parameterType="java.util.Map">
+  select 
+  <include refid="Base_Column_List" />
+  from (select level lv, a.*
+          from tb_task_supervise a
+         start with a.task_id = #{taskId}
+        connect by prior a.task_id = a.parent_id
+         order by level asc)
+ where lv = (select max(level) as lv
+               from tb_task_supervise a
+              start with a.task_id = #{taskId}
+             connect by prior a.task_id = a.parent_id
+           )
+  </select>
+  
+  <select id="selectMajorPublish" resultMap="BaseResultMap" parameterType="java.util.Map">
+             select f.*,d.fd_object_id,d.fd_task_dept from(
+			 select *
+			  from (select row_number() over(order by lv desc) as id, s.*
+			          from (select level lv, a.*
+			                  from tb_task_supervise a
+			                 start with a.task_id = #{taskId}
+			                connect by prior a.parent_id = a.task_id
+			                 order by level asc) s)
+			 where id = 1) f
+			 left join tb_task_supervise_duty d on
+			 f.task_id=d.task_id and d.fd_task_type='01'
+  </select>
+  
+   <select id="selectCommonrPublish" resultMap="BaseResultMap" parameterType="java.util.Map">
+             select *
+  from (select row_number() over(order by lv desc) as id, s.*
+          from (select level lv, a.*
+                  from tb_task_supervise a
+                 start with a.task_id = #{taskId}
+                connect by prior a.parent_id = a.task_id
+                 order by level asc) s)
+ where id = 1
+  </select>
+  
+  <select id="selectFirstPublish" resultMap="BaseResultMap" parameterType="java.util.Map">
+  	 select * from(
+ select level lv, a.*
+		                  from tb_task_supervise a
+		                 start with a.task_id = ( select task_id
+		  from (select row_number() over(order by lv desc) as id, s.*
+		          from (select level lv, a.*
+		                  from tb_task_supervise a
+		                 start with a.task_id =#{taskId}
+		                connect by prior a.parent_id = a.task_id
+		                 order by level asc) s)
+		 where id =1)
+		                connect by prior a.task_id = a.parent_id
+		                order by level asc)
+                     where lv=2  
+  </select>
+  
+    <select id="selectTaskManger" resultMap="BaseResultMap" parameterType="java.util.Map">
+    SELECT
+		TS.*
+	FROM
+	TB_TASK_SUPERVISE TS
+ 	WHERE TS.PARENT_ID is null and TS.fd_task_type='00'
+ 	<if test="fdTaskStatus != null and fdTaskStatus == '1'.toString()">
+ 		and FD_TASK_STATUS IN ('01','02')
+ 	</if>
+ 	<if test="fdTaskStatus != null and fdTaskStatus == '2'.toString()">
+ 		and FD_TASK_STATUS = '03'
+ 	</if>
+
+  </select>
+  
+  
+  
+</mapper>

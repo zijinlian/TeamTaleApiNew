@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.TChickStaffMapper" >
+  <resultMap id="BaseResultMap" type="com.work.entity.TChickStaff" >
+    <id column="FD_CHICK_STAFF_ID" property="fdChickStaffId" jdbcType="VARCHAR" />
+    <result column="FD_STAFF_ID" property="fdStaffId" jdbcType="VARCHAR" />
+    <result column="FD_BODIES_ID" property="fdBodiesId" jdbcType="VARCHAR" />
+    <result column="FD_BODIES_NAME" property="fdBodiesName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    FD_CHICK_STAFF_ID, FD_STAFF_ID, FD_BODIES_ID, FD_BODIES_NAME
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.work.entity.TChickStaffExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_CHICK_STAFF
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from TB_CHICK_STAFF
+    where FD_CHICK_STAFF_ID = #{fdChickStaffId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TB_CHICK_STAFF
+    where FD_CHICK_STAFF_ID = #{fdChickStaffId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.work.entity.TChickStaff" >
+    insert into TB_CHICK_STAFF (FD_CHICK_STAFF_ID, FD_STAFF_ID, FD_BODIES_ID, 
+      FD_BODIES_NAME)
+    values (#{fdChickStaffId,jdbcType=VARCHAR}, #{fdStaffId,jdbcType=VARCHAR}, #{fdBodiesId,jdbcType=VARCHAR}, 
+      #{fdBodiesName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TChickStaff" >
+    insert into TB_CHICK_STAFF
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fdChickStaffId != null" >
+        FD_CHICK_STAFF_ID,
+      </if>
+      <if test="fdStaffId != null" >
+        FD_STAFF_ID,
+      </if>
+      <if test="fdBodiesId != null" >
+        FD_BODIES_ID,
+      </if>
+      <if test="fdBodiesName != null" >
+        FD_BODIES_NAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fdChickStaffId != null" >
+        #{fdChickStaffId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdStaffId != null" >
+        #{fdStaffId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdBodiesId != null" >
+        #{fdBodiesId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdBodiesName != null" >
+        #{fdBodiesName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.work.entity.TChickStaff" >
+    update TB_CHICK_STAFF
+    <set >
+      <if test="fdStaffId != null" >
+        FD_STAFF_ID = #{fdStaffId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdBodiesId != null" >
+        FD_BODIES_ID = #{fdBodiesId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdBodiesName != null" >
+        FD_BODIES_NAME = #{fdBodiesName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where FD_CHICK_STAFF_ID = #{fdChickStaffId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.work.entity.TChickStaff" >
+    update TB_CHICK_STAFF
+    set FD_STAFF_ID = #{fdStaffId,jdbcType=VARCHAR},
+      FD_BODIES_ID = #{fdBodiesId,jdbcType=VARCHAR},
+      FD_BODIES_NAME = #{fdBodiesName,jdbcType=VARCHAR}
+    where FD_CHICK_STAFF_ID = #{fdChickStaffId,jdbcType=VARCHAR}
+  </update>
+</mapper>

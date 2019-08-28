@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.TIccStaffStatusMapper" >
+  <resultMap id="BaseResultMap" type="com.work.entity.TIccStaffStatus" >
+    <id column="FD_STAFF_ID" property="fdStaffId" jdbcType="VARCHAR" />
+    <id column="FD_PAPER_ID" property="fdPaperId" jdbcType="VARCHAR" />
+    <id column="FD_STAFF_STATUS_DATE" property="fdStaffStatusDate" jdbcType="VARCHAR" />
+    <result column="FD_STAFF_SCORE" property="fdStaffScore" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    FD_STAFF_ID, FD_PAPER_ID, FD_STAFF_STATUS_DATE, FD_STAFF_SCORE
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.work.entity.TIccStaffStatusExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_ICC_STAFF_STATUS
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.work.entity.TIccStaffStatusKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from TB_ICC_STAFF_STATUS
+    where FD_STAFF_ID = #{fdStaffId,jdbcType=VARCHAR}
+      and FD_PAPER_ID = #{fdPaperId,jdbcType=VARCHAR}
+      and FD_STAFF_STATUS_DATE = #{fdStaffStatusDate,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.work.entity.TIccStaffStatusKey" >
+    delete from TB_ICC_STAFF_STATUS
+    where FD_STAFF_ID = #{fdStaffId,jdbcType=VARCHAR}
+      and FD_PAPER_ID = #{fdPaperId,jdbcType=VARCHAR}
+      and FD_STAFF_STATUS_DATE = #{fdStaffStatusDate,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.work.entity.TIccStaffStatus" >
+    insert into TB_ICC_STAFF_STATUS (FD_STAFF_ID, FD_PAPER_ID, FD_STAFF_STATUS_DATE, 
+      FD_STAFF_SCORE)
+    values (#{fdStaffId,jdbcType=VARCHAR}, #{fdPaperId,jdbcType=VARCHAR}, #{fdStaffStatusDate,jdbcType=VARCHAR}, 
+      #{fdStaffScore,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TIccStaffStatus" >
+    insert into TB_ICC_STAFF_STATUS
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fdStaffId != null" >
+        FD_STAFF_ID,
+      </if>
+      <if test="fdPaperId != null" >
+        FD_PAPER_ID,
+      </if>
+      <if test="fdStaffStatusDate != null" >
+        FD_STAFF_STATUS_DATE,
+      </if>
+      <if test="fdStaffScore != null" >
+        FD_STAFF_SCORE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fdStaffId != null" >
+        #{fdStaffId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdPaperId != null" >
+        #{fdPaperId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdStaffStatusDate != null" >
+        #{fdStaffStatusDate,jdbcType=VARCHAR},
+      </if>
+      <if test="fdStaffScore != null" >
+        #{fdStaffScore,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.work.entity.TIccStaffStatus" >
+    update TB_ICC_STAFF_STATUS
+    <set >
+      <if test="fdStaffScore != null" >
+        FD_STAFF_SCORE = #{fdStaffScore,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where FD_STAFF_ID = #{fdStaffId,jdbcType=VARCHAR}
+      and FD_PAPER_ID = #{fdPaperId,jdbcType=VARCHAR}
+      and FD_STAFF_STATUS_DATE = #{fdStaffStatusDate,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.work.entity.TIccStaffStatus" >
+    update TB_ICC_STAFF_STATUS
+    set FD_STAFF_SCORE = #{fdStaffScore,jdbcType=VARCHAR}
+    where FD_STAFF_ID = #{fdStaffId,jdbcType=VARCHAR}
+      and FD_PAPER_ID = #{fdPaperId,jdbcType=VARCHAR}
+      and FD_STAFF_STATUS_DATE = #{fdStaffStatusDate,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.TCmApplyMapper" >
+  <resultMap id="BaseResultMap" type="com.work.entity.TCmApply" >
+    <id column="APPLYID" property="applyid" jdbcType="VARCHAR" />
+    <result column="APPLYDEPARTMENT" property="applydepartment" jdbcType="VARCHAR" />
+    <result column="CONTACTS" property="contacts" jdbcType="VARCHAR" />
+    <result column="TELPHONE" property="telphone" jdbcType="VARCHAR" />
+    <result column="MEETPEOPLES" property="meetpeoples" jdbcType="DECIMAL" />
+    <result column="MEETNAME" property="meetname" jdbcType="VARCHAR" />
+    <result column="MEETSTARTTIME" property="meetstarttime" jdbcType="VARCHAR" />
+    <result column="MEETENDTIME" property="meetendtime" jdbcType="VARCHAR" />
+    <result column="LEADER" property="leader" jdbcType="VARCHAR" />
+    <result column="PARTICIPANTS" property="participants" jdbcType="VARCHAR" />
+    <result column="MEETDEMAND" property="meetdemand" jdbcType="VARCHAR" />
+    <result column="REASON" property="reason" jdbcType="VARCHAR" />
+    <result column="EMPID" property="empid" jdbcType="VARCHAR" />
+    <result column="EMPNAME" property="empname" jdbcType="VARCHAR" />
+    <result column="APPLYTIME" property="applytime" jdbcType="VARCHAR" />
+    <result column="APPLY_WATER" property="applyWater" jdbcType="DECIMAL" />
+    <result column="APPLY_TEAM" property="applyTeam" jdbcType="DECIMAL" />
+    <result column="APPLY_CONTEN" property="applyConten" jdbcType="VARCHAR" />
+    <result column="APPLY_SUPER" property="applySuper" jdbcType="DECIMAL" />
+    <result column="APPLY_DESK" property="applyDesk" jdbcType="DECIMAL" />
+    <result column="APPLY_SIGN" property="applySign" jdbcType="DECIMAL" />
+    <result column="APPLY_WHITE" property="applyWhite" jdbcType="DECIMAL" />
+    <result column="APPLY_RESET" property="applyReset" jdbcType="DECIMAL" />
+    <result column="APPLY_VIDEO" property="applyVideo" jdbcType="DECIMAL" />
+    <result column="APPLY_PROJECTOR" property="applyProjector" jdbcType="DECIMAL" />
+    <result column="APPLY_MAKE" property="applyMake" jdbcType="DECIMAL" />
+    <result column="APPLY_TAPE" property="applyTape" jdbcType="DECIMAL" />
+    <result column="APPLY_VIDEOTAPE" property="applyVideotape" jdbcType="DECIMAL" />
+    <result column="APPLY_LEVEL" property="applyLevel" jdbcType="DECIMAL" />
+    <result column="APPLYSTATUS" property="applystatus" jdbcType="VARCHAR" />
+    <!--<result column="ROOMTYPEID" property="roomtypeid" jdbcType="VARCHAR" />-->
+    <!--<result column="ROOMIMAGEID" property="roomimageid" jdbcType="VARCHAR" />-->
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    APPLYID, APPLYDEPARTMENT, CONTACTS, TELPHONE, MEETPEOPLES, MEETNAME, MEETSTARTTIME, 
+    MEETENDTIME, LEADER, PARTICIPANTS, MEETDEMAND, REASON, EMPID, EMPNAME, APPLYTIME, 
+    APPLY_WATER, APPLY_TEAM, APPLY_CONTEN, APPLY_SUPER, APPLY_DESK, APPLY_SIGN, APPLY_WHITE, 
+    APPLY_RESET, APPLY_VIDEO, APPLY_PROJECTOR, APPLY_MAKE, APPLY_TAPE, APPLY_VIDEOTAPE, 
+    APPLY_LEVEL, APPLYSTATUS
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.work.entity.TCmApplyExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_CM_APPLY
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from TB_CM_APPLY
+    where APPLYID = #{applyid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TB_CM_APPLY
+    where APPLYID = #{applyid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.work.entity.TCmApply" >
+    insert into TB_CM_APPLY (APPLYID, APPLYDEPARTMENT, CONTACTS, 
+      TELPHONE, MEETPEOPLES, MEETNAME, 
+      MEETSTARTTIME, MEETENDTIME, LEADER, 
+      PARTICIPANTS, MEETDEMAND, REASON, 
+      EMPID, EMPNAME, APPLYTIME, 
+      APPLY_WATER, APPLY_TEAM, APPLY_CONTEN, 
+      APPLY_SUPER, APPLY_DESK, APPLY_SIGN, 
+      APPLY_WHITE, APPLY_RESET, APPLY_VIDEO, 
+      APPLY_PROJECTOR, APPLY_MAKE, APPLY_TAPE, 
+      APPLY_VIDEOTAPE, APPLY_LEVEL, APPLYSTATUS
+    values (#{applyid,jdbcType=VARCHAR}, #{applydepartment,jdbcType=VARCHAR}, #{contacts,jdbcType=VARCHAR}, 
+      #{telphone,jdbcType=VARCHAR}, #{meetpeoples,jdbcType=DECIMAL}, #{meetname,jdbcType=VARCHAR}, 
+      #{meetstarttime,jdbcType=VARCHAR}, #{meetendtime,jdbcType=VARCHAR}, #{leader,jdbcType=VARCHAR}, 
+      #{participants,jdbcType=VARCHAR}, #{meetdemand,jdbcType=VARCHAR}, #{reason,jdbcType=VARCHAR}, 
+      #{empid,jdbcType=VARCHAR}, #{empname,jdbcType=VARCHAR}, #{applytime,jdbcType=VARCHAR}, 
+      #{applyWater,jdbcType=DECIMAL}, #{applyTeam,jdbcType=DECIMAL}, #{applyConten,jdbcType=VARCHAR}, 
+      #{applySuper,jdbcType=DECIMAL}, #{applyDesk,jdbcType=DECIMAL}, #{applySign,jdbcType=DECIMAL}, 
+      #{applyWhite,jdbcType=DECIMAL}, #{applyReset,jdbcType=DECIMAL}, #{applyVideo,jdbcType=DECIMAL}, 
+      #{applyProjector,jdbcType=DECIMAL}, #{applyMake,jdbcType=DECIMAL}, #{applyTape,jdbcType=DECIMAL}, 
+      #{applyVideotape,jdbcType=DECIMAL}, #{applyLevel,jdbcType=DECIMAL}, #{applystatus,jdbcType=VARCHAR}
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TCmApply" >
+    insert into TB_CM_APPLY
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="applyid != null" >
+        APPLYID,
+      </if>
+      <if test="applydepartment != null" >
+        APPLYDEPARTMENT,
+      </if>
+      <if test="contacts != null" >
+        CONTACTS,
+      </if>
+      <if test="telphone != null" >
+        TELPHONE,
+      </if>
+      <if test="meetpeoples != null" >
+        MEETPEOPLES,
+      </if>
+      <if test="meetname != null" >
+        MEETNAME,
+      </if>
+      <if test="meetstarttime != null" >
+        MEETSTARTTIME,
+      </if>
+      <if test="meetendtime != null" >
+        MEETENDTIME,
+      </if>
+      <if test="leader != null" >
+        LEADER,
+      </if>
+      <if test="participants != null" >
+        PARTICIPANTS,
+      </if>
+      <if test="meetdemand != null" >
+        MEETDEMAND,
+      </if>
+      <if test="reason != null" >
+        REASON,
+      </if>
+      <if test="empid != null" >
+        EMPID,
+      </if>
+      <if test="empname != null" >
+        EMPNAME,
+      </if>
+      <if test="applytime != null" >
+        APPLYTIME,
+      </if>
+      <if test="applyWater != null" >
+        APPLY_WATER,
+      </if>
+      <if test="applyTeam != null" >
+        APPLY_TEAM,
+      </if>
+      <if test="applyConten != null" >
+        APPLY_CONTEN,
+      </if>
+      <if test="applySuper != null" >
+        APPLY_SUPER,
+      </if>
+      <if test="applyDesk != null" >
+        APPLY_DESK,
+      </if>
+      <if test="applySign != null" >
+        APPLY_SIGN,
+      </if>
+      <if test="applyWhite != null" >
+        APPLY_WHITE,
+      </if>
+      <if test="applyReset != null" >
+        APPLY_RESET,
+      </if>
+      <if test="applyVideo != null" >
+        APPLY_VIDEO,
+      </if>
+      <if test="applyProjector != null" >
+        APPLY_PROJECTOR,
+      </if>
+      <if test="applyMake != null" >
+        APPLY_MAKE,
+      </if>
+      <if test="applyTape != null" >
+        APPLY_TAPE,
+      </if>
+      <if test="applyVideotape != null" >
+        APPLY_VIDEOTAPE,
+      </if>
+      <if test="applyLevel != null" >
+        APPLY_LEVEL,
+      </if>
+      <if test="applystatus != null" >
+        APPLYSTATUS
+      </if>
+
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="applyid != null" >
+        #{applyid,jdbcType=VARCHAR},
+      </if>
+      <if test="applydepartment != null" >
+        #{applydepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="contacts != null" >
+        #{contacts,jdbcType=VARCHAR},
+      </if>
+      <if test="telphone != null" >
+        #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="meetpeoples != null" >
+        #{meetpeoples,jdbcType=DECIMAL},
+      </if>
+      <if test="meetname != null" >
+        #{meetname,jdbcType=VARCHAR},
+      </if>
+      <if test="meetstarttime != null" >
+        #{meetstarttime,jdbcType=VARCHAR},
+      </if>
+      <if test="meetendtime != null" >
+        #{meetendtime,jdbcType=VARCHAR},
+      </if>
+      <if test="leader != null" >
+        #{leader,jdbcType=VARCHAR},
+      </if>
+      <if test="participants != null" >
+        #{participants,jdbcType=VARCHAR},
+      </if>
+      <if test="meetdemand != null" >
+        #{meetdemand,jdbcType=VARCHAR},
+      </if>
+      <if test="reason != null" >
+        #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="empid != null" >
+        #{empid,jdbcType=VARCHAR},
+      </if>
+      <if test="empname != null" >
+        #{empname,jdbcType=VARCHAR},
+      </if>
+      <if test="applytime != null" >
+        #{applytime,jdbcType=VARCHAR},
+      </if>
+      <if test="applyWater != null" >
+        #{applyWater,jdbcType=DECIMAL},
+      </if>
+      <if test="applyTeam != null" >
+        #{applyTeam,jdbcType=DECIMAL},
+      </if>
+      <if test="applyConten != null" >
+        #{applyConten,jdbcType=VARCHAR},
+      </if>
+      <if test="applySuper != null" >
+        #{applySuper,jdbcType=DECIMAL},
+      </if>
+      <if test="applyDesk != null" >
+        #{applyDesk,jdbcType=DECIMAL},
+      </if>
+      <if test="applySign != null" >
+        #{applySign,jdbcType=DECIMAL},
+      </if>
+      <if test="applyWhite != null" >
+        #{applyWhite,jdbcType=DECIMAL},
+      </if>
+      <if test="applyReset != null" >
+        #{applyReset,jdbcType=DECIMAL},
+      </if>
+      <if test="applyVideo != null" >
+        #{applyVideo,jdbcType=DECIMAL},
+      </if>
+      <if test="applyProjector != null" >
+        #{applyProjector,jdbcType=DECIMAL},
+      </if>
+      <if test="applyMake != null" >
+        #{applyMake,jdbcType=DECIMAL},
+      </if>
+      <if test="applyTape != null" >
+        #{applyTape,jdbcType=DECIMAL},
+      </if>
+      <if test="applyVideotape != null" >
+        #{applyVideotape,jdbcType=DECIMAL},
+      </if>
+      <if test="applyLevel != null" >
+        #{applyLevel,jdbcType=DECIMAL},
+      </if>
+      <if test="applystatus != null" >
+        #{applystatus,jdbcType=VARCHAR}
+      </if>
+
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.work.entity.TCmApply" >
+    update TB_CM_APPLY
+    <set >
+      <if test="applydepartment != null" >
+        APPLYDEPARTMENT = #{applydepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="contacts != null" >
+        CONTACTS = #{contacts,jdbcType=VARCHAR},
+      </if>
+      <if test="telphone != null" >
+        TELPHONE = #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="meetpeoples != null" >
+        MEETPEOPLES = #{meetpeoples,jdbcType=DECIMAL},
+      </if>
+      <if test="meetname != null" >
+        MEETNAME = #{meetname,jdbcType=VARCHAR},
+      </if>
+      <if test="meetstarttime != null" >
+        MEETSTARTTIME = #{meetstarttime,jdbcType=VARCHAR},
+      </if>
+      <if test="meetendtime != null" >
+        MEETENDTIME = #{meetendtime,jdbcType=VARCHAR},
+      </if>
+      <if test="leader != null" >
+        LEADER = #{leader,jdbcType=VARCHAR},
+      </if>
+      <if test="participants != null" >
+        PARTICIPANTS = #{participants,jdbcType=VARCHAR},
+      </if>
+      <if test="meetdemand != null" >
+        MEETDEMAND = #{meetdemand,jdbcType=VARCHAR},
+      </if>
+      <if test="reason != null" >
+        REASON = #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="empid != null" >
+        EMPID = #{empid,jdbcType=VARCHAR},
+      </if>
+      <if test="empname != null" >
+        EMPNAME = #{empname,jdbcType=VARCHAR},
+      </if>
+      <if test="applytime != null" >
+        APPLYTIME = #{applytime,jdbcType=VARCHAR},
+      </if>
+      <if test="applyWater != null" >
+        APPLY_WATER = #{applyWater,jdbcType=DECIMAL},
+      </if>
+      <if test="applyTeam != null" >
+        APPLY_TEAM = #{applyTeam,jdbcType=DECIMAL},
+      </if>
+      <if test="applyConten != null" >
+        APPLY_CONTEN = #{applyConten,jdbcType=VARCHAR},
+      </if>
+      <if test="applySuper != null" >
+        APPLY_SUPER = #{applySuper,jdbcType=DECIMAL},
+      </if>
+      <if test="applyDesk != null" >
+        APPLY_DESK = #{applyDesk,jdbcType=DECIMAL},
+      </if>
+      <if test="applySign != null" >
+        APPLY_SIGN = #{applySign,jdbcType=DECIMAL},
+      </if>
+      <if test="applyWhite != null" >
+        APPLY_WHITE = #{applyWhite,jdbcType=DECIMAL},
+      </if>
+      <if test="applyReset != null" >
+        APPLY_RESET = #{applyReset,jdbcType=DECIMAL},
+      </if>
+      <if test="applyVideo != null" >
+        APPLY_VIDEO = #{applyVideo,jdbcType=DECIMAL},
+      </if>
+      <if test="applyProjector != null" >
+        APPLY_PROJECTOR = #{applyProjector,jdbcType=DECIMAL},
+      </if>
+      <if test="applyMake != null" >
+        APPLY_MAKE = #{applyMake,jdbcType=DECIMAL},
+      </if>
+      <if test="applyTape != null" >
+        APPLY_TAPE = #{applyTape,jdbcType=DECIMAL},
+      </if>
+      <if test="applyVideotape != null" >
+        APPLY_VIDEOTAPE = #{applyVideotape,jdbcType=DECIMAL},
+      </if>
+      <if test="applyLevel != null" >
+        APPLY_LEVEL = #{applyLevel,jdbcType=DECIMAL},
+      </if>
+      <if test="applystatus != null" >
+        APPLYSTATUS = #{applystatus,jdbcType=VARCHAR}
+      </if>
+
+    </set>
+    where APPLYID = #{applyid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.work.entity.TCmApply" >
+    update TB_CM_APPLY
+    set APPLYDEPARTMENT = #{applydepartment,jdbcType=VARCHAR},
+      CONTACTS = #{contacts,jdbcType=VARCHAR},
+      TELPHONE = #{telphone,jdbcType=VARCHAR},
+      MEETPEOPLES = #{meetpeoples,jdbcType=DECIMAL},
+      MEETNAME = #{meetname,jdbcType=VARCHAR},
+      MEETSTARTTIME = #{meetstarttime,jdbcType=VARCHAR},
+      MEETENDTIME = #{meetendtime,jdbcType=VARCHAR},
+      LEADER = #{leader,jdbcType=VARCHAR},
+      PARTICIPANTS = #{participants,jdbcType=VARCHAR},
+      MEETDEMAND = #{meetdemand,jdbcType=VARCHAR},
+      REASON = #{reason,jdbcType=VARCHAR},
+      EMPID = #{empid,jdbcType=VARCHAR},
+      EMPNAME = #{empname,jdbcType=VARCHAR},
+      APPLYTIME = #{applytime,jdbcType=VARCHAR},
+      APPLY_WATER = #{applyWater,jdbcType=DECIMAL},
+      APPLY_TEAM = #{applyTeam,jdbcType=DECIMAL},
+      APPLY_CONTEN = #{applyConten,jdbcType=VARCHAR},
+      APPLY_SUPER = #{applySuper,jdbcType=DECIMAL},
+      APPLY_DESK = #{applyDesk,jdbcType=DECIMAL},
+      APPLY_SIGN = #{applySign,jdbcType=DECIMAL},
+      APPLY_WHITE = #{applyWhite,jdbcType=DECIMAL},
+      APPLY_RESET = #{applyReset,jdbcType=DECIMAL},
+      APPLY_VIDEO = #{applyVideo,jdbcType=DECIMAL},
+      APPLY_PROJECTOR = #{applyProjector,jdbcType=DECIMAL},
+      APPLY_MAKE = #{applyMake,jdbcType=DECIMAL},
+      APPLY_TAPE = #{applyTape,jdbcType=DECIMAL},
+      APPLY_VIDEOTAPE = #{applyVideotape,jdbcType=DECIMAL},
+      APPLY_LEVEL = #{applyLevel,jdbcType=DECIMAL},
+      APPLYSTATUS = #{applystatus,jdbcType=VARCHAR}
+
+    where APPLYID = #{applyid,jdbcType=VARCHAR}
+  </update>
+</mapper>

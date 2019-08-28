@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.TDishMealMapper" >
+  <resultMap id="BaseResultMap" type="com.work.entity.TDishMeal" >
+    <id column="MEALID" property="mealid" jdbcType="VARCHAR" />
+    <result column="DISHAREA" property="disharea" jdbcType="VARCHAR" />
+    <result column="DISHSTARTIME" property="dishstartime" jdbcType="VARCHAR" />
+    <result column="DISHENDTIME" property="dishendtime" jdbcType="VARCHAR" />
+    <result column="CHECKSTARTTIME" property="checkstarttime" jdbcType="VARCHAR" />
+    <result column="CHECKENDTIME" property="checkendtime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    MEALID, DISHAREA, DISHSTARTIME, DISHENDTIME, CHECKSTARTTIME, CHECKENDTIME
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.work.entity.TDishMealExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_DISH_MEAL
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from TB_DISH_MEAL
+    where MEALID = #{mealid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TB_DISH_MEAL
+    where MEALID = #{mealid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.work.entity.TDishMeal" >
+    insert into TB_DISH_MEAL (MEALID, DISHAREA, DISHSTARTIME, 
+      DISHENDTIME, CHECKSTARTTIME, CHECKENDTIME
+      )
+    values (#{mealid,jdbcType=VARCHAR}, #{disharea,jdbcType=VARCHAR}, #{dishstartime,jdbcType=VARCHAR}, 
+      #{dishendtime,jdbcType=VARCHAR}, #{checkstarttime,jdbcType=VARCHAR}, #{checkendtime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TDishMeal" >
+    insert into TB_DISH_MEAL
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="mealid != null" >
+        MEALID,
+      </if>
+      <if test="disharea != null" >
+        DISHAREA,
+      </if>
+      <if test="dishstartime != null" >
+        DISHSTARTIME,
+      </if>
+      <if test="dishendtime != null" >
+        DISHENDTIME,
+      </if>
+      <if test="checkstarttime != null" >
+        CHECKSTARTTIME,
+      </if>
+      <if test="checkendtime != null" >
+        CHECKENDTIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="mealid != null" >
+        #{mealid,jdbcType=VARCHAR},
+      </if>
+      <if test="disharea != null" >
+        #{disharea,jdbcType=VARCHAR},
+      </if>
+      <if test="dishstartime != null" >
+        #{dishstartime,jdbcType=VARCHAR},
+      </if>
+      <if test="dishendtime != null" >
+        #{dishendtime,jdbcType=VARCHAR},
+      </if>
+      <if test="checkstarttime != null" >
+        #{checkstarttime,jdbcType=VARCHAR},
+      </if>
+      <if test="checkendtime != null" >
+        #{checkendtime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.work.entity.TDishMeal" >
+    update TB_DISH_MEAL
+    <set >
+      <if test="disharea != null" >
+        DISHAREA = #{disharea,jdbcType=VARCHAR},
+      </if>
+      <if test="dishstartime != null" >
+        DISHSTARTIME = #{dishstartime,jdbcType=VARCHAR},
+      </if>
+      <if test="dishendtime != null" >
+        DISHENDTIME = #{dishendtime,jdbcType=VARCHAR},
+      </if>
+      <if test="checkstarttime != null" >
+        CHECKSTARTTIME = #{checkstarttime,jdbcType=VARCHAR},
+      </if>
+      <if test="checkendtime != null" >
+        CHECKENDTIME = #{checkendtime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where MEALID = #{mealid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.work.entity.TDishMeal" >
+    update TB_DISH_MEAL
+    set DISHAREA = #{disharea,jdbcType=VARCHAR},
+      DISHSTARTIME = #{dishstartime,jdbcType=VARCHAR},
+      DISHENDTIME = #{dishendtime,jdbcType=VARCHAR},
+      CHECKSTARTTIME = #{checkstarttime,jdbcType=VARCHAR},
+      CHECKENDTIME = #{checkendtime,jdbcType=VARCHAR}
+    where MEALID = #{mealid,jdbcType=VARCHAR}
+  </update>
+</mapper>

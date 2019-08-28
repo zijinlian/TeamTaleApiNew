@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.work.mapper.TPubAttachinfoMapper">
+  <resultMap id="BaseResultMap" type="com.work.entity.TPubAttachinfo">
+    <id column="FD_ATTACHID" jdbcType="VARCHAR" property="fdAttachid" />
+    <result column="FD_ATTACHTYP" jdbcType="VARCHAR" property="fdAttachtyp" />
+    <result column="FD_SOURCENME" jdbcType="VARCHAR" property="fdSourcenme" />
+    <result column="FD_NEWNME" jdbcType="VARCHAR" property="fdNewnme" />
+    <result column="FD_STOREPATH" jdbcType="VARCHAR" property="fdStorepath" />
+    <result column="FD_UPLOADERID" jdbcType="VARCHAR" property="fdUploaderid" />
+    <result column="FD_UPLOADERNME" jdbcType="VARCHAR" property="fdUploadernme" />
+    <result column="FD_UPLOADTIME" jdbcType="VARCHAR" property="fdUploadtime" />
+    <result column="FD_VALIDFLAG" jdbcType="DECIMAL" property="fdValidflag" />
+    <result column="FD_COMMENTS" jdbcType="VARCHAR" property="fdComments" />
+    <result column="FD_LOADED" jdbcType="VARCHAR" property="fdLoaded" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    FD_ATTACHID, FD_ATTACHTYP, FD_SOURCENME, FD_NEWNME, FD_STOREPATH, FD_UPLOADERID, 
+    FD_UPLOADERNME, FD_UPLOADTIME, FD_VALIDFLAG, FD_COMMENTS, FD_LOADED
+  </sql>
+  <select id="selectByExample" parameterType="com.work.entity.TPubAttachinfoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_PUB_ATTACHINFO
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from TB_PUB_ATTACHINFO
+    where FD_ATTACHID = #{fdAttachid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from TB_PUB_ATTACHINFO
+    where FD_ATTACHID = #{fdAttachid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.work.entity.TPubAttachinfo">
+    insert into TB_PUB_ATTACHINFO (FD_ATTACHID, FD_ATTACHTYP, FD_SOURCENME, 
+      FD_NEWNME, FD_STOREPATH, FD_UPLOADERID, 
+      FD_UPLOADERNME, FD_UPLOADTIME, FD_VALIDFLAG, 
+      FD_COMMENTS, FD_LOADED)
+    values (#{fdAttachid,jdbcType=VARCHAR}, #{fdAttachtyp,jdbcType=VARCHAR}, #{fdSourcenme,jdbcType=VARCHAR}, 
+      #{fdNewnme,jdbcType=VARCHAR}, #{fdStorepath,jdbcType=VARCHAR}, #{fdUploaderid,jdbcType=VARCHAR}, 
+      #{fdUploadernme,jdbcType=VARCHAR}, #{fdUploadtime,jdbcType=VARCHAR}, #{fdValidflag,jdbcType=DECIMAL}, 
+      #{fdComments,jdbcType=VARCHAR}, #{fdLoaded,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TPubAttachinfo">
+    insert into TB_PUB_ATTACHINFO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="fdAttachid != null">
+        FD_ATTACHID,
+      </if>
+      <if test="fdAttachtyp != null">
+        FD_ATTACHTYP,
+      </if>
+      <if test="fdSourcenme != null">
+        FD_SOURCENME,
+      </if>
+      <if test="fdNewnme != null">
+        FD_NEWNME,
+      </if>
+      <if test="fdStorepath != null">
+        FD_STOREPATH,
+      </if>
+      <if test="fdUploaderid != null">
+        FD_UPLOADERID,
+      </if>
+      <if test="fdUploadernme != null">
+        FD_UPLOADERNME,
+      </if>
+      <if test="fdUploadtime != null">
+        FD_UPLOADTIME,
+      </if>
+      <if test="fdValidflag != null">
+        FD_VALIDFLAG,
+      </if>
+      <if test="fdComments != null">
+        FD_COMMENTS,
+      </if>
+      <if test="fdLoaded != null">
+        FD_LOADED,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="fdAttachid != null">
+        #{fdAttachid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdAttachtyp != null">
+        #{fdAttachtyp,jdbcType=VARCHAR},
+      </if>
+      <if test="fdSourcenme != null">
+        #{fdSourcenme,jdbcType=VARCHAR},
+      </if>
+      <if test="fdNewnme != null">
+        #{fdNewnme,jdbcType=VARCHAR},
+      </if>
+      <if test="fdStorepath != null">
+        #{fdStorepath,jdbcType=VARCHAR},
+      </if>
+      <if test="fdUploaderid != null">
+        #{fdUploaderid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdUploadernme != null">
+        #{fdUploadernme,jdbcType=VARCHAR},
+      </if>
+      <if test="fdUploadtime != null">
+        #{fdUploadtime,jdbcType=VARCHAR},
+      </if>
+      <if test="fdValidflag != null">
+        #{fdValidflag,jdbcType=DECIMAL},
+      </if>
+      <if test="fdComments != null">
+        #{fdComments,jdbcType=VARCHAR},
+      </if>
+      <if test="fdLoaded != null">
+        #{fdLoaded,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.work.entity.TPubAttachinfo">
+    update TB_PUB_ATTACHINFO
+    <set>
+      <if test="fdAttachtyp != null">
+        FD_ATTACHTYP = #{fdAttachtyp,jdbcType=VARCHAR},
+      </if>
+      <if test="fdSourcenme != null">
+        FD_SOURCENME = #{fdSourcenme,jdbcType=VARCHAR},
+      </if>
+      <if test="fdNewnme != null">
+        FD_NEWNME = #{fdNewnme,jdbcType=VARCHAR},
+      </if>
+      <if test="fdStorepath != null">
+        FD_STOREPATH = #{fdStorepath,jdbcType=VARCHAR},
+      </if>
+      <if test="fdUploaderid != null">
+        FD_UPLOADERID = #{fdUploaderid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdUploadernme != null">
+        FD_UPLOADERNME = #{fdUploadernme,jdbcType=VARCHAR},
+      </if>
+      <if test="fdUploadtime != null">
+        FD_UPLOADTIME = #{fdUploadtime,jdbcType=VARCHAR},
+      </if>
+      <if test="fdValidflag != null">
+        FD_VALIDFLAG = #{fdValidflag,jdbcType=DECIMAL},
+      </if>
+      <if test="fdComments != null">
+        FD_COMMENTS = #{fdComments,jdbcType=VARCHAR},
+      </if>
+      <if test="fdLoaded != null">
+        FD_LOADED = #{fdLoaded,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where FD_ATTACHID = #{fdAttachid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.work.entity.TPubAttachinfo">
+    update TB_PUB_ATTACHINFO
+    set FD_ATTACHTYP = #{fdAttachtyp,jdbcType=VARCHAR},
+      FD_SOURCENME = #{fdSourcenme,jdbcType=VARCHAR},
+      FD_NEWNME = #{fdNewnme,jdbcType=VARCHAR},
+      FD_STOREPATH = #{fdStorepath,jdbcType=VARCHAR},
+      FD_UPLOADERID = #{fdUploaderid,jdbcType=VARCHAR},
+      FD_UPLOADERNME = #{fdUploadernme,jdbcType=VARCHAR},
+      FD_UPLOADTIME = #{fdUploadtime,jdbcType=VARCHAR},
+      FD_VALIDFLAG = #{fdValidflag,jdbcType=DECIMAL},
+      FD_COMMENTS = #{fdComments,jdbcType=VARCHAR},
+      FD_LOADED = #{fdLoaded,jdbcType=VARCHAR}
+    where FD_ATTACHID = #{fdAttachid,jdbcType=VARCHAR}
+  </update>
+</mapper>

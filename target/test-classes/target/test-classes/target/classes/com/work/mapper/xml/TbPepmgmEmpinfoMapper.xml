@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.TbPepmgmEmpinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.work.entity.TbPepmgmEmpinfo" >
+    <result column="FD_EMPID" property="fdEmpid" jdbcType="VARCHAR" />
+    <result column="FD_EMPNME" property="fdEmpnme" jdbcType="VARCHAR" />
+    <result column="FD_GENDER" property="fdGender" jdbcType="VARCHAR" />
+    <result column="FD_ORGNME" property="fdOrgnme" jdbcType="VARCHAR" />
+    <result column="FD_UNITNME" property="fdUnitnme" jdbcType="VARCHAR" />
+    <result column="FD_JOBNME" property="fdJobnme" jdbcType="VARCHAR" />
+    <result column="FD_STANDARD_JOBNME" property="fdStandardJobnme" jdbcType="VARCHAR" />
+    <result column="FD_JOB_STARTDATE" property="fdJobStartdate" jdbcType="VARCHAR" />
+    <result column="FD_JOBID" property="fdJobid" jdbcType="VARCHAR" />
+    <result column="FD_UNITCDE" property="fdUnitcde" jdbcType="VARCHAR" />
+    <result column="FD_ORGCDE" property="fdOrgcde" jdbcType="VARCHAR" />
+    <result column="FD_STANDJOB_SYSNUM" property="fdStandjobSysnum" jdbcType="VARCHAR" />
+    <result column="FD_EMPSTAT" property="fdEmpstat" jdbcType="VARCHAR" />
+    <result column="FD_EMPTYP" property="fdEmptyp" jdbcType="VARCHAR" />
+    <result column="FD_JOBLINE" property="fdJobline" jdbcType="VARCHAR" />
+    <result column="FD_ORG_IDENTIFY" property="fdOrgIdentify" jdbcType="VARCHAR" />
+    <result column="FD_ORGFLAG" property="fdOrgflag" jdbcType="VARCHAR" />
+    <result column="FD_ORGLEVEL" property="fdOrglevel" jdbcType="VARCHAR" />
+    <result column="FD_HIREDATE" property="fdHiredate" jdbcType="VARCHAR" />
+    <result column="FD_JOINTRADE_DATE" property="fdJointradeDate" jdbcType="VARCHAR" />
+    <result column="FD_START_WORKDATE" property="fdStartWorkdate" jdbcType="VARCHAR" />
+    <result column="FD_NATION" property="fdNation" jdbcType="VARCHAR" />
+    <result column="FD_ENTRY_MODE" property="fdEntryMode" jdbcType="VARCHAR" />
+    <result column="FD_POLITICAL_STATUS" property="fdPoliticalStatus" jdbcType="VARCHAR" />
+    <result column="FD_HIGH_EDU" property="fdHighEdu" jdbcType="VARCHAR" />
+    <result column="FD_HIGH_DEGREE" property="fdHighDegree" jdbcType="VARCHAR" />
+    <result column="FD_PARENTUNIT_SYSTEMNO" property="fdParentunitSystemno" jdbcType="VARCHAR" />
+    <result column="FD_PARENT_ORG" property="fdParentOrg" jdbcType="VARCHAR" />
+    <result column="FD_FACT_UNIT" property="fdFactUnit" jdbcType="VARCHAR" />
+    <result column="FD_JOBCODE" property="fdJobcode" jdbcType="VARCHAR" />
+    <result column="FD_NATIVE_PLACE" property="fdNativePlace" jdbcType="VARCHAR" />
+    <result column="FD_BIRTH_PLACE" property="fdBirthPlace" jdbcType="VARCHAR" />
+    <result column="FD_DOMICILE_PLACE" property="fdDomicilePlace" jdbcType="VARCHAR" />
+    <result column="FD_LEADERID" property="fdLeaderid" jdbcType="VARCHAR" />
+    <result column="FD_LEADERNME" property="fdLeadernme" jdbcType="VARCHAR" />
+    <result column="FD_DEPT_ORG" property="fdDeptOrg" jdbcType="VARCHAR" />
+    <result column="FD_CRED_NUM" property="fdCredNum" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    FD_EMPID, FD_EMPNME, FD_GENDER, FD_ORGNME, FD_UNITNME, FD_JOBNME, FD_STANDARD_JOBNME, 
+    FD_JOB_STARTDATE, FD_JOBID, FD_UNITCDE, FD_ORGCDE, FD_STANDJOB_SYSNUM, FD_EMPSTAT, 
+    FD_EMPTYP, FD_JOBLINE, FD_ORG_IDENTIFY, FD_ORGFLAG, FD_ORGLEVEL, FD_HIREDATE, FD_JOINTRADE_DATE, 
+    FD_START_WORKDATE, FD_NATION, FD_ENTRY_MODE, FD_POLITICAL_STATUS, FD_HIGH_EDU, FD_HIGH_DEGREE, 
+    FD_PARENTUNIT_SYSTEMNO, FD_PARENT_ORG, FD_FACT_UNIT, FD_JOBCODE, FD_NATIVE_PLACE, 
+    FD_BIRTH_PLACE, FD_DOMICILE_PLACE, FD_LEADERID, FD_LEADERNME, FD_DEPT_ORG, FD_CRED_NUM
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.work.entity.TbPepmgmEmpinfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_PEPMGM_EMPINFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <insert id="insert" parameterType="com.work.entity.TbPepmgmEmpinfo" >
+    insert into TB_PEPMGM_EMPINFO (FD_EMPID, FD_EMPNME, FD_GENDER, 
+      FD_ORGNME, FD_UNITNME, FD_JOBNME, 
+      FD_STANDARD_JOBNME, FD_JOB_STARTDATE, FD_JOBID, 
+      FD_UNITCDE, FD_ORGCDE, FD_STANDJOB_SYSNUM, 
+      FD_EMPSTAT, FD_EMPTYP, FD_JOBLINE, 
+      FD_ORG_IDENTIFY, FD_ORGFLAG, FD_ORGLEVEL, 
+      FD_HIREDATE, FD_JOINTRADE_DATE, FD_START_WORKDATE, 
+      FD_NATION, FD_ENTRY_MODE, FD_POLITICAL_STATUS, 
+      FD_HIGH_EDU, FD_HIGH_DEGREE, FD_PARENTUNIT_SYSTEMNO, 
+      FD_PARENT_ORG, FD_FACT_UNIT, FD_JOBCODE, 
+      FD_NATIVE_PLACE, FD_BIRTH_PLACE, FD_DOMICILE_PLACE, 
+      FD_LEADERID, FD_LEADERNME, FD_DEPT_ORG, 
+      FD_CRED_NUM)
+    values (#{fdEmpid,jdbcType=VARCHAR}, #{fdEmpnme,jdbcType=VARCHAR}, #{fdGender,jdbcType=VARCHAR}, 
+      #{fdOrgnme,jdbcType=VARCHAR}, #{fdUnitnme,jdbcType=VARCHAR}, #{fdJobnme,jdbcType=VARCHAR}, 
+      #{fdStandardJobnme,jdbcType=VARCHAR}, #{fdJobStartdate,jdbcType=VARCHAR}, #{fdJobid,jdbcType=VARCHAR}, 
+      #{fdUnitcde,jdbcType=VARCHAR}, #{fdOrgcde,jdbcType=VARCHAR}, #{fdStandjobSysnum,jdbcType=VARCHAR}, 
+      #{fdEmpstat,jdbcType=VARCHAR}, #{fdEmptyp,jdbcType=VARCHAR}, #{fdJobline,jdbcType=VARCHAR}, 
+      #{fdOrgIdentify,jdbcType=VARCHAR}, #{fdOrgflag,jdbcType=VARCHAR}, #{fdOrglevel,jdbcType=VARCHAR}, 
+      #{fdHiredate,jdbcType=VARCHAR}, #{fdJointradeDate,jdbcType=VARCHAR}, #{fdStartWorkdate,jdbcType=VARCHAR}, 
+      #{fdNation,jdbcType=VARCHAR}, #{fdEntryMode,jdbcType=VARCHAR}, #{fdPoliticalStatus,jdbcType=VARCHAR}, 
+      #{fdHighEdu,jdbcType=VARCHAR}, #{fdHighDegree,jdbcType=VARCHAR}, #{fdParentunitSystemno,jdbcType=VARCHAR}, 
+      #{fdParentOrg,jdbcType=VARCHAR}, #{fdFactUnit,jdbcType=VARCHAR}, #{fdJobcode,jdbcType=VARCHAR}, 
+      #{fdNativePlace,jdbcType=VARCHAR}, #{fdBirthPlace,jdbcType=VARCHAR}, #{fdDomicilePlace,jdbcType=VARCHAR}, 
+      #{fdLeaderid,jdbcType=VARCHAR}, #{fdLeadernme,jdbcType=VARCHAR}, #{fdDeptOrg,jdbcType=VARCHAR}, 
+      #{fdCredNum,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TbPepmgmEmpinfo" >
+    insert into TB_PEPMGM_EMPINFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fdEmpid != null" >
+        FD_EMPID,
+      </if>
+      <if test="fdEmpnme != null" >
+        FD_EMPNME,
+      </if>
+      <if test="fdGender != null" >
+        FD_GENDER,
+      </if>
+      <if test="fdOrgnme != null" >
+        FD_ORGNME,
+      </if>
+      <if test="fdUnitnme != null" >
+        FD_UNITNME,
+      </if>
+      <if test="fdJobnme != null" >
+        FD_JOBNME,
+      </if>
+      <if test="fdStandardJobnme != null" >
+        FD_STANDARD_JOBNME,
+      </if>
+      <if test="fdJobStartdate != null" >
+        FD_JOB_STARTDATE,
+      </if>
+      <if test="fdJobid != null" >
+        FD_JOBID,
+      </if>
+      <if test="fdUnitcde != null" >
+        FD_UNITCDE,
+      </if>
+      <if test="fdOrgcde != null" >
+        FD_ORGCDE,
+      </if>
+      <if test="fdStandjobSysnum != null" >
+        FD_STANDJOB_SYSNUM,
+      </if>
+      <if test="fdEmpstat != null" >
+        FD_EMPSTAT,
+      </if>
+      <if test="fdEmptyp != null" >
+        FD_EMPTYP,
+      </if>
+      <if test="fdJobline != null" >
+        FD_JOBLINE,
+      </if>
+      <if test="fdOrgIdentify != null" >
+        FD_ORG_IDENTIFY,
+      </if>
+      <if test="fdOrgflag != null" >
+        FD_ORGFLAG,
+      </if>
+      <if test="fdOrglevel != null" >
+        FD_ORGLEVEL,
+      </if>
+      <if test="fdHiredate != null" >
+        FD_HIREDATE,
+      </if>
+      <if test="fdJointradeDate != null" >
+        FD_JOINTRADE_DATE,
+      </if>
+      <if test="fdStartWorkdate != null" >
+        FD_START_WORKDATE,
+      </if>
+      <if test="fdNation != null" >
+        FD_NATION,
+      </if>
+      <if test="fdEntryMode != null" >
+        FD_ENTRY_MODE,
+      </if>
+      <if test="fdPoliticalStatus != null" >
+        FD_POLITICAL_STATUS,
+      </if>
+      <if test="fdHighEdu != null" >
+        FD_HIGH_EDU,
+      </if>
+      <if test="fdHighDegree != null" >
+        FD_HIGH_DEGREE,
+      </if>
+      <if test="fdParentunitSystemno != null" >
+        FD_PARENTUNIT_SYSTEMNO,
+      </if>
+      <if test="fdParentOrg != null" >
+        FD_PARENT_ORG,
+      </if>
+      <if test="fdFactUnit != null" >
+        FD_FACT_UNIT,
+      </if>
+      <if test="fdJobcode != null" >
+        FD_JOBCODE,
+      </if>
+      <if test="fdNativePlace != null" >
+        FD_NATIVE_PLACE,
+      </if>
+      <if test="fdBirthPlace != null" >
+        FD_BIRTH_PLACE,
+      </if>
+      <if test="fdDomicilePlace != null" >
+        FD_DOMICILE_PLACE,
+      </if>
+      <if test="fdLeaderid != null" >
+        FD_LEADERID,
+      </if>
+      <if test="fdLeadernme != null" >
+        FD_LEADERNME,
+      </if>
+      <if test="fdDeptOrg != null" >
+        FD_DEPT_ORG,
+      </if>
+      <if test="fdCredNum != null" >
+        FD_CRED_NUM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fdEmpid != null" >
+        #{fdEmpid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdEmpnme != null" >
+        #{fdEmpnme,jdbcType=VARCHAR},
+      </if>
+      <if test="fdGender != null" >
+        #{fdGender,jdbcType=VARCHAR},
+      </if>
+      <if test="fdOrgnme != null" >
+        #{fdOrgnme,jdbcType=VARCHAR},
+      </if>
+      <if test="fdUnitnme != null" >
+        #{fdUnitnme,jdbcType=VARCHAR},
+      </if>
+      <if test="fdJobnme != null" >
+        #{fdJobnme,jdbcType=VARCHAR},
+      </if>
+      <if test="fdStandardJobnme != null" >
+        #{fdStandardJobnme,jdbcType=VARCHAR},
+      </if>
+      <if test="fdJobStartdate != null" >
+        #{fdJobStartdate,jdbcType=VARCHAR},
+      </if>
+      <if test="fdJobid != null" >
+        #{fdJobid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdUnitcde != null" >
+        #{fdUnitcde,jdbcType=VARCHAR},
+      </if>
+      <if test="fdOrgcde != null" >
+        #{fdOrgcde,jdbcType=VARCHAR},
+      </if>
+      <if test="fdStandjobSysnum != null" >
+        #{fdStandjobSysnum,jdbcType=VARCHAR},
+      </if>
+      <if test="fdEmpstat != null" >
+        #{fdEmpstat,jdbcType=VARCHAR},
+      </if>
+      <if test="fdEmptyp != null" >
+        #{fdEmptyp,jdbcType=VARCHAR},
+      </if>
+      <if test="fdJobline != null" >
+        #{fdJobline,jdbcType=VARCHAR},
+      </if>
+      <if test="fdOrgIdentify != null" >
+        #{fdOrgIdentify,jdbcType=VARCHAR},
+      </if>
+      <if test="fdOrgflag != null" >
+        #{fdOrgflag,jdbcType=VARCHAR},
+      </if>
+      <if test="fdOrglevel != null" >
+        #{fdOrglevel,jdbcType=VARCHAR},
+      </if>
+      <if test="fdHiredate != null" >
+        #{fdHiredate,jdbcType=VARCHAR},
+      </if>
+      <if test="fdJointradeDate != null" >
+        #{fdJointradeDate,jdbcType=VARCHAR},
+      </if>
+      <if test="fdStartWorkdate != null" >
+        #{fdStartWorkdate,jdbcType=VARCHAR},
+      </if>
+      <if test="fdNation != null" >
+        #{fdNation,jdbcType=VARCHAR},
+      </if>
+      <if test="fdEntryMode != null" >
+        #{fdEntryMode,jdbcType=VARCHAR},
+      </if>
+      <if test="fdPoliticalStatus != null" >
+        #{fdPoliticalStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="fdHighEdu != null" >
+        #{fdHighEdu,jdbcType=VARCHAR},
+      </if>
+      <if test="fdHighDegree != null" >
+        #{fdHighDegree,jdbcType=VARCHAR},
+      </if>
+      <if test="fdParentunitSystemno != null" >
+        #{fdParentunitSystemno,jdbcType=VARCHAR},
+      </if>
+      <if test="fdParentOrg != null" >
+        #{fdParentOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="fdFactUnit != null" >
+        #{fdFactUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="fdJobcode != null" >
+        #{fdJobcode,jdbcType=VARCHAR},
+      </if>
+      <if test="fdNativePlace != null" >
+        #{fdNativePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="fdBirthPlace != null" >
+        #{fdBirthPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="fdDomicilePlace != null" >
+        #{fdDomicilePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="fdLeaderid != null" >
+        #{fdLeaderid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdLeadernme != null" >
+        #{fdLeadernme,jdbcType=VARCHAR},
+      </if>
+      <if test="fdDeptOrg != null" >
+        #{fdDeptOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="fdCredNum != null" >
+        #{fdCredNum,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

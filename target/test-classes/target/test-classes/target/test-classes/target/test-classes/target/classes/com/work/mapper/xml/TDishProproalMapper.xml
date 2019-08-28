@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.TDishProproalMapper" >
+  <resultMap id="BaseResultMap" type="com.work.entity.TDishProproal" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="EMPID" property="empid" jdbcType="VARCHAR" />
+    <result column="EMPNAME" property="empname" jdbcType="VARCHAR" />
+    <result column="PROPOSALTYPE" property="proposaltype" jdbcType="VARCHAR" />
+    <result column="FDCOMENT" property="fdcoment" jdbcType="VARCHAR" />
+    <result column="CREATETIME" property="createtime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, EMPID, EMPNAME, PROPOSALTYPE, FDCOMENT, CREATETIME
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.work.entity.TDishProproalExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_DISH_PROPROAL
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from TB_DISH_PROPROAL
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TB_DISH_PROPROAL
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.work.entity.TDishProproal" >
+    insert into TB_DISH_PROPROAL (ID, EMPID, EMPNAME, 
+      PROPOSALTYPE, FDCOMENT, CREATETIME
+      )
+    values (#{id,jdbcType=VARCHAR}, #{empid,jdbcType=VARCHAR}, #{empname,jdbcType=VARCHAR}, 
+      #{proposaltype,jdbcType=VARCHAR}, #{fdcoment,jdbcType=VARCHAR}, #{createtime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TDishProproal" >
+    insert into TB_DISH_PROPROAL
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="empid != null" >
+        EMPID,
+      </if>
+      <if test="empname != null" >
+        EMPNAME,
+      </if>
+      <if test="proposaltype != null" >
+        PROPOSALTYPE,
+      </if>
+      <if test="fdcoment != null" >
+        FDCOMENT,
+      </if>
+      <if test="createtime != null" >
+        CREATETIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="empid != null" >
+        #{empid,jdbcType=VARCHAR},
+      </if>
+      <if test="empname != null" >
+        #{empname,jdbcType=VARCHAR},
+      </if>
+      <if test="proposaltype != null" >
+        #{proposaltype,jdbcType=VARCHAR},
+      </if>
+      <if test="fdcoment != null" >
+        #{fdcoment,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.work.entity.TDishProproal" >
+    update TB_DISH_PROPROAL
+    <set >
+      <if test="empid != null" >
+        EMPID = #{empid,jdbcType=VARCHAR},
+      </if>
+      <if test="empname != null" >
+        EMPNAME = #{empname,jdbcType=VARCHAR},
+      </if>
+      <if test="proposaltype != null" >
+        PROPOSALTYPE = #{proposaltype,jdbcType=VARCHAR},
+      </if>
+      <if test="fdcoment != null" >
+        FDCOMENT = #{fdcoment,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        CREATETIME = #{createtime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.work.entity.TDishProproal" >
+    update TB_DISH_PROPROAL
+    set EMPID = #{empid,jdbcType=VARCHAR},
+      EMPNAME = #{empname,jdbcType=VARCHAR},
+      PROPOSALTYPE = #{proposaltype,jdbcType=VARCHAR},
+      FDCOMENT = #{fdcoment,jdbcType=VARCHAR},
+      CREATETIME = #{createtime,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

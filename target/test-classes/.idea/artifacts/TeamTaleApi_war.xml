@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="TeamTaleApi:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>TeamTaleApi</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="TeamTaleApi.war">
+      <element id="artifact" artifact-name="TeamTaleApi:war exploded" />
+    </root>
+  </artifact>
+</component>

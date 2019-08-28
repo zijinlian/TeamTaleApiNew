@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.TSugReplMapper" >
+  <resultMap id="BaseResultMap" type="com.work.entity.TSugRepl" >
+    <result column="FD_UUID" property="fdUuid" jdbcType="VARCHAR" />
+    <result column="FD_OPERTYPE" property="fdOpertype" jdbcType="DECIMAL" />
+    <result column="FD_EMP_ID" property="fdEmpId" jdbcType="VARCHAR" />
+    <result column="FD_TIME" property="fdTime" jdbcType="VARCHAR" />
+    <result column="FD_EMPNME" property="fdEmpnme" jdbcType="VARCHAR" />
+    <result column="FD_EMPUNINME" property="fdEmpuninme" jdbcType="VARCHAR" />
+    <result column="FD_REPLY_ID" property="fdReplyId" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.work.entity.TSugRepl" extends="BaseResultMap" >
+    <result column="FD_MARK" property="fdMark" jdbcType="CLOB" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    FD_UUID, FD_OPERTYPE, FD_EMP_ID, FD_TIME, FD_EMPNME, FD_EMPUNINME, FD_REPLY_ID
+  </sql>
+  <sql id="Blob_Column_List" >
+    FD_MARK
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.work.entity.TSugReplExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from TB_SUG_REPL
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" /> and FD_MARK is not null
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+  <select id="selectUserIsZ" parameterType="java.util.Map" resultType="java.lang.Integer">
+  	SELECT
+		count(1)
+	FROM
+		TB_SUG_REPL
+	WHERE
+		(
+			FD_UUID = #{id}
+			AND FD_EMP_ID = #{empId}
+			AND FD_OPERTYPE = '0'
+		)
+  </select>
+
+  <select id="selectByExampleWithBLOBsByBean" resultMap="BaseResultMap" parameterType="com.work.bean.SuggestBean">
+     select t.FD_MARK  as FD_MARK,
+        t.FD_TIME      as FD_TIME,
+        t.FD_UUID      as FD_UUID,
+        t.FD_OPERTYPE  as FD_OPERTYPE,
+        t.fd_emp_id    as FD_EMP_ID,
+        t.FD_REPLY_ID  as FD_REPLY_ID,
+        emp.fd_unitnme as FD_EMPUNINME,
+        emp.FD_EMPNME  as FD_EMPNME
+
+   from TB_SUG_REPL t
+   left join tb_pepmgm_empinfo emp
+     on t.fd_emp_id = emp.fd_empid
+  where t.fd_opertype = 1
+    and t.fd_uuid = #{id}
+  order by t.fd_time desc
+
+
+  </select>
+
+
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.work.entity.TSugReplExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_SUG_REPL
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <insert id="insert" parameterType="com.work.entity.TSugRepl" >
+    insert into TB_SUG_REPL (FD_UUID, FD_OPERTYPE, FD_EMP_ID, 
+      FD_TIME, FD_EMPNME, FD_EMPUNINME, 
+      FD_REPLY_ID, FD_MARK)
+    values (#{fdUuid,jdbcType=VARCHAR}, #{fdOpertype,jdbcType=DECIMAL}, #{fdEmpId,jdbcType=VARCHAR}, 
+      #{fdTime,jdbcType=VARCHAR}, #{fdEmpnme,jdbcType=VARCHAR}, #{fdEmpuninme,jdbcType=VARCHAR}, 
+      #{fdReplyId,jdbcType=VARCHAR}, #{fdMark,jdbcType=CLOB})
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TSugRepl" >
+    insert into TB_SUG_REPL
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fdUuid != null" >
+        FD_UUID,
+      </if>
+      <if test="fdOpertype != null" >
+        FD_OPERTYPE,
+      </if>
+      <if test="fdEmpId != null" >
+        FD_EMP_ID,
+      </if>
+      <if test="fdTime != null" >
+        FD_TIME,
+      </if>
+      <if test="fdEmpnme != null" >
+        FD_EMPNME,
+      </if>
+      <if test="fdEmpuninme != null" >
+        FD_EMPUNINME,
+      </if>
+      <if test="fdReplyId != null" >
+        FD_REPLY_ID,
+      </if>
+      <if test="fdMark != null" >
+        FD_MARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fdUuid != null" >
+        #{fdUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdOpertype != null" >
+        #{fdOpertype,jdbcType=DECIMAL},
+      </if>
+      <if test="fdEmpId != null" >
+        #{fdEmpId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdTime != null" >
+        #{fdTime,jdbcType=VARCHAR},
+      </if>
+      <if test="fdEmpnme != null" >
+        #{fdEmpnme,jdbcType=VARCHAR},
+      </if>
+      <if test="fdEmpuninme != null" >
+        #{fdEmpuninme,jdbcType=VARCHAR},
+      </if>
+      <if test="fdReplyId != null" >
+        #{fdReplyId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdMark != null" >
+        #{fdMark,jdbcType=CLOB},
+      </if>
+    </trim>
+  </insert>
+</mapper>

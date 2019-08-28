@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.TDishMenuMapper" >
+  <resultMap id="BaseResultMap" type="com.work.entity.TDishMenu" >
+    <id column="DISHID" property="dishid" jdbcType="VARCHAR" />
+    <result column="CLASSID" property="classid" jdbcType="VARCHAR" />
+    <result column="DISHSN" property="dishsn" jdbcType="VARCHAR" />
+    <result column="DISHNAME" property="dishname" jdbcType="VARCHAR" />
+    <result column="INGREDIENT" property="ingredient" jdbcType="VARCHAR" />
+    <result column="DESCRIPTION" property="description" jdbcType="VARCHAR" />
+    <result column="UNITPRICE" property="unitprice" jdbcType="DECIMAL" />
+    <result column="CHEF" property="chef" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.work.entity.TDishMenu" extends="BaseResultMap" >
+    <result column="IMAGE" property="image" jdbcType="CLOB" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    DISHID, CLASSID, DISHSN, DISHNAME, INGREDIENT, DESCRIPTION, UNITPRICE, CHEF
+  </sql>
+  <sql id="Blob_Column_List" >
+    IMAGE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from TB_DISH_MENU
+    where DISHID = #{dishid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TB_DISH_MENU
+    where DISHID = #{dishid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.work.entity.TDishMenu" >
+    insert into TB_DISH_MENU (DISHID, CLASSID, DISHSN, 
+      DISHNAME, INGREDIENT, DESCRIPTION, 
+      UNITPRICE, CHEF, IMAGE
+      )
+    values (#{dishid,jdbcType=VARCHAR}, #{classid,jdbcType=VARCHAR}, #{dishsn,jdbcType=VARCHAR}, 
+      #{dishname,jdbcType=VARCHAR}, #{ingredient,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{unitprice,jdbcType=DECIMAL}, #{chef,jdbcType=VARCHAR}, #{image,jdbcType=CLOB}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TDishMenu" >
+    insert into TB_DISH_MENU
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dishid != null" >
+        DISHID,
+      </if>
+      <if test="classid != null" >
+        CLASSID,
+      </if>
+      <if test="dishsn != null" >
+        DISHSN,
+      </if>
+      <if test="dishname != null" >
+        DISHNAME,
+      </if>
+      <if test="ingredient != null" >
+        INGREDIENT,
+      </if>
+      <if test="description != null" >
+        DESCRIPTION,
+      </if>
+      <if test="unitprice != null" >
+        UNITPRICE,
+      </if>
+      <if test="chef != null" >
+        CHEF,
+      </if>
+      <if test="image != null" >
+        IMAGE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dishid != null" >
+        #{dishid,jdbcType=VARCHAR},
+      </if>
+      <if test="classid != null" >
+        #{classid,jdbcType=VARCHAR},
+      </if>
+      <if test="dishsn != null" >
+        #{dishsn,jdbcType=VARCHAR},
+      </if>
+      <if test="dishname != null" >
+        #{dishname,jdbcType=VARCHAR},
+      </if>
+      <if test="ingredient != null" >
+        #{ingredient,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="unitprice != null" >
+        #{unitprice,jdbcType=DECIMAL},
+      </if>
+      <if test="chef != null" >
+        #{chef,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null" >
+        #{image,jdbcType=CLOB},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.work.entity.TDishMenu" >
+    update TB_DISH_MENU
+    <set >
+      <if test="classid != null" >
+        CLASSID = #{classid,jdbcType=VARCHAR},
+      </if>
+      <if test="dishsn != null" >
+        DISHSN = #{dishsn,jdbcType=VARCHAR},
+      </if>
+      <if test="dishname != null" >
+        DISHNAME = #{dishname,jdbcType=VARCHAR},
+      </if>
+      <if test="ingredient != null" >
+        INGREDIENT = #{ingredient,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        DESCRIPTION = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="unitprice != null" >
+        UNITPRICE = #{unitprice,jdbcType=DECIMAL},
+      </if>
+      <if test="chef != null" >
+        CHEF = #{chef,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null" >
+        IMAGE = #{image,jdbcType=CLOB},
+      </if>
+    </set>
+    where DISHID = #{dishid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.work.entity.TDishMenu" >
+    update TB_DISH_MENU
+    set CLASSID = #{classid,jdbcType=VARCHAR},
+      DISHSN = #{dishsn,jdbcType=VARCHAR},
+      DISHNAME = #{dishname,jdbcType=VARCHAR},
+      INGREDIENT = #{ingredient,jdbcType=VARCHAR},
+      DESCRIPTION = #{description,jdbcType=VARCHAR},
+      UNITPRICE = #{unitprice,jdbcType=DECIMAL},
+      CHEF = #{chef,jdbcType=VARCHAR},
+      IMAGE = #{image,jdbcType=CLOB}
+    where DISHID = #{dishid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.work.entity.TDishMenu" >
+    update TB_DISH_MENU
+    set CLASSID = #{classid,jdbcType=VARCHAR},
+      DISHSN = #{dishsn,jdbcType=VARCHAR},
+      DISHNAME = #{dishname,jdbcType=VARCHAR},
+      INGREDIENT = #{ingredient,jdbcType=VARCHAR},
+      DESCRIPTION = #{description,jdbcType=VARCHAR},
+      UNITPRICE = #{unitprice,jdbcType=DECIMAL},
+      CHEF = #{chef,jdbcType=VARCHAR}
+    where DISHID = #{dishid,jdbcType=VARCHAR}
+  </update>
+  
+  <!-- add -->
+  
+  <select id="selectDisMenu" parameterType="java.util.Map" resultType="com.work.entity.TDishMenu">
+  	SELECT
+		MU.*, 
+		DC.CLASSNAME className,
+		DM.DISHAREANAME dishareaname,
+		NVL (CP.CN, 0) praiseCount,
+		NVL (CC.CN, 0) commentCount,
+		NVL (CP.CN, 0) + NVL (CC.CN, 0) AS c
+	FROM
+		TB_DISH_MANAGE DM
+	INNER JOIN TB_DISH_MENU MU ON MU.DISHID = DM.DISHID
+	LEFT JOIN TB_DISH_CLASS DC ON DC.ID = MU.CLASSID
+	LEFT JOIN (
+		SELECT
+			COUNT (DISHID) AS CN,
+			DISHID
+		FROM
+			TB_DISH_PRAISE
+		GROUP BY
+			DISHID
+	) CP ON CP.DISHID = DM.DISHID
+	LEFT JOIN (
+		SELECT
+			COUNT (DISHID) AS CN,
+			DISHID
+		FROM
+			TB_DISH_COMMENT
+		GROUP BY
+			DISHID
+	) CC ON CC.DISHID = DM.DISHID
+	WHERE
+		DM.DISHDATE = #{dishDate}
+		<!-- SELECT
+			MU.*, DC.CLASSNAME className,
+			NVL (CP.CN, 0) praiseCount,
+			NVL (CC.CN, 0) commentCount,
+			NVL (CP.CN, 0) + NVL (CC.CN, 0) AS c
+		FROM
+			tb_dish_menu MU
+		LEFT JOIN TB_DISH_CLASS DC ON DC. ID = MU.CLASSID
+		LEFT JOIN (
+			SELECT
+				COUNT (DISHID) AS CN,
+				DISHID
+			FROM
+				TB_DISH_PRAISE
+			GROUP BY
+				DISHID
+		) CP ON CP.DISHID = MU.DISHID
+		LEFT JOIN (
+			SELECT
+				COUNT (DISHID) AS CN,
+				DISHID
+			FROM
+				TB_DISH_COMMENT
+			GROUP BY
+				DISHID
+		) CC ON CC.DISHID = MU.DISHID
+		WHERE
+			MU.dishid IN (
+				SELECT DISTINCT
+					t1.dishid
+				FROM
+					tb_dish_manage t1
+				WHERE
+					t1.dishdate = #{dishDate}
+			) -->
+	<if test="dishname != null and dishname != ''">
+		AND DISHNAME LIKE CONCAT(CONCAT('%',#{dishname}),'%')
+	</if>
+	<if test="dishAreaName != null and dishAreaName != '' ">
+		AND DM.DISHAREANAME LIKE CONCAT('%',#{dishAreaName})
+	</if>
+	
+	<if test="dishid != null and dishid != '' ">
+		AND DM.DISHID = #{dishid,jdbcType=VARCHAR}
+	</if>
+  </select>
+  
+  <select id="selectDishScore" parameterType="java.lang.String" resultType="java.lang.String">
+  	SELECT round(sum(TOTALSOURCE)/COUNT(DISHID)) score FROM TB_DISH_COMMENT WHERE DISHID = #{dishid}
+  </select>
+
+
+    <delete id="deleteDishTimeById" parameterType="com.work.bean.DishEmpCheckBean" >
+      DELETE TB_DISH_EMP_CHECK WHERE  EMPID = #{empid} and MEALID = #{mealid}  and CHECKDATE = #{checkdate}
+    </delete>
+  
+</mapper>

@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.TmpPepmgmEmpInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.work.entity.TmpPepmgmEmpInfo" >
+    <result column="FD_EMPID" property="fdEmpid" jdbcType="VARCHAR" />
+    <result column="FD_EMPNME" property="fdEmpnme" jdbcType="VARCHAR" />
+    <result column="FD_GENDER" property="fdGender" jdbcType="VARCHAR" />
+    <result column="FD_EMP_BIRTH" property="fdEmpBirth" jdbcType="VARCHAR" />
+    <result column="FD_START_WORKDATE" property="fdStartWorkdate" jdbcType="VARCHAR" />
+    <result column="FD_HIREDATE" property="fdHiredate" jdbcType="VARCHAR" />
+    <result column="FD_RHQGL" property="fdRhqgl" jdbcType="VARCHAR" />
+    <result column="FD_JRDQJGSJ" property="fdJrdqjgsj" jdbcType="VARCHAR" />
+    <result column="FD_JRDQYJJGHZHSJ" property="fdJrdqyjjghzhsj" jdbcType="VARCHAR" />
+    <result column="FD_ORG_SYSNUM" property="fdOrgSysnum" jdbcType="VARCHAR" />
+    <result column="FD_ORGCDE" property="fdOrgcde" jdbcType="VARCHAR" />
+    <result column="FD_ORGNME" property="fdOrgnme" jdbcType="VARCHAR" />
+    <result column="FD_UNITCDE" property="fdUnitcde" jdbcType="VARCHAR" />
+    <result column="FD_UNIT_SYSNUM" property="fdUnitSysnum" jdbcType="VARCHAR" />
+    <result column="FD_UNITNME" property="fdUnitnme" jdbcType="VARCHAR" />
+    <result column="FD_ORG_ENGNME" property="fdOrgEngnme" jdbcType="VARCHAR" />
+    <result column="FD_FACTUNITNME" property="fdFactunitnme" jdbcType="VARCHAR" />
+    <result column="FD_UNIT_ENGNME" property="fdUnitEngnme" jdbcType="VARCHAR" />
+    <result column="FD_FACTUNIT_SYSNUM" property="fdFactunitSysnum" jdbcType="VARCHAR" />
+    <result column="FD_FACTUNITCDE" property="fdFactunitcde" jdbcType="VARCHAR" />
+    <result column="FD_FACTUNIT_ENGNME" property="fdFactunitEngnme" jdbcType="VARCHAR" />
+    <result column="FD_CRED_NUM" property="fdCredNum" jdbcType="VARCHAR" />
+    <result column="FD_COUNTRY" property="fdCountry" jdbcType="VARCHAR" />
+    <result column="FD_RACE" property="fdRace" jdbcType="VARCHAR" />
+    <result column="FD_NATION" property="fdNation" jdbcType="VARCHAR" />
+    <result column="FD_ENTRY_MODE" property="fdEntryMode" jdbcType="VARCHAR" />
+    <result column="FD_EMPTYP" property="fdEmptyp" jdbcType="VARCHAR" />
+    <result column="FD_LABOR_UNITTYP" property="fdLaborUnittyp" jdbcType="VARCHAR" />
+    <result column="FD_LABOR_UNITNME" property="fdLaborUnitnme" jdbcType="VARCHAR" />
+    <result column="FD_GLJSQSSJ" property="fdGljsqssj" jdbcType="VARCHAR" />
+    <result column="FD_ORIGIN" property="fdOrigin" jdbcType="VARCHAR" />
+    <result column="FD_BIRTH_PLACE" property="fdBirthPlace" jdbcType="VARCHAR" />
+    <result column="FD_REG_ADDR" property="fdRegAddr" jdbcType="VARCHAR" />
+    <result column="FD_MARITAL_STATUS" property="fdMaritalStatus" jdbcType="VARCHAR" />
+    <result column="FD_POLITICAL_STATUS" property="fdPoliticalStatus" jdbcType="VARCHAR" />
+    <result column="FD_POLITICAL_DATE" property="fdPoliticalDate" jdbcType="VARCHAR" />
+    <result column="FD_SERVICE_SITUATION" property="fdServiceSituation" jdbcType="VARCHAR" />
+    <result column="FD_FINAC_STARTDATE" property="fdFinacStartdate" jdbcType="VARCHAR" />
+    <result column="FD_LEAVE_WAY" property="fdLeaveWay" jdbcType="VARCHAR" />
+    <result column="FD_LEAVE_DATE" property="fdLeaveDate" jdbcType="VARCHAR" />
+    <result column="FD_LEAVE_REASON" property="fdLeaveReason" jdbcType="VARCHAR" />
+    <result column="FD_LEAVE_FORWARD" property="fdLeaveForward" jdbcType="VARCHAR" />
+    <result column="FD_JOBID" property="fdJobid" jdbcType="VARCHAR" />
+    <result column="FD_JOBCDE" property="fdJobcde" jdbcType="VARCHAR" />
+    <result column="FD_JOBNME" property="fdJobnme" jdbcType="VARCHAR" />
+    <result column="FD_JOB_STARTDATE" property="fdJobStartdate" jdbcType="VARCHAR" />
+    <result column="FD_EMPSTAT" property="fdEmpstat" jdbcType="VARCHAR" />
+    <result column="FD_EMPAGE" property="fdEmpage" jdbcType="VARCHAR" />
+    <result column="FD_MAJOR" property="fdMajor" jdbcType="VARCHAR" />
+    <result column="FD_HIGH_EDU" property="fdHighEdu" jdbcType="VARCHAR" />
+    <result column="FD_HIGH_DEGREE" property="fdHighDegree" jdbcType="VARCHAR" />
+    <result column="FD_YGSF" property="fdYgsf" jdbcType="VARCHAR" />
+    <result column="FD_ZWCJBJ" property="fdZwcjbj" jdbcType="VARCHAR" />
+    <result column="FD_WTRYZT" property="fdWtryzt" jdbcType="VARCHAR" />
+    <result column="FD_QJXSSX" property="fdQjxssx" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    FD_EMPID, FD_EMPNME, FD_GENDER, FD_EMP_BIRTH, FD_START_WORKDATE, FD_HIREDATE, FD_RHQGL, 
+    FD_JRDQJGSJ, FD_JRDQYJJGHZHSJ, FD_ORG_SYSNUM, FD_ORGCDE, FD_ORGNME, FD_UNITCDE, FD_UNIT_SYSNUM, 
+    FD_UNITNME, FD_ORG_ENGNME, FD_FACTUNITNME, FD_UNIT_ENGNME, FD_FACTUNIT_SYSNUM, FD_FACTUNITCDE, 
+    FD_FACTUNIT_ENGNME, FD_CRED_NUM, FD_COUNTRY, FD_RACE, FD_NATION, FD_ENTRY_MODE, FD_EMPTYP, 
+    FD_LABOR_UNITTYP, FD_LABOR_UNITNME, FD_GLJSQSSJ, FD_ORIGIN, FD_BIRTH_PLACE, FD_REG_ADDR, 
+    FD_MARITAL_STATUS, FD_POLITICAL_STATUS, FD_POLITICAL_DATE, FD_SERVICE_SITUATION, 
+    FD_FINAC_STARTDATE, FD_LEAVE_WAY, FD_LEAVE_DATE, FD_LEAVE_REASON, FD_LEAVE_FORWARD, 
+    FD_JOBID, FD_JOBCDE, FD_JOBNME, FD_JOB_STARTDATE, FD_EMPSTAT, FD_EMPAGE, FD_MAJOR, 
+    FD_HIGH_EDU, FD_HIGH_DEGREE, FD_YGSF, FD_ZWCJBJ, FD_WTRYZT, FD_QJXSSX
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.work.entity.TmpPepmgmEmpInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TMP_PEPMGM_EMPINFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <insert id="insert" parameterType="com.work.entity.TmpPepmgmEmpInfo" >
+    insert into TMP_PEPMGM_EMPINFO (FD_EMPID, FD_EMPNME, FD_GENDER, 
+      FD_EMP_BIRTH, FD_START_WORKDATE, FD_HIREDATE, 
+      FD_RHQGL, FD_JRDQJGSJ, FD_JRDQYJJGHZHSJ, 
+      FD_ORG_SYSNUM, FD_ORGCDE, FD_ORGNME, 
+      FD_UNITCDE, FD_UNIT_SYSNUM, FD_UNITNME, 
+      FD_ORG_ENGNME, FD_FACTUNITNME, FD_UNIT_ENGNME, 
+      FD_FACTUNIT_SYSNUM, FD_FACTUNITCDE, FD_FACTUNIT_ENGNME, 
+      FD_CRED_NUM, FD_COUNTRY, FD_RACE, 
+      FD_NATION, FD_ENTRY_MODE, FD_EMPTYP, 
+      FD_LABOR_UNITTYP, FD_LABOR_UNITNME, FD_GLJSQSSJ, 
+      FD_ORIGIN, FD_BIRTH_PLACE, FD_REG_ADDR, 
+      FD_MARITAL_STATUS, FD_POLITICAL_STATUS, FD_POLITICAL_DATE, 
+      FD_SERVICE_SITUATION, FD_FINAC_STARTDATE, FD_LEAVE_WAY, 
+      FD_LEAVE_DATE, FD_LEAVE_REASON, FD_LEAVE_FORWARD, 
+      FD_JOBID, FD_JOBCDE, FD_JOBNME, 
+      FD_JOB_STARTDATE, FD_EMPSTAT, FD_EMPAGE, 
+      FD_MAJOR, FD_HIGH_EDU, FD_HIGH_DEGREE, 
+      FD_YGSF, FD_ZWCJBJ, FD_WTRYZT, 
+      FD_QJXSSX)
+    values (#{fdEmpid,jdbcType=VARCHAR}, #{fdEmpnme,jdbcType=VARCHAR}, #{fdGender,jdbcType=VARCHAR}, 
+      #{fdEmpBirth,jdbcType=VARCHAR}, #{fdStartWorkdate,jdbcType=VARCHAR}, #{fdHiredate,jdbcType=VARCHAR}, 
+      #{fdRhqgl,jdbcType=VARCHAR}, #{fdJrdqjgsj,jdbcType=VARCHAR}, #{fdJrdqyjjghzhsj,jdbcType=VARCHAR}, 
+      #{fdOrgSysnum,jdbcType=VARCHAR}, #{fdOrgcde,jdbcType=VARCHAR}, #{fdOrgnme,jdbcType=VARCHAR}, 
+      #{fdUnitcde,jdbcType=VARCHAR}, #{fdUnitSysnum,jdbcType=VARCHAR}, #{fdUnitnme,jdbcType=VARCHAR}, 
+      #{fdOrgEngnme,jdbcType=VARCHAR}, #{fdFactunitnme,jdbcType=VARCHAR}, #{fdUnitEngnme,jdbcType=VARCHAR}, 
+      #{fdFactunitSysnum,jdbcType=VARCHAR}, #{fdFactunitcde,jdbcType=VARCHAR}, #{fdFactunitEngnme,jdbcType=VARCHAR}, 
+      #{fdCredNum,jdbcType=VARCHAR}, #{fdCountry,jdbcType=VARCHAR}, #{fdRace,jdbcType=VARCHAR}, 
+      #{fdNation,jdbcType=VARCHAR}, #{fdEntryMode,jdbcType=VARCHAR}, #{fdEmptyp,jdbcType=VARCHAR}, 
+      #{fdLaborUnittyp,jdbcType=VARCHAR}, #{fdLaborUnitnme,jdbcType=VARCHAR}, #{fdGljsqssj,jdbcType=VARCHAR}, 
+      #{fdOrigin,jdbcType=VARCHAR}, #{fdBirthPlace,jdbcType=VARCHAR}, #{fdRegAddr,jdbcType=VARCHAR}, 
+      #{fdMaritalStatus,jdbcType=VARCHAR}, #{fdPoliticalStatus,jdbcType=VARCHAR}, #{fdPoliticalDate,jdbcType=VARCHAR}, 
+      #{fdServiceSituation,jdbcType=VARCHAR}, #{fdFinacStartdate,jdbcType=VARCHAR}, #{fdLeaveWay,jdbcType=VARCHAR}, 
+      #{fdLeaveDate,jdbcType=VARCHAR}, #{fdLeaveReason,jdbcType=VARCHAR}, #{fdLeaveForward,jdbcType=VARCHAR}, 
+      #{fdJobid,jdbcType=VARCHAR}, #{fdJobcde,jdbcType=VARCHAR}, #{fdJobnme,jdbcType=VARCHAR}, 
+      #{fdJobStartdate,jdbcType=VARCHAR}, #{fdEmpstat,jdbcType=VARCHAR}, #{fdEmpage,jdbcType=VARCHAR}, 
+      #{fdMajor,jdbcType=VARCHAR}, #{fdHighEdu,jdbcType=VARCHAR}, #{fdHighDegree,jdbcType=VARCHAR}, 
+      #{fdYgsf,jdbcType=VARCHAR}, #{fdZwcjbj,jdbcType=VARCHAR}, #{fdWtryzt,jdbcType=VARCHAR}, 
+      #{fdQjxssx,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TmpPepmgmEmpInfo" >
+    insert into TMP_PEPMGM_EMPINFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fdEmpid != null" >
+        FD_EMPID,
+      </if>
+      <if test="fdEmpnme != null" >
+        FD_EMPNME,
+      </if>
+      <if test="fdGender != null" >
+        FD_GENDER,
+      </if>
+      <if test="fdEmpBirth != null" >
+        FD_EMP_BIRTH,
+      </if>
+      <if test="fdStartWorkdate != null" >
+        FD_START_WORKDATE,
+      </if>
+      <if test="fdHiredate != null" >
+        FD_HIREDATE,
+      </if>
+      <if test="fdRhqgl != null" >
+        FD_RHQGL,
+      </if>
+      <if test="fdJrdqjgsj != null" >
+        FD_JRDQJGSJ,
+      </if>
+      <if test="fdJrdqyjjghzhsj != null" >
+        FD_JRDQYJJGHZHSJ,
+      </if>
+      <if test="fdOrgSysnum != null" >
+        FD_ORG_SYSNUM,
+      </if>
+      <if test="fdOrgcde != null" >
+        FD_ORGCDE,
+      </if>
+      <if test="fdOrgnme != null" >
+        FD_ORGNME,
+      </if>
+      <if test="fdUnitcde != null" >
+        FD_UNITCDE,
+      </if>
+      <if test="fdUnitSysnum != null" >
+        FD_UNIT_SYSNUM,
+      </if>
+      <if test="fdUnitnme != null" >
+        FD_UNITNME,
+      </if>
+      <if test="fdOrgEngnme != null" >
+        FD_ORG_ENGNME,
+      </if>
+      <if test="fdFactunitnme != null" >
+        FD_FACTUNITNME,
+      </if>
+      <if test="fdUnitEngnme != null" >
+        FD_UNIT_ENGNME,
+      </if>
+      <if test="fdFactunitSysnum != null" >
+        FD_FACTUNIT_SYSNUM,
+      </if>
+      <if test="fdFactunitcde != null" >
+        FD_FACTUNITCDE,
+      </if>
+      <if test="fdFactunitEngnme != null" >
+        FD_FACTUNIT_ENGNME,
+      </if>
+      <if test="fdCredNum != null" >
+        FD_CRED_NUM,
+      </if>
+      <if test="fdCountry != null" >
+        FD_COUNTRY,
+      </if>
+      <if test="fdRace != null" >
+        FD_RACE,
+      </if>
+      <if test="fdNation != null" >
+        FD_NATION,
+      </if>
+      <if test="fdEntryMode != null" >
+        FD_ENTRY_MODE,
+      </if>
+      <if test="fdEmptyp != null" >
+        FD_EMPTYP,
+      </if>
+      <if test="fdLaborUnittyp != null" >
+        FD_LABOR_UNITTYP,
+      </if>
+      <if test="fdLaborUnitnme != null" >
+        FD_LABOR_UNITNME,
+      </if>
+      <if test="fdGljsqssj != null" >
+        FD_GLJSQSSJ,
+      </if>
+      <if test="fdOrigin != null" >
+        FD_ORIGIN,
+      </if>
+      <if test="fdBirthPlace != null" >
+        FD_BIRTH_PLACE,
+      </if>
+      <if test="fdRegAddr != null" >
+        FD_REG_ADDR,
+      </if>
+      <if test="fdMaritalStatus != null" >
+        FD_MARITAL_STATUS,
+      </if>
+      <if test="fdPoliticalStatus != null" >
+        FD_POLITICAL_STATUS,
+      </if>
+      <if test="fdPoliticalDate != null" >
+        FD_POLITICAL_DATE,
+      </if>
+      <if test="fdServiceSituation != null" >
+        FD_SERVICE_SITUATION,
+      </if>
+      <if test="fdFinacStartdate != null" >
+        FD_FINAC_STARTDATE,
+      </if>
+      <if test="fdLeaveWay != null" >
+        FD_LEAVE_WAY,
+      </if>
+      <if test="fdLeaveDate != null" >
+        FD_LEAVE_DATE,
+      </if>
+      <if test="fdLeaveReason != null" >
+        FD_LEAVE_REASON,
+      </if>
+      <if test="fdLeaveForward != null" >
+        FD_LEAVE_FORWARD,
+      </if>
+      <if test="fdJobid != null" >
+        FD_JOBID,
+      </if>
+      <if test="fdJobcde != null" >
+        FD_JOBCDE,
+      </if>
+      <if test="fdJobnme != null" >
+        FD_JOBNME,
+      </if>
+      <if test="fdJobStartdate != null" >
+        FD_JOB_STARTDATE,
+      </if>
+      <if test="fdEmpstat != null" >
+        FD_EMPSTAT,
+      </if>
+      <if test="fdEmpage != null" >
+        FD_EMPAGE,
+      </if>
+      <if test="fdMajor != null" >
+        FD_MAJOR,
+      </if>
+      <if test="fdHighEdu != null" >
+        FD_HIGH_EDU,
+      </if>
+      <if test="fdHighDegree != null" >
+        FD_HIGH_DEGREE,
+      </if>
+      <if test="fdYgsf != null" >
+        FD_YGSF,
+      </if>
+      <if test="fdZwcjbj != null" >
+        FD_ZWCJBJ,
+      </if>
+      <if test="fdWtryzt != null" >
+        FD_WTRYZT,
+      </if>
+      <if test="fdQjxssx != null" >
+        FD_QJXSSX,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fdEmpid != null" >
+        #{fdEmpid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdEmpnme != null" >
+        #{fdEmpnme,jdbcType=VARCHAR},
+      </if>
+      <if test="fdGender != null" >
+        #{fdGender,jdbcType=VARCHAR},
+      </if>
+      <if test="fdEmpBirth != null" >
+        #{fdEmpBirth,jdbcType=VARCHAR},
+      </if>
+      <if test="fdStartWorkdate != null" >
+        #{fdStartWorkdate,jdbcType=VARCHAR},
+      </if>
+      <if test="fdHiredate != null" >
+        #{fdHiredate,jdbcType=VARCHAR},
+      </if>
+      <if test="fdRhqgl != null" >
+        #{fdRhqgl,jdbcType=VARCHAR},
+      </if>
+      <if test="fdJrdqjgsj != null" >
+        #{fdJrdqjgsj,jdbcType=VARCHAR},
+      </if>
+      <if test="fdJrdqyjjghzhsj != null" >
+        #{fdJrdqyjjghzhsj,jdbcType=VARCHAR},
+      </if>
+      <if test="fdOrgSysnum != null" >
+        #{fdOrgSysnum,jdbcType=VARCHAR},
+      </if>
+      <if test="fdOrgcde != null" >
+        #{fdOrgcde,jdbcType=VARCHAR},
+      </if>
+      <if test="fdOrgnme != null" >
+        #{fdOrgnme,jdbcType=VARCHAR},
+      </if>
+      <if test="fdUnitcde != null" >
+        #{fdUnitcde,jdbcType=VARCHAR},
+      </if>
+      <if test="fdUnitSysnum != null" >
+        #{fdUnitSysnum,jdbcType=VARCHAR},
+      </if>
+      <if test="fdUnitnme != null" >
+        #{fdUnitnme,jdbcType=VARCHAR},
+      </if>
+      <if test="fdOrgEngnme != null" >
+        #{fdOrgEngnme,jdbcType=VARCHAR},
+      </if>
+      <if test="fdFactunitnme != null" >
+        #{fdFactunitnme,jdbcType=VARCHAR},
+      </if>
+      <if test="fdUnitEngnme != null" >
+        #{fdUnitEngnme,jdbcType=VARCHAR},
+      </if>
+      <if test="fdFactunitSysnum != null" >
+        #{fdFactunitSysnum,jdbcType=VARCHAR},
+      </if>
+      <if test="fdFactunitcde != null" >
+        #{fdFactunitcde,jdbcType=VARCHAR},
+      </if>
+      <if test="fdFactunitEngnme != null" >
+        #{fdFactunitEngnme,jdbcType=VARCHAR},
+      </if>
+      <if test="fdCredNum != null" >
+        #{fdCredNum,jdbcType=VARCHAR},
+      </if>
+      <if test="fdCountry != null" >
+        #{fdCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="fdRace != null" >
+        #{fdRace,jdbcType=VARCHAR},
+      </if>
+      <if test="fdNation != null" >
+        #{fdNation,jdbcType=VARCHAR},
+      </if>
+      <if test="fdEntryMode != null" >
+        #{fdEntryMode,jdbcType=VARCHAR},
+      </if>
+      <if test="fdEmptyp != null" >
+        #{fdEmptyp,jdbcType=VARCHAR},
+      </if>
+      <if test="fdLaborUnittyp != null" >
+        #{fdLaborUnittyp,jdbcType=VARCHAR},
+      </if>
+      <if test="fdLaborUnitnme != null" >
+        #{fdLaborUnitnme,jdbcType=VARCHAR},
+      </if>
+      <if test="fdGljsqssj != null" >
+        #{fdGljsqssj,jdbcType=VARCHAR},
+      </if>
+      <if test="fdOrigin != null" >
+        #{fdOrigin,jdbcType=VARCHAR},
+      </if>
+      <if test="fdBirthPlace != null" >
+        #{fdBirthPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="fdRegAddr != null" >
+        #{fdRegAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="fdMaritalStatus != null" >
+        #{fdMaritalStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="fdPoliticalStatus != null" >
+        #{fdPoliticalStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="fdPoliticalDate != null" >
+        #{fdPoliticalDate,jdbcType=VARCHAR},
+      </if>
+      <if test="fdServiceSituation != null" >
+        #{fdServiceSituation,jdbcType=VARCHAR},
+      </if>
+      <if test="fdFinacStartdate != null" >
+        #{fdFinacStartdate,jdbcType=VARCHAR},
+      </if>
+      <if test="fdLeaveWay != null" >
+        #{fdLeaveWay,jdbcType=VARCHAR},
+      </if>
+      <if test="fdLeaveDate != null" >
+        #{fdLeaveDate,jdbcType=VARCHAR},
+      </if>
+      <if test="fdLeaveReason != null" >
+        #{fdLeaveReason,jdbcType=VARCHAR},
+      </if>
+      <if test="fdLeaveForward != null" >
+        #{fdLeaveForward,jdbcType=VARCHAR},
+      </if>
+      <if test="fdJobid != null" >
+        #{fdJobid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdJobcde != null" >
+        #{fdJobcde,jdbcType=VARCHAR},
+      </if>
+      <if test="fdJobnme != null" >
+        #{fdJobnme,jdbcType=VARCHAR},
+      </if>
+      <if test="fdJobStartdate != null" >
+        #{fdJobStartdate,jdbcType=VARCHAR},
+      </if>
+      <if test="fdEmpstat != null" >
+        #{fdEmpstat,jdbcType=VARCHAR},
+      </if>
+      <if test="fdEmpage != null" >
+        #{fdEmpage,jdbcType=VARCHAR},
+      </if>
+      <if test="fdMajor != null" >
+        #{fdMajor,jdbcType=VARCHAR},
+      </if>
+      <if test="fdHighEdu != null" >
+        #{fdHighEdu,jdbcType=VARCHAR},
+      </if>
+      <if test="fdHighDegree != null" >
+        #{fdHighDegree,jdbcType=VARCHAR},
+      </if>
+      <if test="fdYgsf != null" >
+        #{fdYgsf,jdbcType=VARCHAR},
+      </if>
+      <if test="fdZwcjbj != null" >
+        #{fdZwcjbj,jdbcType=VARCHAR},
+      </if>
+      <if test="fdWtryzt != null" >
+        #{fdWtryzt,jdbcType=VARCHAR},
+      </if>
+      <if test="fdQjxssx != null" >
+        #{fdQjxssx,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <select id="selectEmpCurve" parameterType="com.work.bean.GaResumeBean" resultType="java.util.Map">
+    <!--
+    	 select groupname, jobname, startdate, enddate, to_char((rownum-1)*w.sourcecount,'fm9999990.09999') as score
+          from (select p.groupname, p.jobname,p.empid, p.enddate,p.startdate,
+        row_number() OVER(PARTITION BY(p.groupname||p.jobname) ORDER BY p.startdate asc) as row_flg
+          from TB_GA_RESUME p  order by   p.startdate asc) q
+        cross join ( select y.sourcecount from   TB_EMP_SOURCE_RULE y  where y.sourcefaly='01') w
+         where q.empid =#{empid} and q.row_flg = '1' order by q.startdate asc
+          -->
+
+
+  select    empid,  groupname, jobname, startdate, enddate,
+  min(score) OVER(PARTITION BY(groupname||jobname) ) as score  from
+  (select groupname, jobname, startdate, enddate, empid,
+  to_char((rownum-1)*w.sourcecount,'fm9999990.09999') as score
+  from (select p.groupname, p.jobname,p.empid, p.enddate,p.startdate,
+  row_number() OVER(PARTITION BY(p.groupname||p.jobname||p.startdate) ORDER BY p.startdate asc) as row_flg
+  from TB_GA_RESUME p   where p.empid =#{empid} order by   p.startdate asc) q     cross join ( select y.sourcecount from
+  TB_EMP_SOURCE_RULE y  where y.sourcefaly='01') w
+  where q.empid =#{empid} and q.row_flg = '1' order by q.startdate asc
+  )order by startdate asc
+  </select>
+
+
+  <select id="selectEmpAttendance" parameterType="com.work.bean.GaResumeBean" resultType="java.util.Map">
+      <!-- SELECT DISTINCT
+        P .fd_empid,
+        P .fd_empnme,
+        SUBSTR (P .fd_date, 1, 7) AS months,
+        ROUND ((w. A * 100), 2) || '%' AS attendence_rate
+    FROM
+        TB_PEPMGM_ATTDINFO_TJ P
+    CROSS JOIN (
+        SELECT
+            COUNT (DISTINCT y.fd_id) / F_GETDAYSBYMONTH ('2016-11') AS A
+        FROM
+            TB_PEPMGM_ATTDINFO_TJ y
+        WHERE
+            y.fd_flag = '1'
+        AND y.fd_empid = '8474067'
+        AND SUBSTR (y.fd_date, 1, 7) = '2016-11'
+    ) w
+    WHERE
+        P .fd_empid = #{empid}
+    AND SUBSTR (P .fd_date, 1, 7) = '2016-11' -->
+	
+	select  p1.fd_empid as empid , substr(p1.fd_date, 1, 7)  as months ,
+  	round((count(distinct p1.fd_id)/F_GETDAYSBYMONTH(substr(p1.fd_date, 1, 7))*100),2)||'%'  as attendence_rate
+  	from TB_PEPMGM_ATTDINFO_TJ p1 
+ 	where p1.fd_flag = '1' and   p1.fd_empid = #{empid}  group by   p1.fd_empid,substr(p1.fd_date, 1, 7)
+  </select>
+  
+  <select id="selectGrowEmpListByEmpId" parameterType="java.util.Map" resultType="java.util.Map">
+  	SELECT
+		t1.fd_orgcde fd_orgcde,
+		t1.fd_orgshort fd_orgshort,
+		'1' lv,
+		'01' l
+	FROM
+		tb_sys_orginfo_ehr t1
+	INNER JOIN TB_PEPMGM_EMPINFO t2 ON (
+		t1.fd_parentid = t2.fd_unitcde
+	)
+	WHERE
+		t2.fd_empid = #{empid}
+  </select>
+  
+  <select id="selectGrowEmpListByEmpId2" parameterType="java.util.Map" resultType="java.util.Map">
+  	SELECT
+		*
+	FROM
+		(
+			SELECT
+				T .fd_nodeid fd_orgcde,
+				T .fd_orgnme fd_orgshort,
+				LEVEL lv,
+				'02' l
+			FROM
+				TB_SYS_ORGINFO T START WITH T .fd_nodeid = #{code} CONNECT BY PRIOR T .fd_nodeid = T .fd_parentid
+		) A
+	WHERE
+		A .lv = '2'
+  </select>
+  
+  <select id="selectGrowEmpList" parameterType="java.util.Map" resultType="java.util.Map">
+  	select fd_orgcde,fd_orgshort from tb_sys_orginfo_ehr t where t.fd_parentid=#{code} and t.fd_nodeid!='A0038'
+  </select>
+  
+  
+  <select id="selectEmpListByOrgCode" parameterType="java.util.Map" resultType="java.util.Map">
+  		SELECT
+			NVL(US.FD_HEADICON, ' ') FD_HEADICON,EMP.FD_EMPNME,EMP.FD_EMPID,NVL(EMP.FD_GENDER, ' ') FD_GENDER,EMP.FD_ORGCDE
+		FROM
+			TB_PEPMGM_EMPINFO EMP
+		LEFT JOIN TB_SYS_USERINFO US ON US.FD_USERNAME = EMP.FD_EMPID
+		WHERE
+			EMP.FD_ORGCDE IN (${sql})
+  </select>
+</mapper>

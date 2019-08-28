@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >  
+<generatorConfiguration>
+    <!-- 1.指定配置文件路径，在这里我们使用绝对路径，如果使用properties的resource属性，需要设置classpath -->
+    <!--<properties  url="file:///Users/lx/Desktop/project/git/chinabank_web_v2/TeamTaleApp/src/test/resources/db.properties"/>-->
+    <properties  url="file:///Users/changzhou/Documents/project_2017/chinabank_web_v2/TeamTaleApp/src/test/resources/db.properties"/>
+    <classPathEntry
+        location="${jdbc.path}" />
+    <context id="context" defaultModelType="flat">
+        <!-- 生成的Java文件的编码 -->
+        <property name="javaFileEncoding" value="UTF-8"/>
+
+        <!-- 格式化java代码 -->
+        <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+        <!-- 格式化XML代码 -->
+        <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+        <!-- 控制XML生成覆盖问题 -->
+        <property name="mergeable" value="false"/>
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="false" />
+        </commentGenerator>
+
+        <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"  
+            connectionURL="jdbc:oracle:thin:@39.104.168.56:1521:orcl"
+            userId="factor" password="factor" />
+        <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和
+           NUMERIC 类型解析为java.math.BigDecimal -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="true"/>
+        </javaTypeResolver>
+        <javaModelGenerator targetPackage="com.work.entity"
+            targetProject="${mybatis.target}" />
+        <sqlMapGenerator targetPackage="com.work.mapper.xml"
+            targetProject="${mybatis.target}" />
+        <javaClientGenerator targetPackage="com.work.mapper"
+            targetProject="${mybatis.target}" type="XMLMAPPER" />
+
+        <table tableName="tb_sug_detail"
+	            enableSelectByPrimaryKey="true" enableSelectByExample="true"
+                enableDeleteByPrimaryKey="true" enableDeleteByExample="true"
+                enableUpdateByPrimaryKey="true" enableUpdateByExample="true"
+                enableCountByExample="true">
+        </table>
+
+
+    </context>  
+</generatorConfiguration> 

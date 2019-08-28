@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.TBankCircleCommentMapper" >
+  <resultMap id="BaseResultMap" type="com.work.entity.TBankCircleComment" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="CIRCLE_ID" property="circleId" jdbcType="VARCHAR" />
+    <result column="EMP_ID" property="empId" jdbcType="VARCHAR" />
+    <result column="CONTENT" property="content" jdbcType="VARCHAR" />
+    <result column="P_EMP_ID" property="pEmpId" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="ICON" property="icon" jdbcType="VARCHAR" />
+    <result column="P_NAME" property="pName" jdbcType="VARCHAR" />
+    <result column="P_ICON" property="pIcon" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, CIRCLE_ID, EMP_ID, CONTENT, P_EMP_ID, CREATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from TB_BANK_CIRCLE_COMMENT
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TB_BANK_CIRCLE_COMMENT
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.work.entity.TBankCircleComment" >
+    insert into TB_BANK_CIRCLE_COMMENT (ID, CIRCLE_ID, EMP_ID, 
+      CONTENT, P_EMP_ID, CREATE_TIME
+      )
+    values (#{id,jdbcType=VARCHAR}, #{circleId,jdbcType=VARCHAR}, #{empId,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, #{pEmpId,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TBankCircleComment" >
+    insert into TB_BANK_CIRCLE_COMMENT
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="circleId != null" >
+        CIRCLE_ID,
+      </if>
+      <if test="empId != null" >
+        EMP_ID,
+      </if>
+      <if test="content != null" >
+        CONTENT,
+      </if>
+      <if test="pEmpId != null" >
+        P_EMP_ID,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="circleId != null" >
+        #{circleId,jdbcType=VARCHAR},
+      </if>
+      <if test="empId != null" >
+        #{empId,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="pEmpId != null" >
+        #{pEmpId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.work.entity.TBankCircleComment" >
+    update TB_BANK_CIRCLE_COMMENT
+    <set >
+      <if test="circleId != null" >
+        CIRCLE_ID = #{circleId,jdbcType=VARCHAR},
+      </if>
+      <if test="empId != null" >
+        EMP_ID = #{empId,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        CONTENT = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="pEmpId != null" >
+        P_EMP_ID = #{pEmpId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.work.entity.TBankCircleComment" >
+    update TB_BANK_CIRCLE_COMMENT
+    set CIRCLE_ID = #{circleId,jdbcType=VARCHAR},
+      EMP_ID = #{empId,jdbcType=VARCHAR},
+      CONTENT = #{content,jdbcType=VARCHAR},
+      P_EMP_ID = #{pEmpId,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="selectCommentByBankCircleId" resultMap="BaseResultMap" parameterType="java.lang.String">
+  	SELECT
+		TC. ID,
+		TC.EMP_ID,
+		TU.FD_NAME NAME,
+		TU.FD_HEADICON ICON,
+		TC.P_EMP_ID,
+		TU2.FD_NAME P_NAME,
+		TU2.FD_HEADICON P_ICON,
+		TC. CONTENT,
+		TC.CREATE_TIME
+	FROM
+		TB_BANK_CIRCLE_COMMENT TC
+	INNER JOIN TB_SYS_USERINFO TU ON TU.FD_USERNAME = TC.EMP_ID
+	LEFT JOIN TB_SYS_USERINFO TU2 ON TU2.FD_USERNAME = TC.P_EMP_ID
+	WHERE
+		CIRCLE_ID = #{circleId} ORDER BY TC.create_time DESC
+  </select>
+  
+  <select id="selectFilterKeyWork" resultType="java.lang.String">
+  	SELECT
+		FD_KEYWORD AS PRO_NAME
+	FROM
+		TB_PUB_PROHIBIT_WORD T
+  </select>
+</mapper>

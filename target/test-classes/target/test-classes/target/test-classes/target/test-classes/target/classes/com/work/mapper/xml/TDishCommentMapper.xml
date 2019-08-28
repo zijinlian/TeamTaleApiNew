@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.TDishCommentMapper" >
+  <resultMap id="BaseResultMap" type="com.work.entity.TDishComment" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="TASTE" property="taste" jdbcType="VARCHAR" />
+    <result column="COMPONENT" property="component" jdbcType="VARCHAR" />
+    <result column="COSTEFFECTIVE" property="costeffective" jdbcType="VARCHAR" />
+    <result column="EVALUATION" property="evaluation" jdbcType="VARCHAR" />
+    <result column="EMPID" property="empid" jdbcType="VARCHAR" />
+    <result column="EMPNAME" property="empname" jdbcType="VARCHAR" />
+    <result column="DISHID" property="dishid" jdbcType="VARCHAR" />
+    <result column="TOTALSOURCE" property="totalsource" jdbcType="VARCHAR" />
+    <result column="CREDATE" property="credate" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, TASTE, COMPONENT, COSTEFFECTIVE, EVALUATION, EMPID, EMPNAME, DISHID, TOTALSOURCE, 
+    CREDATE
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.work.entity.TDishCommentExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_DISH_COMMENT
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from TB_DISH_COMMENT
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TB_DISH_COMMENT
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.work.entity.TDishComment" >
+    insert into TB_DISH_COMMENT (ID, TASTE, COMPONENT, 
+      COSTEFFECTIVE, EVALUATION, EMPID, 
+      EMPNAME, DISHID, TOTALSOURCE, 
+      CREDATE)
+    values (#{id,jdbcType=VARCHAR}, #{taste,jdbcType=VARCHAR}, #{component,jdbcType=VARCHAR}, 
+      #{costeffective,jdbcType=VARCHAR}, #{evaluation,jdbcType=VARCHAR}, #{empid,jdbcType=VARCHAR}, 
+      #{empname,jdbcType=VARCHAR}, #{dishid,jdbcType=VARCHAR}, #{totalsource,jdbcType=VARCHAR}, 
+      #{credate,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TDishComment" >
+    insert into TB_DISH_COMMENT
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="taste != null" >
+        TASTE,
+      </if>
+      <if test="component != null" >
+        COMPONENT,
+      </if>
+      <if test="costeffective != null" >
+        COSTEFFECTIVE,
+      </if>
+      <if test="evaluation != null" >
+        EVALUATION,
+      </if>
+      <if test="empid != null" >
+        EMPID,
+      </if>
+      <if test="empname != null" >
+        EMPNAME,
+      </if>
+      <if test="dishid != null" >
+        DISHID,
+      </if>
+      <if test="totalsource != null" >
+        TOTALSOURCE,
+      </if>
+      <if test="credate != null" >
+        CREDATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="taste != null" >
+        #{taste,jdbcType=VARCHAR},
+      </if>
+      <if test="component != null" >
+        #{component,jdbcType=VARCHAR},
+      </if>
+      <if test="costeffective != null" >
+        #{costeffective,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluation != null" >
+        #{evaluation,jdbcType=VARCHAR},
+      </if>
+      <if test="empid != null" >
+        #{empid,jdbcType=VARCHAR},
+      </if>
+      <if test="empname != null" >
+        #{empname,jdbcType=VARCHAR},
+      </if>
+      <if test="dishid != null" >
+        #{dishid,jdbcType=VARCHAR},
+      </if>
+      <if test="totalsource != null" >
+        #{totalsource,jdbcType=VARCHAR},
+      </if>
+      <if test="credate != null" >
+        #{credate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.work.entity.TDishComment" >
+    update TB_DISH_COMMENT
+    <set >
+      <if test="taste != null" >
+        TASTE = #{taste,jdbcType=VARCHAR},
+      </if>
+      <if test="component != null" >
+        COMPONENT = #{component,jdbcType=VARCHAR},
+      </if>
+      <if test="costeffective != null" >
+        COSTEFFECTIVE = #{costeffective,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluation != null" >
+        EVALUATION = #{evaluation,jdbcType=VARCHAR},
+      </if>
+      <if test="empid != null" >
+        EMPID = #{empid,jdbcType=VARCHAR},
+      </if>
+      <if test="empname != null" >
+        EMPNAME = #{empname,jdbcType=VARCHAR},
+      </if>
+      <if test="dishid != null" >
+        DISHID = #{dishid,jdbcType=VARCHAR},
+      </if>
+      <if test="totalsource != null" >
+        TOTALSOURCE = #{totalsource,jdbcType=VARCHAR},
+      </if>
+      <if test="credate != null" >
+        CREDATE = #{credate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.work.entity.TDishComment" >
+    update TB_DISH_COMMENT
+    set TASTE = #{taste,jdbcType=VARCHAR},
+      COMPONENT = #{component,jdbcType=VARCHAR},
+      COSTEFFECTIVE = #{costeffective,jdbcType=VARCHAR},
+      EVALUATION = #{evaluation,jdbcType=VARCHAR},
+      EMPID = #{empid,jdbcType=VARCHAR},
+      EMPNAME = #{empname,jdbcType=VARCHAR},
+      DISHID = #{dishid,jdbcType=VARCHAR},
+      TOTALSOURCE = #{totalsource,jdbcType=VARCHAR},
+      CREDATE = #{credate,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

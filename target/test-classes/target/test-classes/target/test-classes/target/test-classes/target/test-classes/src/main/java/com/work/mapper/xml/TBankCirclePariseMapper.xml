@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.TBankCirclePariseMapper" >
+  <resultMap id="BaseResultMap" type="com.work.entity.TBankCircleParise" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="CIRCLE_ID" property="circleId" jdbcType="VARCHAR" />
+    <result column="EMP_ID" property="empId" jdbcType="VARCHAR" />
+    <result column="FD_NAME" property="name" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, CIRCLE_ID, EMP_ID,CREATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from TB_BANK_CIRCLE_PARISE
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TB_BANK_CIRCLE_PARISE
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.work.entity.TBankCircleParise" >
+    insert into TB_BANK_CIRCLE_PARISE (ID, CIRCLE_ID, EMP_ID,CREATE_TIME
+      )
+    values (#{id,jdbcType=VARCHAR}, #{circleId,jdbcType=VARCHAR}, #{empId,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TBankCircleParise" >
+    insert into TB_BANK_CIRCLE_PARISE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="circleId != null" >
+        CIRCLE_ID,
+      </if>
+      <if test="empId != null" >
+        EMP_ID,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="circleId != null" >
+        #{circleId,jdbcType=VARCHAR},
+      </if>
+      <if test="empId != null" >
+        #{empId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.work.entity.TBankCircleParise" >
+    update TB_BANK_CIRCLE_PARISE
+    <set >
+      <if test="circleId != null" >
+        CIRCLE_ID = #{circleId,jdbcType=VARCHAR},
+      </if>
+      <if test="empId != null" >
+        EMP_ID = #{empId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.work.entity.TBankCircleParise" >
+    update TB_BANK_CIRCLE_PARISE
+    set CIRCLE_ID = #{circleId,jdbcType=VARCHAR},
+      EMP_ID = #{empId,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  
+  <!-- add -->
+  <select id="selectPariseByBankCircleId" resultMap="BaseResultMap" parameterType="java.lang.String">
+  	SELECT
+		TC.*,
+		TU.FD_NAME
+	FROM
+		TB_BANK_CIRCLE_PARISE TC
+	INNER JOIN TB_SYS_USERINFO TU ON TC.EMP_ID = TU.FD_USERNAME
+	WHERE
+		CIRCLE_ID = #{circleId} order by CREATE_TIME desc nulls last
+  </select>
+  
+  <select id="selectPariseByBankCircleId2" resultMap="BaseResultMap" parameterType="java.lang.String">
+  	SELECT
+		TC.*,
+		TU.FD_NAME
+	FROM
+		TB_BANK_CIRCLE_PARISE TC
+	INNER JOIN TB_SYS_USERINFO TU ON TC.EMP_ID = TU.FD_USERNAME
+	WHERE
+		CIRCLE_ID = #{circleId}
+	AND EMP_ID NOT IN (
+		SELECT
+			EMPID
+		FROM
+			TB_OA_ATTEND_ROLE T
+		INNER JOIN tb_oa_attend_user_role ur ON T . ID = ur.roleid
+		WHERE
+			T .rolename IN (
+				'省行副行长',
+				'省行行长'
+			)
+	)
+	order by CREATE_TIME desc nulls last
+  </select>
+  
+  <select id="selectUserIsParise" resultType="java.lang.Integer" parameterType="com.work.bean.BankCirclePariseBean">
+  	SELECT
+		COUNT(1)
+	FROM
+		TB_BANK_CIRCLE_PARISE
+	WHERE
+		CIRCLE_ID = #{circleId}
+	AND EMP_ID = #{empId}
+  </select>
+  
+  <delete id="deleteUserPariseById" parameterType="com.work.entity.TBankCircleParise">
+  	delete from TB_BANK_CIRCLE_PARISE
+    where CIRCLE_ID = #{circleId}
+	AND EMP_ID = #{empId}
+  </delete>
+</mapper>

@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.TCmapplyRoomMapper" >
+  <resultMap id="BaseResultMap" type="com.work.entity.TCmapplyRoom" >
+    <result column="APPLY_ID" property="applyId" jdbcType="VARCHAR" />
+    <result column="ROOMID" property="roomid" jdbcType="VARCHAR" />
+    <result column="FD_ID" property="fdId" jdbcType="VARCHAR" />
+    <!--<result column="ROOMTYPEID" property="roomtypeid" jdbcType="VARCHAR" />-->
+    <!--<result column="ROOMIMAGEID" property="roomimageid" jdbcType="VARCHAR" />-->
+  </resultMap>
+
+
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    APPLY_ID, ROOMID, FD_ID
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.work.entity.TCmapplyRoomExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_CM_APPLY_ROOM
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <insert id="insert" parameterType="com.work.entity.TCmapplyRoom" >
+    insert into TB_CM_APPLY_ROOM (APPLY_ID, ROOMID, FD_ID
+      )
+    values (#{applyId,jdbcType=VARCHAR}, #{roomid,jdbcType=VARCHAR}, #{fdId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TCmapplyRoom" >
+    insert into TB_CM_APPLY_ROOM
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="applyId != null" >
+        APPLY_ID,
+      </if>
+      <if test="roomid != null" >
+        ROOMID,
+      </if>
+      <if test="fdId != null" >
+        FD_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="applyId != null" >
+        #{applyId,jdbcType=VARCHAR},
+      </if>
+      <if test="roomid != null" >
+        #{roomid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdId != null" >
+        #{fdId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+    <!--<resultMap id="ApplyRoomResultMap" type="com.work.entity.TAppyliesRoom" >-->
+        <!--<result column="FD_APPLYID" property="fd_applyId" jdbcType="VARCHAR" />-->
+        <!--<result column="FD_ROOMID" property="fd_roomid" jdbcType="VARCHAR" />-->
+        <!--<result column="FD_FDID" property="fd_fdId" jdbcType="VARCHAR" />-->
+        <!--<result column="FD_CONTACTS" property="fd_contacts" jdbcType="VARCHAR"/>-->
+        <!--<result column="FD_TELPHONE" property="fd_telephone" jdbcType="VARCHAR"/>-->
+        <!--<result column="FD_MEETSTARTTIME" property="fd_meetstarttime" jdbcType="VARCHAR"/>-->
+        <!--<result column="FD_MEETENDTIME" property="fd_meetendtime" jdbcType="VARCHAR"/>-->
+        <!--<result column="FD_EMPID" property="fd_empid" jdbcType="VARCHAR"/>-->
+        <!--<result column="FD_EMPNAME" property="fd_empname" jdbcType="VARCHAR"/>-->
+        <!--<result column="FD_APPLYTIME" property="fd_applytime" jdbcType="VARCHAR"/>-->
+        <!--<result column="FD_APPLYSTATUS" property="fd_applystatus" jdbcType="VARCHAR"/>-->
+        <!--<result column="FD_ORGNME" property="fd_fdorgnme" jdbcType="VARCHAR"/>-->
+    <!--</resultMap>-->
+  
+  <select id="selectRoomById" resultType="java.util.Map" parameterType="com.work.bean.RoomBean" >
+    SELECT
+     AR.APPLY_ID,
+     AR.ROOMID,
+     AR.FD_ID,
+     CR.CONTACTS,
+     CR.TELPHONE,
+     CR.MEETSTARTTIME,
+     CR.MEETENDTIME,
+     CR.EMPID,
+     CR.MEETNAME,
+     CR.EMPNAME,
+     CR.APPLYTIME,
+     CR.APPLYSTATUS,
+     (SELECT DISTINCT  DJ.FD_ORG_SYSTEMNO FROM TB_SYS_ORGINFO_EHR DJ WHERE DJ.FD_ORGCDE = CR.APPLYDEPARTMENT) AS DPTNAME
+	FROM
+		TB_CM_APPLY_ROOM AR
+	LEFT JOIN TB_CM_APPLY CR ON CR.APPLYID = AR.APPLY_ID
+	WHERE
+	ROOMID = #{roomId} AND
+	APPLYSTATUS = '1' AND
+	MEETENDTIME LIKE  CONCAT(#{date},'%') order by MEETENDTIME DESC
+  </select>
+  <select id="selectRoomByEmpId" parameterType="com.work.bean.RoomBean" resultType="java.util.Map">
+  	<!-- SELECT
+		*
+	FROM 
+		TB_CM_APPLY_ROOM AR
+	LEFT JOIN TB_CM_APPLY CR ON CR.APPLYID = AR.APPLY_ID
+	LEFT JOIN TB_CM_ROOM  CO ON CO.ROOMID = AR.ROOMID
+	WHERE
+	EMPID = #{empId}  order by MEETENDTIME desc -->
+	SELECT   T.*           
+	FROM TB_CM_APPLY T                                          
+	WHERE 1 = 1                                                           
+	AND T.EMPID = #{empId} 
+	and t.APPLYSTATUS = '1'
+	ORDER BY  T.MEETSTARTTIME desc  
+  </select>
+  
+  
+  <select id="selectMyRoomApproval" parameterType="com.work.bean.RoomBean" resultType="java.util.Map">
+  	<!-- SELECT
+		*
+	FROM 
+		TB_CM_APPROVAL CAR
+	LEFT JOIN TB_CM_APPLY CAP ON CAR.APPLYID = CAP.APPLYID 
+	LEFT JOIN TB_CM_APPLY_ROOM CAO ON CAO.APPLY_ID = CAR.APPLYID
+	LEFT JOIN TB_CM_ROOM  CO ON CO.ROOMID = CAO.ROOMID
+	WHERE FD_HANDLERID = #{empId} 
+	<if test="status != null and status == '0'.toString()">
+		AND CAR.FD_STATUS = '0'
+	</if>
+	<if test="status != null and status != '0'.toString()">
+		AND CAR.FD_STATUS != '0'
+	</if>
+	ORDER BY MEETSTARTTIME DESC -->
+
+
+<!--
+      select *
+      from (SELECT T.APPLYID,
+      T.MEETNAME,
+      T.MEETSTARTTIME,
+      T.MEETENDTIME,
+      T.EMPID,
+      T.EMPNAME,
+      (select wm_concat(t2.ROOMNAME)
+      from TB_CM_ROOM t2
+      where t2.roomid in
+      (select t1.roomid
+      from tb_cm_apply_room t1
+      where t1.APPLY_ID = t.APPLYID)) as ROOMNAME,
+      (CASE　WHEN (SELECT COUNT(*)
+      FROM TB_CM_APPROVAL T2
+      WHERE T2.APPLYID = T.APPLYID) > 0 THEN '1' ELSE '0'
+      　　END) as APPROVALSTATUS
+      FROM TB_CM_APPLY T
+      WHERE 1 = 1
+      AND T.APPLYSTATUS = '1'
+      AND T.APPLYDEPARTMENT IN
+      (SELECT T2.FD_DEPT_ORG
+      FROM TB_PEPMGM_EMPINFO T2
+      WHERE T2.FD_EMPID = #{empId} )) table1
+      -->
+      select table1.APPLYID,
+      table1.MEETNAME,
+      table1.MEETSTARTTIME,
+      table1.MEETENDTIME,
+      table1.EMPID,
+      table1.EMPNAME,
+      table1.APPLYSTATUS,
+      table1.ROOMNAME,
+      (CASE　WHEN table1.FDHANDLERNAME is null THEN '' ELSE table1.FDHANDLERNAME
+      　　END) as FDHANDLERNAME,
+      (CASE　WHEN table1.FDHANDLERNAME is null THEN '' ELSE table1.FDHANDLERID
+      　　END) as FDHANDLERID，
+      (CASE　WHEN table1.FDHANDLERNAME is null THEN '' ELSE table1.FDHANDLETIME
+      　　END) as FDHANDLETIME,
+      (CASE　WHEN table1.FDHANDLERNAME is null THEN '' ELSE table1.APPROVALSTATUS
+      　　END) as APPROVALSTATUS
+      from (SELECT T.APPLYID,
+      T.MEETNAME,
+      T.MEETSTARTTIME,
+      T.MEETENDTIME,
+      T.EMPID,
+      T.EMPNAME,
+      T.APPLYSTATUS,
+      (select wm_concat(t2.ROOMNAME)
+      from TB_CM_ROOM t2
+      where t2.roomid in
+      (select t1.roomid
+      from tb_cm_apply_room t1
+      where t1.APPLY_ID = t.APPLYID)) as ROOMNAME,
+      (select t4.fd_handlernme
+      from TB_CM_APPROVAL t4
+      where T4.APPLYID = T.APPLYID) as FDHANDLERNAME,
+      (select t4.fd_handlerid
+      from TB_CM_APPROVAL t4
+      where T4.APPLYID = T.APPLYID) as FDHANDLERID,
+      (select t4.fd_handletime
+      from TB_CM_APPROVAL t4
+      where T4.APPLYID = T.APPLYID) as FDHANDLETIME,
+      (CASE　WHEN (SELECT COUNT(*)
+      FROM TB_CM_APPROVAL T2
+      WHERE T2.APPLYID = T.APPLYID) > 0 THEN '1' ELSE '0'
+      　　END) as APPROVALSTATUS
+      FROM TB_CM_APPLY T
+      WHERE 1 = 1
+      <if test="status != null and status == '0'.toString()">
+          AND T.APPLYSTATUS = '1'
+      </if>
+
+      AND T.APPLYDEPARTMENT IN
+      (SELECT T2.FD_DEPT_ORG
+      FROM TB_PEPMGM_EMPINFO T2
+      WHERE T2.FD_EMPID = #{empId})) table1
+
+      <where>
+		<if test="status != null and status == '0'.toString()">
+			table1.APPROVALSTATUS = '0'
+		</if>
+		<if test="status != null and status != '0'.toString()">
+			table1.APPROVALSTATUS = '1'
+		</if>
+	</where>
+
+      <if test="status != null and status != '0'.toString()">
+          AND table1.FDHANDLERID = #{empId}
+      </if>
+
+      ORDER BY MEETSTARTTIME DESC
+
+    <!--	SELECT
+            *
+        FROM
+            (
+                SELECT
+                    T .*, CO.ROOMID,
+                    CO.ROOMNAME,
+                    CO.ROOMPLACE,
+                    CO.ROOMPEOPLE,
+                    CO.ROOMEQUIPMENT,
+                    CO.ROOMLEVLE,
+                    (
+                        CASE　WHEN (
+                            SELECT
+                                COUNT (*)
+                            FROM
+                                TB_CM_APPROVAL T2
+                            WHERE
+                                T2.APPLYID = T .APPLYID
+                        ) > 0 THEN
+                            '2'
+                        ELSE
+                            '1' 　　END
+                    ) AS APPROVAL_STATUS
+                FROM
+                    TB_CM_APPLY T
+                INNER JOIN tb_pepmgm_empinfo b ON T .empid = b.fd_empid
+                LEFT JOIN TB_CM_APPLY_ROOM CAO ON CAO.APPLY_ID = T .APPLYID
+                LEFT JOIN TB_CM_ROOM CO ON CO.ROOMID = CAO.ROOMID
+                WHERE
+                    b.fd_dept_org = (
+                        SELECT
+                            A .fd_dept_org
+                        FROM
+                            tb_pepmgm_empinfo A
+                        WHERE
+                            A .FD_EMPID = #{empId}
+                    )
+                AND T .applystatus = '1'
+            ) TA-->
+  </select>
+  
+  <select id="selectManagerRoomList" resultType="java.util.Map">
+--   	SELECT
+-- 		*
+-- 	FROM
+-- 		TB_CM_APPROVAL CAR
+-- 	LEFT JOIN TB_CM_APPLY TC ON CAR.APPLYID = TC.APPLYID
+-- 	LEFT JOIN TB_CM_APPLY_ROOM CAO ON CAO.APPLY_ID = CAR.APPLYID
+-- 	LEFT JOIN TB_CM_ROOM CO ON CO.ROOMID = CAO.ROOMID
+
+	SELECT T.MEETNAME,T.MEETSTARTTIME , T.MEETENDTIME , T.EMPNAME,T.TELPHONE,
+(CASE　WHEN T.LEADER is null  THEN '无' ELSE '有'　　END) AS LEADER,
+(SELECT T2.FD_ORGNME FROM TB_SYS_ORGINFO_EHR T2 WHERE T2.FD_ORGCDE= T.APPLYDEPARTMENT) as APPLYDEPARTMENT,
+(CASE　WHEN T.APPLYSTATUS = '1'  THEN '已申请' ELSE '已释放'　　END) AS APPLYSTATUS ,
+(CASE　WHEN nvl((SELECT T3.FD_STATUS FROM TB_CM_APPROVAL T3 WHERE T3.APPLYID = T.APPLYID),'0') = '0'  THEN '未审批'
+       WHEN nvl((SELECT T3.FD_STATUS FROM TB_CM_APPROVAL T3 WHERE T3.APPLYID = T.APPLYID),'0') = '1'  THEN '审批通过'
+       ELSE '审批拒绝'　　END) AS APPROVAL_STATUS,
+(SELECT wm_concat(T4.ROOMNAME ) FROM TB_CM_ROOM T4 WHERE T4.ROOMID
+        in (SELECT T5.ROOMID FROM TB_CM_APPLY_ROOM T5 WHERE T5.APPLY_ID = T.APPLYID ) )AS ROOMNAME
+FROM TB_CM_APPLY T
+ORDER BY T.MEETSTARTTIME DESC
+
+
+
+
+
+  </select>
+</mapper>

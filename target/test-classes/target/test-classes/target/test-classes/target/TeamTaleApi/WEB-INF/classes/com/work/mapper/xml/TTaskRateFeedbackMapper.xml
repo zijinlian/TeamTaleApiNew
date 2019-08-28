@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.work.mapper.TTaskRateFeedbackMapper">
+  <resultMap id="BaseResultMap" type="com.work.entity.TTaskRateFeedback">
+    <result column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="TASK_ID" jdbcType="VARCHAR" property="taskId" />
+    <result column="FD_START_DATE" jdbcType="VARCHAR" property="fdStartDate" />
+    <result column="FD_END_DATE" jdbcType="VARCHAR" property="fdEndDate" />
+    <result column="FD_REMARK" jdbcType="VARCHAR" property="fdRemark" />
+    <result column="PARENT_ID" jdbcType="VARCHAR" property="parentId" />
+    <result column="FEED_EMPID" jdbcType="VARCHAR" property="feedEmpid" />
+    <result column="FEED_EMPNAME" jdbcType="VARCHAR" property="feedEmpname" />
+    <result column="FD_CONTENT" jdbcType="VARCHAR" property="fdContent" />
+    <result column="FD_PROCESS" jdbcType="VARCHAR" property="fdProcess" />
+    <result column="FD_TASKINFO" jdbcType="VARCHAR" property="fdTaskinfo" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ID, TASK_ID, FD_START_DATE, FD_END_DATE, FD_REMARK, PARENT_ID, FEED_EMPID, FEED_EMPNAME, 
+    FD_CONTENT, FD_PROCESS, FD_TASKINFO
+  </sql>
+  <select id="selectByExample" parameterType="com.work.entity.TTaskRateFeedbackExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_TASK_RATE_FEEDBACK
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <insert id="insert" parameterType="com.work.entity.TTaskRateFeedback">
+    insert into TB_TASK_RATE_FEEDBACK (ID, TASK_ID, FD_START_DATE, 
+      FD_END_DATE, FD_REMARK, PARENT_ID, 
+      FEED_EMPID, FEED_EMPNAME, FD_CONTENT, 
+      FD_PROCESS, FD_TASKINFO)
+    values (#{id,jdbcType=VARCHAR}, #{taskId,jdbcType=VARCHAR}, #{fdStartDate,jdbcType=VARCHAR}, 
+      #{fdEndDate,jdbcType=VARCHAR}, #{fdRemark,jdbcType=VARCHAR}, #{parentId,jdbcType=VARCHAR}, 
+      #{feedEmpid,jdbcType=VARCHAR}, #{feedEmpname,jdbcType=VARCHAR}, #{fdContent,jdbcType=VARCHAR}, 
+      #{fdProcess,jdbcType=VARCHAR}, #{fdTaskinfo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TTaskRateFeedback">
+    insert into TB_TASK_RATE_FEEDBACK
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="taskId != null">
+        TASK_ID,
+      </if>
+      <if test="fdStartDate != null">
+        FD_START_DATE,
+      </if>
+      <if test="fdEndDate != null">
+        FD_END_DATE,
+      </if>
+      <if test="fdRemark != null">
+        FD_REMARK,
+      </if>
+      <if test="parentId != null">
+        PARENT_ID,
+      </if>
+      <if test="feedEmpid != null">
+        FEED_EMPID,
+      </if>
+      <if test="feedEmpname != null">
+        FEED_EMPNAME,
+      </if>
+      <if test="fdContent != null">
+        FD_CONTENT,
+      </if>
+      <if test="fdProcess != null">
+        FD_PROCESS,
+      </if>
+      <if test="fdTaskinfo != null">
+        FD_TASKINFO,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="taskId != null">
+        #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdStartDate != null">
+        #{fdStartDate,jdbcType=VARCHAR},
+      </if>
+      <if test="fdEndDate != null">
+        #{fdEndDate,jdbcType=VARCHAR},
+      </if>
+      <if test="fdRemark != null">
+        #{fdRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="feedEmpid != null">
+        #{feedEmpid,jdbcType=VARCHAR},
+      </if>
+      <if test="feedEmpname != null">
+        #{feedEmpname,jdbcType=VARCHAR},
+      </if>
+      <if test="fdContent != null">
+        #{fdContent,jdbcType=VARCHAR},
+      </if>
+      <if test="fdProcess != null">
+        #{fdProcess,jdbcType=VARCHAR},
+      </if>
+      <if test="fdTaskinfo != null">
+        #{fdTaskinfo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.xml.TIccStaffPaperNewMapper" >
+  <resultMap id="BaseResultMap" type="com.work.entity.TbIccStaffPaperNew" >
+    <id column="FD_STAFF_ID" property="fdStaffId" jdbcType="VARCHAR" />
+    <id column="PAPER_ID" property="paperTy" jdbcType="VARCHAR" />
+    <id column="PAPER_TYPE" property="paperType" jdbcType="VARCHAR" />
+    <id column="FD_PROBLEM_ID" property="fdProblemId" jdbcType="VARCHAR" />
+    <id column="FD_STAFF_PAPER_DATE" property="fdStaffPaperDate" jdbcType="VARCHAR" />
+    <result column="FD_STAFF_ANSWER" property="fdStaffAnswer" jdbcType="VARCHAR" />
+    <result column="FD_STAFF_RIGHT_ANSWER" property="fdStaffRightAnswer" jdbcType="VARCHAR" />
+    <result column="FD_STAFFF_SCORE" property="fdStafffScore" jdbcType="VARCHAR" />
+  </resultMap>
+    <insert id="insertSelective" parameterType="com.work.entity.TbIccStaffPaperNew" >
+        insert into TB_ICC_STAFF_PAPER_NEW (FD_STAFF_ID,PAPER_ID,PAPER_TYPE,FD_PROBLEM_ID,FD_STAFF_PAPER_DATE,FD_STAFF_ANSWER,FD_STAFF_RIGHT_ANSWER,FD_STAFFF_SCORE)
+        values (#{fdStaffId,jdbcType=VARCHAR},#{paperTy,jdbcType=VARCHAR}, #{paperType,jdbcType=VARCHAR},#{fdProblemId,jdbcType=VARCHAR},#{fdStaffPaperDate,jdbcType=VARCHAR},
+        #{fdStaffAnswer,jdbcType=VARCHAR},#{fdStaffRightAnswer,jdbcType=VARCHAR},#{fdStafffScore,jdbcType=VARCHAR})
+    </insert>
+   <select id="selectCount" parameterType="com.work.entity.TbIccStaffPaperNew" resultType="integer">
+       select max(PAPER_ID) from TB_ICC_STAFF_PAPER_NEW
+       where
+            FD_STAFF_ID = #{fdStaffId,jdbcType=VARCHAR}
+            and FD_STAFF_PAPER_DATE = #{fdStaffPaperDate,jdbcType=VARCHAR}
+   </select>
+
+</mapper>

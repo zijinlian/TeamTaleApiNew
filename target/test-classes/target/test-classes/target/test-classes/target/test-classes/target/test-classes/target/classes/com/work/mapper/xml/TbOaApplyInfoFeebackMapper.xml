@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.work.mapper.TbOaApplyInfoFeebackMapper">
+  <resultMap id="BaseResultMap" type="com.work.entity.TbOaApplyInfoFeeback">
+    <result column="FD_ACTIVEID" jdbcType="VARCHAR" property="fdActiveid" />
+    <result column="FD_USERNAME" jdbcType="VARCHAR" property="fdUsername" />
+    <result column="FD_FEE_TIME" jdbcType="VARCHAR" property="fdFeeTime" />
+    <result column="FD_SCORE" jdbcType="VARCHAR" property="fdScore" />
+    <result column="FD_FEE_CONTENT" jdbcType="VARCHAR" property="fdFeeContent" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    FD_ACTIVEID, FD_USERNAME, FD_FEE_TIME, FD_SCORE, FD_FEE_CONTENT
+  </sql>
+  <select id="selectByExample" parameterType="com.work.entity.TbOaApplyInfoFeebackExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_OA_APPLY_INFO_FEEBACK
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <insert id="insert" parameterType="com.work.entity.TbOaApplyInfoFeeback">
+    insert into TB_OA_APPLY_INFO_FEEBACK (FD_ACTIVEID, FD_USERNAME, FD_FEE_TIME, 
+      FD_SCORE, FD_FEE_CONTENT)
+    values (#{fdActiveid,jdbcType=VARCHAR}, #{fdUsername,jdbcType=VARCHAR}, #{fdFeeTime,jdbcType=VARCHAR}, 
+      #{fdScore,jdbcType=VARCHAR}, #{fdFeeContent,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TbOaApplyInfoFeeback">
+    insert into TB_OA_APPLY_INFO_FEEBACK
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="fdActiveid != null">
+        FD_ACTIVEID,
+      </if>
+      <if test="fdUsername != null">
+        FD_USERNAME,
+      </if>
+      <if test="fdFeeTime != null">
+        FD_FEE_TIME,
+      </if>
+      <if test="fdScore != null">
+        FD_SCORE,
+      </if>
+      <if test="fdFeeContent != null">
+        FD_FEE_CONTENT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="fdActiveid != null">
+        #{fdActiveid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdUsername != null">
+        #{fdUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="fdFeeTime != null">
+        #{fdFeeTime,jdbcType=VARCHAR},
+      </if>
+      <if test="fdScore != null">
+        #{fdScore,jdbcType=VARCHAR},
+      </if>
+      <if test="fdFeeContent != null">
+        #{fdFeeContent,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

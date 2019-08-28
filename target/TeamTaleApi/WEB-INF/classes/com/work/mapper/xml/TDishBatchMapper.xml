@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.TDishBatchMapper" >
+  <resultMap id="BaseResultMap" type="com.work.entity.TDishBatch" >
+    <id column="BATCHID" property="batchid" jdbcType="VARCHAR" />
+    <result column="BATCHNAME" property="batchname" jdbcType="VARCHAR" />
+    <result column="STARTIME" property="startime" jdbcType="VARCHAR" />
+    <result column="ENDTIME" property="endtime" jdbcType="VARCHAR" />
+    <result column="PRODUCTSTATUS" property="productstatus" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    BATCHID, BATCHNAME, STARTIME, ENDTIME, PRODUCTSTATUS
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.work.entity.TDishBatchExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_DISH_BATCH
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from TB_DISH_BATCH
+    where BATCHID = #{batchid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TB_DISH_BATCH
+    where BATCHID = #{batchid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.work.entity.TDishBatch" >
+    insert into TB_DISH_BATCH (BATCHID, BATCHNAME, STARTIME, 
+      ENDTIME, PRODUCTSTATUS)
+    values (#{batchid,jdbcType=VARCHAR}, #{batchname,jdbcType=VARCHAR}, #{startime,jdbcType=VARCHAR}, 
+      #{endtime,jdbcType=VARCHAR}, #{productstatus,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TDishBatch" >
+    insert into TB_DISH_BATCH
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="batchid != null" >
+        BATCHID,
+      </if>
+      <if test="batchname != null" >
+        BATCHNAME,
+      </if>
+      <if test="startime != null" >
+        STARTIME,
+      </if>
+      <if test="endtime != null" >
+        ENDTIME,
+      </if>
+      <if test="productstatus != null" >
+        PRODUCTSTATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="batchid != null" >
+        #{batchid,jdbcType=VARCHAR},
+      </if>
+      <if test="batchname != null" >
+        #{batchname,jdbcType=VARCHAR},
+      </if>
+      <if test="startime != null" >
+        #{startime,jdbcType=VARCHAR},
+      </if>
+      <if test="endtime != null" >
+        #{endtime,jdbcType=VARCHAR},
+      </if>
+      <if test="productstatus != null" >
+        #{productstatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.work.entity.TDishBatch" >
+    update TB_DISH_BATCH
+    <set >
+      <if test="batchname != null" >
+        BATCHNAME = #{batchname,jdbcType=VARCHAR},
+      </if>
+      <if test="startime != null" >
+        STARTIME = #{startime,jdbcType=VARCHAR},
+      </if>
+      <if test="endtime != null" >
+        ENDTIME = #{endtime,jdbcType=VARCHAR},
+      </if>
+      <if test="productstatus != null" >
+        PRODUCTSTATUS = #{productstatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where BATCHID = #{batchid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.work.entity.TDishBatch" >
+    update TB_DISH_BATCH
+    set BATCHNAME = #{batchname,jdbcType=VARCHAR},
+      STARTIME = #{startime,jdbcType=VARCHAR},
+      ENDTIME = #{endtime,jdbcType=VARCHAR},
+      PRODUCTSTATUS = #{productstatus,jdbcType=VARCHAR}
+    where BATCHID = #{batchid,jdbcType=VARCHAR}
+  </update>
+</mapper>

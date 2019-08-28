@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.TEmpSourceMapper" >
+  <resultMap id="BaseResultMap" type="com.work.entity.TEmpSource" >
+    <id column="EMPID" property="empid" jdbcType="VARCHAR" />
+    <result column="TB_GA_RESUME" property="tbGaResume" jdbcType="DECIMAL" />
+    <result column="TB_GA_PERHONOR" property="tbGaPerhonor" jdbcType="DECIMAL" />
+    <result column="TB_GA_PERFORMANCE" property="tbGaPerformance" jdbcType="DECIMAL" />
+    <result column="TB_GA_WORKCHECK" property="tbGaWorkcheck" jdbcType="DECIMAL" />
+    <result column="TB_GA_SKILL" property="tbGaSkill" jdbcType="DECIMAL" />
+    <result column="TB_GUP_DIPLOMA" property="tbGupDiploma" jdbcType="DECIMAL" />
+    <result column="TB_TEACHER_COUNT" property="tbTeacherCount" jdbcType="DECIMAL" />
+    <result column="TB_STUDY_COUNT" property="tbStudyCount" jdbcType="DECIMAL" />
+    <result column="UPDATEDATE" property="updatedate" jdbcType="VARCHAR" />
+    <result column="TB_GA_GROUPHONOR" property="tbGaGrouphonor" jdbcType="DECIMAL" />
+    <result column="EMPNAME" property="empname" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    EMPID, TB_GA_RESUME, TB_GA_PERHONOR, TB_GA_PERFORMANCE, TB_GA_WORKCHECK, TB_GA_SKILL, 
+    TB_GUP_DIPLOMA, TB_TEACHER_COUNT, TB_STUDY_COUNT, UPDATEDATE, TB_GA_GROUPHONOR, EMPNAME
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.work.entity.TEmpSourceExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_EMP_SOURCE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from TB_EMP_SOURCE
+    where EMPID = #{empid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TB_EMP_SOURCE
+    where EMPID = #{empid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.work.entity.TEmpSource" >
+    insert into TB_EMP_SOURCE (EMPID, TB_GA_RESUME, TB_GA_PERHONOR, 
+      TB_GA_PERFORMANCE, TB_GA_WORKCHECK, TB_GA_SKILL, 
+      TB_GUP_DIPLOMA, TB_TEACHER_COUNT, TB_STUDY_COUNT, 
+      UPDATEDATE, TB_GA_GROUPHONOR, EMPNAME
+      )
+    values (#{empid,jdbcType=VARCHAR}, #{tbGaResume,jdbcType=DECIMAL}, #{tbGaPerhonor,jdbcType=DECIMAL}, 
+      #{tbGaPerformance,jdbcType=DECIMAL}, #{tbGaWorkcheck,jdbcType=DECIMAL}, #{tbGaSkill,jdbcType=DECIMAL}, 
+      #{tbGupDiploma,jdbcType=DECIMAL}, #{tbTeacherCount,jdbcType=DECIMAL}, #{tbStudyCount,jdbcType=DECIMAL}, 
+      #{updatedate,jdbcType=VARCHAR}, #{tbGaGrouphonor,jdbcType=DECIMAL}, #{empname,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TEmpSource" >
+    insert into TB_EMP_SOURCE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="empid != null" >
+        EMPID,
+      </if>
+      <if test="tbGaResume != null" >
+        TB_GA_RESUME,
+      </if>
+      <if test="tbGaPerhonor != null" >
+        TB_GA_PERHONOR,
+      </if>
+      <if test="tbGaPerformance != null" >
+        TB_GA_PERFORMANCE,
+      </if>
+      <if test="tbGaWorkcheck != null" >
+        TB_GA_WORKCHECK,
+      </if>
+      <if test="tbGaSkill != null" >
+        TB_GA_SKILL,
+      </if>
+      <if test="tbGupDiploma != null" >
+        TB_GUP_DIPLOMA,
+      </if>
+      <if test="tbTeacherCount != null" >
+        TB_TEACHER_COUNT,
+      </if>
+      <if test="tbStudyCount != null" >
+        TB_STUDY_COUNT,
+      </if>
+      <if test="updatedate != null" >
+        UPDATEDATE,
+      </if>
+      <if test="tbGaGrouphonor != null" >
+        TB_GA_GROUPHONOR,
+      </if>
+      <if test="empname != null" >
+        EMPNAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="empid != null" >
+        #{empid,jdbcType=VARCHAR},
+      </if>
+      <if test="tbGaResume != null" >
+        #{tbGaResume,jdbcType=DECIMAL},
+      </if>
+      <if test="tbGaPerhonor != null" >
+        #{tbGaPerhonor,jdbcType=DECIMAL},
+      </if>
+      <if test="tbGaPerformance != null" >
+        #{tbGaPerformance,jdbcType=DECIMAL},
+      </if>
+      <if test="tbGaWorkcheck != null" >
+        #{tbGaWorkcheck,jdbcType=DECIMAL},
+      </if>
+      <if test="tbGaSkill != null" >
+        #{tbGaSkill,jdbcType=DECIMAL},
+      </if>
+      <if test="tbGupDiploma != null" >
+        #{tbGupDiploma,jdbcType=DECIMAL},
+      </if>
+      <if test="tbTeacherCount != null" >
+        #{tbTeacherCount,jdbcType=DECIMAL},
+      </if>
+      <if test="tbStudyCount != null" >
+        #{tbStudyCount,jdbcType=DECIMAL},
+      </if>
+      <if test="updatedate != null" >
+        #{updatedate,jdbcType=VARCHAR},
+      </if>
+      <if test="tbGaGrouphonor != null" >
+        #{tbGaGrouphonor,jdbcType=DECIMAL},
+      </if>
+      <if test="empname != null" >
+        #{empname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.work.entity.TEmpSource" >
+    update TB_EMP_SOURCE
+    <set >
+      <if test="tbGaResume != null" >
+        TB_GA_RESUME = #{tbGaResume,jdbcType=DECIMAL},
+      </if>
+      <if test="tbGaPerhonor != null" >
+        TB_GA_PERHONOR = #{tbGaPerhonor,jdbcType=DECIMAL},
+      </if>
+      <if test="tbGaPerformance != null" >
+        TB_GA_PERFORMANCE = #{tbGaPerformance,jdbcType=DECIMAL},
+      </if>
+      <if test="tbGaWorkcheck != null" >
+        TB_GA_WORKCHECK = #{tbGaWorkcheck,jdbcType=DECIMAL},
+      </if>
+      <if test="tbGaSkill != null" >
+        TB_GA_SKILL = #{tbGaSkill,jdbcType=DECIMAL},
+      </if>
+      <if test="tbGupDiploma != null" >
+        TB_GUP_DIPLOMA = #{tbGupDiploma,jdbcType=DECIMAL},
+      </if>
+      <if test="tbTeacherCount != null" >
+        TB_TEACHER_COUNT = #{tbTeacherCount,jdbcType=DECIMAL},
+      </if>
+      <if test="tbStudyCount != null" >
+        TB_STUDY_COUNT = #{tbStudyCount,jdbcType=DECIMAL},
+      </if>
+      <if test="updatedate != null" >
+        UPDATEDATE = #{updatedate,jdbcType=VARCHAR},
+      </if>
+      <if test="tbGaGrouphonor != null" >
+        TB_GA_GROUPHONOR = #{tbGaGrouphonor,jdbcType=DECIMAL},
+      </if>
+      <if test="empname != null" >
+        EMPNAME = #{empname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where EMPID = #{empid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.work.entity.TEmpSource" >
+    update TB_EMP_SOURCE
+    set TB_GA_RESUME = #{tbGaResume,jdbcType=DECIMAL},
+      TB_GA_PERHONOR = #{tbGaPerhonor,jdbcType=DECIMAL},
+      TB_GA_PERFORMANCE = #{tbGaPerformance,jdbcType=DECIMAL},
+      TB_GA_WORKCHECK = #{tbGaWorkcheck,jdbcType=DECIMAL},
+      TB_GA_SKILL = #{tbGaSkill,jdbcType=DECIMAL},
+      TB_GUP_DIPLOMA = #{tbGupDiploma,jdbcType=DECIMAL},
+      TB_TEACHER_COUNT = #{tbTeacherCount,jdbcType=DECIMAL},
+      TB_STUDY_COUNT = #{tbStudyCount,jdbcType=DECIMAL},
+      UPDATEDATE = #{updatedate,jdbcType=VARCHAR},
+      TB_GA_GROUPHONOR = #{tbGaGrouphonor,jdbcType=DECIMAL},
+      EMPNAME = #{empname,jdbcType=VARCHAR}
+    where EMPID = #{empid,jdbcType=VARCHAR}
+  </update>
+</mapper>

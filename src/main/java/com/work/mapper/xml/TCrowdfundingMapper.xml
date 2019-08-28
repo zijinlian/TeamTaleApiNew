@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.TCrowdfundingMapper" >
+  <resultMap id="BaseResultMap" type="com.work.entity.TCrowdfunding" >
+    <id column="FD_CF_ID" property="fdCfId" jdbcType="VARCHAR" />
+    <result column="FD_THEME" property="fdTheme" jdbcType="VARCHAR" />
+    <result column="FD_CONTENT" property="fdContent" jdbcType="VARCHAR" />
+    <result column="FD_CF_TYPE_ID" property="fdCfTypeId" jdbcType="VARCHAR" />
+    <result column="FD_RELEASEDEP" property="fdReleasedep" jdbcType="VARCHAR" />
+    <result column="FD_STARTTIME" property="fdStarttime" jdbcType="VARCHAR" />
+    <result column="FD_ENDTIME" property="fdEndtime" jdbcType="VARCHAR" />
+    <result column="FD_LIKECOUNT" property="fdLikecount" jdbcType="VARCHAR" />
+    <result column="FD_STATE" property="fdState" jdbcType="VARCHAR" />
+    <result column="FD_TOP" property="fdTop" jdbcType="VARCHAR" />
+    <result column="FD_CFICON" property="fdCficon" jdbcType="VARCHAR" />
+    <result column="FD_CREATERID" property="fdCreaterid" jdbcType="VARCHAR" />
+    <result column="FD_DIS_COUNT" property="fdDisCount" jdbcType="VARCHAR" />
+    <result column="FD_READ_COUNT" property="fdReadCount" jdbcType="VARCHAR" />
+    <result column="FD_TYPENME" property="fdTypenme" jdbcType="VARCHAR" />
+    <result column="FD_CREAT_NME" property="fdCreatNme" jdbcType="VARCHAR" />
+    <result column="FD_HOT" property="fdHot" jdbcType="VARCHAR" />
+    <result column="FD_CF_TYPE" property="fdTypenme" jdbcType="VARCHAR" />
+      <result column="URL" property="url" jdbcType="VARCHAR" />
+      <result column="NAME" property="name" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    FD_CF_ID, FD_THEME, FD_CONTENT, FD_CF_TYPE_ID, FD_RELEASEDEP, FD_STARTTIME, FD_ENDTIME, 
+    FD_LIKECOUNT, FD_STATE, FD_TOP, FD_CFICON, FD_CREATERID, FD_DIS_COUNT, FD_READ_COUNT, 
+    FD_TYPENME, FD_CREAT_NME
+  </sql>
+
+    <sql id="Base_Column_List2" >
+    t.FD_CF_ID, t.FD_THEME, t.FD_CONTENT, t.FD_CF_TYPE_ID, t.FD_RELEASEDEP, t.FD_STARTTIME, t.FD_ENDTIME,
+    t.FD_LIKECOUNT, t.FD_STATE, t.FD_TOP, t.FD_CFICON, t.FD_CREATERID, t.FD_DIS_COUNT, t.FD_READ_COUNT,
+    t.FD_TYPENME, t.FD_CREAT_NME,c.url,c.name
+  </sql>
+
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from TB_CF_CROWDFUNDING
+    where FD_CF_ID = #{fdCfId,jdbcType=VARCHAR}
+  </select>
+
+    <select id="selectCrowdBycj" resultMap="BaseResultMap" parameterType="java.lang.String" >
+        select
+        <include refid="Base_Column_List2" />
+        from TB_CF_CROWDFUNDING t
+        left join  TB_APP_CJ c on c.fd_cf_id=t.FD_CF_ID
+        where t.FD_CF_ID = #{fdCfId,jdbcType=VARCHAR}
+    </select>
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TB_CF_CROWDFUNDING
+    where FD_CF_ID = #{fdCfId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.work.entity.TCrowdfunding" >
+    insert into TB_CF_CROWDFUNDING (FD_CF_ID, FD_THEME, FD_CONTENT, 
+      FD_CF_TYPE_ID, FD_RELEASEDEP, FD_STARTTIME, 
+      FD_ENDTIME, FD_LIKECOUNT, FD_STATE, 
+      FD_TOP, FD_CFICON, FD_CREATERID, 
+      FD_DIS_COUNT, FD_READ_COUNT, FD_TYPENME, 
+      FD_CREAT_NME)
+    values (#{fdCfId,jdbcType=VARCHAR}, #{fdTheme,jdbcType=VARCHAR}, #{fdContent,jdbcType=VARCHAR}, 
+      #{fdCfTypeId,jdbcType=VARCHAR}, #{fdReleasedep,jdbcType=VARCHAR}, #{fdStarttime,jdbcType=VARCHAR}, 
+      #{fdEndtime,jdbcType=VARCHAR}, #{fdLikecount,jdbcType=VARCHAR}, #{fdState,jdbcType=VARCHAR}, 
+      #{fdTop,jdbcType=VARCHAR}, #{fdCficon,jdbcType=VARCHAR}, #{fdCreaterid,jdbcType=VARCHAR}, 
+      #{fdDisCount,jdbcType=VARCHAR}, #{fdReadCount,jdbcType=VARCHAR}, #{fdTypenme,jdbcType=VARCHAR}, 
+      #{fdCreatNme,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TCrowdfunding" >
+    insert into TB_CF_CROWDFUNDING
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fdCfId != null" >
+        FD_CF_ID,
+      </if>
+      <if test="fdTheme != null" >
+        FD_THEME,
+      </if>
+      <if test="fdContent != null" >
+        FD_CONTENT,
+      </if>
+      <if test="fdCfTypeId != null" >
+        FD_CF_TYPE_ID,
+      </if>
+      <if test="fdReleasedep != null" >
+        FD_RELEASEDEP,
+      </if>
+      <if test="fdStarttime != null" >
+        FD_STARTTIME,
+      </if>
+      <if test="fdEndtime != null" >
+        FD_ENDTIME,
+      </if>
+      <if test="fdLikecount != null" >
+        FD_LIKECOUNT,
+      </if>
+      <if test="fdState != null" >
+        FD_STATE,
+      </if>
+      <if test="fdTop != null" >
+        FD_TOP,
+      </if>
+      <if test="fdCficon != null" >
+        FD_CFICON,
+      </if>
+      <if test="fdCreaterid != null" >
+        FD_CREATERID,
+      </if>
+      <if test="fdDisCount != null" >
+        FD_DIS_COUNT,
+      </if>
+      <if test="fdReadCount != null" >
+        FD_READ_COUNT,
+      </if>
+      <if test="fdTypenme != null" >
+        FD_TYPENME,
+      </if>
+      <if test="fdCreatNme != null" >
+        FD_CREAT_NME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fdCfId != null" >
+        #{fdCfId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdTheme != null" >
+        #{fdTheme,jdbcType=VARCHAR},
+      </if>
+      <if test="fdContent != null" >
+        #{fdContent,jdbcType=VARCHAR},
+      </if>
+      <if test="fdCfTypeId != null" >
+        #{fdCfTypeId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdReleasedep != null" >
+        #{fdReleasedep,jdbcType=VARCHAR},
+      </if>
+      <if test="fdStarttime != null" >
+        #{fdStarttime,jdbcType=VARCHAR},
+      </if>
+      <if test="fdEndtime != null" >
+        #{fdEndtime,jdbcType=VARCHAR},
+      </if>
+      <if test="fdLikecount != null" >
+        #{fdLikecount,jdbcType=VARCHAR},
+      </if>
+      <if test="fdState != null" >
+        #{fdState,jdbcType=VARCHAR},
+      </if>
+      <if test="fdTop != null" >
+        #{fdTop,jdbcType=VARCHAR},
+      </if>
+      <if test="fdCficon != null" >
+        #{fdCficon,jdbcType=VARCHAR},
+      </if>
+      <if test="fdCreaterid != null" >
+        #{fdCreaterid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdDisCount != null" >
+        #{fdDisCount,jdbcType=VARCHAR},
+      </if>
+      <if test="fdReadCount != null" >
+        #{fdReadCount,jdbcType=VARCHAR},
+      </if>
+      <if test="fdTypenme != null" >
+        #{fdTypenme,jdbcType=VARCHAR},
+      </if>
+      <if test="fdCreatNme != null" >
+        #{fdCreatNme,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.work.entity.TCrowdfunding" >
+    update TB_CF_CROWDFUNDING
+    <set >
+      <if test="fdTheme != null" >
+        FD_THEME = #{fdTheme,jdbcType=VARCHAR},
+      </if>
+      <if test="fdContent != null" >
+        FD_CONTENT = #{fdContent,jdbcType=VARCHAR},
+      </if>
+      <if test="fdCfTypeId != null" >
+        FD_CF_TYPE_ID = #{fdCfTypeId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdReleasedep != null" >
+        FD_RELEASEDEP = #{fdReleasedep,jdbcType=VARCHAR},
+      </if>
+      <if test="fdStarttime != null" >
+        FD_STARTTIME = #{fdStarttime,jdbcType=VARCHAR},
+      </if>
+      <if test="fdEndtime != null" >
+        FD_ENDTIME = #{fdEndtime,jdbcType=VARCHAR},
+      </if>
+      <if test="fdLikecount != null" >
+        FD_LIKECOUNT = #{fdLikecount,jdbcType=VARCHAR},
+      </if>
+      <if test="fdState != null" >
+        FD_STATE = #{fdState,jdbcType=VARCHAR},
+      </if>
+      <if test="fdTop != null" >
+        FD_TOP = #{fdTop,jdbcType=VARCHAR},
+      </if>
+      <if test="fdCficon != null" >
+        FD_CFICON = #{fdCficon,jdbcType=VARCHAR},
+      </if>
+      <if test="fdCreaterid != null" >
+        FD_CREATERID = #{fdCreaterid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdDisCount != null" >
+        FD_DIS_COUNT = #{fdDisCount,jdbcType=VARCHAR},
+      </if>
+      <if test="fdReadCount != null" >
+        FD_READ_COUNT = #{fdReadCount,jdbcType=VARCHAR},
+      </if>
+      <if test="fdTypenme != null" >
+        FD_TYPENME = #{fdTypenme,jdbcType=VARCHAR},
+      </if>
+      <if test="fdCreatNme != null" >
+        FD_CREAT_NME = #{fdCreatNme,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where FD_CF_ID = #{fdCfId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.work.entity.TCrowdfunding" >
+    update TB_CF_CROWDFUNDING
+    set FD_THEME = #{fdTheme,jdbcType=VARCHAR},
+      FD_CONTENT = #{fdContent,jdbcType=VARCHAR},
+      FD_CF_TYPE_ID = #{fdCfTypeId,jdbcType=VARCHAR},
+      FD_RELEASEDEP = #{fdReleasedep,jdbcType=VARCHAR},
+      FD_STARTTIME = #{fdStarttime,jdbcType=VARCHAR},
+      FD_ENDTIME = #{fdEndtime,jdbcType=VARCHAR},
+      FD_LIKECOUNT = #{fdLikecount,jdbcType=VARCHAR},
+      FD_STATE = #{fdState,jdbcType=VARCHAR},
+      FD_TOP = #{fdTop,jdbcType=VARCHAR},
+      FD_CFICON = #{fdCficon,jdbcType=VARCHAR},
+      FD_CREATERID = #{fdCreaterid,jdbcType=VARCHAR},
+      FD_DIS_COUNT = #{fdDisCount,jdbcType=VARCHAR},
+      FD_READ_COUNT = #{fdReadCount,jdbcType=VARCHAR},
+      FD_TYPENME = #{fdTypenme,jdbcType=VARCHAR},
+      FD_CREAT_NME = #{fdCreatNme,jdbcType=VARCHAR}
+    where FD_CF_ID = #{fdCfId,jdbcType=VARCHAR}
+  </update>
+  
+  <!-- add -->
+   <select id="selectUserDeptCode" resultType="java.lang.String" parameterType="java.lang.String">
+  	SELECT
+		FD_UNITCDE
+	FROM
+		TB_PEPMGM_EMPINFO T
+	WHERE
+		T .FD_EMPID = #{userid}
+	AND ROWNUM = 1
+  </select>
+  
+  <select id="selectCrowdfundingByState" resultMap="BaseResultMap" parameterType="com.work.bean.CrowdBean">
+      SELECT
+		CC.FD_CF_ID,
+		CC.FD_CFICON,
+		CC.FD_CREAT_NME,
+		CC.FD_TOP,
+		CT.FD_CF_TYPE,
+		CC.FD_THEME,
+		CC.FD_STARTTIME,
+		CC.FD_ENDTIME,
+		CC.FD_LIKECOUNT,
+		CC.FD_DIS_COUNT
+    	from(
+					SELECT
+						cf.*
+					FROM
+						tb_cf_crowdfunding cf
+					INNER JOIN (
+						SELECT
+							P .fd_cf_id
+						FROM
+							tb_cf_participant P
+						INNER JOIN (
+							SELECT
+								*
+							FROM
+								tb_pepmgm_empinfo T
+							INNER JOIN (
+								SELECT
+									A .fd_orgcde
+								FROM
+									tb_sys_orginfo_ehr A START WITH A .fd_orgcde IN (
+										SELECT
+											org.TB_ORGCDE
+										FROM
+											tb_oa_exam_org org
+										UNION ALL
+											SELECT
+												T .DEPT_ID
+											FROM
+												tb_oa_exam_dept T
+									) CONNECT BY PRIOR A .fd_orgcde = A .fd_parent_orgcde
+							) D ON T .fd_unitcde = D .fd_orgcde
+							WHERE
+								T .fd_empid = #{userid}
+						) M ON P .fd_orgcode = M .FD_unitCDE
+					) pa ON cf.fd_cf_id = pa.fd_cf_id
+					WHERE
+						cf.FD_SHOW_STATE = 0
+				<!-- end -->
+		)CC
+    LEFT JOIN TB_CF_TYPE CT ON CC.FD_CF_TYPE_ID = CT.FD_TYPE_ID 
+    where CC.FD_STATE = #{fdState} 
+    <if test="listIds!=null &amp;&amp; listIds.size != 0">
+		AND CC.FD_CF_ID NOT IN
+		 <foreach item="item" index="index" collection="listIds" open="(" separator="," close=")">
+		 	#{item}
+		 </foreach>
+	</if>
+  </select>
+  
+  <select id="selectCrowdfundingByTop" resultMap="BaseResultMap" parameterType="com.work.bean.CrowdBean">
+		select 
+		    CC.FD_CF_ID,
+			CC.FD_CFICON,
+			CC.FD_CREAT_NME,
+			CC.FD_TOP,
+			CT.FD_CF_TYPE,
+			CC.FD_THEME,
+			CC.FD_STARTTIME,
+			CC.FD_ENDTIME,
+			CC.FD_LIKECOUNT,
+			CC.FD_DIS_COUNT,
+			CC.FD_STATE,
+             c.url
+		FROM (
+			<!-- add sql -->
+			${sql}
+			<!-- end -->
+			) CC
+		LEFT JOIN TB_CF_TYPE CT ON CC.FD_CF_TYPE_ID = CT.FD_TYPE_ID
+         left join  TB_APP_CJ c on c.fd_cf_id=CC.FD_CF_ID
+		WHERE
+			CC.FD_STATE = #{fdState} 
+  </select>
+  
+  <select id="selectCrowdfundingByHot" resultMap="BaseResultMap" parameterType="com.work.bean.CrowdBean">
+		SELECT 
+		    CC.FD_CF_ID,
+			CC.FD_CFICON,
+			CC.FD_CREAT_NME,
+			CC.FD_TOP,
+			CT.FD_CF_TYPE,
+			CC.FD_THEME,
+			CC.FD_STARTTIME,
+			CC.FD_ENDTIME,
+			CC.FD_LIKECOUNT,
+			CC.FD_DIS_COUNT,
+            CC.FD_STATE,
+			TO_NUMBER (FD_LIKECOUNT) + TO_NUMBER (FD_DIS_COUNT) AS FD_HOT_,
+			'1' AS FD_HOT
+		FROM (
+		<!-- add sqj sql -->
+			${sql}
+		<!-- end -->
+	) CC
+	LEFT JOIN TB_CF_TYPE CT ON CC.FD_CF_TYPE_ID = CT.FD_TYPE_ID
+
+          <if test="fdState != null">
+              WHERE
+              CC.FD_STATE = #{fdState}
+          </if>
+      ORDER BY (TO_NUMBER (FD_LIKECOUNT) + TO_NUMBER (FD_DIS_COUNT)) DESC
+  </select>
+  
+  
+  <select id="queryUnitnmeByEmpId" resultType="java.lang.String" parameterType="java.lang.String">
+  	SELECT
+		FD_UNITNME
+	FROM
+		TB_PEPMGM_EMPINFO T
+	WHERE
+		T .FD_EMPID = #{value}
+	AND ROWNUM = 1
+  </select>
+  <!-- end add -->
+
+    <select id="selectDissCountById" resultType="java.lang.Integer" parameterType="com.work.bean.CrowdBean">
+        SELECT count(1) as total
+        FROM TB_CF_DISCUSSION t
+        WHERE t.fd_empid=#{userid}
+         AND t.fd_cf_id=#{fdCfId}
+    </select>
+</mapper>

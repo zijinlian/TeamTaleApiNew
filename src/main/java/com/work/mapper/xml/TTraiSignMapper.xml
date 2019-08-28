@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.TTraiSignMapper" >
+  <resultMap id="BaseResultMap" type="com.work.entity.TTraiSign" >
+    <id column="SIGNID" property="signid" jdbcType="VARCHAR" />
+    <result column="SIGNTIME" property="signtime" jdbcType="VARCHAR" />
+    <result column="COURSEID" property="courseid" jdbcType="VARCHAR" />
+    <result column="EMPLOYEEID" property="employeeid" jdbcType="VARCHAR" />
+    <result column="EMPLOYEENAME" property="employeename" jdbcType="VARCHAR" />
+    <result column="SIGNCOURSEID" property="signcourseid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    SIGNID, SIGNTIME, COURSEID, EMPLOYEEID, EMPLOYEENAME, SIGNCOURSEID
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.work.entity.TTraiSignExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_TRAI_SIGN
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from TB_TRAI_SIGN
+    where SIGNID = #{signid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TB_TRAI_SIGN
+    where SIGNID = #{signid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.work.entity.TTraiSign" >
+    insert into TB_TRAI_SIGN (SIGNID, SIGNTIME, COURSEID, 
+      EMPLOYEEID, EMPLOYEENAME, SIGNCOURSEID
+      )
+    values (#{signid,jdbcType=VARCHAR}, #{signtime,jdbcType=VARCHAR}, #{courseid,jdbcType=VARCHAR}, 
+      #{employeeid,jdbcType=VARCHAR}, #{employeename,jdbcType=VARCHAR}, #{signcourseid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TTraiSign" >
+    insert into TB_TRAI_SIGN
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="signid != null" >
+        SIGNID,
+      </if>
+      <if test="signtime != null" >
+        SIGNTIME,
+      </if>
+      <if test="courseid != null" >
+        COURSEID,
+      </if>
+      <if test="employeeid != null" >
+        EMPLOYEEID,
+      </if>
+      <if test="employeename != null" >
+        EMPLOYEENAME,
+      </if>
+      <if test="signcourseid != null" >
+        SIGNCOURSEID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="signid != null" >
+        #{signid,jdbcType=VARCHAR},
+      </if>
+      <if test="signtime != null" >
+        #{signtime,jdbcType=VARCHAR},
+      </if>
+      <if test="courseid != null" >
+        #{courseid,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeid != null" >
+        #{employeeid,jdbcType=VARCHAR},
+      </if>
+      <if test="employeename != null" >
+        #{employeename,jdbcType=VARCHAR},
+      </if>
+      <if test="signcourseid != null" >
+        #{signcourseid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.work.entity.TTraiSign" >
+    update TB_TRAI_SIGN
+    <set >
+      <if test="signtime != null" >
+        SIGNTIME = #{signtime,jdbcType=VARCHAR},
+      </if>
+      <if test="courseid != null" >
+        COURSEID = #{courseid,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeid != null" >
+        EMPLOYEEID = #{employeeid,jdbcType=VARCHAR},
+      </if>
+      <if test="employeename != null" >
+        EMPLOYEENAME = #{employeename,jdbcType=VARCHAR},
+      </if>
+      <if test="signcourseid != null" >
+        SIGNCOURSEID = #{signcourseid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SIGNID = #{signid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.work.entity.TTraiSign" >
+    update TB_TRAI_SIGN
+    set SIGNTIME = #{signtime,jdbcType=VARCHAR},
+      COURSEID = #{courseid,jdbcType=VARCHAR},
+      EMPLOYEEID = #{employeeid,jdbcType=VARCHAR},
+      EMPLOYEENAME = #{employeename,jdbcType=VARCHAR},
+      SIGNCOURSEID = #{signcourseid,jdbcType=VARCHAR}
+    where SIGNID = #{signid,jdbcType=VARCHAR}
+  </update>
+</mapper>

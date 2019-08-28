@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.TDishOrderInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.work.entity.TDishOrderInfo" >
+    <result column="ORDERID" property="orderid" jdbcType="VARCHAR" />
+    <result column="PRODUCTID" property="productid" jdbcType="VARCHAR" />
+    <result column="TOTLPRICE" property="totlprice" jdbcType="DECIMAL" />
+    <result column="PRODUCTNUMBER" property="productnumber" jdbcType="DECIMAL" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="UNITPRICE" property="unitprice" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ORDERID, PRODUCTID, TOTLPRICE, PRODUCTNUMBER, NAME, UNITPRICE
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.work.entity.TDishOrderInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_DISH_ORDER_INFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <insert id="insert" parameterType="com.work.entity.TDishOrderInfo" >
+    insert into TB_DISH_ORDER_INFO (ORDERID, PRODUCTID, TOTLPRICE, 
+      PRODUCTNUMBER, NAME, UNITPRICE
+      )
+    values (#{orderid,jdbcType=VARCHAR}, #{productid,jdbcType=VARCHAR}, #{totlprice,jdbcType=DECIMAL}, 
+      #{productnumber,jdbcType=DECIMAL}, #{name,jdbcType=VARCHAR}, #{unitprice,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TDishOrderInfo" >
+    insert into TB_DISH_ORDER_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderid != null" >
+        ORDERID,
+      </if>
+      <if test="productid != null" >
+        PRODUCTID,
+      </if>
+      <if test="totlprice != null" >
+        TOTLPRICE,
+      </if>
+      <if test="productnumber != null" >
+        PRODUCTNUMBER,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="unitprice != null" >
+        UNITPRICE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderid != null" >
+        #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="productid != null" >
+        #{productid,jdbcType=VARCHAR},
+      </if>
+      <if test="totlprice != null" >
+        #{totlprice,jdbcType=DECIMAL},
+      </if>
+      <if test="productnumber != null" >
+        #{productnumber,jdbcType=DECIMAL},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="unitprice != null" >
+        #{unitprice,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  
+  <delete id="deleteByOrderId" parameterType="java.lang.String">
+  	DELETE FROM TB_DISH_ORDER_INFO WHERE ORDERID = #{value}
+  </delete>
+  
+  <select id="selectSumTotlprice" parameterType="java.lang.String" resultType="java.lang.Double">
+  	SELECT
+		NVL(sum(TOTLPRICE), 0) TOTLPRICE
+	FROM
+		TB_DISH_ORDER_INFO WHERE ORDERID = #{value}
+  </select>
+</mapper>

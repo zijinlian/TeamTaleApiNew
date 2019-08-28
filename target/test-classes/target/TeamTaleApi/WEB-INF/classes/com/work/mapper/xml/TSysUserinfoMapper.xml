@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.work.mapper.TSysUserinfoMapper">
+  <resultMap id="BaseResultMap" type="com.work.entity.TSysUserinfo">
+    <id column="FD_USERNAME" jdbcType="VARCHAR" property="fdUsername" />
+    <result column="FD_PASSWORD" jdbcType="VARCHAR" property="fdPassword" />
+    <result column="FD_USERTYPE" jdbcType="DECIMAL" property="fdUsertype" />
+    <result column="FD_EXPIREDATE" jdbcType="VARCHAR" property="fdExpiredate" />
+    <result column="FD_RECTCHGDATE" jdbcType="VARCHAR" property="fdRectchgdate" />
+    <result column="FD_FAILEDCNT" jdbcType="DECIMAL" property="fdFailedcnt" />
+    <result column="FD_ONLINESTAT" jdbcType="VARCHAR" property="fdOnlinestat" />
+    <result column="FD_NAME" jdbcType="VARCHAR" property="fdName" />
+    <result column="FD_GENDER" jdbcType="VARCHAR" property="fdGender" />
+    <result column="FD_HEADICON" jdbcType="VARCHAR" property="fdHeadicon" />
+    <result column="FD_BIRTHDATE" jdbcType="VARCHAR" property="fdBirthdate" />
+    <result column="FD_AUTOGRAPH" jdbcType="VARCHAR" property="fdAutograph" />
+    <result column="FD_IDCARDNO" jdbcType="VARCHAR" property="fdIdcardno" />
+    <result column="FD_MOBPHE" jdbcType="VARCHAR" property="fdMobphe" />
+    <result column="FD_COMPANY" jdbcType="VARCHAR" property="fdCompany" />
+    <result column="FD_BIZPHE" jdbcType="VARCHAR" property="fdBizphe" />
+    <result column="FD_BIZADDR" jdbcType="VARCHAR" property="fdBizaddr" />
+    <result column="FD_EMAIL" jdbcType="VARCHAR" property="fdEmail" />
+    <result column="FD_HMPHE" jdbcType="VARCHAR" property="fdHmphe" />
+    <result column="FD_HMADDR" jdbcType="VARCHAR" property="fdHmaddr" />
+    <result column="FD_HXUSERNAME" jdbcType="VARCHAR" property="fdHxusername" />
+    <result column="FD_HXPASSWORD" jdbcType="VARCHAR" property="fdHxpassword" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    FD_USERNAME, FD_PASSWORD, FD_USERTYPE, FD_EXPIREDATE, FD_RECTCHGDATE, FD_FAILEDCNT, 
+    FD_ONLINESTAT, FD_NAME, FD_GENDER, FD_HEADICON, FD_BIRTHDATE, FD_AUTOGRAPH, FD_IDCARDNO, 
+    FD_MOBPHE, FD_COMPANY, FD_BIZPHE, FD_BIZADDR, FD_EMAIL, FD_HMPHE, FD_HMADDR, FD_HXUSERNAME, 
+    FD_HXPASSWORD
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from TB_SYS_USERINFO
+    where FD_USERNAME = #{fdUsername,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from TB_SYS_USERINFO
+    where FD_USERNAME = #{fdUsername,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.work.entity.TSysUserinfo">
+    insert into TB_SYS_USERINFO (FD_USERNAME, FD_PASSWORD, FD_USERTYPE, 
+      FD_EXPIREDATE, FD_RECTCHGDATE, FD_FAILEDCNT, 
+      FD_ONLINESTAT, FD_NAME, FD_GENDER, 
+      FD_HEADICON, FD_BIRTHDATE, FD_AUTOGRAPH, 
+      FD_IDCARDNO, FD_MOBPHE, FD_COMPANY, 
+      FD_BIZPHE, FD_BIZADDR, FD_EMAIL, 
+      FD_HMPHE, FD_HMADDR, FD_HXUSERNAME, 
+      FD_HXPASSWORD)
+    values (#{fdUsername,jdbcType=VARCHAR}, #{fdPassword,jdbcType=VARCHAR}, #{fdUsertype,jdbcType=DECIMAL}, 
+      #{fdExpiredate,jdbcType=VARCHAR}, #{fdRectchgdate,jdbcType=VARCHAR}, #{fdFailedcnt,jdbcType=DECIMAL}, 
+      #{fdOnlinestat,jdbcType=VARCHAR}, #{fdName,jdbcType=VARCHAR}, #{fdGender,jdbcType=VARCHAR}, 
+      #{fdHeadicon,jdbcType=VARCHAR}, #{fdBirthdate,jdbcType=VARCHAR}, #{fdAutograph,jdbcType=VARCHAR}, 
+      #{fdIdcardno,jdbcType=VARCHAR}, #{fdMobphe,jdbcType=VARCHAR}, #{fdCompany,jdbcType=VARCHAR}, 
+      #{fdBizphe,jdbcType=VARCHAR}, #{fdBizaddr,jdbcType=VARCHAR}, #{fdEmail,jdbcType=VARCHAR}, 
+      #{fdHmphe,jdbcType=VARCHAR}, #{fdHmaddr,jdbcType=VARCHAR}, #{fdHxusername,jdbcType=VARCHAR}, 
+      #{fdHxpassword,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TSysUserinfo">
+    insert into TB_SYS_USERINFO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="fdUsername != null">
+        FD_USERNAME,
+      </if>
+      <if test="fdPassword != null">
+        FD_PASSWORD,
+      </if>
+      <if test="fdUsertype != null">
+        FD_USERTYPE,
+      </if>
+      <if test="fdExpiredate != null">
+        FD_EXPIREDATE,
+      </if>
+      <if test="fdRectchgdate != null">
+        FD_RECTCHGDATE,
+      </if>
+      <if test="fdFailedcnt != null">
+        FD_FAILEDCNT,
+      </if>
+      <if test="fdOnlinestat != null">
+        FD_ONLINESTAT,
+      </if>
+      <if test="fdName != null">
+        FD_NAME,
+      </if>
+      <if test="fdGender != null">
+        FD_GENDER,
+      </if>
+      <if test="fdHeadicon != null">
+        FD_HEADICON,
+      </if>
+      <if test="fdBirthdate != null">
+        FD_BIRTHDATE,
+      </if>
+      <if test="fdAutograph != null">
+        FD_AUTOGRAPH,
+      </if>
+      <if test="fdIdcardno != null">
+        FD_IDCARDNO,
+      </if>
+      <if test="fdMobphe != null">
+        FD_MOBPHE,
+      </if>
+      <if test="fdCompany != null">
+        FD_COMPANY,
+      </if>
+      <if test="fdBizphe != null">
+        FD_BIZPHE,
+      </if>
+      <if test="fdBizaddr != null">
+        FD_BIZADDR,
+      </if>
+      <if test="fdEmail != null">
+        FD_EMAIL,
+      </if>
+      <if test="fdHmphe != null">
+        FD_HMPHE,
+      </if>
+      <if test="fdHmaddr != null">
+        FD_HMADDR,
+      </if>
+      <if test="fdHxusername != null">
+        FD_HXUSERNAME,
+      </if>
+      <if test="fdHxpassword != null">
+        FD_HXPASSWORD,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="fdUsername != null">
+        #{fdUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="fdPassword != null">
+        #{fdPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="fdUsertype != null">
+        #{fdUsertype,jdbcType=DECIMAL},
+      </if>
+      <if test="fdExpiredate != null">
+        #{fdExpiredate,jdbcType=VARCHAR},
+      </if>
+      <if test="fdRectchgdate != null">
+        #{fdRectchgdate,jdbcType=VARCHAR},
+      </if>
+      <if test="fdFailedcnt != null">
+        #{fdFailedcnt,jdbcType=DECIMAL},
+      </if>
+      <if test="fdOnlinestat != null">
+        #{fdOnlinestat,jdbcType=VARCHAR},
+      </if>
+      <if test="fdName != null">
+        #{fdName,jdbcType=VARCHAR},
+      </if>
+      <if test="fdGender != null">
+        #{fdGender,jdbcType=VARCHAR},
+      </if>
+      <if test="fdHeadicon != null">
+        #{fdHeadicon,jdbcType=VARCHAR},
+      </if>
+      <if test="fdBirthdate != null">
+        #{fdBirthdate,jdbcType=VARCHAR},
+      </if>
+      <if test="fdAutograph != null">
+        #{fdAutograph,jdbcType=VARCHAR},
+      </if>
+      <if test="fdIdcardno != null">
+        #{fdIdcardno,jdbcType=VARCHAR},
+      </if>
+      <if test="fdMobphe != null">
+        #{fdMobphe,jdbcType=VARCHAR},
+      </if>
+      <if test="fdCompany != null">
+        #{fdCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="fdBizphe != null">
+        #{fdBizphe,jdbcType=VARCHAR},
+      </if>
+      <if test="fdBizaddr != null">
+        #{fdBizaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="fdEmail != null">
+        #{fdEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="fdHmphe != null">
+        #{fdHmphe,jdbcType=VARCHAR},
+      </if>
+      <if test="fdHmaddr != null">
+        #{fdHmaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="fdHxusername != null">
+        #{fdHxusername,jdbcType=VARCHAR},
+      </if>
+      <if test="fdHxpassword != null">
+        #{fdHxpassword,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.work.entity.TSysUserinfo">
+    update TB_SYS_USERINFO
+    <set>
+      <if test="fdPassword != null">
+        FD_PASSWORD = #{fdPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="fdUsertype != null">
+        FD_USERTYPE = #{fdUsertype,jdbcType=DECIMAL},
+      </if>
+      <if test="fdExpiredate != null">
+        FD_EXPIREDATE = #{fdExpiredate,jdbcType=VARCHAR},
+      </if>
+      <if test="fdRectchgdate != null">
+        FD_RECTCHGDATE = #{fdRectchgdate,jdbcType=VARCHAR},
+      </if>
+      <if test="fdFailedcnt != null">
+        FD_FAILEDCNT = #{fdFailedcnt,jdbcType=DECIMAL},
+      </if>
+      <if test="fdOnlinestat != null">
+        FD_ONLINESTAT = #{fdOnlinestat,jdbcType=VARCHAR},
+      </if>
+      <if test="fdName != null">
+        FD_NAME = #{fdName,jdbcType=VARCHAR},
+      </if>
+      <if test="fdGender != null">
+        FD_GENDER = #{fdGender,jdbcType=VARCHAR},
+      </if>
+      <if test="fdHeadicon != null">
+        FD_HEADICON = #{fdHeadicon,jdbcType=VARCHAR},
+      </if>
+      <if test="fdBirthdate != null">
+        FD_BIRTHDATE = #{fdBirthdate,jdbcType=VARCHAR},
+      </if>
+      <if test="fdAutograph != null">
+        FD_AUTOGRAPH = #{fdAutograph,jdbcType=VARCHAR},
+      </if>
+      <if test="fdIdcardno != null">
+        FD_IDCARDNO = #{fdIdcardno,jdbcType=VARCHAR},
+      </if>
+      <if test="fdMobphe != null">
+        FD_MOBPHE = #{fdMobphe,jdbcType=VARCHAR},
+      </if>
+      <if test="fdCompany != null">
+        FD_COMPANY = #{fdCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="fdBizphe != null">
+        FD_BIZPHE = #{fdBizphe,jdbcType=VARCHAR},
+      </if>
+      <if test="fdBizaddr != null">
+        FD_BIZADDR = #{fdBizaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="fdEmail != null">
+        FD_EMAIL = #{fdEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="fdHmphe != null">
+        FD_HMPHE = #{fdHmphe,jdbcType=VARCHAR},
+      </if>
+      <if test="fdHmaddr != null">
+        FD_HMADDR = #{fdHmaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="fdHxusername != null">
+        FD_HXUSERNAME = #{fdHxusername,jdbcType=VARCHAR},
+      </if>
+      <if test="fdHxpassword != null">
+        FD_HXPASSWORD = #{fdHxpassword,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where FD_USERNAME = #{fdUsername,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.work.entity.TSysUserinfo">
+    update TB_SYS_USERINFO
+    set FD_PASSWORD = #{fdPassword,jdbcType=VARCHAR},
+      FD_USERTYPE = #{fdUsertype,jdbcType=DECIMAL},
+      FD_EXPIREDATE = #{fdExpiredate,jdbcType=VARCHAR},
+      FD_RECTCHGDATE = #{fdRectchgdate,jdbcType=VARCHAR},
+      FD_FAILEDCNT = #{fdFailedcnt,jdbcType=DECIMAL},
+      FD_ONLINESTAT = #{fdOnlinestat,jdbcType=VARCHAR},
+      FD_NAME = #{fdName,jdbcType=VARCHAR},
+      FD_GENDER = #{fdGender,jdbcType=VARCHAR},
+      FD_HEADICON = #{fdHeadicon,jdbcType=VARCHAR},
+      FD_BIRTHDATE = #{fdBirthdate,jdbcType=VARCHAR},
+      FD_AUTOGRAPH = #{fdAutograph,jdbcType=VARCHAR},
+      FD_IDCARDNO = #{fdIdcardno,jdbcType=VARCHAR},
+      FD_MOBPHE = #{fdMobphe,jdbcType=VARCHAR},
+      FD_COMPANY = #{fdCompany,jdbcType=VARCHAR},
+      FD_BIZPHE = #{fdBizphe,jdbcType=VARCHAR},
+      FD_BIZADDR = #{fdBizaddr,jdbcType=VARCHAR},
+      FD_EMAIL = #{fdEmail,jdbcType=VARCHAR},
+      FD_HMPHE = #{fdHmphe,jdbcType=VARCHAR},
+      FD_HMADDR = #{fdHmaddr,jdbcType=VARCHAR},
+      FD_HXUSERNAME = #{fdHxusername,jdbcType=VARCHAR},
+      FD_HXPASSWORD = #{fdHxpassword,jdbcType=VARCHAR}
+    where FD_USERNAME = #{fdUsername,jdbcType=VARCHAR}
+  </update>
+</mapper>

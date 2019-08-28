@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.TDishExempMapper" >
+  <resultMap id="BaseResultMap" type="com.work.entity.TDishExemp" >
+    <id column="ORDERID" property="orderid" jdbcType="VARCHAR" />
+    <result column="EMPID" property="empid" jdbcType="VARCHAR" />
+    <result column="EMPNAME" property="empname" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="CREDATE" property="credate" jdbcType="VARCHAR" />
+    <result column="BATCHID" property="batchid" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <resultMap id="OrderDishExempMapper" type="com.work.entity.TOrderDishExemp" >
+    <result column="BATCHID" property="baichid" jdbcType="VARCHAR" />
+    <result column="TOTLPRICE" property="totalprice" jdbcType="NUMERIC" />
+    <result column="BATCHNAME" property="bitchname" jdbcType="VARCHAR" />
+    <result column="STARTIME" property="starttime" jdbcType="VARCHAR" />
+    <result column="ENDTIME" property="endtime" jdbcType="VARCHAR" />
+    <result column="PRODUCTSTATUS" property="productstatus" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ORDERID, EMPID, EMPNAME, STATUS, CREDATE,BATCHID
+  </sql>
+
+  <sql id="order_column_list" >
+    BATCHID, BATCHNAME, STARTIME, ENDTIME, PRODUCTSTATUS,TOTLPRICE
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.work.entity.TDishExempExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_DISH_EX_EMP
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from TB_DISH_EX_EMP
+    where ORDERID = #{orderid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TB_DISH_EX_EMP
+    where ORDERID = #{orderid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.work.entity.TDishExemp">
+    insert into TB_DISH_EX_EMP (ORDERID, EMPID, EMPNAME, 
+      STATUS, CREDATE, BATCHID
+      )
+    values (#{orderid,jdbcType=VARCHAR}, #{empid,jdbcType=VARCHAR}, #{empname,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{credate,jdbcType=VARCHAR}, #{batchid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TDishExemp">
+    insert into TB_DISH_EX_EMP
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderid != null">
+        ORDERID,
+      </if>
+      <if test="empid != null">
+        EMPID,
+      </if>
+      <if test="empname != null">
+        EMPNAME,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="credate != null">
+        CREDATE,
+      </if>
+      <if test="batchid != null">
+        BATCHID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderid != null">
+        #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="empid != null">
+        #{empid,jdbcType=VARCHAR},
+      </if>
+      <if test="empname != null">
+        #{empname,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="credate != null">
+        #{credate,jdbcType=VARCHAR},
+      </if>
+      <if test="batchid != null">
+        #{batchid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.work.entity.TDishExemp">
+    update TB_DISH_EX_EMP
+    <set>
+      <if test="empid != null">
+        EMPID = #{empid,jdbcType=VARCHAR},
+      </if>
+      <if test="empname != null">
+        EMPNAME = #{empname,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="credate != null">
+        CREDATE = #{credate,jdbcType=VARCHAR},
+      </if>
+      <if test="batchid != null">
+        BATCHID = #{batchid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ORDERID = #{orderid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.work.entity.TDishExemp">
+    update TB_DISH_EX_EMP
+    set EMPID = #{empid,jdbcType=VARCHAR},
+      EMPNAME = #{empname,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR},
+      CREDATE = #{credate,jdbcType=VARCHAR},
+      BATCHID = #{batchid,jdbcType=VARCHAR}
+    where ORDERID = #{orderid,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="selectOrderDishExemp" parameterType="java.lang.String" resultMap="OrderDishExempMapper">
+SELECT T.BATCHID,
+       T.BATCHNAME,
+       T.STARTIME,
+       T.ENDTIME,
+       T.PRODUCTSTATUS,
+       (SELECT NVL(SUM(T_ORDER.TOTLPRICE), 0)
+          FROM TB_DISH_ORDER_INFO T_ORDER
+         WHERE T_ORDER.PRODUCTID IN
+               (SELECT T1.ID
+                  FROM TB_DISH_EXCHANGE T1
+                 WHERE T1.BATCHID = T.BATCHID)
+           AND T_ORDER.ORDERID IN
+               (SELECT T1.ORDERID
+                  FROM TB_DISH_EX_EMP T1
+                 WHERE T1.STATUS = '1'
+                   AND T1.EMPID = #{empid,jdbcType=VARCHAR})) AS TOTLPRICE
+  FROM TB_DISH_BATCH T
+ WHERE T.PRODUCTSTATUS = '1'
+   AND T.BATCHID IN
+       (SELECT DISTINCT T1.BATCHID
+          FROM TB_DISH_EXCHANGE T1
+         WHERE T1.ID IN (SELECT T2.PRODUCTID
+                           FROM TB_DISH_ORDER_INFO T2
+                          WHERE T2.ORDERID IN
+                                (SELECT T3.ORDERID
+                                   FROM TB_DISH_EX_EMP T3
+                                  WHERE T3.EMPID = #{empid,jdbcType=VARCHAR})))
+  </select>
+</mapper>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.TbSugTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.work.entity.TbSugType" >
+    <id column="FD_TYPE_ID" property="fdTypeId" jdbcType="VARCHAR" />
+    <result column="FD_TYPE_NME" property="fdTypeNme" jdbcType="VARCHAR" />
+    <result column="FD_EMP_ID" property="fdEmpId" jdbcType="VARCHAR" />
+    <result column="FD_EMP_NME" property="fdEmpNme" jdbcType="VARCHAR" />
+    <result column="FD_CREATE_TIME" property="fdCreateTime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    FD_TYPE_ID, FD_TYPE_NME, FD_EMP_ID, FD_EMP_NME, FD_CREATE_TIME
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.work.entity.TbSugTypeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_SUG_TYPE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from TB_SUG_TYPE
+    where FD_TYPE_ID = #{fdTypeId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TB_SUG_TYPE
+    where FD_TYPE_ID = #{fdTypeId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.work.entity.TbSugType" >
+    insert into TB_SUG_TYPE (FD_TYPE_ID, FD_TYPE_NME, FD_EMP_ID, 
+      FD_EMP_NME, FD_CREATE_TIME)
+    values (#{fdTypeId,jdbcType=VARCHAR}, #{fdTypeNme,jdbcType=VARCHAR}, #{fdEmpId,jdbcType=VARCHAR}, 
+      #{fdEmpNme,jdbcType=VARCHAR}, #{fdCreateTime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TbSugType" >
+    insert into TB_SUG_TYPE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fdTypeId != null" >
+        FD_TYPE_ID,
+      </if>
+      <if test="fdTypeNme != null" >
+        FD_TYPE_NME,
+      </if>
+      <if test="fdEmpId != null" >
+        FD_EMP_ID,
+      </if>
+      <if test="fdEmpNme != null" >
+        FD_EMP_NME,
+      </if>
+      <if test="fdCreateTime != null" >
+        FD_CREATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fdTypeId != null" >
+        #{fdTypeId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdTypeNme != null" >
+        #{fdTypeNme,jdbcType=VARCHAR},
+      </if>
+      <if test="fdEmpId != null" >
+        #{fdEmpId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdEmpNme != null" >
+        #{fdEmpNme,jdbcType=VARCHAR},
+      </if>
+      <if test="fdCreateTime != null" >
+        #{fdCreateTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.work.entity.TbSugType" >
+    update TB_SUG_TYPE
+    <set >
+      <if test="fdTypeNme != null" >
+        FD_TYPE_NME = #{fdTypeNme,jdbcType=VARCHAR},
+      </if>
+      <if test="fdEmpId != null" >
+        FD_EMP_ID = #{fdEmpId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdEmpNme != null" >
+        FD_EMP_NME = #{fdEmpNme,jdbcType=VARCHAR},
+      </if>
+      <if test="fdCreateTime != null" >
+        FD_CREATE_TIME = #{fdCreateTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where FD_TYPE_ID = #{fdTypeId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.work.entity.TbSugType" >
+    update TB_SUG_TYPE
+    set FD_TYPE_NME = #{fdTypeNme,jdbcType=VARCHAR},
+      FD_EMP_ID = #{fdEmpId,jdbcType=VARCHAR},
+      FD_EMP_NME = #{fdEmpNme,jdbcType=VARCHAR},
+      FD_CREATE_TIME = #{fdCreateTime,jdbcType=VARCHAR}
+    where FD_TYPE_ID = #{fdTypeId,jdbcType=VARCHAR}
+  </update>
+</mapper>

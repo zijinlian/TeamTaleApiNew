@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.work.mapper.TAppDailyNewsMapper">
+  
+  <select id="selectNewsByType" resultType="com.work.entity.TAppDailyNews" parameterType="com.work.bean.NewsBean">
+  	SELECT
+	fd_news_id ID,
+	fd_news_icon imgurl,
+	fd_news_title title,
+	TO_CHAR (
+		TO_DATE (
+			FD_PUBLISH_TIME,
+			'yyyy-mm-dd hh24:mi:ss'
+		),
+		'yyyy-mm-dd hh24:mi:ss'
+	) createtime
+	FROM
+		TB_APP_DAILY_NEWS
+	WHERE
+		FD_NEWS_TYP = #{type}
+	ORDER BY
+		createtime DESC
+  </select>
+  
+</mapper>

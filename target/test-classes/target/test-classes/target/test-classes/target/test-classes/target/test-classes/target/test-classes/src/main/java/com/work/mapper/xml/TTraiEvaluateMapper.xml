@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.TTraiEvaluateMapper" >
+  <resultMap id="BaseResultMap" type="com.work.entity.TTraiEvaluate" >
+    <id column="EVALUATEID" property="evaluateid" jdbcType="VARCHAR" />
+    <result column="TEACHERID" property="teacherid" jdbcType="VARCHAR" />
+    <result column="TEACHNAME" property="teachname" jdbcType="VARCHAR" />
+    <result column="EVALUATECONTENT" property="evaluatecontent" jdbcType="VARCHAR" />
+    <result column="EMPLOYEEID" property="employeeid" jdbcType="VARCHAR" />
+    <result column="EMPLOYEENAME" property="employeename" jdbcType="VARCHAR" />
+    <result column="SCORE" property="score" jdbcType="VARCHAR" />
+    <result column="PLANID" property="planId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    EVALUATEID, TEACHERID, TEACHNAME, EVALUATECONTENT, EMPLOYEEID, EMPLOYEENAME, SCORE,PLANID
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.work.entity.TTraiEvaluateExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_TRAI_EVALUATE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from TB_TRAI_EVALUATE
+    where EVALUATEID = #{evaluateid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TB_TRAI_EVALUATE
+    where EVALUATEID = #{evaluateid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.work.entity.TTraiEvaluate" >
+    insert into TB_TRAI_EVALUATE (EVALUATEID, TEACHERID, TEACHNAME, 
+      EVALUATECONTENT, EMPLOYEEID, EMPLOYEENAME, 
+      SCORE)
+    values (#{evaluateid,jdbcType=VARCHAR}, #{teacherid,jdbcType=VARCHAR}, #{teachname,jdbcType=VARCHAR}, 
+      #{evaluatecontent,jdbcType=VARCHAR}, #{employeeid,jdbcType=VARCHAR}, #{employeename,jdbcType=VARCHAR}, 
+      #{score,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TTraiEvaluate" >
+    insert into TB_TRAI_EVALUATE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="evaluateid != null" >
+        EVALUATEID,
+      </if>
+      <if test="teacherid != null" >
+        TEACHERID,
+      </if>
+      <if test="teachname != null" >
+        TEACHNAME,
+      </if>
+      <if test="evaluatecontent != null" >
+        EVALUATECONTENT,
+      </if>
+      <if test="employeeid != null" >
+        EMPLOYEEID,
+      </if>
+      <if test="employeename != null" >
+        EMPLOYEENAME,
+      </if>
+      <if test="score != null" >
+        SCORE,
+      </if>
+      <if test="planId != null" >
+        PLANID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="evaluateid != null" >
+        #{evaluateid,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherid != null" >
+        #{teacherid,jdbcType=VARCHAR},
+      </if>
+      <if test="teachname != null" >
+        #{teachname,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluatecontent != null" >
+        #{evaluatecontent,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeid != null" >
+        #{employeeid,jdbcType=VARCHAR},
+      </if>
+      <if test="employeename != null" >
+        #{employeename,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=VARCHAR},
+      </if>
+       <if test="planId != null" >
+        #{planId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.work.entity.TTraiEvaluate" >
+    update TB_TRAI_EVALUATE
+    <set >
+      <if test="teacherid != null" >
+        TEACHERID = #{teacherid,jdbcType=VARCHAR},
+      </if>
+      <if test="teachname != null" >
+        TEACHNAME = #{teachname,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluatecontent != null" >
+        EVALUATECONTENT = #{evaluatecontent,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeid != null" >
+        EMPLOYEEID = #{employeeid,jdbcType=VARCHAR},
+      </if>
+      <if test="employeename != null" >
+        EMPLOYEENAME = #{employeename,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        SCORE = #{score,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where EVALUATEID = #{evaluateid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.work.entity.TTraiEvaluate" >
+    update TB_TRAI_EVALUATE
+    set TEACHERID = #{teacherid,jdbcType=VARCHAR},
+      TEACHNAME = #{teachname,jdbcType=VARCHAR},
+      EVALUATECONTENT = #{evaluatecontent,jdbcType=VARCHAR},
+      EMPLOYEEID = #{employeeid,jdbcType=VARCHAR},
+      EMPLOYEENAME = #{employeename,jdbcType=VARCHAR},
+      SCORE = #{score,jdbcType=VARCHAR}
+    where EVALUATEID = #{evaluateid,jdbcType=VARCHAR}
+  </update>
+</mapper>

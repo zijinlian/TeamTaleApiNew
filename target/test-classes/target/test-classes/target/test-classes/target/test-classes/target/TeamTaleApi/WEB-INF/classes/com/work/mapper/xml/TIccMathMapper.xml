@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.TIccMathMapper" >
+  <resultMap id="BaseResultMap" type="com.work.entity.TIccMath" >
+    <id column="FD_MATHS_ID" property="fdMathsId" jdbcType="VARCHAR" />
+    <result column="FD_MATHS_NAME" property="fdMathsName" jdbcType="VARCHAR" />
+    <result column="FD_MATHS_MARK" property="fdMathsMark" jdbcType="VARCHAR" />
+    <result column="FD_MATHS_PEOPLE" property="fdMathsPeople" jdbcType="VARCHAR" />
+    <result column="FD_MATHS_DATE" property="fdMathsDate" jdbcType="VARCHAR" />
+    <result column="FD_MATHS_STATUS" property="fdMathsStatus" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    FD_MATHS_ID, FD_MATHS_NAME, FD_MATHS_MARK, FD_MATHS_PEOPLE, FD_MATHS_DATE, FD_MATHS_STATUS
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.work.entity.TIccMathExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_ICC_MATHS
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from TB_ICC_MATHS
+    where FD_MATHS_ID = #{fdMathsId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TB_ICC_MATHS
+    where FD_MATHS_ID = #{fdMathsId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.work.entity.TIccMath" >
+    insert into TB_ICC_MATHS (FD_MATHS_ID, FD_MATHS_NAME, FD_MATHS_MARK, 
+      FD_MATHS_PEOPLE, FD_MATHS_DATE, FD_MATHS_STATUS
+      )
+    values (#{fdMathsId,jdbcType=VARCHAR}, #{fdMathsName,jdbcType=VARCHAR}, #{fdMathsMark,jdbcType=VARCHAR}, 
+      #{fdMathsPeople,jdbcType=VARCHAR}, #{fdMathsDate,jdbcType=VARCHAR}, #{fdMathsStatus,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TIccMath" >
+    insert into TB_ICC_MATHS
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fdMathsId != null" >
+        FD_MATHS_ID,
+      </if>
+      <if test="fdMathsName != null" >
+        FD_MATHS_NAME,
+      </if>
+      <if test="fdMathsMark != null" >
+        FD_MATHS_MARK,
+      </if>
+      <if test="fdMathsPeople != null" >
+        FD_MATHS_PEOPLE,
+      </if>
+      <if test="fdMathsDate != null" >
+        FD_MATHS_DATE,
+      </if>
+      <if test="fdMathsStatus != null" >
+        FD_MATHS_STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fdMathsId != null" >
+        #{fdMathsId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdMathsName != null" >
+        #{fdMathsName,jdbcType=VARCHAR},
+      </if>
+      <if test="fdMathsMark != null" >
+        #{fdMathsMark,jdbcType=VARCHAR},
+      </if>
+      <if test="fdMathsPeople != null" >
+        #{fdMathsPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="fdMathsDate != null" >
+        #{fdMathsDate,jdbcType=VARCHAR},
+      </if>
+      <if test="fdMathsStatus != null" >
+        #{fdMathsStatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.work.entity.TIccMath" >
+    update TB_ICC_MATHS
+    <set >
+      <if test="fdMathsName != null" >
+        FD_MATHS_NAME = #{fdMathsName,jdbcType=VARCHAR},
+      </if>
+      <if test="fdMathsMark != null" >
+        FD_MATHS_MARK = #{fdMathsMark,jdbcType=VARCHAR},
+      </if>
+      <if test="fdMathsPeople != null" >
+        FD_MATHS_PEOPLE = #{fdMathsPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="fdMathsDate != null" >
+        FD_MATHS_DATE = #{fdMathsDate,jdbcType=VARCHAR},
+      </if>
+      <if test="fdMathsStatus != null" >
+        FD_MATHS_STATUS = #{fdMathsStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where FD_MATHS_ID = #{fdMathsId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.work.entity.TIccMath" >
+    update TB_ICC_MATHS
+    set FD_MATHS_NAME = #{fdMathsName,jdbcType=VARCHAR},
+      FD_MATHS_MARK = #{fdMathsMark,jdbcType=VARCHAR},
+      FD_MATHS_PEOPLE = #{fdMathsPeople,jdbcType=VARCHAR},
+      FD_MATHS_DATE = #{fdMathsDate,jdbcType=VARCHAR},
+      FD_MATHS_STATUS = #{fdMathsStatus,jdbcType=VARCHAR}
+    where FD_MATHS_ID = #{fdMathsId,jdbcType=VARCHAR}
+  </update>
+  <!-- add -->
+    <select id="selectNewMathProblem" parameterType="java.lang.String" resultType="java.util.Map">
+        SELECT
+        *
+        FROM
+        ( SELECT * FROM TB_ICC_PROBLEM tbp WHERE FD_PROBLEM_DEPT_ID = #{deptId} ORDER BY dbms_random.value )
+        WHERE
+        ROWNUM  &lt;  4
+    </select>
+  <select id="selectMathProblem" parameterType="java.lang.String" resultType="java.util.Map">
+	SELECT
+		IP.*
+	FROM
+		TB_ICC_MATHS_PROBLEM MP
+	LEFT JOIN TB_ICC_PROBLEM IP ON MP.PROBLEM_ID = IP.PROBLEM_ID
+	WHERE
+		MP.FD_MATHS_ID = #{value}
+	AND IP.FD_PROBLEM_STATUS = '1'
+  </select>
+  
+</mapper>

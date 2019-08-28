@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.TTraiPlayMapper" >
+  <resultMap id="BaseResultMap" type="com.work.entity.TTraiPlay" >
+    <id column="COURSEID" property="courseid" jdbcType="VARCHAR" />
+    <result column="CHAPTERNUM" property="chapternum" jdbcType="VARCHAR" />
+    <result column="COURSETITLE" property="coursetitle" jdbcType="VARCHAR" />
+    <result column="STARTIME" property="startime" jdbcType="VARCHAR" />
+    <result column="ENDTIME" property="endtime" jdbcType="VARCHAR" />
+    <result column="CORUSEADDRESS" property="coruseaddress" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="TEACHERID" property="teacherid" jdbcType="VARCHAR" />
+    <result column="TEACHERNAME" property="teachername" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    COURSEID, CHAPTERNUM, COURSETITLE, STARTIME, ENDTIME, CORUSEADDRESS, STATUS, ID, 
+    TEACHERID, TEACHERNAME
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.work.entity.TTraiPlayExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_TRAI_PLAN
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from TB_TRAI_PLAN
+    where COURSEID = #{courseid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TB_TRAI_PLAN
+    where COURSEID = #{courseid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.work.entity.TTraiPlay" >
+    insert into TB_TRAI_PLAN (COURSEID, CHAPTERNUM, COURSETITLE, 
+      STARTIME, ENDTIME, CORUSEADDRESS, 
+      STATUS, ID, TEACHERID, 
+      TEACHERNAME)
+    values (#{courseid,jdbcType=VARCHAR}, #{chapternum,jdbcType=VARCHAR}, #{coursetitle,jdbcType=VARCHAR}, 
+      #{startime,jdbcType=VARCHAR}, #{endtime,jdbcType=VARCHAR}, #{coruseaddress,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{id,jdbcType=VARCHAR}, #{teacherid,jdbcType=VARCHAR}, 
+      #{teachername,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TTraiPlay" >
+    insert into TB_TRAI_PLAN
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="courseid != null" >
+        COURSEID,
+      </if>
+      <if test="chapternum != null" >
+        CHAPTERNUM,
+      </if>
+      <if test="coursetitle != null" >
+        COURSETITLE,
+      </if>
+      <if test="startime != null" >
+        STARTIME,
+      </if>
+      <if test="endtime != null" >
+        ENDTIME,
+      </if>
+      <if test="coruseaddress != null" >
+        CORUSEADDRESS,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="teacherid != null" >
+        TEACHERID,
+      </if>
+      <if test="teachername != null" >
+        TEACHERNAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="courseid != null" >
+        #{courseid,jdbcType=VARCHAR},
+      </if>
+      <if test="chapternum != null" >
+        #{chapternum,jdbcType=VARCHAR},
+      </if>
+      <if test="coursetitle != null" >
+        #{coursetitle,jdbcType=VARCHAR},
+      </if>
+      <if test="startime != null" >
+        #{startime,jdbcType=VARCHAR},
+      </if>
+      <if test="endtime != null" >
+        #{endtime,jdbcType=VARCHAR},
+      </if>
+      <if test="coruseaddress != null" >
+        #{coruseaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherid != null" >
+        #{teacherid,jdbcType=VARCHAR},
+      </if>
+      <if test="teachername != null" >
+        #{teachername,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.work.entity.TTraiPlay" >
+    update TB_TRAI_PLAN
+    <set >
+      <if test="chapternum != null" >
+        CHAPTERNUM = #{chapternum,jdbcType=VARCHAR},
+      </if>
+      <if test="coursetitle != null" >
+        COURSETITLE = #{coursetitle,jdbcType=VARCHAR},
+      </if>
+      <if test="startime != null" >
+        STARTIME = #{startime,jdbcType=VARCHAR},
+      </if>
+      <if test="endtime != null" >
+        ENDTIME = #{endtime,jdbcType=VARCHAR},
+      </if>
+      <if test="coruseaddress != null" >
+        CORUSEADDRESS = #{coruseaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="id != null" >
+        ID = #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherid != null" >
+        TEACHERID = #{teacherid,jdbcType=VARCHAR},
+      </if>
+      <if test="teachername != null" >
+        TEACHERNAME = #{teachername,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where COURSEID = #{courseid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.work.entity.TTraiPlay" >
+    update TB_TRAI_PLAN
+    set CHAPTERNUM = #{chapternum,jdbcType=VARCHAR},
+      COURSETITLE = #{coursetitle,jdbcType=VARCHAR},
+      STARTIME = #{startime,jdbcType=VARCHAR},
+      ENDTIME = #{endtime,jdbcType=VARCHAR},
+      CORUSEADDRESS = #{coruseaddress,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR},
+      ID = #{id,jdbcType=VARCHAR},
+      TEACHERID = #{teacherid,jdbcType=VARCHAR},
+      TEACHERNAME = #{teachername,jdbcType=VARCHAR}
+    where COURSEID = #{courseid,jdbcType=VARCHAR}
+  </update>
+
+
+  <resultMap type="java.util.Map" id="resultjcm">
+   <result column="STUDYNUM" property="studynum"  javaType="java.math.BigDecimal" jdbcType="NUMERIC"/>
+  </resultMap>
+
+  <select id="selectAlloCace" parameterType="java.util.Map" resultMap="resultjcm" >
+  SELECT  distinct e.studynum FROM TB_TRAI_ALLOCATE e
+  WHERE
+  e.courseid = #{id,jdbcType=VARCHAR}
+  AND
+  e.deptcode= #{deptCode,jdbcType=VARCHAR}
+</select>
+
+  <select id="selectRegertTrainNum" parameterType="java.util.Map"  resultType="java.lang.Integer">
+    select count(*) as total from TB_TRAI_REGISTER  t
+      where  t.id =#{id,jdbcType=VARCHAR} and  t.deptcode =#{deptCode,jdbcType=VARCHAR}
+ and t.registerstatus='2'
+  </select>
+
+</mapper>

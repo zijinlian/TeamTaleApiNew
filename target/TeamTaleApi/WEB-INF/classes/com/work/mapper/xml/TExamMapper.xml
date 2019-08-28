@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.work.mapper.TExamMapper">
+	
+	<resultMap id="ExamMap" type="com.work.entity.TExam">
+		<id column="fd_exam_id" property="examId" jdbcType="VARCHAR" />
+    	<result column="fd_paper_id" property="paperId" jdbcType="VARCHAR" />
+    	<result column="fd_exam_name" property="examName" jdbcType="VARCHAR" />
+    	<result column="fd_exam_strtime" property="examStrTime" jdbcType="VARCHAR" />
+    	<result column="fd_exam_endtime" property="examEndTime" jdbcType="VARCHAR" />
+    	<result column="fd_exam_minutes" property="examMinutes" jdbcType="VARCHAR" />
+    	<result column="fd_model_type" property="examType" jdbcType="VARCHAR" />
+    	<result column="fd_exam_addr" property="examAddr" jdbcType="VARCHAR" />
+    	<result column="fd_exam_peoples" property="examPeoples" jdbcType="VARCHAR" />
+    	<result column="fd_exam_credate" property="examCredate" jdbcType="VARCHAR" />
+    	<result column="fd_exam_status" property="examStatus" jdbcType="VARCHAR" />
+	</resultMap>
+
+  
+  <select id="queryUserExams" resultMap="ExamMap" parameterType="com.work.bean.BaseRequestBean">
+  		SELECT
+			*
+		FROM
+			(
+				SELECT
+					t1.fd_exam_id,
+					t2.fd_empid,
+					t1.fd_paper_id,
+					t1.fd_exam_name,
+					t1.fd_exam_strtime,
+					t1.fd_exam_endtime,
+					t1.fd_exam_minutes,
+					t1.fd_model_type,
+					t1.fd_exam_addr,
+					COUNT (t2.fd_empid) OVER (PARTITION BY t1.fd_exam_id) fd_exam_peoples,
+					t1.fd_exam_credate,
+					<![CDATA[
+					CASE
+						WHEN TO_CHAR (SYSDATE, 'yyyymmdd') > t1.fd_exam_endtime THEN '2'
+						WHEN TO_CHAR (SYSDATE, 'yyyymmdd') < t1.fd_exam_strtime THEN '3'
+					ELSE
+						t2.fd_exam_status
+					END AS fd_exam_status
+					]]>
+				FROM
+					tb_oa_exam t1
+				INNER JOIN TB_PEPMGM_EMPINFO_FXFH t2 ON t1.fd_exam_id = t2.fd_examid
+			) M
+		WHERE
+			M .fd_empid = #{userid}
+		ORDER BY
+			M .fd_exam_credate DESC
+  </select>
+  
+  <select id="selectUserCountByExamId" resultType="java.lang.Integer" parameterType="com.work.bean.QuestionBean">
+  	SELECT
+		COUNT(1) num
+	FROM
+		TB_PEPMGM_EMPINFO_FXFH
+	WHERE
+		FD_EMPID = #{userid}
+	AND FD_EXAMID = #{examId}
+	AND FD_EXAM_STATUS = 1
+  </select>
+  
+  
+  
+  <resultMap id="QuestionMap" type="com.work.entity.TQuestion">
+    	<result column="fd_paper_id" property="paperId" jdbcType="VARCHAR" />
+    	<result column="fd_exam_name" property="examName" jdbcType="VARCHAR" />
+    	<result column="fd_question_no" property="questionNo" jdbcType="VARCHAR" />
+    	<result column="fd_question_id" property="questionId" jdbcType="VARCHAR" />
+    	<result column="fd_question_type" property="questionType" jdbcType="VARCHAR" />
+    	<result column="fd_question_des" property="questionDes" jdbcType="VARCHAR" />
+    	<result column="fd_question_options" property="questionOptions" jdbcType="VARCHAR" />
+	</resultMap>
+  <select id="selectQuestionByPaperId" resultMap="QuestionMap" parameterType="java.lang.String">
+  	SELECT
+		t1.fd_paper_id,
+		t1.fd_exam_name,
+		t2.fd_question_no,
+		t3.fd_question_id,
+		t3.fd_question_type,
+		t3.fd_question_des,
+		t3.fd_question_options
+	FROM
+		TB_OA_EXAM T1
+	INNER JOIN TB_OA_PAPER_QUESTION_REL T2 ON T1.FD_PAPER_ID = T2.FD_PAPER_ID
+	INNER JOIN TB_OA_QUESTIONS T3 ON T2.FD_QUESTION_ID = T3.FD_QUESTION_ID
+	WHERE
+		t1.fd_paper_id = #{paperId}
+	ORDER BY
+		t2.fd_question_no
+  </select>
+  
+  <select id="queryOrgCodeByEmpId" resultType="java.lang.String" parameterType="java.lang.String">
+  	SELECT
+		FD_ORGCDE
+	FROM
+		TB_PEPMGM_EMPINFO T
+	WHERE
+		T .FD_EMPID = #{userid}
+	AND ROWNUM = 1
+  </select>
+  
+  <select id="queryDeptOrgByEmpId" resultType="java.lang.String" parameterType="java.lang.String">
+  	SELECT
+		FD_DEPT_ORG
+	FROM
+		TB_PEPMGM_EMPINFO T
+	WHERE
+		T .FD_EMPID = #{userid}
+	AND ROWNUM = 1
+  </select>
+  
+  <select id="queryUnitnameByEmpId" resultType="java.lang.String" parameterType="java.lang.String">
+  	SELECT
+	  replace(r.FD_ORGNME, '中国银行辽宁省分行', '') AS FD_UNITNME
+	  FROM
+	  TB_PEPMGM_EMPINFO T
+	  LEFT JOIN tb_sys_orginfo_ehr r on r.fd_orgcde=T.FD_DEPT_ORG
+	  WHERE
+	  T .FD_EMPID = #{userid}
+	  AND ROWNUM = 1
+  </select>
+  
+  <resultMap id="BemeasuredMap" type="com.work.entity.TExamBemeasured">
+    	<result column="FD_EMPID" property="fdEmpId" jdbcType="VARCHAR" />
+    	<result column="FD_EMPNME" property="fdEmpName" jdbcType="VARCHAR" />
+    	<result column="FD_GENDER" property="fdGender" jdbcType="VARCHAR" />
+    	<result column="FD_BIRTH" property="fdBirthday" jdbcType="VARCHAR" />
+    	<result column="FD_JOBNME" property="fdJobName" jdbcType="VARCHAR" />
+    	<result column="FD_HIREDATE" property="fdHiredate" jdbcType="VARCHAR" />
+    	<result column="FD_OLDJOBNME" property="fdOldJobName" jdbcType="VARCHAR" />
+    	<result column="FD_BRANCH_ORGCODE" property="fdBranchOrgcode" jdbcType="VARCHAR" />
+  </resultMap>
+  <select id="queryExamBemeasuredByOrgcode" resultMap="BemeasuredMap" parameterType="java.lang.String">
+  	SELECT
+		*
+	FROM
+		TB_OA_EXAM_BEMEASURED t
+	WHERE
+		t.fd_branch_orgcode = #{orgcode} order by FD_ORDER asc
+  </select>
+  
+  <select id="queryExamFXFHUserOrgCode" resultType="java.lang.String" parameterType="com.work.bean.QuestionBean">
+  	SELECT
+		FD_ORGCDE
+	FROM
+		tb_pepmgm_empinfo_fxfh
+	WHERE
+		FD_EMPID = #{userid}
+	AND FD_EXAMID = #{examId}
+	AND ROWNUM = 1
+  </select>
+  
+  <resultMap id="PerformaceMap" type="com.work.entity.TExamPerformace">
+    	<result column="FD_EMPID" property="fdEmpId" jdbcType="VARCHAR" />
+    	<result column="FD_EMPNAME" property="fdEmpName" jdbcType="VARCHAR" />
+    	<result column="FD_ORGCODE" property="fdOrgCde" jdbcType="VARCHAR" />
+    	<result column="FD_ORGNAME" property="fdOrgName" jdbcType="VARCHAR" />
+    	<result column="FD_EXAMID" property="fdExamId" jdbcType="VARCHAR" />
+    	<result column="FD_EXAMNME" property="fdExamNme" jdbcType="VARCHAR" />
+    	<result column="FD_ORDER" property="fdOrder" jdbcType="VARCHAR" />
+  </resultMap>
+  <select id="queryExamPerformaceList" resultMap="PerformaceMap" parameterType="com.work.bean.QuestionBean">
+  	SELECT
+		*
+	FROM
+		tb_oa_exam_performace
+	WHERE
+		fd_orgcode = #{orgCode}
+	AND FD_EXAMID = #{examId} order by fd_order
+  </select>
+  
+  
+  <resultMap id="MiddleleaderMap" type="com.work.entity.TExamMiddleleader">
+    	<result column="FD_EMPID" property="empId" jdbcType="VARCHAR" />
+    	<result column="FD_EMPNM" property="empName" jdbcType="VARCHAR" />
+    	<result column="FD_JOB" property="fdJob" jdbcType="VARCHAR" />
+    	<result column="FD_BRANCH" property="fdBranch" jdbcType="VARCHAR" />
+    	<result column="FD_BRANCHNM" property="fdBranchName" jdbcType="VARCHAR" />
+  </resultMap>
+  <select id="queryMiddleleader" resultMap="MiddleleaderMap">
+	SELECT
+		T .fd_empid,
+		T .fd_empnm,
+		T .fd_job,
+		T .fd_branch,
+		A .fd_orgshort fd_branchnm
+	FROM
+		TB_EXAM_MIDDLELEADER T
+	LEFT JOIN TB_SYS_ORGINFO_EHR A ON T .fd_branch = A .fd_orgcde
+	WHERE
+		<![CDATA[
+		(
+			T .fd_order <> 3
+			AND T .fd_order <> 12
+		)
+		]]>
+	ORDER BY
+		T .org_order,
+		T .fd_order
+  </select>
+  
+  <resultMap id="MeasurerealMap" type="com.work.entity.TExamMeasurereal">
+    	<result column="ID" property="id" jdbcType="VARCHAR" />
+    	<result column="EMPID" property="empId" jdbcType="VARCHAR" />
+    	<result column="ENAME" property="ename" jdbcType="VARCHAR" />
+    	<result column="PARENT_ID" property="parentId" jdbcType="VARCHAR" />
+    	<result column="JOB" property="job" jdbcType="VARCHAR" />
+    	<result column="PARENT_NME" property="parentName" jdbcType="VARCHAR" />
+    	<result column="FD_ORGCDE" property="orgCode" jdbcType="VARCHAR" />
+    	<result column="FD_ORGNME" property="orgName" jdbcType="VARCHAR" />
+  </resultMap>
+  <select id="queryMeasurerealList" resultMap="MeasurerealMap" parameterType="java.lang.String">
+	SELECT
+		*
+	FROM
+		(
+			SELECT DISTINCT
+				t1.*, t2.fd_orgcde,
+				t3.fd_orgshort fd_orgnme
+			FROM
+				(
+					SELECT
+						*
+					FROM
+						TB_EXAM_MEASURERELA T
+					WHERE
+						T .parent_id = #{userid}
+					UNION
+						SELECT
+							*
+						FROM
+							TB_EXAM_MEASURERELA T
+						WHERE
+							T . JOB = '二级分行行长'
+						UNION
+							SELECT
+								*
+							FROM
+								TB_EXAM_MEASURERELA T
+							WHERE
+								T . JOB = '省分行部门正职'
+							UNION
+								SELECT
+									*
+								FROM
+									TB_EXAM_MEASURERELA T
+								WHERE
+									T . JOB = '营业部副总经理'
+								UNION
+									SELECT
+										*
+									FROM
+										TB_EXAM_MEASURERELA T
+									WHERE
+										T . JOB = '省分行部门副职'
+				) t1
+			INNER JOIN TB_PEPMGM_EMPINFO t2 ON t1.empid = t2.fd_empid
+			INNER JOIN TB_SYS_ORGINFO_EHR t3 ON t2.FD_UNITCDE = t3.fd_orgcde
+		) A
+	WHERE
+		<![CDATA[ (A . ID <> 77 AND A . ID <> 84) ]]>
+	ORDER BY
+		A .org_type,
+		A .org_order,
+		A .fd_order
+  </select>
+  
+  <select id="queryEmployeeOrgName" resultType="java.lang.String" parameterType="java.lang.String">
+  	SELECT
+		FD_ORGNME
+	FROM
+		(
+			SELECT
+				V.*
+			FROM
+				tb_sys_orginfo V START WITH V.Fd_Nodeid = (
+					SELECT
+						T .fd_orgcde
+					FROM
+						tb_pepmgm_empinfo T
+					WHERE
+						T .fd_empid = #{userid}
+				) CONNECT BY PRIOR V.Fd_Parentid = V.Fd_Nodeid
+		)
+	WHERE
+		Fd_ORGNME LIKE '%分行' AND ROWNUM = 1
+  </select>
+  
+  <select id="queryEmpNamebyId" resultType="com.work.entity.TbPepmgmEmpinfo" parameterType="java.lang.String">
+  	SELECT
+		T .fd_empname AS fdEmpnme,
+		T .FD_EMPID as fdEmpid
+	FROM
+		tb_oa_orgleader T
+	WHERE
+		T .fd_oldorgcde = (
+			SELECT
+				T .fd_orgcde
+			FROM
+				tb_pepmgm_empinfo T
+			WHERE
+				T .fd_empid = #{userid}
+		)
+  </select>
+  
+  <insert id="addAnswer" parameterType="java.util.List">
+  	INSERT INTO TB_OA_ANSWERS 
+  	(
+		FD_ANSWER_ID,
+		FD_EXAM_ID,
+		FD_PAPER_ID,
+		FD_QUESTION_ID,
+		FD_EXAMNUM,
+		FD_EXAM_TARGET,
+		FD_ANSWER,
+		FD_ANSWER_SCORE,
+		FD_MARKING_MAN,
+		FD_MARKING_DATE
+	) 
+    values  
+    <foreach collection="list" item="item" index="index" separator="," >  
+        (
+        	#{item.answerId},
+        	#{item.examId},
+        	#{item.paperId},
+        	#{item.questionId},
+        	#{item.examNum},
+        	#{item.examTarget},
+        	#{item.answer},
+        	#{item.answerScore},
+        	#{item.markingMan},
+        	#{item.markingDate}
+        )  
+    </foreach>  
+  </insert>
+  
+  <update id="updateExamStatus" parameterType="java.util.Map">
+  	UPDATE tb_pepmgm_empinfo_fxfh T
+	SET T .FD_EXAM_STATUS = #{status}
+	WHERE
+		T .fd_empid = #{userid}
+	AND T .fd_examid = #{examid}
+  </update>
+  
+</mapper>

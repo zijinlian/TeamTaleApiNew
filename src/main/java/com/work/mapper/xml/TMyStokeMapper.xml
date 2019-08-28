@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.TMyStokeMapper" >
+  <resultMap id="BaseResultMap" type="com.work.entity.TMyStoke" >
+    <result column="FD_EMPID" property="fdEmpid" jdbcType="VARCHAR" />
+    <result column="FD_DATE" property="fdDate" jdbcType="VARCHAR" />
+    <result column="FD_TIME" property="fdTime" jdbcType="VARCHAR" />
+    <result column="FD_TITLE" property="fdTitle" jdbcType="VARCHAR" />
+    <result column="FD_COMMENT" property="fdComment" jdbcType="VARCHAR" />
+    <result column="FD_ID" property="fdId" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    FD_EMPID, FD_DATE, FD_TIME, FD_TITLE, FD_COMMENT, FD_ID
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.work.entity.TMyStokeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_MY_STOKE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+  <select id="selectLeaderExample" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select t.titles as FD_TITLE,t.starts as FD_TIME from tb_stoke t where t.leaderid=#{empId} and t.starts like CONCAT(CONCAT('%',#{fdDate}),'%')
+    order by t.days desc
+  </select>
+  
+  <insert id="insert" parameterType="com.work.entity.TMyStoke" >
+    insert into TB_MY_STOKE (FD_EMPID, FD_DATE, FD_TIME, 
+      FD_TITLE, FD_COMMENT, FD_ID
+      )
+    values (#{fdEmpid,jdbcType=VARCHAR}, #{fdDate,jdbcType=VARCHAR}, #{fdTime,jdbcType=VARCHAR}, 
+      #{fdTitle,jdbcType=VARCHAR}, #{fdComment,jdbcType=VARCHAR}, #{fdId,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TMyStoke" >
+    insert into TB_MY_STOKE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fdEmpid != null" >
+        FD_EMPID,
+      </if>
+      <if test="fdDate != null" >
+        FD_DATE,
+      </if>
+      <if test="fdTime != null" >
+        FD_TIME,
+      </if>
+      <if test="fdTitle != null" >
+        FD_TITLE,
+      </if>
+      <if test="fdComment != null" >
+        FD_COMMENT,
+      </if>
+      <if test="fdId != null" >
+        FD_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fdEmpid != null" >
+        #{fdEmpid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdDate != null" >
+        #{fdDate,jdbcType=VARCHAR},
+      </if>
+      <if test="fdTime != null" >
+        #{fdTime,jdbcType=VARCHAR},
+      </if>
+      <if test="fdTitle != null" >
+        #{fdTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="fdComment != null" >
+        #{fdComment,jdbcType=VARCHAR},
+      </if>
+      <if test="fdId != null" >
+        #{fdId,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  
+  <!-- add -->
+  
+  <select id="selectUserRoleList" parameterType="java.util.Map" resultType="java.lang.Integer">
+  	SELECT
+		count(1)
+	FROM
+		tb_oa_attend_role ar
+	LEFT JOIN tb_oa_attend_user_role r ON ar. ID = r.ROLEID
+	WHERE
+		EMPID = #{empid}
+	AND ROLENAME IN (
+		${roles}
+	)
+  </select>
+  
+  <select id="selectUserList"  parameterType="com.work.bean.MyStokeBean" resultType="java.util.Map">
+  SELECT distinct *
+        from (SELECT SU.FD_HEADICON,EM.FD_EMPID,EM.FD_EMPNME,EM.FD_GENDER,EM.FD_ORGNME,EM.FD_UNITNME,EM.FD_ORGCDE,
+        EM.FD_DEPT_ORG,LA.Fd_Order
+          FROM (SELECT DISTINCT (EMPID) EMPID
+                  FROM tb_oa_attend_role T
+                  LEFT JOIN tb_oa_attend_user_role r
+                    ON T."ID" = r.ROLEID
+                 WHERE T.rolename IN
+                       ('省行行长', '省行副行长', '分管行长', '部门领导')) EMP
+          LEFT JOIN TB_PEPMGM_EMPINFO EM
+            ON EMP.EMPID = EM.FD_EMPID
+          LEFT JOIN TB_SYS_USERINFO SU
+            ON EM.FD_EMPID = SU.FD_USERNAME
+          LEFT JOIN TB_EXAM_MEASURERELA LA
+            on EMP.EMPID = LA.EMPID
+         WHERE FD_EMPID IS NOT NULL
+           AND FD_USERNAME IS NOT NULL
+           and FD_EMPID != #{fdEmpid}
+         order by to_number(nvL(LA.Fd_Order, 0)) asc) E
+ order by E.Fd_Order
+
+  </select>
+  
+</mapper>

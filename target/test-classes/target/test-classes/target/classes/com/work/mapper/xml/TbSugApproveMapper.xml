@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.TbSugApproveMapper" >
+  <resultMap id="BaseResultMap" type="com.work.entity.TbSugApprove" >
+    <result column="FD_UUID" property="fdUuid" jdbcType="VARCHAR" />
+    <result column="FD_APPRO_ORG" property="fdApproOrg" jdbcType="VARCHAR" />
+    <result column="FD_APPRO_EMP" property="fdApproEmp" jdbcType="VARCHAR" />
+    <result column="FD_APPRO_TIME" property="fdApproTime" jdbcType="VARCHAR" />
+    <result column="FD_APPRO_STU" property="fdApproStu" jdbcType="VARCHAR" />
+    <result column="FD_SUG_EMP_SCORE" property="fdSugEmpScore" jdbcType="VARCHAR" />
+    <result column="FD_APPRO_EMPNME" property="fdApproEmpnme" jdbcType="VARCHAR" />
+    <result column="FD_APPRO_DEPNME" property="fdApproDepnme" jdbcType="VARCHAR" />
+    <result column="FD_EMPID" property="fdEmpid" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.work.entity.TbSugApproveWithBLOBs" extends="BaseResultMap" >
+    <result column="FD_APPRO_MARK" property="fdApproMark" jdbcType="CLOB" />
+    <result column="FD_SUG_EMP_MARK" property="fdSugEmpMark" jdbcType="CLOB" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    FD_UUID, FD_APPRO_ORG, FD_APPRO_EMP, FD_APPRO_TIME, FD_APPRO_STU, FD_SUG_EMP_SCORE, 
+    FD_APPRO_EMPNME, FD_APPRO_DEPNME, FD_EMPID
+  </sql>
+  <sql id="Blob_Column_List" >
+    FD_APPRO_MARK, FD_SUG_EMP_MARK
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.work.entity.TbSugApproveExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from TB_SUG_APPROVE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.work.entity.TbSugApproveExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_SUG_APPROVE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <insert id="insert" parameterType="com.work.entity.TbSugApproveWithBLOBs" >
+    insert into TB_SUG_APPROVE (FD_UUID, FD_APPRO_ORG, FD_APPRO_EMP, 
+      FD_APPRO_TIME, FD_APPRO_STU, FD_SUG_EMP_SCORE, 
+      FD_APPRO_EMPNME, FD_APPRO_DEPNME, FD_EMPID, 
+      FD_APPRO_MARK, FD_SUG_EMP_MARK)
+    values (#{fdUuid,jdbcType=VARCHAR}, #{fdApproOrg,jdbcType=VARCHAR}, #{fdApproEmp,jdbcType=VARCHAR}, 
+      #{fdApproTime,jdbcType=VARCHAR}, #{fdApproStu,jdbcType=VARCHAR}, #{fdSugEmpScore,jdbcType=VARCHAR}, 
+      #{fdApproEmpnme,jdbcType=VARCHAR}, #{fdApproDepnme,jdbcType=VARCHAR}, #{fdEmpid,jdbcType=VARCHAR}, 
+      #{fdApproMark,jdbcType=CLOB}, #{fdSugEmpMark,jdbcType=CLOB})
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TbSugApproveWithBLOBs" >
+    insert into TB_SUG_APPROVE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fdUuid != null" >
+        FD_UUID,
+      </if>
+      <if test="fdApproOrg != null" >
+        FD_APPRO_ORG,
+      </if>
+      <if test="fdApproEmp != null" >
+        FD_APPRO_EMP,
+      </if>
+      <if test="fdApproTime != null" >
+        FD_APPRO_TIME,
+      </if>
+      <if test="fdApproStu != null" >
+        FD_APPRO_STU,
+      </if>
+      <if test="fdSugEmpScore != null" >
+        FD_SUG_EMP_SCORE,
+      </if>
+      <if test="fdApproEmpnme != null" >
+        FD_APPRO_EMPNME,
+      </if>
+      <if test="fdApproDepnme != null" >
+        FD_APPRO_DEPNME,
+      </if>
+      <if test="fdEmpid != null" >
+        FD_EMPID,
+      </if>
+      <if test="fdApproMark != null" >
+        FD_APPRO_MARK,
+      </if>
+      <if test="fdSugEmpMark != null" >
+        FD_SUG_EMP_MARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fdUuid != null" >
+        #{fdUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdApproOrg != null" >
+        #{fdApproOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="fdApproEmp != null" >
+        #{fdApproEmp,jdbcType=VARCHAR},
+      </if>
+      <if test="fdApproTime != null" >
+        #{fdApproTime,jdbcType=VARCHAR},
+      </if>
+      <if test="fdApproStu != null" >
+        #{fdApproStu,jdbcType=VARCHAR},
+      </if>
+      <if test="fdSugEmpScore != null" >
+        #{fdSugEmpScore,jdbcType=VARCHAR},
+      </if>
+      <if test="fdApproEmpnme != null" >
+        #{fdApproEmpnme,jdbcType=VARCHAR},
+      </if>
+      <if test="fdApproDepnme != null" >
+        #{fdApproDepnme,jdbcType=VARCHAR},
+      </if>
+      <if test="fdEmpid != null" >
+        #{fdEmpid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdApproMark != null" >
+        #{fdApproMark,jdbcType=CLOB},
+      </if>
+      <if test="fdSugEmpMark != null" >
+        #{fdSugEmpMark,jdbcType=CLOB},
+      </if>
+    </trim>
+  </insert>
+</mapper>

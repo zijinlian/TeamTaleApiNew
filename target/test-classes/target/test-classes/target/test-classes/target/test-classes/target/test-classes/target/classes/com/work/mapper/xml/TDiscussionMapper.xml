@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.TDiscussionMapper" >
+  <resultMap id="BaseResultMap" type="com.work.entity.TDiscussion" >
+    <id column="FD_DIS_ID" property="fdDisId" jdbcType="VARCHAR" />
+    <result column="FD_EMPID" property="fdEmpid" jdbcType="VARCHAR" />
+    <result column="FD_EMPNME" property="fdEmpnme" jdbcType="VARCHAR" />
+    <result column="FD_CF_ID" property="fdCfId" jdbcType="VARCHAR" />
+    <result column="FD_CONTENT" property="fdContent" jdbcType="VARCHAR" />
+    <result column="FD_ANSWERTIME" property="fdAnswertime" jdbcType="VARCHAR" />
+    <result column="FD_ACCEPT_STATE" property="fdAcceptState" jdbcType="VARCHAR" />
+    <result column="FD_LIKE_COUNT" property="fdLikeCount" jdbcType="VARCHAR" />
+    <result column="FD_ORGNME" property="fdOrgnme" jdbcType="VARCHAR" />
+    <result column="FD_CF_THREM" property="fdCfThrem" jdbcType="VARCHAR" />
+    <result column="FD_HEADICON" property="fdHeadicon" jdbcType="VARCHAR" />
+    <result column="ROWNUM" property="rownum" jdbcType="VARCHAR" />
+      <result column="FD_UNITNME" property="fdUnitNme" jdbcType="VARCHAR"/>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    FD_DIS_ID, FD_EMPID, FD_EMPNME, FD_CF_ID, FD_CONTENT, FD_ANSWERTIME, FD_ACCEPT_STATE, 
+    FD_LIKE_COUNT, FD_ORGNME, FD_CF_THREM
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from TB_CF_DISCUSSION
+    where FD_DIS_ID = #{fdDisId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TB_CF_DISCUSSION
+    where FD_DIS_ID = #{fdDisId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.work.entity.TDiscussion" >
+    insert into TB_CF_DISCUSSION (FD_DIS_ID, FD_EMPID, FD_EMPNME, 
+      FD_CF_ID, FD_CONTENT, FD_ANSWERTIME, 
+      FD_ACCEPT_STATE, FD_LIKE_COUNT, FD_ORGNME, 
+      FD_CF_THREM)
+    values (#{fdDisId,jdbcType=VARCHAR}, #{fdEmpid,jdbcType=VARCHAR}, #{fdEmpnme,jdbcType=VARCHAR}, 
+      #{fdCfId,jdbcType=VARCHAR}, #{fdContent,jdbcType=VARCHAR}, #{fdAnswertime,jdbcType=VARCHAR}, 
+      #{fdAcceptState,jdbcType=VARCHAR}, #{fdLikeCount,jdbcType=VARCHAR}, #{fdOrgnme,jdbcType=VARCHAR}, 
+      #{fdCfThrem,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TDiscussion" >
+    insert into TB_CF_DISCUSSION
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fdDisId != null" >
+        FD_DIS_ID,
+      </if>
+      <if test="fdEmpid != null" >
+        FD_EMPID,
+      </if>
+      <if test="fdEmpnme != null" >
+        FD_EMPNME,
+      </if>
+      <if test="fdCfId != null" >
+        FD_CF_ID,
+      </if>
+      <if test="fdContent != null" >
+        FD_CONTENT,
+      </if>
+      <if test="fdAnswertime != null" >
+        FD_ANSWERTIME,
+      </if>
+      <if test="fdAcceptState != null" >
+        FD_ACCEPT_STATE,
+      </if>
+      <if test="fdLikeCount != null" >
+        FD_LIKE_COUNT,
+      </if>
+      <if test="fdOrgnme != null" >
+        FD_ORGNME,
+      </if>
+      <if test="fdCfThrem != null" >
+        FD_CF_THREM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fdDisId != null" >
+        #{fdDisId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdEmpid != null" >
+        #{fdEmpid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdEmpnme != null" >
+        #{fdEmpnme,jdbcType=VARCHAR},
+      </if>
+      <if test="fdCfId != null" >
+        #{fdCfId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdContent != null" >
+        #{fdContent,jdbcType=VARCHAR},
+      </if>
+      <if test="fdAnswertime != null" >
+        #{fdAnswertime,jdbcType=VARCHAR},
+      </if>
+      <if test="fdAcceptState != null" >
+        #{fdAcceptState,jdbcType=VARCHAR},
+      </if>
+      <if test="fdLikeCount != null" >
+        #{fdLikeCount,jdbcType=VARCHAR},
+      </if>
+      <if test="fdOrgnme != null" >
+        #{fdOrgnme,jdbcType=VARCHAR},
+      </if>
+      <if test="fdCfThrem != null" >
+        #{fdCfThrem,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.work.entity.TDiscussion" >
+    update TB_CF_DISCUSSION
+    <set >
+      <if test="fdEmpid != null" >
+        FD_EMPID = #{fdEmpid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdEmpnme != null" >
+        FD_EMPNME = #{fdEmpnme,jdbcType=VARCHAR},
+      </if>
+      <if test="fdCfId != null" >
+        FD_CF_ID = #{fdCfId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdContent != null" >
+        FD_CONTENT = #{fdContent,jdbcType=VARCHAR},
+      </if>
+      <if test="fdAnswertime != null" >
+        FD_ANSWERTIME = #{fdAnswertime,jdbcType=VARCHAR},
+      </if>
+      <if test="fdAcceptState != null" >
+        FD_ACCEPT_STATE = #{fdAcceptState,jdbcType=VARCHAR},
+      </if>
+      <if test="fdLikeCount != null" >
+        FD_LIKE_COUNT = #{fdLikeCount,jdbcType=VARCHAR},
+      </if>
+      <if test="fdOrgnme != null" >
+        FD_ORGNME = #{fdOrgnme,jdbcType=VARCHAR},
+      </if>
+      <if test="fdCfThrem != null" >
+        FD_CF_THREM = #{fdCfThrem,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where FD_DIS_ID = #{fdDisId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.work.entity.TDiscussion" >
+    update TB_CF_DISCUSSION
+    set FD_EMPID = #{fdEmpid,jdbcType=VARCHAR},
+      FD_EMPNME = #{fdEmpnme,jdbcType=VARCHAR},
+      FD_CF_ID = #{fdCfId,jdbcType=VARCHAR},
+      FD_CONTENT = #{fdContent,jdbcType=VARCHAR},
+      FD_ANSWERTIME = #{fdAnswertime,jdbcType=VARCHAR},
+      FD_ACCEPT_STATE = #{fdAcceptState,jdbcType=VARCHAR},
+      FD_LIKE_COUNT = #{fdLikeCount,jdbcType=VARCHAR},
+      FD_ORGNME = #{fdOrgnme,jdbcType=VARCHAR},
+      FD_CF_THREM = #{fdCfThrem,jdbcType=VARCHAR}
+    where FD_DIS_ID = #{fdDisId,jdbcType=VARCHAR}
+  </update>
+  
+  <!-- add -->
+  <select id="selectListDisByCrowId" resultMap="BaseResultMap" parameterType="com.work.bean.CrowdBean">
+    SELECT
+    	ROWNUM,
+		TD.FD_DIS_ID,
+		TD.FD_EMPID,
+		TD.FD_EMPNME,
+		TU.FD_HEADICON,
+		TD.FD_CONTENT,
+		TD.FD_ANSWERTIME,
+		TD.FD_LIKE_COUNT,
+		TD.FD_ACCEPT_STATE,
+		EMP.FD_UNITNME
+	FROM
+		TB_CF_DISCUSSION TD
+	LEFT JOIN TB_SYS_USERINFO TU ON TD.FD_EMPID = TU.FD_USERNAME
+	LEFT JOIN TB_PEPMGM_EMPINFO EMP ON TD.FD_EMPID = EMP.FD_EMPID
+	WHERE FD_CF_ID = #{fdCfId,jdbcType=VARCHAR}
+    AND (FD_CONTENT!='' or FD_CONTENT is not null)
+  </select>
+  
+  <resultMap type="com.work.entity.TCrowRank" id="CrowRankMap">
+  	<result column="fd_count" property="fdCount" jdbcType="VARCHAR" />
+  	<result column="fd_empid" property="fdEmpid" jdbcType="VARCHAR" />
+  	<result column="fd_empnme" property="fdEmpname" jdbcType="VARCHAR" />
+  	<result column="FD_UNINME" property="fdUninme" jdbcType="VARCHAR" />
+  	<result column="FD_ICOHEAD" property="fdIcohead" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <select id="selectCrowRank" resultMap="CrowRankMap">
+  	SELECT
+		A .total AS fd_count,
+		A .fd_empid,
+		b.fd_empnme AS fd_empnme,
+		b.fd_unitnme AS FD_UNINME,
+		c.fd_headicon AS FD_ICOHEAD
+	FROM
+		(
+			SELECT
+				COUNT (1) AS total,
+				FD_EMPID
+			FROM
+				tb_cf_adopt
+			GROUP BY
+				FD_EMPID
+		) A,
+		TB_PEPMGM_EMPINFO b,
+		tb_sys_userinfo c
+	WHERE
+		A .fd_empid = b.fd_empid
+	AND b.fd_empid = c.fd_username
+	ORDER BY
+		A .total DESC
+  </select>
+
+
+  <select id="selectProhibitBean"  parameterType="com.work.bean.CrowdBean" resultType="java.util.Map">
+    select t.* from  tb_pub_black_cus t where t.fd_empid = #{userid} and t.fd_model_id= '1' and t.fd_state ='1'
+  </select>
+  
+  
+  <parameterMap id="stringOutMap" type="java.util.Map">
+  	<parameter property="P_IN_DATA" javaType="String" jdbcType="VARCHAR" mode="IN"/>
+    <parameter property="P_OUT_SUCCEED" javaType="INTEGER" jdbcType="INTEGER" mode="OUT"/>
+   </parameterMap>
+  <!-- 执行敏感字过滤存储过程 -->
+  <select id="updateCommentContent" statementType="CALLABLE" parameterMap="stringOutMap">
+  	 {call PROC_CRWFD_SWRWD(#{P_IN_DATA,jdbcType=VARCHAR,mode=IN},#{P_OUT_SUCCEED ,jdbcType=INTEGER,mode=OUT})}
+  </select>
+  
+</mapper>

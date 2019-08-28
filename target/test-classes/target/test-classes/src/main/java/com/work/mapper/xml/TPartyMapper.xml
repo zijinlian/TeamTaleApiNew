@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.TPartyMapper">
+	<!-- 查询当前用户党建节点 -->
+	<select id="selectUserPartyId" parameterType="com.work.bean.PartyBean" resultType="java.util.Map">
+		SELECT
+			*
+		FROM
+			(
+				SELECT
+					s.PARTY_ID PARTY_ID
+				FROM
+					TB_DJ_PARTY_INFO s
+				WHERE
+					s.PARTY_DUTY_USER = #{empid}
+			)
+		WHERE
+			ROWNUM = 1
+	</select>
+
+	<select id="selectPartyByPId" parameterType="com.work.bean.PartyBean" resultType="java.util.Map">
+		select * from TB_DJ_PARTY_INFO t where t.parent_party_id=#{partyId}
+	</select>
+	<select id="selectRootParyByLevel" parameterType="com.work.bean.PartyBean" resultType="java.util.Map">
+    	select
+     	PARTY_ID,PARENT_PARTY_ID,PARTY_NAME,PARTY_LEVEL,PARTY_LEA_NUM,PARTY_MID_NUM,
+   		(select e.fd_empnme from TB_PEPMGM_EMPINFO e where e.fd_empid=PARTY_DUTY_USER) as PARTY_DUTY_USER,
+   		DUTY_USER_FACE,PARTY_REMARK,PARTY_CATEGORY
+    	from TB_DJ_PARTY_INFO t where t.PARTY_LEVEL=#{partyLevel}  order by t.party_id asc
+	</select>
+
+	<resultMap id="PartyInfoMap" type="com.work.entity.TPartyInfoMember">
+		<result column="PARTY_ID" property="party_id"   jdbcType="VARCHAR" />
+		<result column="PARTYNAME" property="party_name"   jdbcType="VARCHAR" />
+		<result column="PARTY_LEVEL" property="party_level"  jdbcType="VARCHAR" />
+		<result column="PARTY_LEA_NUM" property="party_lea_num"  jdbcType="NUMERIC" />
+		<result column="PARTY_MID_NUM" property="party_mid_num"   jdbcType="NUMERIC" />
+		<result column="PARTY_LIT_NUM" property="party_lit_num"  jdbcType="NUMERIC" />
+		<result column="FD_EMPNME" property="fd_empnme" jdbcType="VARCHAR" />
+		<result column="DUTY_USER_FACE" property="duty_user_face"   jdbcType="VARCHAR" />
+		<result column="PARTY_REMARK" property="party_remark"  jdbcType="VARCHAR" />
+	</resultMap>
+
+	<select id="selectPartyInfoById" parameterType="com.work.bean.PartyBean" resultMap="PartyInfoMap">
+		select t.party_id       as PARTY_ID,
+       t.party_name     as PARTYNAME,
+       t.party_level    as PARTY_LEVEL,
+       t.party_lea_num  as PARTY_LEA_NUM,
+       t.party_mid_num  as PARTY_MID_NUM,
+       t.party_lit_num  as PARTY_LIT_NUM,
+       aj.fd_empnme     as FD_EMPNME,
+       t.duty_user_face as DUTY_USER_FACE,
+       t.party_remark   as PARTY_REMARK
+  from TB_DJ_PARTY_INFO t
+  left join TB_PEPMGM_EMPINFO aj
+    on aj.fd_empid = t.party_duty_user
+ where t.party_id = #{partyId}
+	</select>
+
+	<select id="selectPartyCount" parameterType="com.work.bean.PartyBean" resultType="java.lang.Integer">
+		select sum(t.party_num) as total from TB_DJ_PARTY_GROUP t where t.party_type=#{type}
+	</select>
+
+	<select id="selectCountOfAllPeople" resultType="java.lang.Integer">
+		select  sum(1)  as total from tb_pepmgm_empinfo t where t.fd_empnme!='匿名测试用户'
+	</select>
+
+	<resultMap id="groupInfoMap" type="com.work.entity.TGroupInfo">
+		<result column="PARTY_ID" property="party_id" jdbcType="VARCHAR" />
+		<result column="PARTY_TYPE" property="party_type" jdbcType="VARCHAR" />
+		<result column="PARTY_NUM" property="party_num" jdbcType="VARCHAR" />
+		<result column="PARTY_LIST_REMARK" property="party_list_remark" jdbcType="CLOB" />
+	</resultMap>
+
+	<select id="selectGroupInfo" parameterType="com.work.bean.PartyBean" resultMap="groupInfoMap">
+	   SELECT PARTY_ID,PARTY_TYPE,PARTY_NUM,PARTY_LIST_REMARK
+	   FROM
+	   TB_DJ_PARTY_GROUP
+	   WHERE
+	    PARTY_ID=#{partyId}
+	</select>
+
+
+	<resultMap id="PartyIncorruptMap" type="com.work.entity.TPartyIncorrupt">
+		<result column="FD_NM" property="fd_id" jdbcType="VARCHAR" />
+        <result column="FD_CONTENT" property="fd_nm" jdbcType="CLOB" />
+        <result column="FD_PUBTIME" property="fd_pubtime" jdbcType="VARCHAR" />
+        <result column="FD_PUBEMP" property="fd_pubemp" jdbcType="VARCHAR" />
+        <result column="FD_BIG_TYPE" property="fd_big_type" jdbcType="NUMERIC" />
+        <result column="FD_ATTACHID_REL" property="fd_attachid_rel" jdbcType="VARCHAR" />
+        <result column="FD_SUB_TYPE" property="fd_sub_type" jdbcType="NUMERIC" />
+        <result column="FD_ORGCDE" property="fd_orgcde" jdbcType="VARCHAR" />
+	</resultMap>
+
+
+	<select id="selectPartyIncrorrupt" resultMap="PartyIncorruptMap">
+		select * from TB_DJ_PARTY_CONSTRUCT t
+	</select>
+
+<select id="selectPartyIsNode" parameterType="com.work.bean.PartyBean" resultType="java.util.Map">
+	SELECT * FROM TB_DJ_PARTY_INFO where PARENT_PARTY_ID = #{partyId}
+</select>
+
+</mapper>

@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.TTraiRegisterMapper" >
+  <resultMap id="BaseResultMap" type="com.work.entity.TTraiRegister" >
+    <id column="REGISTERID" property="registerid" jdbcType="VARCHAR" />
+    <result column="EMPLOYEEID" property="employeeid" jdbcType="VARCHAR" />
+    <result column="EMPLOYEENAME" property="employeename" jdbcType="VARCHAR" />
+    <result column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="REGISTERSTATUS" property="registerstatus" jdbcType="VARCHAR" />
+    <result column="APPROVERID" property="approverid" jdbcType="VARCHAR" />
+    <result column="APPROVERNAME" property="approvername" jdbcType="VARCHAR" />
+    <result column="APPROVECOMENT" property="approvecoment" jdbcType="VARCHAR" />
+    <result column="APPROVETIME" property="approvetime" jdbcType="VARCHAR" />
+    <result column="EMPORGCODE" property="emporgcode" jdbcType="VARCHAR" />
+    <result column="REGISTERTYPE" property="registertype" jdbcType="VARCHAR" />
+    <result column="APPROVETYPE" property="approvetype" jdbcType="VARCHAR" />
+    <result column="DEPTCODE" property="deptcode" jdbcType="VARCHAR" />
+    <result column="EVALUATESTATUS" property="evaluatestatus" jdbcType="VARCHAR" />
+    <result column="ISACCOMMODATION" property="isaccommodation" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    REGISTERID, EMPLOYEEID, EMPLOYEENAME, ID, REGISTERSTATUS, APPROVERID, APPROVERNAME, 
+    APPROVECOMENT, APPROVETIME, EMPORGCODE, REGISTERTYPE, APPROVETYPE, DEPTCODE, EVALUATESTATUS,ISACCOMMODATION
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.work.entity.TTraiRegisterExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_TRAI_REGISTER
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from TB_TRAI_REGISTER
+    where REGISTERID = #{registerid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TB_TRAI_REGISTER
+    where REGISTERID = #{registerid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.work.entity.TTraiRegister" >
+    insert into TB_TRAI_REGISTER (REGISTERID, EMPLOYEEID, EMPLOYEENAME, 
+      ID, REGISTERSTATUS, APPROVERID, 
+      APPROVERNAME, APPROVECOMENT, APPROVETIME, 
+      EMPORGCODE, REGISTERTYPE, APPROVETYPE, 
+      DEPTCODE, EVALUATESTATUS, ISACCOMMODATION)
+    values (#{registerid,jdbcType=VARCHAR}, #{employeeid,jdbcType=VARCHAR}, #{employeename,jdbcType=VARCHAR}, 
+      #{id,jdbcType=VARCHAR}, #{registerstatus,jdbcType=VARCHAR}, #{approverid,jdbcType=VARCHAR}, 
+      #{approvername,jdbcType=VARCHAR}, #{approvecoment,jdbcType=VARCHAR}, #{approvetime,jdbcType=VARCHAR}, 
+      #{emporgcode,jdbcType=VARCHAR}, #{registertype,jdbcType=VARCHAR}, #{approvetype,jdbcType=VARCHAR}, 
+      #{deptcode,jdbcType=VARCHAR}, #{evaluatestatus,jdbcType=VARCHAR}, #{isaccommodation,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TTraiRegister" >
+    insert into TB_TRAI_REGISTER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="registerid != null" >
+        REGISTERID,
+      </if>
+      <if test="employeeid != null" >
+        EMPLOYEEID,
+      </if>
+      <if test="employeename != null" >
+        EMPLOYEENAME,
+      </if>
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="registerstatus != null" >
+        REGISTERSTATUS,
+      </if>
+      <if test="approverid != null" >
+        APPROVERID,
+      </if>
+      <if test="approvername != null" >
+        APPROVERNAME,
+      </if>
+      <if test="approvecoment != null" >
+        APPROVECOMENT,
+      </if>
+      <if test="approvetime != null" >
+        APPROVETIME,
+      </if>
+      <if test="emporgcode != null" >
+        EMPORGCODE,
+      </if>
+      <if test="registertype != null" >
+        REGISTERTYPE,
+      </if>
+      <if test="approvetype != null" >
+        APPROVETYPE,
+      </if>
+      <if test="deptcode != null" >
+        DEPTCODE,
+      </if>
+      <if test="evaluatestatus != null" >
+        EVALUATESTATUS,
+      </if>
+      <if test="isaccommodation != null ">
+        ISACCOMMODATION,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="registerid != null" >
+        #{registerid,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeid != null" >
+        #{employeeid,jdbcType=VARCHAR},
+      </if>
+      <if test="employeename != null" >
+        #{employeename,jdbcType=VARCHAR},
+      </if>
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="registerstatus != null" >
+        #{registerstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="approverid != null" >
+        #{approverid,jdbcType=VARCHAR},
+      </if>
+      <if test="approvername != null" >
+        #{approvername,jdbcType=VARCHAR},
+      </if>
+      <if test="approvecoment != null" >
+        #{approvecoment,jdbcType=VARCHAR},
+      </if>
+      <if test="approvetime != null" >
+        #{approvetime,jdbcType=VARCHAR},
+      </if>
+      <if test="emporgcode != null" >
+        #{emporgcode,jdbcType=VARCHAR},
+      </if>
+      <if test="registertype != null" >
+        #{registertype,jdbcType=VARCHAR},
+      </if>
+      <if test="approvetype != null" >
+        #{approvetype,jdbcType=VARCHAR},
+      </if>
+      <if test="deptcode != null" >
+        #{deptcode,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluatestatus != null" >
+        #{evaluatestatus,jdbcType=VARCHAR},
+      </if>
+      <if test="isaccommodation != null" >
+        #{isaccommodation,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.work.entity.TTraiRegister" >
+    update TB_TRAI_REGISTER
+    <set >
+      <if test="employeeid != null" >
+        EMPLOYEEID = #{employeeid,jdbcType=VARCHAR},
+      </if>
+      <if test="employeename != null" >
+        EMPLOYEENAME = #{employeename,jdbcType=VARCHAR},
+      </if>
+      <if test="id != null" >
+        ID = #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="registerstatus != null" >
+        REGISTERSTATUS = #{registerstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="approverid != null" >
+        APPROVERID = #{approverid,jdbcType=VARCHAR},
+      </if>
+      <if test="approvername != null" >
+        APPROVERNAME = #{approvername,jdbcType=VARCHAR},
+      </if>
+      <if test="approvecoment != null" >
+        APPROVECOMENT = #{approvecoment,jdbcType=VARCHAR},
+      </if>
+      <if test="approvetime != null" >
+        APPROVETIME = #{approvetime,jdbcType=VARCHAR},
+      </if>
+      <if test="emporgcode != null" >
+        EMPORGCODE = #{emporgcode,jdbcType=VARCHAR},
+      </if>
+      <if test="registertype != null" >
+        REGISTERTYPE = #{registertype,jdbcType=VARCHAR},
+      </if>
+      <if test="approvetype != null" >
+        APPROVETYPE = #{approvetype,jdbcType=VARCHAR},
+      </if>
+      <if test="deptcode != null" >
+        DEPTCODE = #{deptcode,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluatestatus != null" >
+        EVALUATESTATUS = #{evaluatestatus,jdbcType=VARCHAR},
+      </if>
+      <if test="isaccommodation != null" >
+        ISACCOMMODATION = #{isaccommodation,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where REGISTERID = #{registerid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.work.entity.TTraiRegister" >
+    update TB_TRAI_REGISTER
+    set EMPLOYEEID = #{employeeid,jdbcType=VARCHAR},
+      EMPLOYEENAME = #{employeename,jdbcType=VARCHAR},
+      ID = #{id,jdbcType=VARCHAR},
+      REGISTERSTATUS = #{registerstatus,jdbcType=VARCHAR},
+      APPROVERID = #{approverid,jdbcType=VARCHAR},
+      APPROVERNAME = #{approvername,jdbcType=VARCHAR},
+      APPROVECOMENT = #{approvecoment,jdbcType=VARCHAR},
+      APPROVETIME = #{approvetime,jdbcType=VARCHAR},
+      EMPORGCODE = #{emporgcode,jdbcType=VARCHAR},
+      REGISTERTYPE = #{registertype,jdbcType=VARCHAR},
+      APPROVETYPE = #{approvetype,jdbcType=VARCHAR},
+      DEPTCODE = #{deptcode,jdbcType=VARCHAR},
+      EVALUATESTATUS = #{evaluatestatus,jdbcType=VARCHAR},
+      ISACCOMMODATION = #{isaccommodation,jdbcType=VARCHAR}
+    where REGISTERID = #{registerid,jdbcType=VARCHAR}
+  </update>
+</mapper>

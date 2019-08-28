@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.TDishEmpCheckMapper" >
+  <resultMap id="BaseResultMap" type="com.work.entity.TDishEmpCheck" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="MEALID" property="mealid" jdbcType="VARCHAR" />
+    <result column="EMPID" property="empid" jdbcType="VARCHAR" />
+    <result column="EMPNAME" property="empname" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="CHECKDATE" property="checkdate" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, MEALID, EMPID, EMPNAME, STATUS, CHECKDATE
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.work.entity.TDishEmpCheckExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_DISH_EMP_CHECK
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from TB_DISH_EMP_CHECK
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TB_DISH_EMP_CHECK
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.work.entity.TDishEmpCheck" >
+    insert into TB_DISH_EMP_CHECK (ID, MEALID, EMPID, 
+      EMPNAME, STATUS, CHECKDATE
+      )
+    values (#{id,jdbcType=VARCHAR}, #{mealid,jdbcType=VARCHAR}, #{empid,jdbcType=VARCHAR}, 
+      #{empname,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{checkdate,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TDishEmpCheck" >
+    insert into TB_DISH_EMP_CHECK
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="mealid != null" >
+        MEALID,
+      </if>
+      <if test="empid != null" >
+        EMPID,
+      </if>
+      <if test="empname != null" >
+        EMPNAME,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="checkdate != null" >
+        CHECKDATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="mealid != null" >
+        #{mealid,jdbcType=VARCHAR},
+      </if>
+      <if test="empid != null" >
+        #{empid,jdbcType=VARCHAR},
+      </if>
+      <if test="empname != null" >
+        #{empname,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="checkdate != null" >
+        #{checkdate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.work.entity.TDishEmpCheck" >
+    update TB_DISH_EMP_CHECK
+    <set >
+      <if test="mealid != null" >
+        MEALID = #{mealid,jdbcType=VARCHAR},
+      </if>
+      <if test="empid != null" >
+        EMPID = #{empid,jdbcType=VARCHAR},
+      </if>
+      <if test="empname != null" >
+        EMPNAME = #{empname,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="checkdate != null" >
+        CHECKDATE = #{checkdate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.work.entity.TDishEmpCheck" >
+    update TB_DISH_EMP_CHECK
+    set MEALID = #{mealid,jdbcType=VARCHAR},
+      EMPID = #{empid,jdbcType=VARCHAR},
+      EMPNAME = #{empname,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR},
+      CHECKDATE = #{checkdate,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  <!-- add -->
+  
+  <select id="selectCheckNumCountByDate" resultType="java.lang.Integer" parameterType="java.util.Map">
+  	SELECT
+		COUNT (1) num 
+	FROM
+		TB_DISH_EMP_CHECK EC
+	LEFT JOIN TB_DISH_MEAL DM ON DM.MEALID = EC.MEALID
+	WHERE CHECKDATE = #{date} and STATUS = '1'
+	<if test="dishArea != null and dishArea != ''">
+		AND DM.DISHAREA LIKE CONCAT('%',#{dishArea})
+	</if>
+	<if test="mealId != null and mealId != ''">
+		AND EC.MEALID = #{mealId}
+	</if>
+  </select>
+
+  <!--<select id="checkIsHaveBitchOrder" parameterType="java.util.Map" resultType="java.lang.Integer">-->
+
+  <!--</select>-->
+</mapper>

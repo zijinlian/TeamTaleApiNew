@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.TAppUpdateMapper" >
+  <resultMap id="BaseResultMap" type="com.work.entity.TAppUpdate" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="ANDROID_URL" property="androidUrl" jdbcType="VARCHAR" />
+    <result column="ANDROID_VERSION" property="androidVersion" jdbcType="VARCHAR" />
+    <result column="ANDROID_DATE_TIME" property="androidDateTime" jdbcType="VARCHAR" />
+    <result column="ANDROID_CONTENT" property="androidContent" jdbcType="VARCHAR" />
+    <result column="IOS_URL" property="iosUrl" jdbcType="VARCHAR" />
+    <result column="IOS_DATE_TIME" property="iosDateTime" jdbcType="VARCHAR" />
+    <result column="IOS_CONTENT" property="iosContent" jdbcType="VARCHAR" />
+    <result column="IOS_VERSION" property="iosVersion" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, ANDROID_URL, ANDROID_VERSION, ANDROID_DATE_TIME, ANDROID_CONTENT, IOS_URL, IOS_DATE_TIME, 
+    IOS_CONTENT, IOS_VERSION
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.work.entity.TAppUpdateExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_APP_UPDATE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from TB_APP_UPDATE
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TB_APP_UPDATE
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.work.entity.TAppUpdate" >
+    insert into TB_APP_UPDATE (ID, ANDROID_URL, ANDROID_VERSION, 
+      ANDROID_DATE_TIME, ANDROID_CONTENT, IOS_URL, 
+      IOS_DATE_TIME, IOS_CONTENT, IOS_VERSION
+      )
+    values (#{id,jdbcType=VARCHAR}, #{androidUrl,jdbcType=VARCHAR}, #{androidVersion,jdbcType=VARCHAR}, 
+      #{androidDateTime,jdbcType=VARCHAR}, #{androidContent,jdbcType=VARCHAR}, #{iosUrl,jdbcType=VARCHAR}, 
+      #{iosDateTime,jdbcType=VARCHAR}, #{iosContent,jdbcType=VARCHAR}, #{iosVersion,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TAppUpdate" >
+    insert into TB_APP_UPDATE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="androidUrl != null" >
+        ANDROID_URL,
+      </if>
+      <if test="androidVersion != null" >
+        ANDROID_VERSION,
+      </if>
+      <if test="androidDateTime != null" >
+        ANDROID_DATE_TIME,
+      </if>
+      <if test="androidContent != null" >
+        ANDROID_CONTENT,
+      </if>
+      <if test="iosUrl != null" >
+        IOS_URL,
+      </if>
+      <if test="iosDateTime != null" >
+        IOS_DATE_TIME,
+      </if>
+      <if test="iosContent != null" >
+        IOS_CONTENT,
+      </if>
+      <if test="iosVersion != null" >
+        IOS_VERSION,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="androidUrl != null" >
+        #{androidUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="androidVersion != null" >
+        #{androidVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="androidDateTime != null" >
+        #{androidDateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="androidContent != null" >
+        #{androidContent,jdbcType=VARCHAR},
+      </if>
+      <if test="iosUrl != null" >
+        #{iosUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="iosDateTime != null" >
+        #{iosDateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="iosContent != null" >
+        #{iosContent,jdbcType=VARCHAR},
+      </if>
+      <if test="iosVersion != null" >
+        #{iosVersion,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.work.entity.TAppUpdate" >
+    update TB_APP_UPDATE
+    <set >
+      <if test="androidUrl != null" >
+        ANDROID_URL = #{androidUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="androidVersion != null" >
+        ANDROID_VERSION = #{androidVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="androidDateTime != null" >
+        ANDROID_DATE_TIME = #{androidDateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="androidContent != null" >
+        ANDROID_CONTENT = #{androidContent,jdbcType=VARCHAR},
+      </if>
+      <if test="iosUrl != null" >
+        IOS_URL = #{iosUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="iosDateTime != null" >
+        IOS_DATE_TIME = #{iosDateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="iosContent != null" >
+        IOS_CONTENT = #{iosContent,jdbcType=VARCHAR},
+      </if>
+      <if test="iosVersion != null" >
+        IOS_VERSION = #{iosVersion,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.work.entity.TAppUpdate" >
+    update TB_APP_UPDATE
+    set ANDROID_URL = #{androidUrl,jdbcType=VARCHAR},
+      ANDROID_VERSION = #{androidVersion,jdbcType=VARCHAR},
+      ANDROID_DATE_TIME = #{androidDateTime,jdbcType=VARCHAR},
+      ANDROID_CONTENT = #{androidContent,jdbcType=VARCHAR},
+      IOS_URL = #{iosUrl,jdbcType=VARCHAR},
+      IOS_DATE_TIME = #{iosDateTime,jdbcType=VARCHAR},
+      IOS_CONTENT = #{iosContent,jdbcType=VARCHAR},
+      IOS_VERSION = #{iosVersion,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

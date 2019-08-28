@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.mapper.TLikeMapper" >
+  <resultMap id="BaseResultMap" type="com.work.entity.TLike" >
+    <id column="FD_LIKE_ID" property="fdLikeId" jdbcType="VARCHAR" />
+    <result column="FD_DISS_ID" property="fdDissId" jdbcType="VARCHAR" />
+    <result column="FD_EMPID" property="fdEmpid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    FD_LIKE_ID, FD_DISS_ID, FD_EMPID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from TB_CF_LIKE
+    where FD_LIKE_ID = #{fdLikeId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TB_CF_LIKE
+    where FD_LIKE_ID = #{fdLikeId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.work.entity.TLike" >
+    insert into TB_CF_LIKE (FD_LIKE_ID, FD_DISS_ID, FD_EMPID
+      )
+    values (#{fdLikeId,jdbcType=VARCHAR}, #{fdDissId,jdbcType=VARCHAR}, #{fdEmpid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.work.entity.TLike" >
+    insert into TB_CF_LIKE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fdLikeId != null" >
+        FD_LIKE_ID,
+      </if>
+      <if test="fdDissId != null" >
+        FD_DISS_ID,
+      </if>
+      <if test="fdEmpid != null" >
+        FD_EMPID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fdLikeId != null" >
+        #{fdLikeId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdDissId != null" >
+        #{fdDissId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdEmpid != null" >
+        #{fdEmpid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.work.entity.TLike" >
+    update TB_CF_LIKE
+    <set >
+      <if test="fdDissId != null" >
+        FD_DISS_ID = #{fdDissId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdEmpid != null" >
+        FD_EMPID = #{fdEmpid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where FD_LIKE_ID = #{fdLikeId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.work.entity.TLike" >
+    update TB_CF_LIKE
+    set FD_DISS_ID = #{fdDissId,jdbcType=VARCHAR},
+      FD_EMPID = #{fdEmpid,jdbcType=VARCHAR}
+    where FD_LIKE_ID = #{fdLikeId,jdbcType=VARCHAR}
+  </update>
+  <!-- add -->
+  <select id="selectUserLike" resultMap="BaseResultMap" parameterType="com.work.bean.PraiseBean">
+  	select <include refid="Base_Column_List" /> from TB_CF_LIKE where FD_DISS_ID = #{fdDissId,jdbcType=VARCHAR} and FD_EMPID = #{fdEmpid,jdbcType=VARCHAR}
+  </select>
+  
+</mapper>
