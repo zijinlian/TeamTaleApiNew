@@ -37,16 +37,18 @@ public class AppUpdateService {
 					}else{
 						result.getBody().put("isUpdate", true);
 					}
-					for (int i = 0; i < appVersion.length; i++) {
-						String appv = appVersion[i];
-						String dbv = dbVersion[i];
-						if(!StringUtils.equals(appv, dbv) && i != appVersion.length - 1){//判断是否需要强制更新
-							result.getBody().put("isMandatoryUpdate",true);
-							break;
-						}else{
-							result.getBody().put("isMandatoryUpdate",false);
-						}
-					}
+//					for (int i = 0; i < appVersion.length; i++) {
+//						String appv = appVersion[i];
+//						String dbv = dbVersion[i];
+//						if(!StringUtils.equals(appv, dbv) && i != appVersion.length - 1){//判断是否需要强制更新
+//							result.getBody().put("isMandatoryUpdate",true);
+//							break;
+//						}else{
+//							result.getBody().put("isMandatoryUpdate",false);
+//						}
+//					}
+					//取消强制更新操作，默认设为非强制更新
+					result.getBody().put("isMandatoryUpdate",false);
 					result.getBody().put("update", appUpdate);
 				}
 			}
