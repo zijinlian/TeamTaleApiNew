@@ -19,7 +19,7 @@
 
 		<!-- lib versions -->
 		<junit.version>4.11</junit.version>
-		<spring.version>4.2.5.RELEASE</spring.version>
+		<spring.version>5.2.7.RELEASE</spring.version>
 		<mybatis.version>3.4.1</mybatis.version>
 		<mybatis.spring.version>1.3.0</mybatis.spring.version>
 		<!-- <mysql.connector.version>5.1.30</mysql.connector.version> -->
